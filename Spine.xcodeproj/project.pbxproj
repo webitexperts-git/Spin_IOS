@@ -3,17 +3,20 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 51;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1809E0A6256CD24C0007E9B2 /* NetworkExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1809E0A5256CD24C0007E9B2 /* NetworkExtension.framework */; };
+		1809E0AA256CD8A20007E9B2 /* EmailOTPVerification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1809E0A9256CD8A20007E9B2 /* EmailOTPVerification.swift */; };
+		1809E0AD256CD8BA0007E9B2 /* PhoneOTPVerification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1809E0AC256CD8BA0007E9B2 /* PhoneOTPVerification.swift */; };
 		1821F0F625678E8700F77583 /* Registration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1821F0F525678E8700F77583 /* Registration.swift */; };
 		1821F0F925678E9900F77583 /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1821F0F825678E9900F77583 /* Login.swift */; };
-		1821F0FC25678EAE00F77583 /* Verification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1821F0FB25678EAE00F77583 /* Verification.swift */; };
 		1821F0FF25678EBE00F77583 /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1821F0FE25678EBE00F77583 /* Home.swift */; };
 		1821F1022567947600F77583 /* EmailVerification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1821F1012567947600F77583 /* EmailVerification.swift */; };
 		1821F1052567949F00F77583 /* PhoneVerification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1821F1042567949F00F77583 /* PhoneVerification.swift */; };
 		1821F108256794C800F77583 /* ForgetPassword.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1821F107256794C800F77583 /* ForgetPassword.swift */; };
+		1859CF4B256C03A000EFC1EA /* FacebookLogin in Frameworks */ = {isa = PBXBuildFile; productRef = 1859CF4A256C03A000EFC1EA /* FacebookLogin */; };
 		18675F1125543EDF00758F81 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18675F1025543EDF00758F81 /* AppDelegate.swift */; };
 		18675F1325543EDF00758F81 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18675F1225543EDF00758F81 /* SceneDelegate.swift */; };
 		18675F1525543EDF00758F81 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18675F1425543EDF00758F81 /* ContentView.swift */; };
@@ -41,9 +44,12 @@
 
 /* Begin PBXFileReference section */
 		17DF1A7A3E4D2D8E886D4240 /* Pods-Spine.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Spine.release.xcconfig"; path = "Target Support Files/Pods-Spine/Pods-Spine.release.xcconfig"; sourceTree = "<group>"; };
+		1809E0A4256CD2480007E9B2 /* Spine.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Spine.entitlements; sourceTree = "<group>"; };
+		1809E0A5256CD24C0007E9B2 /* NetworkExtension.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NetworkExtension.framework; path = System/Library/Frameworks/NetworkExtension.framework; sourceTree = SDKROOT; };
+		1809E0A9256CD8A20007E9B2 /* EmailOTPVerification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailOTPVerification.swift; sourceTree = "<group>"; };
+		1809E0AC256CD8BA0007E9B2 /* PhoneOTPVerification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneOTPVerification.swift; sourceTree = "<group>"; };
 		1821F0F525678E8700F77583 /* Registration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Registration.swift; sourceTree = "<group>"; };
 		1821F0F825678E9900F77583 /* Login.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Login.swift; sourceTree = "<group>"; };
-		1821F0FB25678EAE00F77583 /* Verification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Verification.swift; sourceTree = "<group>"; };
 		1821F0FE25678EBE00F77583 /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
 		1821F1012567947600F77583 /* EmailVerification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailVerification.swift; sourceTree = "<group>"; };
 		1821F1042567949F00F77583 /* PhoneVerification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneVerification.swift; sourceTree = "<group>"; };
@@ -96,6 +102,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1859CF4B256C03A000EFC1EA /* FacebookLogin in Frameworks */,
+				1809E0A6256CD24C0007E9B2 /* NetworkExtension.framework in Frameworks */,
 				7DEED95F9456EB187E894AD7 /* Pods_Spine.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -126,15 +134,17 @@
 		18675F0F25543EDF00758F81 /* Spine */ = {
 			isa = PBXGroup;
 			children = (
+				1809E0A4256CD2480007E9B2 /* Spine.entitlements */,
 				18675F1025543EDF00758F81 /* AppDelegate.swift */,
 				18675F1225543EDF00758F81 /* SceneDelegate.swift */,
 				18675F1425543EDF00758F81 /* ContentView.swift */,
 				1821F0F525678E8700F77583 /* Registration.swift */,
 				1821F0F825678E9900F77583 /* Login.swift */,
-				1821F0FB25678EAE00F77583 /* Verification.swift */,
 				1821F0FE25678EBE00F77583 /* Home.swift */,
 				1821F1012567947600F77583 /* EmailVerification.swift */,
+				1809E0A9256CD8A20007E9B2 /* EmailOTPVerification.swift */,
 				1821F1042567949F00F77583 /* PhoneVerification.swift */,
+				1809E0AC256CD8BA0007E9B2 /* PhoneOTPVerification.swift */,
 				1821F107256794C800F77583 /* ForgetPassword.swift */,
 				18675F1625543EE300758F81 /* Assets.xcassets */,
 				18675F1B25543EE300758F81 /* LaunchScreen.storyboard */,
@@ -249,6 +259,7 @@
 		F610C06F4D139117F03B5C46 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				1809E0A5256CD24C0007E9B2 /* NetworkExtension.framework */,
 				DF920189D53FA29F2F788086 /* Pods_Spine.framework */,
 			);
 			name = Frameworks;
@@ -272,6 +283,9 @@
 			dependencies = (
 			);
 			name = Spine;
+			packageProductDependencies = (
+				1859CF4A256C03A000EFC1EA /* FacebookLogin */,
+			);
 			productName = Spine;
 			productReference = 18675F0D25543EDF00758F81 /* Spine.app */;
 			productType = "com.apple.product-type.application";
@@ -299,6 +313,9 @@
 				Base,
 			);
 			mainGroup = 18675F0425543EDF00758F81;
+			packageReferences = (
+				1859CF49256C039F00EFC1EA /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */,
+			);
 			productRefGroup = 18675F0E25543EDF00758F81 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -375,18 +392,19 @@
 				1821F108256794C800F77583 /* ForgetPassword.swift in Sources */,
 				18675F482554671400758F81 /* IQToolbar.m in Sources */,
 				18675F4A2554671400758F81 /* IQBarButtonItem.m in Sources */,
+				1809E0AA256CD8A20007E9B2 /* EmailOTPVerification.swift in Sources */,
 				187B70D5256849960055E5D0 /* singleton.swift in Sources */,
 				18675F492554671400758F81 /* IQTitleBarButtonItem.m in Sources */,
 				18675F4B2554671400758F81 /* IQUIView+IQKeyboardToolbar.m in Sources */,
 				18675F1125543EDF00758F81 /* AppDelegate.swift in Sources */,
 				18675F512554671400758F81 /* IQUIView+Hierarchy.m in Sources */,
+				1809E0AD256CD8BA0007E9B2 /* PhoneOTPVerification.swift in Sources */,
 				18675F4F2554671400758F81 /* IQUITextFieldView+Additions.m in Sources */,
 				18675F532554671400758F81 /* IQKeyboardReturnKeyHandler.m in Sources */,
 				18675F502554671400758F81 /* IQUIScrollView+Additions.m in Sources */,
 				1821F0F625678E8700F77583 /* Registration.swift in Sources */,
 				1821F1052567949F00F77583 /* PhoneVerification.swift in Sources */,
 				1821F1022567947600F77583 /* EmailVerification.swift in Sources */,
-				1821F0FC25678EAE00F77583 /* Verification.swift in Sources */,
 				18675F472554671300758F81 /* IQTextView.m in Sources */,
 				18675F1325543EDF00758F81 /* SceneDelegate.swift in Sources */,
 				18675F1525543EDF00758F81 /* ContentView.swift in Sources */,
@@ -533,6 +551,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Spine/Spine.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"Spine/Preview Content\"";
@@ -557,6 +576,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Spine/Spine.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"Spine/Preview Content\"";
@@ -597,6 +617,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		1859CF49256C039F00EFC1EA /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/facebook/facebook-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 8.2.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		1859CF4A256C03A000EFC1EA /* FacebookLogin */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1859CF49256C039F00EFC1EA /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */;
+			productName = FacebookLogin;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 18675F0525543EDF00758F81 /* Project object */;
 }

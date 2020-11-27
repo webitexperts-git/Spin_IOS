@@ -130,7 +130,7 @@ struct Registration: View {
                 }
                 Spacer()
                 }
-            }
+            }  .accentColor( .black)
         }
     }
 

@@ -1,13 +1,13 @@
 //
-//  EmailVerification.swift
+//  PhoneOTPVerification.swift
 //  Spine
 //
-//  Created by apple on 20/11/20.
+//  Created by apple on 24/11/20.
 //
 
 import SwiftUI
 
-struct EmailVerification: View {
+struct PhoneOTPVerification: View {
     @State private var text: String = ""
     var body: some View {
         ZStack{
@@ -59,13 +59,12 @@ struct EmailVerification: View {
                 
             }.navigationBarHidden(true)
         }
-       
+
     }
 }
 
-
-struct EmailVerification_Previews: PreviewProvider {
+struct PhoneOTPVerification_Previews: PreviewProvider {
     static var previews: some View {
-        EmailVerification()
+        PhoneOTPVerification()
     }
 }

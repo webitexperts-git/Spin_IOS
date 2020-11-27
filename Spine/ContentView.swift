@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State private var hasTitle = true
     var body: some View {
       
         NavigationView{
@@ -37,17 +38,22 @@ struct ContentView: View {
                             .shadow(radius: 18)
                             .padding()
                         
-                    }
+                    }.navigationBarTitle(self.hasTitle ? " " : "").foregroundColor(.white)
                     
                     NavigationLink(destination: Login()){
                         Text("Login")
-                            //                        .frame(minWidth: 0, maxWidth: 200, minHeight: 0, maxHeight: 30)
+                            .onAppear {
+                                self.hasTitle = false
+                            }
+                            .onDisappear {
+                                self.hasTitle = true
+                            }
                             .foregroundColor(Color.white)
                         
-                    }
+                    }.navigationBarTitle(self.hasTitle ? " " : "").foregroundColor(.white)
                 }
             }
-        }
+        }.accentColor( .white)
     }
 }
 
