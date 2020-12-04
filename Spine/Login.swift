@@ -7,19 +7,25 @@
 
 import SwiftUI
 import FBSDKLoginKit
+import Combine
 
 struct Login: View {
     @State var email: String = ""
     @State var password: String = ""
     @State private var hasTitle = true
     @ObservedObject var fbmanager = UserLoginManager()
+    @ObservedObject var loginaction = LoginAction()
+    @State var isLoginValid: Bool = false
+    @State private var shouldShowLoginAlert: Bool = false
+    @EnvironmentObject var loginAction: LoginAction
+    
     var body: some View {
         ZStack{
             LinearGradient(gradient: Gradient(colors: [Color(red: 183 / 255, green: 152 / 255, blue: 136 / 255), Color(red: 215 / 255, green: 199 / 255, blue: 181 / 255)]), startPoint: .bottom, endPoint: .top).edgesIgnoringSafeArea(.all)
             HStack(){
                 
                 VStack(spacing:5){
-                    //                    Image("logo1")
+//                  Image("logo1")
                     Text("S P I N E").font(.largeTitle).foregroundColor(Color.white)
                     Text("Login").font(.subheadline).foregroundColor(Color.white).padding(.bottom, 30)
                     
@@ -55,21 +61,41 @@ struct Login: View {
                             .padding(.bottom,10)
                     }
 //                    .navigationBarBackButtonHidden(true)
-                    NavigationLink(destination: EmailVerification()){
+                    
+                    NavigationLink(destination: EmailVerification(),
+                                   isActive: self.$isLoginValid) {
                         Text("Login")
-                            .onAppear {
-                                self.hasTitle = false
+                            //                            .onAppear {
+                            //                                self.hasTitle = false
+                            ////                              self.loginaction.loginFunc(email: email, password: password)
+                            //                            }
+                            //                            .onDisappear {
+                            //                                self.hasTitle = true
+                            //                            }
+                            .onTapGesture {
+                                //determine login validity
+                                isLoginValid = self.email == "root" && self.password == "toor"
+                                                               
+                                //trigger logic
+                                if isLoginValid {
+                                    self.isLoginValid = true //trigger NavigationLink
+                                }
+                                else {
+                                    self.shouldShowLoginAlert = true //trigger Alert
+                                }
                             }
-                            .onDisappear {
-                                self.hasTitle = true
-                            }
+                            
                             .frame(minWidth: 0, maxWidth: 250, minHeight: 0, maxHeight: 40)
                             .foregroundColor(Color(red: 237 / 255, green: 215 / 255, blue: 183 / 255))
                             .background(Color.white)
                             .cornerRadius(18)
                             .padding(.bottom, 10)
-                       
+                        
                     }.navigationBarTitle(self.hasTitle ? " " : "")
+//                          .alert(isPresented: $shouldShowLoginAlert) {
+//                            Alert(title: Text("Email/Password incorrect"))
+//                          }
+                    
                     
                     NavigationLink(destination: ForgetPassword()){
                         Text("Forget Password?")
@@ -82,7 +108,16 @@ struct Login: View {
                         .padding(.bottom, 40)
                     
                     Button(action: {
-                        self.fbmanager.facebookLogin()
+//                        self.fbmanager.facebookLogin()
+                        self.loginaction.loginFunc(email: email, password: password)
+                        if !loginaction.isLoginValid{
+                            Home()
+                            
+                        }else{
+                            self.shouldShowLoginAlert = true
+                            
+                        }
+                      
                     }) {
                         Text("CONTINUE WITH FACEBOOK")
                             
@@ -99,8 +134,6 @@ struct Login: View {
                 }
             }
         }
-        
-
     }
 }
 
@@ -124,8 +157,105 @@ class UserLoginManager: ObservableObject {
                 })
             }
         }
+}
+
+
+class LoginAction: ObservableObject{
+    @State var email1: String = ""
+    @State var password1: String = ""
+    @State var isLoginValid: Bool = false
+    
+    let didChange = PassthroughSubject<LoginAction,Never>()
+
+      // required to conform to protocol 'ObservableObject'
+      let willChange = PassthroughSubject<LoginAction,Never>()
+    
+    
+    func loginFunc(email: String, password: String) {
+        print(email, password)
+        
+//        guard let fname = firstName.text, !fname.isEmpty else {
+//            self.alert(message: "Please Enter Name!")
+//            return
+//        }
+//        guard let lname = lastName.text, !lname.isEmpty else {
+//            self.alert(message: "Please Enter Last name!")
+//            return
+//        }
+//        if email.isEmpty{
+//            Alert(title: Text("Important message"), message: Text("Wear sunscreen"), dismissButton: .default(Text("Got it!")))
+//
+//            return
+//        }
+//        guard let mobile = mobile.text, !mobile.isEmpty else {
+//                self.alert(message: "Please Enter Mobile!")
+//                return
+//            }
+//        guard let address = address.text, !address.isEmpty else {
+//                self.alert(message: "Please Enter Address!")
+//                return
+//        }
+//
+//        guard let pwd = password.text, !pwd.isEmpty else {
+//              self.alert(message: "Please Enter Password!")
+//            return
+//        }
+//        guard let confirmPwd = confirmPassword.text, pwd == confirmPwd else {
+//             self.alert(message: "Password mismatched!")
+//            return
+//        }
+//
+//        let validEmail = self.isValidEmail(emailStr:email)
+//        if(validEmail == false){
+//            self.alert(message: "Please Enter Valid Email!")
+//            return
+//        }
+        
+    
+//        email: [required]
+//        Password: [required]
+//        notify_device_token: [required]
+//        notify_device_type: [required]
+
+        let params: [String:Any]? = ["email":email, "password":password, "notify_device_token": "123456", "notify_device_type": "IOS"]
+            print(params!)
+        
+        ServiceClassMethods.sharedInstance.AlamoRequestNew(method: .post, serviceString: appConstants.kloginUser, parameters: params) { (dict) in
+
+            print(dict)
+            print("response",dict)
+            let dataResult = dict as! Dictionary<String,Any>
+//            let message = dataResult["message"] as! String
+            let status = dataResult["status"]! as! Int64
+            print("status",status)
+            if status == 1{
+                
+                self.isLoginValid = true
+//            self.navigationController?.popViewController(animated: true)
+//            self.dismiss(animated: true, completion: nil)
+               
+                }
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.0, execute: {
+//                self.alert(message: message)
+            })
+        }
     }
-//}
+}
+
+func alert(message:String){
+  
+//        Alert(title: Text("Important message"), message: Text("Wear sunscreen"), dismissButton: .default(Text("Got it!")))
+   }
+   
+   
+    func isValidEmail(emailStr:String) -> Bool {
+
+       let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
+
+       let emailPred = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
+       return emailPred.evaluate(with: emailStr)
+   }
+
 
 struct Login_Previews: PreviewProvider {
     static var previews: some View {

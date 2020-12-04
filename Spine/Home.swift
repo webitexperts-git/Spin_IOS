@@ -7,75 +7,20 @@
 
 import SwiftUI
 
-
-
 struct Trail: Identifiable {
     var id = UUID()
     var name: String
     var day: String
 
 }
-struct Event: Identifiable {
-    var id  = 2
-    var retreat : String
-    var des: String
-    var city: String
-    var state: String
-    var name: String
-    var day : String
-    
-}
-
-struct EventRow: View {
-    var event: Event
-    
-    var body: some View {
-       
-            VStack(alignment: .leading, spacing: 20) {
-                Text("SAT, 9 MAY 2020")
-                Divider()
-                HStack{
-                    
-                Image("back") .resizable().frame(width: 80, height: 80)
-                .cornerRadius(80/2)
-                    .padding(.leading,5)
-                    VStack(alignment: .leading){
-                        HStack(spacing:180){
-                            Text(event.retreat).font(.subheadline).foregroundColor(Color(red: 183 / 255, green: 152 / 255, blue: 136 / 255)).bold()
-                            Image("bookmark").resizable().frame(width: 25, height: 25, alignment: .trailing)
-                        }
-                       
-                        Text(event.des).font(.subheadline).foregroundColor(.black)  .lineLimit(2)
-                        HStack{
-                            Text(event.city).font(.subheadline).foregroundColor(.gray)
-                            Text(event.state).font(.subheadline).foregroundColor(.gray)
-                        }
-                        HStack(spacing: 200){
-                            Text(event.day).font(.subheadline).foregroundColor(.black)
-                            Text("$75").font(.subheadline).foregroundColor(.black)
-                        }
-                       
-                    }
-                    
-                }
-                Text(event.name).font(.subheadline).foregroundColor(.black).padding(.leading, 20)
-
-//                HStack{
-//
-//                }
-            }
-            Spacer()
-        }
-    }
-
-
 
 struct TrailRow: View {
     var trail: Trail
     
     var body: some View {
-       
+        ZStack{
             VStack(alignment: .leading, spacing: 20) {
+               
                 HStack{
                 Image("back") .resizable().frame(width: 80, height: 80)
                 .cornerRadius(80/2)
@@ -95,6 +40,7 @@ struct TrailRow: View {
                     Image("menu").resizable().frame(width:20, height: 20)
                 }
             }
+        }
             Spacer()
         }
     }
@@ -115,6 +61,25 @@ struct SpineRect: View{
         
     }
 }
+
+struct SpineCircle: View{
+    var body: some View{
+        ZStack{
+           
+        Circle().strokeBorder(Color.white,lineWidth: 4)
+            .frame(width: 80, height: 80)
+            .padding()
+            
+            VStack{
+//            Text("SPINE").foregroundColor(.white).font(.title2)
+                Image("user").resizable().frame(width: 50, height: 50)
+              
+            }
+        }
+    }
+}
+
+
 
 struct SpineImpulse: View{
     var body: some View{
@@ -149,10 +114,64 @@ struct SpineImpulse: View{
    
 }
 
+struct SpineButtonView: View {
+    @State var label: String
+        
+    var body: some View {
+        ZStack {
+
+            HStack(){
+            NavigationLink(destination: Home()){
+                Text("CBI_FOR_SSR").padding()
+//                    .frame(minWidth: 0, maxWidth: 300, minHeight: 0, maxHeight: 40)
+                    .background(Color(red: 183 / 255, green: 152 / 255, blue: 136 / 255))
+                    .foregroundColor(Color.white)
+                    .cornerRadius(18)
+                    .shadow(radius: 5)
+//                    .padding()
+                
+            }
+            NavigationLink(destination: Home()){
+                Text("CBI_FOR_SSR").padding()
+//                    .frame(minWidth: 0, maxWidth: 300, minHeight: 0, maxHeight: 40)
+                    .background(Color(red: 183 / 255, green: 152 / 255, blue: 136 / 255))
+                    .foregroundColor(Color.white)
+                    .cornerRadius(18)
+                    .shadow(radius: 5)
+//                    .padding()
+                
+            }
+                NavigationLink(destination: Home()){
+                    Text("CBI_FOR_SSR").padding()
+    //                    .frame(minWidth: 0, maxWidth: 300, minHeight: 0, maxHeight: 40)
+                        .background(Color(red: 183 / 255, green: 152 / 255, blue: 136 / 255))
+                        .foregroundColor(Color.white)
+                        .cornerRadius(18)
+                        .shadow(radius: 5)
+    //                    .padding()
+                    
+                }
+                
+                NavigationLink(destination: Home()){
+                    Text("CBI_FOR_SSR").padding()
+    //                    .frame(minWidth: 0, maxWidth: 300, minHeight: 0, maxHeight: 40)
+                        .background(Color(red: 183 / 255, green: 152 / 255, blue: 136 / 255))
+                        .foregroundColor(Color.white)
+                        .cornerRadius(18)
+                        .shadow(radius: 5)
+    //                    .padding()
+                    
+                }
+            }
+        }
+    }
+}
+
+
 struct Home: View {
     
     var body: some View {
-
+//        NavigationView{
         TabView {
 
             SpineView()
@@ -176,13 +195,13 @@ struct Home: View {
                     Image(systemName: "bell.fill")
                     Text("Activities")
                 }
-            Text("Profile")
+            ProfileView()
                 .tabItem {
                     Image(systemName: "person.fill")
                     Text("Profile")
                 }
         }.accentColor(Color(red: 183 / 255, green: 152 / 255, blue: 136 / 255))
-        
+//        }.navigationBarHidden(false)
     }
 }
 
@@ -203,7 +222,7 @@ struct SpineView:View{
     @State private var selectedSport = 0
     private let triathlonSports = ["You", "Following"]
     private let ironmanDistances = ["2.4 miles", "112 miles", "26.2 miles"]
-    
+    let people = ["Adam", "James", "Adam", "James"]
     var body: some View{
         
 //        ScrollView(.vertical){
@@ -264,14 +283,17 @@ struct SpineView:View{
                    }
 
                }.pickerStyle(SegmentedPickerStyle())
-            Text("Hello,").padding(.leading,20)
-            Text("Gaurav").padding(.leading,20)
-        Text("WELCOME").padding(.leading,20).padding(.bottom, 10)
-            ScrollView(){
+           
+            ScrollView(.vertical){
                
-            VStack{
+                VStack(alignment: .leading, spacing: 1){
+                    VStack(alignment: .leading){
+                        Text("Hello,").padding(.leading,20).foregroundColor(.white)
+                        Text("Gaurav").padding(.leading,20).foregroundColor(.white)
+                        Text("WELCOME").padding(.leading,20).padding(.bottom, 10).foregroundColor(.white)
+                    }
+            
             ScrollView(.horizontal) {
-                
                 HStack(spacing: 10) {
                     ForEach(0..<2){_ in
                         SpineRect()
@@ -279,7 +301,16 @@ struct SpineView:View{
                    
                 }.padding()
             }.frame(height: 170)
-                
+//                    NavigationView{
+                    HStack(spacing: 100){
+                    Text("SPINE IMPULSE").foregroundColor(.white).font(.title3).padding()
+                       
+                        NavigationLink(destination: SpineImpulseDetail()){
+                            Text("See All").foregroundColor(Color(red: 237 / 255, green: 215 / 255, blue: 183 / 255)).font(.title3)
+                        }
+                    }
+//                }
+
                 ScrollView(.horizontal) {
                     HStack(spacing: 10) {
                         ForEach(0..<4){_ in
@@ -288,13 +319,73 @@ struct SpineView:View{
                        
                     }.padding()
                 }.frame(height: 300)
-            }
-            
-            }
+                    
+                    HStack(spacing: 160){
+                    Text("STORIES").foregroundColor(.white).font(.title3).padding()
+                        NavigationLink(destination: Home()){
+                            Text("See All").foregroundColor(Color(red: 237 / 255, green: 215 / 255, blue: 183 / 255)).font(.title3)
+                        }
+                    }
+                    
+                    ScrollView(.horizontal) {
+                        HStack(spacing: 1) {
+                            ForEach(people, id: \.self){person in
+                                VStack(spacing: 1){
+                                    SpineCircle()
+                                    Text("\(person)").foregroundColor(.white)
+                                }
+                                
+                            }
+                           
+                        }.padding()
+                    }.frame(height: 150)
+                    
+                   
+                    HStack(spacing: 160){
+                    Text("TRENDING CATEGORIES").foregroundColor(.white).font(.title3).padding()
+                        NavigationLink(destination: Home()){
+                            Text("See All").foregroundColor(Color(red: 237 / 255, green: 215 / 255, blue: 183 / 255)).font(.title3)
+                        }
+                    }
+                    
+                  
+                    ScrollView(.horizontal) {
+                        HStack(spacing: 10) {
+                           SpineButtonView(label: " ")
+                        }.padding()
+                    }.frame(height: 60)
+                    
+                    HStack(spacing: 160){
+                    Text("RECOMMENDED FOLLOWERS").foregroundColor(.white).font(.title3).padding()
+                        NavigationLink(destination: Home()){
+                            Text("See All").foregroundColor(Color(red: 237 / 255, green: 215 / 255, blue: 183 / 255)).font(.title3)
+                        }
+                    }
+                    ScrollView(.horizontal) {
+                        HStack(spacing: 1) {
+                            ForEach(people, id: \.self){person in
+                                VStack(spacing: 1){
+                                    SpineCircle()
+//                                    Text("\(person)")
+                                }
+                                
+                            }
+                           
+                        }.padding()
+                    }.frame(height: 100)
+//                    HStack(){
+//                    Text("STORIES").foregroundColor(.white).font(.title2).padding()
+//                        NavigationLink(destination: Home()){
+//                            Text("See All").foregroundColor(Color(red: 237 / 255, green: 215 / 255, blue: 183 / 255)).font(.title3)
+//                        }
+//                    }
+                }.background(Color.black)
+                
+                List(hikingTrails) { trail in
+                TrailRow(trail: trail)
+                }.frame(minWidth:0, maxWidth: .infinity, minHeight: 300, maxHeight: .infinity)
+        }
            
-            List(hikingTrails) { trail in
-            TrailRow(trail: trail)
-            }
             Spacer()
         }.navigationBarHidden(true)
 //        }
@@ -304,158 +395,7 @@ struct SpineView:View{
 
 
 
-struct ButtonView: View {
-    @State var label: String
-    
-    private let triathlonSports = ["You", "Following"]
-    
-    var body: some View {
-        ZStack {
-//            Circle()
-//                .fill(Color.yellow)
-//                .frame(width: 70, height: 70)
-//            Text(label)
-            HStack(){
-            NavigationLink(destination: Home()){
-                Text("All").padding()
-//                    .frame(minWidth: 0, maxWidth: 300, minHeight: 0, maxHeight: 40)
-                    .foregroundColor(Color(red: 237 / 255, green: 215 / 255, blue: 183 / 255))
-                    .background(Color.white)
-                    .cornerRadius(18)
-                    .shadow(radius: 5)
-//                    .padding()
-                
-            }
-            NavigationLink(destination: Home()){
-                Text("Nearby").padding()
-//                    .frame(minWidth: 0, maxWidth: 300, minHeight: 0, maxHeight: 40)
-                    .foregroundColor(Color(red: 237 / 255, green: 215 / 255, blue: 183 / 255))
-                    .background(Color.white)
-                    .cornerRadius(18)
-                    .shadow(radius: 5)
-//                    .padding()
-                
-            }
-                NavigationLink(destination: Home()){
-                    Text("Online").padding()
-    //                    .frame(minWidth: 0, maxWidth: 300, minHeight: 0, maxHeight: 40)
-                        .foregroundColor(Color(red: 237 / 255, green: 215 / 255, blue: 183 / 255))
-                        .background(Color.white)
-                        .cornerRadius(18)
-                        .shadow(radius: 5)
-    //                    .padding()
-                    
-                }
-                
-                NavigationLink(destination: Home()){
-                    Text("Following").padding()
-    //                    .frame(minWidth: 0, maxWidth: 300, minHeight: 0, maxHeight: 40)
-                        .foregroundColor(Color(red: 237 / 255, green: 215 / 255, blue: 183 / 255))
-                        .background(Color.white)
-                        .cornerRadius(18)
-                        .shadow(radius: 5)
-    //                    .padding()
-                    
-                }
-        }
-            
-  
 
-        }
-    }
-}
-
-struct EventView:View {
-    @State private var searchText = ""
-    @State private var showCancelButton: Bool = false
-    @State private var favoriteColor = 0
-    
-    let hikingTrails = [
-        Event(retreat: "RETREATE", des: "Yoga Weekend Retreat - Reclaiming Your Center", city: "Mandrid", state: "Spain", name: "Oliver", day: "2 days"),
-        Event(retreat: "RETREATE", des: "Yoga Weekend Retreat - Reclaiming Your Center", city: "Mandrid", state: "Spain", name: "Oliver", day: "2 days"),
-        Event(retreat: "RETREATE", des: "Yoga Weekend Retreat - Reclaiming Your Center", city: "Mandrid", state: "Spain", name: "Oliver", day: "2 days"),
-        Event(retreat: "RETREATE", des: "Yoga Weekend Retreat - Reclaiming Your Center", city: "Mandrid", state: "Spain", name: "Oliver", day: "2 days"),
-        Event(retreat: "RETREATE", des: "Yoga Weekend Retreat - Reclaiming Your Center", city: "Mandrid", state: "Spain", name: "Oliver", day: "2 days")
-       ]
-    var body: some View{
-        VStack(alignment: .leading) {
-            HStack {
-
-                Button(action: {
-
-                }) {
-                    Text("+")
-
-                        .frame(width: 40, height: 40)
-                        .font(.system(size: 50))
-                        .foregroundColor(Color(red: 237 / 255, green: 215 / 255, blue: 183 / 255))
-
-                }.padding(.bottom, 10)
-
-                HStack {
-
-                    Image(systemName: "magnifyingglass")
-                    TextField("Search Spine", text: $searchText, onEditingChanged: { isEditing in
-                                   self.showCancelButton = true
-                               }, onCommit: {
-                                   print("onCommit")
-                               }).foregroundColor(.primary)
-
-                               Button(action: {
-                                   self.searchText = ""
-                               }) {
-                                   Image(systemName: "xmark.circle.fill").opacity(searchText == "" ? 0 : 1)
-                               }
-                           }
-                           .padding(EdgeInsets(top: 8, leading: 6, bottom: 8, trailing: 6))
-                           .foregroundColor(.secondary)
-                           .background(Color(.secondarySystemBackground))
-                           .cornerRadius(10.0)
-
-                           if showCancelButton  {
-                               Button("Cancel") {
-//                        UIApplication.shared.endEditing(true)
-                                // this must be placed before the other commands here
-                                       self.searchText = ""
-                                       self.showCancelButton = false
-                               }
-                               .foregroundColor(Color(.systemBlue))
-                           }
-
-                       }
-                       .padding(.horizontal)
-                       .navigationBarHidden(showCancelButton)
-
-            
-            
-//                 Divider()
-                 ScrollView(.horizontal) {
-                     HStack(spacing: 10) {
-//                         ForEach(0..<10) { index in
-//                             CircleView(label: "\(index)")
-//                         }
-                        ButtonView(label: " ")
-                     }.padding()
-                 }.frame(height: 60)
-                 Divider()
-                 Spacer()
-            
-            
-            
-            List(hikingTrails) { event in
-            EventRow(event: event)
-            }
-             }.navigationBarHidden(true)
-    }
-}
-
-
-
-struct youView:View{
-    var body: some View{
-        Text("YOU")
-    }
-}
 
 struct Home_Previews: PreviewProvider {
     static var previews: some View {

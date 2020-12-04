@@ -58,6 +58,13 @@ struct EmailVerification: View {
                 Spacer()
                 
             }.navigationBarHidden(true)
+//            .navigationBarItems(leading:
+//                            Button(action: {
+//                                print("Edit button pressed...")
+//                            }) {
+//                                Text("srivastava.gaurava@gmail.com")
+//                            }
+//                        )
         }
        
     }

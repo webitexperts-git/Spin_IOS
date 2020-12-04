@@ -16,6 +16,8 @@
 		1821F1022567947600F77583 /* EmailVerification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1821F1012567947600F77583 /* EmailVerification.swift */; };
 		1821F1052567949F00F77583 /* PhoneVerification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1821F1042567949F00F77583 /* PhoneVerification.swift */; };
 		1821F108256794C800F77583 /* ForgetPassword.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1821F107256794C800F77583 /* ForgetPassword.swift */; };
+		18251303257A086F00C315C2 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18251302257A086F00C315C2 /* ProfileView.swift */; };
+		18251306257A099A00C315C2 /* EventView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18251305257A099A00C315C2 /* EventView.swift */; };
 		1859CF4B256C03A000EFC1EA /* FacebookLogin in Frameworks */ = {isa = PBXBuildFile; productRef = 1859CF4A256C03A000EFC1EA /* FacebookLogin */; };
 		18675F1125543EDF00758F81 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18675F1025543EDF00758F81 /* AppDelegate.swift */; };
 		18675F1325543EDF00758F81 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18675F1225543EDF00758F81 /* SceneDelegate.swift */; };
@@ -39,6 +41,7 @@
 		187B70D3256849960055E5D0 /* ServiceClassMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187B70D0256849960055E5D0 /* ServiceClassMethods.swift */; };
 		187B70D4256849960055E5D0 /* AppConstantes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187B70D1256849960055E5D0 /* AppConstantes.swift */; };
 		187B70D5256849960055E5D0 /* singleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187B70D2256849960055E5D0 /* singleton.swift */; };
+		1895303B257A602300B5C7B2 /* SpineImpulseDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1895303A257A602300B5C7B2 /* SpineImpulseDetail.swift */; };
 		7DEED95F9456EB187E894AD7 /* Pods_Spine.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DF920189D53FA29F2F788086 /* Pods_Spine.framework */; };
 /* End PBXBuildFile section */
 
@@ -54,6 +57,8 @@
 		1821F1012567947600F77583 /* EmailVerification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailVerification.swift; sourceTree = "<group>"; };
 		1821F1042567949F00F77583 /* PhoneVerification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneVerification.swift; sourceTree = "<group>"; };
 		1821F107256794C800F77583 /* ForgetPassword.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgetPassword.swift; sourceTree = "<group>"; };
+		18251302257A086F00C315C2 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		18251305257A099A00C315C2 /* EventView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventView.swift; sourceTree = "<group>"; };
 		18675F0D25543EDF00758F81 /* Spine.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Spine.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		18675F1025543EDF00758F81 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		18675F1225543EDF00758F81 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -93,6 +98,7 @@
 		187B70D0256849960055E5D0 /* ServiceClassMethods.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceClassMethods.swift; sourceTree = "<group>"; };
 		187B70D1256849960055E5D0 /* AppConstantes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppConstantes.swift; sourceTree = "<group>"; };
 		187B70D2256849960055E5D0 /* singleton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = singleton.swift; sourceTree = "<group>"; };
+		1895303A257A602300B5C7B2 /* SpineImpulseDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpineImpulseDetail.swift; sourceTree = "<group>"; };
 		85B0F029B5D17F0B389B7556 /* Pods-Spine.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Spine.debug.xcconfig"; path = "Target Support Files/Pods-Spine/Pods-Spine.debug.xcconfig"; sourceTree = "<group>"; };
 		DF920189D53FA29F2F788086 /* Pods_Spine.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Spine.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -141,11 +147,14 @@
 				1821F0F525678E8700F77583 /* Registration.swift */,
 				1821F0F825678E9900F77583 /* Login.swift */,
 				1821F0FE25678EBE00F77583 /* Home.swift */,
+				18251302257A086F00C315C2 /* ProfileView.swift */,
+				18251305257A099A00C315C2 /* EventView.swift */,
 				1821F1012567947600F77583 /* EmailVerification.swift */,
 				1809E0A9256CD8A20007E9B2 /* EmailOTPVerification.swift */,
 				1821F1042567949F00F77583 /* PhoneVerification.swift */,
 				1809E0AC256CD8BA0007E9B2 /* PhoneOTPVerification.swift */,
 				1821F107256794C800F77583 /* ForgetPassword.swift */,
+				1895303A257A602300B5C7B2 /* SpineImpulseDetail.swift */,
 				18675F1625543EE300758F81 /* Assets.xcassets */,
 				18675F1B25543EE300758F81 /* LaunchScreen.storyboard */,
 				18675F1E25543EE300758F81 /* Info.plist */,
@@ -391,12 +400,14 @@
 				1821F0FF25678EBE00F77583 /* Home.swift in Sources */,
 				1821F108256794C800F77583 /* ForgetPassword.swift in Sources */,
 				18675F482554671400758F81 /* IQToolbar.m in Sources */,
+				1895303B257A602300B5C7B2 /* SpineImpulseDetail.swift in Sources */,
 				18675F4A2554671400758F81 /* IQBarButtonItem.m in Sources */,
 				1809E0AA256CD8A20007E9B2 /* EmailOTPVerification.swift in Sources */,
 				187B70D5256849960055E5D0 /* singleton.swift in Sources */,
 				18675F492554671400758F81 /* IQTitleBarButtonItem.m in Sources */,
 				18675F4B2554671400758F81 /* IQUIView+IQKeyboardToolbar.m in Sources */,
 				18675F1125543EDF00758F81 /* AppDelegate.swift in Sources */,
+				18251303257A086F00C315C2 /* ProfileView.swift in Sources */,
 				18675F512554671400758F81 /* IQUIView+Hierarchy.m in Sources */,
 				1809E0AD256CD8BA0007E9B2 /* PhoneOTPVerification.swift in Sources */,
 				18675F4F2554671400758F81 /* IQUITextFieldView+Additions.m in Sources */,
@@ -406,6 +417,7 @@
 				1821F1052567949F00F77583 /* PhoneVerification.swift in Sources */,
 				1821F1022567947600F77583 /* EmailVerification.swift in Sources */,
 				18675F472554671300758F81 /* IQTextView.m in Sources */,
+				18251306257A099A00C315C2 /* EventView.swift in Sources */,
 				18675F1325543EDF00758F81 /* SceneDelegate.swift in Sources */,
 				18675F1525543EDF00758F81 /* ContentView.swift in Sources */,
 				1821F0F925678E9900F77583 /* Login.swift in Sources */,
