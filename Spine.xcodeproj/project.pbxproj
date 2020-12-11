@@ -41,11 +41,14 @@
 		187B70D3256849960055E5D0 /* ServiceClassMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187B70D0256849960055E5D0 /* ServiceClassMethods.swift */; };
 		187B70D4256849960055E5D0 /* AppConstantes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187B70D1256849960055E5D0 /* AppConstantes.swift */; };
 		187B70D5256849960055E5D0 /* singleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187B70D2256849960055E5D0 /* singleton.swift */; };
+		1893E0BF257E348E00B62212 /* StoriesDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1893E0BE257E348E00B62212 /* StoriesDetail.swift */; };
+		1893E0C2257E352A00B62212 /* TrendingCatDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1893E0C1257E352A00B62212 /* TrendingCatDetail.swift */; };
 		1895303B257A602300B5C7B2 /* SpineImpulseDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1895303A257A602300B5C7B2 /* SpineImpulseDetail.swift */; };
 		7DEED95F9456EB187E894AD7 /* Pods_Spine.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DF920189D53FA29F2F788086 /* Pods_Spine.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0FD6E7CF03C8028802FF631C /* Pods-Spine.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Spine.release.xcconfig"; path = "Target Support Files/Pods-Spine/Pods-Spine.release.xcconfig"; sourceTree = "<group>"; };
 		17DF1A7A3E4D2D8E886D4240 /* Pods-Spine.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Spine.release.xcconfig"; path = "Target Support Files/Pods-Spine/Pods-Spine.release.xcconfig"; sourceTree = "<group>"; };
 		1809E0A4256CD2480007E9B2 /* Spine.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Spine.entitlements; sourceTree = "<group>"; };
 		1809E0A5256CD24C0007E9B2 /* NetworkExtension.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NetworkExtension.framework; path = System/Library/Frameworks/NetworkExtension.framework; sourceTree = SDKROOT; };
@@ -98,8 +101,11 @@
 		187B70D0256849960055E5D0 /* ServiceClassMethods.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceClassMethods.swift; sourceTree = "<group>"; };
 		187B70D1256849960055E5D0 /* AppConstantes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppConstantes.swift; sourceTree = "<group>"; };
 		187B70D2256849960055E5D0 /* singleton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = singleton.swift; sourceTree = "<group>"; };
+		1893E0BE257E348E00B62212 /* StoriesDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoriesDetail.swift; sourceTree = "<group>"; };
+		1893E0C1257E352A00B62212 /* TrendingCatDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingCatDetail.swift; sourceTree = "<group>"; };
 		1895303A257A602300B5C7B2 /* SpineImpulseDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpineImpulseDetail.swift; sourceTree = "<group>"; };
 		85B0F029B5D17F0B389B7556 /* Pods-Spine.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Spine.debug.xcconfig"; path = "Target Support Files/Pods-Spine/Pods-Spine.debug.xcconfig"; sourceTree = "<group>"; };
+		C13328C333B988C2B26F39D3 /* Pods-Spine.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Spine.debug.xcconfig"; path = "Target Support Files/Pods-Spine/Pods-Spine.debug.xcconfig"; sourceTree = "<group>"; };
 		DF920189D53FA29F2F788086 /* Pods_Spine.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Spine.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -117,15 +123,31 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		183803812580AD7900E287D6 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		183803822580AD8600E287D6 /* ModelView */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ModelView;
+			sourceTree = "<group>";
+		};
 		18675F0425543EDF00758F81 = {
 			isa = PBXGroup;
 			children = (
+				183803822580AD8600E287D6 /* ModelView */,
+				183803812580AD7900E287D6 /* Model */,
 				187B70CF256849960055E5D0 /* ServiceClasses */,
 				18675F252554671300758F81 /* IQKeyboardManager */,
 				18675F0F25543EDF00758F81 /* Spine */,
 				18675F0E25543EDF00758F81 /* Products */,
-				EF6AEC45BE58E3D2AB7AE26B /* Pods */,
 				F610C06F4D139117F03B5C46 /* Frameworks */,
+				A7827218F6AD59686481F91F /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -155,8 +177,11 @@
 				1809E0AC256CD8BA0007E9B2 /* PhoneOTPVerification.swift */,
 				1821F107256794C800F77583 /* ForgetPassword.swift */,
 				1895303A257A602300B5C7B2 /* SpineImpulseDetail.swift */,
+				1893E0BE257E348E00B62212 /* StoriesDetail.swift */,
+				1893E0C1257E352A00B62212 /* TrendingCatDetail.swift */,
 				18675F1625543EE300758F81 /* Assets.xcassets */,
 				18675F1B25543EE300758F81 /* LaunchScreen.storyboard */,
+				EF6AEC45BE58E3D2AB7AE26B /* Pods */,
 				18675F1E25543EE300758F81 /* Info.plist */,
 				18675F1825543EE300758F81 /* Preview Content */,
 			);
@@ -254,6 +279,15 @@
 				187B70D2256849960055E5D0 /* singleton.swift */,
 			);
 			path = ServiceClasses;
+			sourceTree = "<group>";
+		};
+		A7827218F6AD59686481F91F /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				C13328C333B988C2B26F39D3 /* Pods-Spine.debug.xcconfig */,
+				0FD6E7CF03C8028802FF631C /* Pods-Spine.release.xcconfig */,
+			);
+			path = Pods;
 			sourceTree = "<group>";
 		};
 		EF6AEC45BE58E3D2AB7AE26B /* Pods */ = {
@@ -416,7 +450,9 @@
 				1821F0F625678E8700F77583 /* Registration.swift in Sources */,
 				1821F1052567949F00F77583 /* PhoneVerification.swift in Sources */,
 				1821F1022567947600F77583 /* EmailVerification.swift in Sources */,
+				1893E0BF257E348E00B62212 /* StoriesDetail.swift in Sources */,
 				18675F472554671300758F81 /* IQTextView.m in Sources */,
+				1893E0C2257E352A00B62212 /* TrendingCatDetail.swift in Sources */,
 				18251306257A099A00C315C2 /* EventView.swift in Sources */,
 				18675F1325543EDF00758F81 /* SceneDelegate.swift in Sources */,
 				18675F1525543EDF00758F81 /* ContentView.swift in Sources */,

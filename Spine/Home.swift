@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import AVKit
 
 struct Trail: Identifiable {
     var id = UUID()
@@ -13,6 +14,7 @@ struct Trail: Identifiable {
     var day: String
 
 }
+
 
 struct TrailRow: View {
     var trail: Trail
@@ -47,20 +49,31 @@ struct TrailRow: View {
 
 
 struct SpineRect: View{
+    private let player = AVPlayer(url: URL(string: "http://wiesoftware.com/spine/assets/upload/welcome/160544651620201115.mov")!)
+       
     var body: some View{
         ZStack{
         Rectangle()
             .frame(width: 200, height: 150)
             VStack{
-            Text("SPINE").foregroundColor(.white).font(.title2)
-            Text("the Spiritual Network").foregroundColor(.white).font(.subheadline)
+//            Text("SPINE").foregroundColor(.white).font(.title2)
+//            Text("the Spiritual Network").foregroundColor(.white).font(.subheadline)
+                VideoPlayer(player: player)
+                    .onAppear() {
+                        player.play()
+                    }
+//                VideoPlayer(player: AVPlayer(url:  URL(string: "https://bit.ly/swswift")!))
             }
-        }.overlay(
-            LinearGradient(gradient: Gradient(colors: [Color(red: 183 / 255, green: 152 / 255, blue: 136 / 255), Color(red: 215 / 255, green: 199 / 255, blue: 181 / 255)]), startPoint: .bottom, endPoint: .top).opacity(0.8).edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
-        )
-        
+        }
+//            .overlay(
+//            LinearGradient(gradient: Gradient(colors: [Color(red: 183 / 255, green: 152 / 255, blue: 136 / 255), Color(red: 215 / 255, green: 199 / 255, blue: 181 / 255)]), startPoint: .bottom, endPoint: .top).opacity(0.8).edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
+//        )
+
     }
+            
+           
 }
+    
 
 struct SpineCircle: View{
     var body: some View{
@@ -73,6 +86,23 @@ struct SpineCircle: View{
             VStack{
 //            Text("SPINE").foregroundColor(.white).font(.title2)
                 Image("user").resizable().frame(width: 50, height: 50)
+              
+            }
+        }
+    }
+}
+
+struct SpineCircle2: View{
+    var body: some View{
+        ZStack{
+           
+        Circle().strokeBorder(Color(red: 183 / 255, green: 152 / 255, blue: 136 / 255),lineWidth: 4)
+            .frame(width: 80, height: 80)
+            .padding()
+            
+            VStack{
+//            Text("SPINE").foregroundColor(.white).font(.title2)
+                Image("userb").resizable().frame(width: 50, height: 50)
               
             }
         }
@@ -220,12 +250,14 @@ struct SpineView:View{
        ]
     
     @State private var selectedSport = 0
-    private let triathlonSports = ["You", "Following"]
+    private let triathlonSports = ["FOR YOU", "FOLLOWING"]
     private let ironmanDistances = ["2.4 miles", "112 miles", "26.2 miles"]
     let people = ["Adam", "James", "Adam", "James"]
+    let people1 = ["Living with nature", "Living with nature", "Living with nature", "Living with nature"]
+    
+    
     var body: some View{
-        
-//        ScrollView(.vertical){
+         
         VStack (alignment: .leading){
             
             HStack {
@@ -279,11 +311,12 @@ struct SpineView:View{
                Picker(selection: $selectedSport, label: Text("Select a Sport")) {
                 ForEach(0 ..< triathlonSports.count) {
                        Text(self.triathlonSports[$0])
+//                    viewArray[$0]
 
                    }
 
                }.pickerStyle(SegmentedPickerStyle())
-           
+            if (selectedSport == 0){
             ScrollView(.vertical){
                
                 VStack(alignment: .leading, spacing: 1){
@@ -301,6 +334,7 @@ struct SpineView:View{
                    
                 }.padding()
             }.frame(height: 170)
+                    
 //                    NavigationView{
                     HStack(spacing: 100){
                     Text("SPINE IMPULSE").foregroundColor(.white).font(.title3).padding()
@@ -321,29 +355,32 @@ struct SpineView:View{
                 }.frame(height: 300)
                     
                     HStack(spacing: 160){
+//                        NavigationView{
                     Text("STORIES").foregroundColor(.white).font(.title3).padding()
-                        NavigationLink(destination: Home()){
+                        NavigationLink(destination: StoriesDetail()){
                             Text("See All").foregroundColor(Color(red: 237 / 255, green: 215 / 255, blue: 183 / 255)).font(.title3)
                         }
-                    }
+                    }.accentColor(.black)
+//                }.accentColor( .black)
                     
                     ScrollView(.horizontal) {
                         HStack(spacing: 1) {
                             ForEach(people, id: \.self){person in
                                 VStack(spacing: 1){
                                     SpineCircle()
-                                    Text("\(person)").foregroundColor(.white)
+                                    Text("\(person)").foregroundColor(.white).padding()
+//                                    Text("\(person)").foregroundColor(.white)
                                 }
                                 
                             }
                            
                         }.padding()
-                    }.frame(height: 150)
+                    }.frame(height: 120)
                     
                    
                     HStack(spacing: 160){
                     Text("TRENDING CATEGORIES").foregroundColor(.white).font(.title3).padding()
-                        NavigationLink(destination: Home()){
+                        NavigationLink(destination: TrendingCatDetail()){
                             Text("See All").foregroundColor(Color(red: 237 / 255, green: 215 / 255, blue: 183 / 255)).font(.title3)
                         }
                     }
@@ -373,20 +410,43 @@ struct SpineView:View{
                            
                         }.padding()
                     }.frame(height: 100)
-//                    HStack(){
-//                    Text("STORIES").foregroundColor(.white).font(.title2).padding()
-//                        NavigationLink(destination: Home()){
-//                            Text("See All").foregroundColor(Color(red: 237 / 255, green: 215 / 255, blue: 183 / 255)).font(.title3)
-//                        }
-//                    }
+
                 }.background(Color.black)
                 
                 List(hikingTrails) { trail in
                 TrailRow(trail: trail)
                 }.frame(minWidth:0, maxWidth: .infinity, minHeight: 300, maxHeight: .infinity)
         }
+    }
+            else if (selectedSport == 1){
+//                Text("fljksdf")
+                ScrollView(.vertical){
+                VStack(spacing:10){
+                ScrollView(.horizontal) {
+
+                    HStack(spacing: 1) {
+                        ForEach(people, id: \.self){person in
+                            VStack(spacing: 1){
+                                SpineCircle2()
+                                Text("\(person)")
+                                Text("\(person)")
+                                
+                            }
+
+                        }
+
+                    }.padding()
+                }.frame(height: 160)
+            }
+                
+                List(hikingTrails) { trail in
+                TrailRow(trail: trail)
+                }.frame(minWidth:0, maxWidth: .infinity, minHeight: 300, maxHeight: .infinity)
+        }
+            }
            
             Spacer()
+            
         }.navigationBarHidden(true)
 //        }
     }

@@ -58,40 +58,6 @@ struct ContentView: View {
 }
 
 
-
-//struct verificationView:View{
-//    var body: some View{
-//        Text("Anytime.Anywhere.").font(.subheadline)
-//            .fontWeight(.semibold)
-//            .foregroundColor(Color.green)
-//    }
-//}
-
-
-//struct HomeView:View {
-//    var body: some View{
-//        Text("Home")
-//    }
-//}
-
-//struct forgetView:View {
-//    var body: some View{
-//        Text("forget")
-//    }
-//}
-
-//struct emailVerificationView:View {
-//    var body: some View{
-//        Text("email verification")
-//    }
-//}
-//
-//struct mobileVerificationView:View {
-//    var body: some View{
-//        Text("mobile verification")
-//    }
-//}
-
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()

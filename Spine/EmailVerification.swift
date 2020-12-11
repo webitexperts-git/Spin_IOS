@@ -9,11 +9,13 @@ import SwiftUI
 
 struct EmailVerification: View {
     @State private var text: String = ""
+    @State private var hasTitle = true
     var body: some View {
         ZStack{
             LinearGradient(gradient: Gradient(colors: [Color(red: 183 / 255, green: 152 / 255, blue: 136 / 255), Color(red: 215 / 255, green: 199 / 255, blue: 181 / 255)]), startPoint: .bottom, endPoint: .top).edgesIgnoringSafeArea(.all)
             
             VStack{
+//
                 Text("srivastava.gaurava@gmail.com").font(.system(size:20)).bold()
                     .foregroundColor(.white)
                     .padding(.bottom, 50)
