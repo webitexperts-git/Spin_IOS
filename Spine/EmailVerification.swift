@@ -59,7 +59,8 @@ struct EmailVerification: View {
                 }
                 Spacer()
                 
-            }.navigationBarHidden(true)
+            }
+//            .navigationBarHidden(true)
 //            .navigationBarItems(leading:
 //                            Button(action: {
 //                                print("Edit button pressed...")

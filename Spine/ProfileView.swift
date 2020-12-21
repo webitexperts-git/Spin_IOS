@@ -20,8 +20,14 @@ struct ProfileView: View{
                         Image("back").resizable().frame(width: 80, height: 80, alignment: .center)
                             .cornerRadius(80/2)
 //                            .position(x: geometry.size.width/2, y: 25+20)
+                    NavigationLink(destination: SettingsView()){
+                        Image("settings").resizable().frame(width: 25, height: 25, alignment: .trailing)
+//                            .underline()
+//                            .foregroundColor(Color.white)
+                            .padding()
+                    }
+//                    Image("settings").resizable().frame(width: 25, height: 25, alignment: .trailing)
                         
-                    Image("settings").resizable().frame(width: 25, height: 25, alignment: .trailing)
 //                        .position(x: geometry.size.width-45, y: 25)
                         
 //                    }

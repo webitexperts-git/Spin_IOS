@@ -18,6 +18,24 @@ struct Login: View {
     @State var isLoginValid: Bool = false
     @State private var shouldShowLoginAlert: Bool = false
     @EnvironmentObject var loginAction: LoginAction
+    @State private var showInfo = false
+    @ObservedObject var viewModel: LoginViewModel = LoginViewModel()
+//    var login: Login
+    @State private var actionState: Int? = 0
+    @State var isActive = false
+    @State var attemptingLogin = false
+    @State var tag:Int? = nil
+    
+    @EnvironmentObject var settings: UserSettings
+    @State var alertMsg = ""
+    @State var showAlert = false
+    @State var loginSelection: Int? = nil
+    @State private var showHome = false
+    
+    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
+    var alert: Alert {
+        Alert(title: Text(""), message: Text(alertMsg), dismissButton: .default(Text("OK")))
+    }
     
     var body: some View {
         ZStack{
@@ -29,13 +47,14 @@ struct Login: View {
                     Text("S P I N E").font(.largeTitle).foregroundColor(Color.white)
                     Text("Login").font(.subheadline).foregroundColor(Color.white).padding(.bottom, 30)
                     
+                    
                     ZStack(alignment: .leading) {
                         if email.isEmpty{
                             Text("email").foregroundColor(.white)
                                 .padding(.bottom, 10)
                                 .padding(.leading, 10)
                         }
-                        
+
                         TextField("", text: $email)
                             .foregroundColor(Color.white)
                             .padding(10)
@@ -44,14 +63,14 @@ struct Login: View {
                             .overlay(RoundedRectangle(cornerRadius: 18).stroke(Color.white, lineWidth: 2))
                             .padding(.bottom,10)
                     }
-                    
+
                     ZStack(alignment: .leading) {
                         if password.isEmpty{
                             Text("password").foregroundColor(.white)
                                 .padding(.bottom, 10)
                                 .padding(.leading, 10)
                         }
-                        
+
                         SecureField("", text: $password)
                             .foregroundColor(Color.white)
                             .padding(10)
@@ -60,30 +79,42 @@ struct Login: View {
                             .overlay(RoundedRectangle(cornerRadius: 18).stroke(Color.white, lineWidth: 2))
                             .padding(.bottom,10)
                     }
-//                    .navigationBarBackButtonHidden(true)
-                    
-                    NavigationLink(destination: EmailVerification(),
-                                   isActive: self.$isLoginValid) {
+                    .navigationBarBackButtonHidden(true)
+                   
+                    NavigationLink(destination: EmailVerification()){
                         Text("Login")
-                            //                            .onAppear {
-                            //                                self.hasTitle = false
-                            ////                              self.loginaction.loginFunc(email: email, password: password)
-                            //                            }
-                            //                            .onDisappear {
-                            //                                self.hasTitle = true
-                            //                            }
-                            .onTapGesture {
-                                //determine login validity
-                                isLoginValid = self.email == "root" && self.password == "toor"
-                                                               
-                                //trigger logic
-                                if isLoginValid {
-                                    self.isLoginValid = true //trigger NavigationLink
-                                }
-                                else {
-                                    self.shouldShowLoginAlert = true //trigger Alert
-                                }
-                            }
+                            .underline()
+                            .foregroundColor(Color.white)
+                            .padding()
+                        }
+                    
+                    
+//                    Button(action: {
+//                        if  self.isValidInputs() {
+//                            // For use with property wrapper
+////                            UserDefaults.standard.set(true, forKey: "Loggedin")
+////                            UserDefaults.standard.synchronize()
+//
+//                            self.loginaction.loginFunc(email: email, password: password)
+//
+//
+////                            if loginaction.fieldBeingEdited == 1{
+////                                self.showHome = true
+////                            }
+////                            self.showHome = true
+////                            self.settings.loggedIn = true
+//                            // ==========
+//
+//                            // For use with property wrapper
+//                            // self.dataStore.loggedIn = true
+//                            // ==========
+//                        }
+//
+//                    }) {
+//                        buttonWithBackground(btnText: "LOGIN")
+//                    }.sheet(isPresented: self.$showHome) {
+//                        EmailVerification()
+//                    }
                             
                             .frame(minWidth: 0, maxWidth: 250, minHeight: 0, maxHeight: 40)
                             .foregroundColor(Color(red: 237 / 255, green: 215 / 255, blue: 183 / 255))
@@ -91,7 +122,7 @@ struct Login: View {
                             .cornerRadius(18)
                             .padding(.bottom, 10)
                         
-                    }.navigationBarTitle(self.hasTitle ? " " : "")
+//                    }.navigationBarTitle(self.hasTitle ? " " : "")
 //                          .alert(isPresented: $shouldShowLoginAlert) {
 //                            Alert(title: Text("Email/Password incorrect"))
 //                          }
@@ -107,16 +138,11 @@ struct Login: View {
                         .foregroundColor(.white)
                         .padding(.bottom, 40)
                     
+                    
                     Button(action: {
 //                        self.fbmanager.facebookLogin()
                         self.loginaction.loginFunc(email: email, password: password)
-                        if !loginaction.isLoginValid{
-                            Home()
-                            
-                        }else{
-                            self.shouldShowLoginAlert = true
-                            
-                        }
+                       
                       
                     }) {
                         Text("CONTINUE WITH FACEBOOK")
@@ -133,8 +159,34 @@ struct Login: View {
                     Spacer()
                 }
             }
-        }
+        } .alert(isPresented: $showAlert, content: { self.alert })
     }
+//}
+
+fileprivate func isValidInputs() -> Bool {
+    
+    if self.email == "" {
+        self.alertMsg = "Email can't be blank."
+        self.showAlert.toggle()
+        return false
+    } else if !self.email.isValidEmail {
+        self.alertMsg = "Email is not valid."
+        self.showAlert.toggle()
+        return false
+    }else if self.password == "" {
+        self.alertMsg = "Password can't be blank."
+        self.showAlert.toggle()
+        return false
+    }
+//    else if !(self.password.isValidPassword) {
+//        self.alertMsg = "Please enter valid password"
+//        self.showAlert.toggle()
+//        return false
+//    }
+    
+    return true
+}
+
 }
 
 class UserLoginManager: ObservableObject {
@@ -161,9 +213,11 @@ class UserLoginManager: ObservableObject {
 
 
 class LoginAction: ObservableObject{
-    @State var email1: String = ""
+    @State var email1 : String?
     @State var password1: String = ""
-    @State var isLoginValid: Bool = false
+    @State var email: String = ""
+    @State var status: Int64 = 0
+    @Published var fieldBeingEdited: Int = 0
     
     let didChange = PassthroughSubject<LoginAction,Never>()
 
@@ -174,7 +228,7 @@ class LoginAction: ObservableObject{
     func loginFunc(email: String, password: String) {
         print(email, password)
         
-//        guard let fname = firstName.text, !fname.isEmpty else {
+//        guard let fname = email1, !fname.isEmpty else {
 //            self.alert(message: "Please Enter Name!")
 //            return
 //        }
@@ -226,11 +280,13 @@ class LoginAction: ObservableObject{
             print("response",dict)
             let dataResult = dict as! Dictionary<String,Any>
 //            let message = dataResult["message"] as! String
-            let status = dataResult["status"]! as! Int64
-            print("status",status)
-            if status == 1{
-                
-                self.isLoginValid = true
+            self.status = dataResult["status"]! as! Int64
+            print("status",self.status)
+            if self.status == 1{
+                UserDefaults.standard.set(true, forKey: "Loggedin")
+                UserDefaults.standard.synchronize()
+                let data = dataResult as! Dictionary<String, Any>
+                self.email = data["email"] as! String
 //            self.navigationController?.popViewController(animated: true)
 //            self.dismiss(animated: true, completion: nil)
                
@@ -240,21 +296,59 @@ class LoginAction: ObservableObject{
             })
         }
     }
+    
+//    2760846318
+//    func alert(message:String){
+//
+//        let alert = UIAlertController(title: "Your title", message: "Your message", preferredStyle: .alert)
+//
+//             let ok = UIAlertAction(title: "OK", style: .default, handler: { action in
+//             })
+//             alert.addAction(ok)
+//             let cancel = UIAlertAction(title: "Cancel", style: .default, handler: { action in
+//             })
+//             alert.addAction(cancel)
+//             DispatchQueue.main.async(execute: {
+//                self.present(alert, animated: true)
+//        })
+//       }
+       
+   
+        func isValidEmail(emailStr:String) -> Bool {
+
+           let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
+
+           let emailPred = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
+           return emailPred.evaluate(with: emailStr)
+       }
 }
 
-func alert(message:String){
-  
-//        Alert(title: Text("Important message"), message: Text("Wear sunscreen"), dismissButton: .default(Text("Got it!")))
-   }
-   
-   
-    func isValidEmail(emailStr:String) -> Bool {
 
-       let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
 
-       let emailPred = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
-       return emailPred.evaluate(with: emailStr)
-   }
+
+
+//struct TodoView : View {
+//    var login: LoginModel
+//
+//    var body: some View {
+//        Text(login.title)
+//    }
+//}
+//
+//struct TodoCell : View {
+//    var login: LoginModel
+//    var body: some View {
+//        HStack {
+//            if login.completed {
+//                Image(systemName: "checkmark.square")
+//            } else {
+//                Image(systemName: "square")
+//            }
+//            Text(login.title)
+//        }
+//    }
+//}
+
 
 
 struct Login_Previews: PreviewProvider {

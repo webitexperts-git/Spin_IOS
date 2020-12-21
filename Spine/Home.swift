@@ -220,7 +220,7 @@ struct Home: View {
                     Image(systemName: "headphones")
                     Text("Podcasts")
                 }
-            Text("Activities")
+            ActivitiesView()
                 .tabItem {
                     Image(systemName: "bell.fill")
                     Text("Activities")
@@ -311,8 +311,6 @@ struct SpineView:View{
                Picker(selection: $selectedSport, label: Text("Select a Sport")) {
                 ForEach(0 ..< triathlonSports.count) {
                        Text(self.triathlonSports[$0])
-//                    viewArray[$0]
-
                    }
 
                }.pickerStyle(SegmentedPickerStyle())

@@ -57,6 +57,47 @@ struct ContentView: View {
     }
 }
 
+struct buttonWithBackground: View {
+    
+    var btnText: String
+    
+    var body: some View {
+        
+        HStack {
+//            Spacer()
+            Text(btnText)
+                .font(.headline)
+                .foregroundColor(.white)
+                .padding()
+                .frame(width: 140, height: 50)
+                .background(Color.white)
+                .clipped()
+                .cornerRadius(5.0)
+                .shadow(color: .white, radius: 5, x: 0, y: 5)
+            
+//            Spacer()
+        }
+    }
+}
+
+struct alertView: View {
+    
+    
+    @State var alertMsg = ""
+    
+    var alert: Alert {
+        Alert(title: Text(""), message: Text(alertMsg), dismissButton: .default(Text("OK")))
+    }
+    
+    var body: some View {
+        Text("Alert")
+    }
+    
+}
+
+
+
+
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {

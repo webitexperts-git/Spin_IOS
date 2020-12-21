@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		180902C5258B793200BB996E /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 180902C4258B793200BB996E /* SettingsView.swift */; };
+		180902C8258BBA2900BB996E /* ActivitiesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 180902C7258BBA2900BB996E /* ActivitiesView.swift */; };
 		1809E0A6256CD24C0007E9B2 /* NetworkExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1809E0A5256CD24C0007E9B2 /* NetworkExtension.framework */; };
 		1809E0AA256CD8A20007E9B2 /* EmailOTPVerification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1809E0A9256CD8A20007E9B2 /* EmailOTPVerification.swift */; };
 		1809E0AD256CD8BA0007E9B2 /* PhoneOTPVerification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1809E0AC256CD8BA0007E9B2 /* PhoneOTPVerification.swift */; };
@@ -18,6 +20,7 @@
 		1821F108256794C800F77583 /* ForgetPassword.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1821F107256794C800F77583 /* ForgetPassword.swift */; };
 		18251303257A086F00C315C2 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18251302257A086F00C315C2 /* ProfileView.swift */; };
 		18251306257A099A00C315C2 /* EventView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18251305257A099A00C315C2 /* EventView.swift */; };
+		182C6CBD259074EA00742B1F /* PostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182C6CBC259074EA00742B1F /* PostView.swift */; };
 		1859CF4B256C03A000EFC1EA /* FacebookLogin in Frameworks */ = {isa = PBXBuildFile; productRef = 1859CF4A256C03A000EFC1EA /* FacebookLogin */; };
 		18675F1125543EDF00758F81 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18675F1025543EDF00758F81 /* AppDelegate.swift */; };
 		18675F1325543EDF00758F81 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18675F1225543EDF00758F81 /* SceneDelegate.swift */; };
@@ -44,12 +47,17 @@
 		1893E0BF257E348E00B62212 /* StoriesDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1893E0BE257E348E00B62212 /* StoriesDetail.swift */; };
 		1893E0C2257E352A00B62212 /* TrendingCatDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1893E0C1257E352A00B62212 /* TrendingCatDetail.swift */; };
 		1895303B257A602300B5C7B2 /* SpineImpulseDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1895303A257A602300B5C7B2 /* SpineImpulseDetail.swift */; };
+		18A22CBE2587525700020B28 /* LoginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A22CBD2587525700020B28 /* LoginModel.swift */; };
+		18A22CC225875E0C00020B28 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A22CC125875E0C00020B28 /* LoginViewModel.swift */; };
+		18FEDBDE258A574A00CD9163 /* OtherData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18FEDBDD258A574A00CD9163 /* OtherData.swift */; };
 		7DEED95F9456EB187E894AD7 /* Pods_Spine.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DF920189D53FA29F2F788086 /* Pods_Spine.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		0FD6E7CF03C8028802FF631C /* Pods-Spine.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Spine.release.xcconfig"; path = "Target Support Files/Pods-Spine/Pods-Spine.release.xcconfig"; sourceTree = "<group>"; };
 		17DF1A7A3E4D2D8E886D4240 /* Pods-Spine.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Spine.release.xcconfig"; path = "Target Support Files/Pods-Spine/Pods-Spine.release.xcconfig"; sourceTree = "<group>"; };
+		180902C4258B793200BB996E /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		180902C7258BBA2900BB996E /* ActivitiesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivitiesView.swift; sourceTree = "<group>"; };
 		1809E0A4256CD2480007E9B2 /* Spine.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Spine.entitlements; sourceTree = "<group>"; };
 		1809E0A5256CD24C0007E9B2 /* NetworkExtension.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NetworkExtension.framework; path = System/Library/Frameworks/NetworkExtension.framework; sourceTree = SDKROOT; };
 		1809E0A9256CD8A20007E9B2 /* EmailOTPVerification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailOTPVerification.swift; sourceTree = "<group>"; };
@@ -62,6 +70,7 @@
 		1821F107256794C800F77583 /* ForgetPassword.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgetPassword.swift; sourceTree = "<group>"; };
 		18251302257A086F00C315C2 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		18251305257A099A00C315C2 /* EventView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventView.swift; sourceTree = "<group>"; };
+		182C6CBC259074EA00742B1F /* PostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostView.swift; sourceTree = "<group>"; };
 		18675F0D25543EDF00758F81 /* Spine.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Spine.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		18675F1025543EDF00758F81 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		18675F1225543EDF00758F81 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -104,6 +113,9 @@
 		1893E0BE257E348E00B62212 /* StoriesDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoriesDetail.swift; sourceTree = "<group>"; };
 		1893E0C1257E352A00B62212 /* TrendingCatDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingCatDetail.swift; sourceTree = "<group>"; };
 		1895303A257A602300B5C7B2 /* SpineImpulseDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpineImpulseDetail.swift; sourceTree = "<group>"; };
+		18A22CBD2587525700020B28 /* LoginModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginModel.swift; sourceTree = "<group>"; };
+		18A22CC125875E0C00020B28 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		18FEDBDD258A574A00CD9163 /* OtherData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherData.swift; sourceTree = "<group>"; };
 		85B0F029B5D17F0B389B7556 /* Pods-Spine.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Spine.debug.xcconfig"; path = "Target Support Files/Pods-Spine/Pods-Spine.debug.xcconfig"; sourceTree = "<group>"; };
 		C13328C333B988C2B26F39D3 /* Pods-Spine.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Spine.debug.xcconfig"; path = "Target Support Files/Pods-Spine/Pods-Spine.debug.xcconfig"; sourceTree = "<group>"; };
 		DF920189D53FA29F2F788086 /* Pods_Spine.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Spine.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -126,6 +138,7 @@
 		183803812580AD7900E287D6 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				18A22CBD2587525700020B28 /* LoginModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -133,6 +146,7 @@
 		183803822580AD8600E287D6 /* ModelView */ = {
 			isa = PBXGroup;
 			children = (
+				18A22CC125875E0C00020B28 /* LoginViewModel.swift */,
 			);
 			path = ModelView;
 			sourceTree = "<group>";
@@ -179,6 +193,10 @@
 				1895303A257A602300B5C7B2 /* SpineImpulseDetail.swift */,
 				1893E0BE257E348E00B62212 /* StoriesDetail.swift */,
 				1893E0C1257E352A00B62212 /* TrendingCatDetail.swift */,
+				18FEDBDD258A574A00CD9163 /* OtherData.swift */,
+				180902C4258B793200BB996E /* SettingsView.swift */,
+				180902C7258BBA2900BB996E /* ActivitiesView.swift */,
+				182C6CBC259074EA00742B1F /* PostView.swift */,
 				18675F1625543EE300758F81 /* Assets.xcassets */,
 				18675F1B25543EE300758F81 /* LaunchScreen.storyboard */,
 				EF6AEC45BE58E3D2AB7AE26B /* Pods */,
@@ -438,6 +456,7 @@
 				18675F4A2554671400758F81 /* IQBarButtonItem.m in Sources */,
 				1809E0AA256CD8A20007E9B2 /* EmailOTPVerification.swift in Sources */,
 				187B70D5256849960055E5D0 /* singleton.swift in Sources */,
+				18A22CC225875E0C00020B28 /* LoginViewModel.swift in Sources */,
 				18675F492554671400758F81 /* IQTitleBarButtonItem.m in Sources */,
 				18675F4B2554671400758F81 /* IQUIView+IQKeyboardToolbar.m in Sources */,
 				18675F1125543EDF00758F81 /* AppDelegate.swift in Sources */,
@@ -448,15 +467,20 @@
 				18675F532554671400758F81 /* IQKeyboardReturnKeyHandler.m in Sources */,
 				18675F502554671400758F81 /* IQUIScrollView+Additions.m in Sources */,
 				1821F0F625678E8700F77583 /* Registration.swift in Sources */,
+				180902C5258B793200BB996E /* SettingsView.swift in Sources */,
 				1821F1052567949F00F77583 /* PhoneVerification.swift in Sources */,
 				1821F1022567947600F77583 /* EmailVerification.swift in Sources */,
 				1893E0BF257E348E00B62212 /* StoriesDetail.swift in Sources */,
 				18675F472554671300758F81 /* IQTextView.m in Sources */,
+				18A22CBE2587525700020B28 /* LoginModel.swift in Sources */,
 				1893E0C2257E352A00B62212 /* TrendingCatDetail.swift in Sources */,
+				182C6CBD259074EA00742B1F /* PostView.swift in Sources */,
 				18251306257A099A00C315C2 /* EventView.swift in Sources */,
+				180902C8258BBA2900BB996E /* ActivitiesView.swift in Sources */,
 				18675F1325543EDF00758F81 /* SceneDelegate.swift in Sources */,
 				18675F1525543EDF00758F81 /* ContentView.swift in Sources */,
 				1821F0F925678E9900F77583 /* Login.swift in Sources */,
+				18FEDBDE258A574A00CD9163 /* OtherData.swift in Sources */,
 				18675F4C2554671400758F81 /* IQPreviousNextView.m in Sources */,
 				18675F4E2554671400758F81 /* IQNSArray+Sort.m in Sources */,
 				187B70D3256849960055E5D0 /* ServiceClassMethods.swift in Sources */,

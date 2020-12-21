@@ -8,6 +8,13 @@
 import UIKit
 import SwiftUI
 
+
+
+class UserSettings: ObservableObject {
+    
+    @Published var loggedIn : Bool = false
+}
+
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
