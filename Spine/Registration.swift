@@ -11,7 +11,15 @@ struct Registration: View {
     @State var firstname: String = ""
     @State var lastname: String = ""
     @State var email: String = ""
-    @State var mobile: String = ""
+    @State var town: String = ""
+    @State var alertMsg = ""
+    @State var showAlert = false
+    @State var password: String = ""
+    
+    @ObservedObject var registerViewModel: RegisterViewModel = RegisterViewModel()
+    var alert: Alert {
+        Alert(title: Text(""), message: Text(alertMsg), dismissButton: .default(Text("OK")))
+    }
     var body: some View {
 //        ScrollView{
         ZStack{
@@ -40,11 +48,11 @@ struct Registration: View {
                     
                     
             ZStack(alignment: .leading) {
-                if lastname.isEmpty{
+                if email.isEmpty{
                     Text("Email").foregroundColor(.white)
                     .padding(10)
                     }
-            TextField("", text: $lastname)
+            TextField("", text: $email)
                 .foregroundColor(Color.white)
               .padding(10)
                 .frame(width:250.0, height: 40.0)
@@ -54,11 +62,11 @@ struct Registration: View {
             }
             
                 ZStack(alignment: .leading) {
-                if email.isEmpty{
+                if password.isEmpty{
                     Text("Password").foregroundColor(.white)
                     .padding(10)
                 }
-                    TextField("", text: $email)
+                    TextField("", text: $password)
                         .foregroundColor(Color.white)
                         .padding(10)
                         .frame(width:250.0, height: 40.0)
@@ -68,12 +76,12 @@ struct Registration: View {
                 }
                     
                     ZStack(alignment: .leading) {
-                    if mobile.isEmpty{
+                    if town.isEmpty{
                         Text("Town").foregroundColor(.white)
                             .padding(10)
                     }
                     
-                    TextField("", text: $mobile)
+                    TextField("", text: $town)
                         .foregroundColor(Color.white)
                         .padding(10)
                         .frame(width:250.0, height: 40.0)
@@ -82,27 +90,36 @@ struct Registration: View {
                         .padding(.bottom,5)
                     }
                     
-//                    Button(action: {
-//
-//                    }) {
-//                        Text("CONTINUE")
-//
-//                            .frame(width: 300, height: 40)
-//
-//                            .foregroundColor(Color(red: 237 / 255, green: 215 / 255, blue: 183 / 255))
-//                            .background(Color.white)
-//                            .cornerRadius(18)
-//                    }.padding(.bottom, 10)
-                    
-                    NavigationLink(destination: Home()){
+                    Button(action: {
+                        if self.isValidInputs(){
+                            self.registerViewModel.load()
+                            print("what is your name?")
+                        }
+
+                    }) {
                         Text("CONTINUE")
-                            .frame(minWidth: 0, maxWidth: 250, minHeight: 0, maxHeight: 40)
+
+                            .frame(width: 300, height: 40)
+
                             .foregroundColor(Color(red: 237 / 255, green: 215 / 255, blue: 183 / 255))
                             .background(Color.white)
                             .cornerRadius(18)
-                            .padding(.bottom, 5)
-                       
-                    }
+                    }.padding(.bottom, 10)
+                    
+//                    Button(action: {
+//                        self.registerViewModel.load()
+//                    }, label: {
+//                        Image(systemName: "arrow.2.circlepath")
+//                    })
+//                    NavigationLink(destination: Home()){
+//                        Text("CONTINUE")
+//                            .frame(minWidth: 0, maxWidth: 250, minHeight: 0, maxHeight: 40)
+//                            .foregroundColor(Color(red: 237 / 255, green: 215 / 255, blue: 183 / 255))
+//                            .background(Color.white)
+//                            .cornerRadius(18)
+//                            .padding(.bottom, 5)
+//
+//                    }
                     
                     
                     Text("I have read and agree to the Terms of Service and Privacy Policy")
@@ -129,12 +146,56 @@ struct Registration: View {
                     
                 }
                 Spacer()
-                }
+                }.alert(isPresented: $showAlert, content: { self.alert })
             }  .accentColor( .black)
         }
+    
+    
+    fileprivate func isValidInputs() -> Bool {
+        
+        if self.firstname == "" {
+            self.alertMsg = "Username can't be blank."
+            self.showAlert.toggle()
+            return false
+        }
+            else if !self.email.isValidEmail {
+            self.alertMsg = "Email is not valid."
+            self.showAlert.toggle()
+            return false
+        }
+        else if self.password == "" {
+            self.alertMsg = "Password can't be blank."
+            self.showAlert.toggle()
+            return false
+        } else if self.town == "" {
+            self.alertMsg = "town can't be blank."
+            self.showAlert.toggle()
+            return false
+        }
+    //    else if !(self.password.isValidPassword) {
+    //        self.alertMsg = "Please enter valid password"
+    //        self.showAlert.toggle()
+    //        return false
+    //    }
+        
+        return true
+    }
+    
+    func isValidEmail(emailStr:String) -> Bool {
+
+       let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
+
+       let emailPred = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
+       return emailPred.evaluate(with: emailStr)
+   }
+
     }
 
 //}
+
+
+
+
 
 
 struct Registration_Previews: PreviewProvider {

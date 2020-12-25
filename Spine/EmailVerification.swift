@@ -49,8 +49,9 @@ struct EmailVerification: View {
                     }
                 }.padding()
                 
-                NavigationLink(destination: Home().navigationBarBackButtonHidden(true)){
+                NavigationLink(destination: Home()){
                     Text("VERIFY")
+                       
                         .frame(minWidth: 0, maxWidth: 250, minHeight: 0, maxHeight: 40)
                         .foregroundColor(Color(red: 237 / 255, green: 215 / 255, blue: 183 / 255))
                         .background(Color.white)
@@ -60,7 +61,7 @@ struct EmailVerification: View {
                 Spacer()
                 
             }
-//            .navigationBarHidden(true)
+            .navigationBarHidden(true)
 //            .navigationBarItems(leading:
 //                            Button(action: {
 //                                print("Edit button pressed...")

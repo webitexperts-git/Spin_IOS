@@ -15,7 +15,7 @@ struct appConstants {
 //
     static let kImageBASE_URL = "http://homeofbulldogs.com/dev/geev/assets/upload/images/"
     static let kBASE_URL = "http://wiesoftware.com/spine/apisecure/"
-    static let kregisterUsers = "register-user"
+    static let kregisterUsers = "login/registerUsers"
     static let kloginUser = "login/loginUsers"
     static let kcategories = "categories"
     static let ksethomecategories = "set-home-categories"

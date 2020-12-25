@@ -140,8 +140,8 @@ struct Login: View {
                     
                     
                     Button(action: {
-//                        self.fbmanager.facebookLogin()
-                        self.loginaction.loginFunc(email: email, password: password)
+                        self.fbmanager.facebookLogin()
+//                        self.loginaction.loginFunc(email: email, password: password)
                        
                       
                     }) {

@@ -20,6 +20,9 @@
 		1821F108256794C800F77583 /* ForgetPassword.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1821F107256794C800F77583 /* ForgetPassword.swift */; };
 		18251303257A086F00C315C2 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18251302257A086F00C315C2 /* ProfileView.swift */; };
 		18251306257A099A00C315C2 /* EventView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18251305257A099A00C315C2 /* EventView.swift */; };
+		182B344D259468A100DFCEF3 /* PlusButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182B344C259468A100DFCEF3 /* PlusButtonView.swift */; };
+		182B346225947B5500DFCEF3 /* RegisterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182B346125947B5500DFCEF3 /* RegisterViewModel.swift */; };
+		182B346525947B6A00DFCEF3 /* RegisterModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182B346425947B6A00DFCEF3 /* RegisterModel.swift */; };
 		182C6CBD259074EA00742B1F /* PostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182C6CBC259074EA00742B1F /* PostView.swift */; };
 		1859CF4B256C03A000EFC1EA /* FacebookLogin in Frameworks */ = {isa = PBXBuildFile; productRef = 1859CF4A256C03A000EFC1EA /* FacebookLogin */; };
 		18675F1125543EDF00758F81 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18675F1025543EDF00758F81 /* AppDelegate.swift */; };
@@ -70,6 +73,9 @@
 		1821F107256794C800F77583 /* ForgetPassword.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgetPassword.swift; sourceTree = "<group>"; };
 		18251302257A086F00C315C2 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		18251305257A099A00C315C2 /* EventView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventView.swift; sourceTree = "<group>"; };
+		182B344C259468A100DFCEF3 /* PlusButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlusButtonView.swift; sourceTree = "<group>"; };
+		182B346125947B5500DFCEF3 /* RegisterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewModel.swift; sourceTree = "<group>"; };
+		182B346425947B6A00DFCEF3 /* RegisterModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterModel.swift; sourceTree = "<group>"; };
 		182C6CBC259074EA00742B1F /* PostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostView.swift; sourceTree = "<group>"; };
 		18675F0D25543EDF00758F81 /* Spine.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Spine.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		18675F1025543EDF00758F81 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -139,6 +145,7 @@
 			isa = PBXGroup;
 			children = (
 				18A22CBD2587525700020B28 /* LoginModel.swift */,
+				182B346425947B6A00DFCEF3 /* RegisterModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -147,6 +154,7 @@
 			isa = PBXGroup;
 			children = (
 				18A22CC125875E0C00020B28 /* LoginViewModel.swift */,
+				182B346125947B5500DFCEF3 /* RegisterViewModel.swift */,
 			);
 			path = ModelView;
 			sourceTree = "<group>";
@@ -197,6 +205,7 @@
 				180902C4258B793200BB996E /* SettingsView.swift */,
 				180902C7258BBA2900BB996E /* ActivitiesView.swift */,
 				182C6CBC259074EA00742B1F /* PostView.swift */,
+				182B344C259468A100DFCEF3 /* PlusButtonView.swift */,
 				18675F1625543EE300758F81 /* Assets.xcassets */,
 				18675F1B25543EE300758F81 /* LaunchScreen.storyboard */,
 				EF6AEC45BE58E3D2AB7AE26B /* Pods */,
@@ -457,6 +466,7 @@
 				1809E0AA256CD8A20007E9B2 /* EmailOTPVerification.swift in Sources */,
 				187B70D5256849960055E5D0 /* singleton.swift in Sources */,
 				18A22CC225875E0C00020B28 /* LoginViewModel.swift in Sources */,
+				182B346225947B5500DFCEF3 /* RegisterViewModel.swift in Sources */,
 				18675F492554671400758F81 /* IQTitleBarButtonItem.m in Sources */,
 				18675F4B2554671400758F81 /* IQUIView+IQKeyboardToolbar.m in Sources */,
 				18675F1125543EDF00758F81 /* AppDelegate.swift in Sources */,
@@ -476,6 +486,8 @@
 				1893E0C2257E352A00B62212 /* TrendingCatDetail.swift in Sources */,
 				182C6CBD259074EA00742B1F /* PostView.swift in Sources */,
 				18251306257A099A00C315C2 /* EventView.swift in Sources */,
+				182B344D259468A100DFCEF3 /* PlusButtonView.swift in Sources */,
+				182B346525947B6A00DFCEF3 /* RegisterModel.swift in Sources */,
 				180902C8258BBA2900BB996E /* ActivitiesView.swift in Sources */,
 				18675F1325543EDF00758F81 /* SceneDelegate.swift in Sources */,
 				18675F1525543EDF00758F81 /* ContentView.swift in Sources */,

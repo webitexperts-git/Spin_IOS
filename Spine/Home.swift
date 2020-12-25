@@ -56,18 +56,15 @@ struct SpineRect: View{
         Rectangle()
             .frame(width: 200, height: 150)
             VStack{
-//            Text("SPINE").foregroundColor(.white).font(.title2)
-//            Text("the Spiritual Network").foregroundColor(.white).font(.subheadline)
+
                 VideoPlayer(player: player)
                     .onAppear() {
                         player.play()
                     }
-//                VideoPlayer(player: AVPlayer(url:  URL(string: "https://bit.ly/swswift")!))
+
             }
         }
-//            .overlay(
-//            LinearGradient(gradient: Gradient(colors: [Color(red: 183 / 255, green: 152 / 255, blue: 136 / 255), Color(red: 215 / 255, green: 199 / 255, blue: 181 / 255)]), startPoint: .bottom, endPoint: .top).opacity(0.8).edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
-//        )
+
 
     }
             
@@ -209,6 +206,7 @@ struct Home: View {
                     Image(systemName: "house.fill")
                     Text("Spine")
                 }
+                .navigationBarHidden(true)
             
             EventView()
                 .tabItem {
@@ -262,16 +260,25 @@ struct SpineView:View{
             
             HStack {
 
-                Button(action: {
-
-                }) {
+//                Button(action: {
+//
+//                }) {
+//                    Text("+")
+//
+//                        .frame(width: 40, height: 40)
+//                        .font(.system(size: 50))
+//                        .foregroundColor(Color(red: 237 / 255, green: 215 / 255, blue: 183 / 255))
+//
+//                }.padding(.bottom, 10)
+                
+                NavigationLink(destination: PlusButtonView()){
                     Text("+")
-
-                        .frame(width: 40, height: 40)
                         .font(.system(size: 50))
-                        .foregroundColor(Color(red: 237 / 255, green: 215 / 255, blue: 183 / 255))
-
-                }.padding(.bottom, 10)
+                       
+                        .padding(.bottom, 5)
+                }
+                
+                
 
                 HStack {
 
@@ -327,7 +334,10 @@ struct SpineView:View{
             ScrollView(.horizontal) {
                 HStack(spacing: 10) {
                     ForEach(0..<2){_ in
-                        SpineRect()
+                        ZStack{
+                            SpineRect()
+                        }
+                       
                     }
                    
                 }.padding()
@@ -445,7 +455,9 @@ struct SpineView:View{
            
             Spacer()
             
-        }.navigationBarHidden(true)
+        } .navigationBarTitle("")
+        .navigationBarHidden(true)
+        .navigationBarBackButtonHidden(true)
 //        }
     }
 
