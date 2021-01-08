@@ -17,6 +17,14 @@ struct appConstants {
     static let kBASE_URL = "http://wiesoftware.com/spine/apisecure/"
     static let kregisterUsers = "login/registerUsers"
     static let kloginUser = "login/loginUsers"
+    static let kwelcomeData = "other/getWelcomeData"
+    static let kforgetPassword = "login/forgetPassword"
+    
+    
+    
+    
+    
+    
     static let kcategories = "categories"
     static let ksethomecategories = "set-home-categories"
     static let kgethomecategories = "get-home-categories"

@@ -16,7 +16,7 @@ struct Registration: View {
     @State var showAlert = false
     @State var password: String = ""
     
-    @ObservedObject var registerViewModel: RegisterViewModel = RegisterViewModel()
+//    @ObservedObject var registerViewModel: RegisterViewModel = RegisterViewModel()
     var alert: Alert {
         Alert(title: Text(""), message: Text(alertMsg), dismissButton: .default(Text("OK")))
     }
@@ -29,9 +29,10 @@ struct Registration: View {
             HStack(){
             
                 VStack(){
-//                    Image("logo1")
+////                    Image("logo1")
             Text("S P I N E").font(.largeTitle).foregroundColor(Color.white)
             Text("Register").font(.subheadline).foregroundColor(Color.white).padding(.bottom, 10)
+
                     ZStack(alignment: .leading) {
                     if firstname.isEmpty{
                         Text("Username").foregroundColor(.white)
@@ -92,14 +93,14 @@ struct Registration: View {
                     
                     Button(action: {
                         if self.isValidInputs(){
-                            self.registerViewModel.load()
+//                            self.registerViewModel.load()
                             print("what is your name?")
                         }
 
                     }) {
                         Text("CONTINUE")
 
-                            .frame(width: 300, height: 40)
+                            .frame(width: 250, height: 40)
 
                             .foregroundColor(Color(red: 237 / 255, green: 215 / 255, blue: 183 / 255))
                             .background(Color.white)

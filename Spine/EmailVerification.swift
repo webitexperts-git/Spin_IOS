@@ -69,7 +69,7 @@ struct EmailVerification: View {
 //                                Text("srivastava.gaurava@gmail.com")
 //                            }
 //                        )
-        }
+        } .frame(maxWidth: .infinity, maxHeight: .infinity)
        
     }
 }

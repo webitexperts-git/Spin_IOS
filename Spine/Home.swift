@@ -15,7 +15,6 @@ struct Trail: Identifiable {
 
 }
 
-
 struct TrailRow: View {
     var trail: Trail
     
@@ -44,23 +43,33 @@ struct TrailRow: View {
             }
         }
             Spacer()
-        }
     }
+}
 
 
 struct SpineRect: View{
+//    @ObservedObject var model = HomeViewModel()
+    
+   
     private let player = AVPlayer(url: URL(string: "http://wiesoftware.com/spine/assets/upload/welcome/160544651620201115.mov")!)
        
     var body: some View{
+        
+      
         ZStack{
         Rectangle()
             .frame(width: 200, height: 150)
+            VideoPlayer(player: player)
+                .onAppear() {
+                    player.play()
+                }
             VStack{
-
-                VideoPlayer(player: player)
-                    .onAppear() {
-                        player.play()
-                    }
+//                VideoPlayer(player: player)
+//                    .onAppear() {
+//                        player.play()
+//                    }
+               
+              
 
             }
         }
@@ -105,7 +114,6 @@ struct SpineCircle2: View{
         }
     }
 }
-
 
 
 struct SpineImpulse: View{
@@ -252,10 +260,10 @@ struct SpineView:View{
     private let ironmanDistances = ["2.4 miles", "112 miles", "26.2 miles"]
     let people = ["Adam", "James", "Adam", "James"]
     let people1 = ["Living with nature", "Living with nature", "Living with nature", "Living with nature"]
-    
+//    @ObservedObject var model = HomeViewModel()
     
     var body: some View{
-         
+        
         VStack (alignment: .leading){
             
             HStack {
@@ -279,7 +287,6 @@ struct SpineView:View{
                 }
                 
                 
-
                 HStack {
 
                     Image(systemName: "magnifyingglass")
@@ -334,14 +341,16 @@ struct SpineView:View{
             ScrollView(.horizontal) {
                 HStack(spacing: 10) {
                     ForEach(0..<2){_ in
-                        ZStack{
+//                        ZStack{
+//
+//                            }
                             SpineRect()
                         }
                        
                     }
                    
                 }.padding()
-            }.frame(height: 170)
+            .frame(height: 170)
                     
 //                    NavigationView{
                     HStack(spacing: 100){
@@ -423,7 +432,7 @@ struct SpineView:View{
                 
                 List(hikingTrails) { trail in
                 TrailRow(trail: trail)
-                }.frame(minWidth:0, maxWidth: .infinity, minHeight: 300, maxHeight: .infinity)
+                }.frame(minWidth:0, maxWidth: .infinity, minHeight: 1000, maxHeight: .infinity)
         }
     }
             else if (selectedSport == 1){

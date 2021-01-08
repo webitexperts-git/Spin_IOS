@@ -1,8 +1,8 @@
 //
-//  LoginViewModel.swift
+//  ForgetViewModel.swift
 //  Spine
 //
-//  Created by apple on 14/12/20.
+//  Created by apple on 07/01/21.
 //
 
 import Foundation
@@ -11,15 +11,11 @@ import Combine
 import Alamofire
 
 
-public class LoginViewModel: ObservableObject, Identifiable {
-    
-
-    @Published var email = ""
-    @Published var password = ""
+public class ForgetViewModel: ObservableObject, Identifiable {
     
     @Published var isLoggedIn = false
     @Published var isLoading = false
-    
+    @Published var email = ""
     @Published var shouldNavigate = false
     
     @State var alertMsg = ""
@@ -31,19 +27,19 @@ public class LoginViewModel: ObservableObject, Identifiable {
     }
     private var disposables: Set<AnyCancellable> = []
     
-    var loginHandler = LoginHandler()
+    var forgetHandler = ForgetHandler()
     
     @Published var woofUrl = false
     
     private var isLoadingPublisher: AnyPublisher<Bool, Never> {
-        loginHandler.$isLoading
+        forgetHandler.$isLoading
             .receive(on: RunLoop.main)
             .map { $0 }
             .eraseToAnyPublisher()
     }
     
     private var isAuthenticatedPublisher: AnyPublisher<Bool, Never> {
-        loginHandler.$woofResponse
+        forgetHandler.$woofResponse
             .receive(on: RunLoop.main)
             .map { response in
                 guard let response = response else {
@@ -68,9 +64,9 @@ public class LoginViewModel: ObservableObject, Identifiable {
         print(woofUrl)
     }
     
-    func getRandomDog() {
+    func getForget() {
         if(self.isValidInputs()){
-        loginHandler.getRandomDog(email: email, password1: password)
+        forgetHandler.getForget(email: email)
         }
     }
     
@@ -84,22 +80,15 @@ public class LoginViewModel: ObservableObject, Identifiable {
             self.alertMsg = "Email is not valid."
             self.showAlert.toggle()
             return false
-        }else if self.password == "" {
-            self.alertMsg = "Password can't be blank."
-            self.showAlert.toggle()
-            return false
         }
-    //    else if !(self.password.isValidPassword) {
-    //        self.alertMsg = "Please enter valid password"
-    //        self.showAlert.toggle()
-    //        return false
-    //    }
+  
         
         return true
     }
 
-   
+  
 }
     
+
 
 
