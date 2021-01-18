@@ -13,13 +13,13 @@ class LoginHandler: APIHandler {
     
     @Published var woofResponse: LoginModel?
     @Published var isLoading = false
-  
+    @Published var userId = ""
+    
    
             
-    func getRandomDog(email:String, password1:String) {
+    func getLogin(email:String, password1:String) {
         isLoading = true
-      
-//        let url = "http://wiesoftware.com/spine/apisecure/login/loginUsers"
+
         let url = appConstants.kBASE_URL + appConstants.kloginUser
         let user = "devpankaj"
         let password = "devpankaj"
@@ -29,7 +29,7 @@ class LoginHandler: APIHandler {
         print(headers)
         
         let params:[String:Any]? = ["email": email, "password":password1, "notify_device_token":"123456", "notify_device_type": "IOS"]
-        print("param",params)
+        print("param",params as Any)
         AF.request(url, method: .post, parameters: params , encoding: URLEncoding.default, headers: headers).responseDecodable { [weak self] (response: DataResponse<LoginModel, AFError>) in
             guard let weakSelf = self else { return }
             
@@ -40,6 +40,9 @@ class LoginHandler: APIHandler {
                             
             weakSelf.isLoading = false
             weakSelf.woofResponse = response
+            self?.userId = (response.data?.users_id)!
+            UserDefaults.standard.setValue(self?.userId, forKeyPath: "user_id")
+            
         }
     }
     

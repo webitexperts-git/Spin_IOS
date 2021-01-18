@@ -17,7 +17,6 @@ struct Trail: Identifiable {
 
 struct TrailRow: View {
     var trail: Trail
-    
     var body: some View {
         ZStack{
             VStack(alignment: .leading, spacing: 20) {
@@ -26,8 +25,8 @@ struct TrailRow: View {
                 Image("back") .resizable().frame(width: 80, height: 80)
                 .cornerRadius(80/2)
                     .padding(.leading,5)
-                Text(trail.name).font(.subheadline).foregroundColor(.black)
-                Text(trail.day).font(.subheadline).foregroundColor(.gray)
+//                Text(trail.trail).font(.subheadline).foregroundColor(.black)
+//                Text(trail.day).font(.subheadline).foregroundColor(.gray)
                 }
                 Image("back").resizable().frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: 200, alignment: .topLeading)
                 HStack{
@@ -48,36 +47,28 @@ struct TrailRow: View {
 
 
 struct SpineRect: View{
-//    @ObservedObject var model = HomeViewModel()
-    
+    @ObservedObject var model = HomeViewModel()
    
-    private let player = AVPlayer(url: URL(string: "http://wiesoftware.com/spine/assets/upload/welcome/160544651620201115.mov")!)
-       
+    var player = AVPlayer(url: URL(string: "http://homeofbulldogs.com/dev/geev/assets/upload/images/160544651620201115.mov")!)
+    
     var body: some View{
         
-      
+       
         ZStack{
+//            for item in model.newData{
+//                
+//            }
+//            Text(verbatim: model.data![model.data!.count].image!)
         Rectangle()
             .frame(width: 200, height: 150)
             VideoPlayer(player: player)
                 .onAppear() {
                     player.play()
-                }
-            VStack{
-//                VideoPlayer(player: player)
-//                    .onAppear() {
-//                        player.play()
-//                    }
-               
-              
-
             }
         }
-
-
     }
-            
-           
+    
+   
 }
     
 
@@ -156,7 +147,7 @@ struct SpineButtonView: View {
         ZStack {
 
             HStack(){
-            NavigationLink(destination: Home()){
+            NavigationLink(destination: EventView()){
                 Text("CBI_FOR_SSR").padding()
 //                    .frame(minWidth: 0, maxWidth: 300, minHeight: 0, maxHeight: 40)
                     .background(Color(red: 183 / 255, green: 152 / 255, blue: 136 / 255))
@@ -166,7 +157,7 @@ struct SpineButtonView: View {
 //                    .padding()
                 
             }
-            NavigationLink(destination: Home()){
+            NavigationLink(destination: EventView()){
                 Text("CBI_FOR_SSR").padding()
 //                    .frame(minWidth: 0, maxWidth: 300, minHeight: 0, maxHeight: 40)
                     .background(Color(red: 183 / 255, green: 152 / 255, blue: 136 / 255))
@@ -176,7 +167,7 @@ struct SpineButtonView: View {
 //                    .padding()
                 
             }
-                NavigationLink(destination: Home()){
+                NavigationLink(destination: EventView()){
                     Text("CBI_FOR_SSR").padding()
     //                    .frame(minWidth: 0, maxWidth: 300, minHeight: 0, maxHeight: 40)
                         .background(Color(red: 183 / 255, green: 152 / 255, blue: 136 / 255))
@@ -187,7 +178,7 @@ struct SpineButtonView: View {
                     
                 }
                 
-                NavigationLink(destination: Home()){
+                NavigationLink(destination: EventView()){
                     Text("CBI_FOR_SSR").padding()
     //                    .frame(minWidth: 0, maxWidth: 300, minHeight: 0, maxHeight: 40)
                         .background(Color(red: 183 / 255, green: 152 / 255, blue: 136 / 255))
@@ -204,18 +195,16 @@ struct SpineButtonView: View {
 
 
 struct Home: View {
-    
+   
     var body: some View {
-//        NavigationView{
+    
         TabView {
-
             SpineView()
                 .tabItem {
                     Image(systemName: "house.fill")
                     Text("Spine")
                 }
-                .navigationBarHidden(true)
-            
+              
             EventView()
                 .tabItem {
                     Image(systemName: "calendar")
@@ -242,7 +231,8 @@ struct Home: View {
 }
 
 struct SpineView:View{
-    
+    @ObservedObject var model = HomeViewModel()
+    @ObservedObject var impulseModel = HomeViewImpulseModel()
     @State private var searchText = ""
     @State private var showCancelButton: Bool = false
     @State private var favoriteColor = 0
@@ -260,24 +250,15 @@ struct SpineView:View{
     private let ironmanDistances = ["2.4 miles", "112 miles", "26.2 miles"]
     let people = ["Adam", "James", "Adam", "James"]
     let people1 = ["Living with nature", "Living with nature", "Living with nature", "Living with nature"]
-//    @ObservedObject var model = HomeViewModel()
+    @Environment(\.presentationMode) var presentationMode
+    
     
     var body: some View{
-        
+     
+//        print("xx",xx)
         VStack (alignment: .leading){
             
             HStack {
-
-//                Button(action: {
-//
-//                }) {
-//                    Text("+")
-//
-//                        .frame(width: 40, height: 40)
-//                        .font(.system(size: 50))
-//                        .foregroundColor(Color(red: 237 / 255, green: 215 / 255, blue: 183 / 255))
-//
-//                }.padding(.bottom, 10)
                 
                 NavigationLink(destination: PlusButtonView()){
                     Text("+")
@@ -339,14 +320,18 @@ struct SpineView:View{
                     }
             
             ScrollView(.horizontal) {
+             
                 HStack(spacing: 10) {
-                    ForEach(0..<2){_ in
-//                        ZStack{
-//
-//                            }
-                            SpineRect()
-                        }
+//                    if($model.woofUrl.wrappedValue != false){
+                        
                        
+                        ForEach(0..<1){ _ in
+                            
+                            SpineRect(model: model)
+                        }.onAppear(perform: fetch)
+                           
+//                        }
+
                     }
                    
                 }.padding()
@@ -369,6 +354,7 @@ struct SpineView:View{
                         }
                        
                     }.padding()
+                    .onAppear(perform: getImpulse)
                 }.frame(height: 300)
                     
                     HStack(spacing: 160){
@@ -378,7 +364,7 @@ struct SpineView:View{
                             Text("See All").foregroundColor(Color(red: 237 / 255, green: 215 / 255, blue: 183 / 255)).font(.title3)
                         }
                     }.accentColor(.black)
-//                }.accentColor( .black)
+
                     
                     ScrollView(.horizontal) {
                         HStack(spacing: 1) {
@@ -386,7 +372,7 @@ struct SpineView:View{
                                 VStack(spacing: 1){
                                     SpineCircle()
                                     Text("\(person)").foregroundColor(.white).padding()
-//                                    Text("\(person)").foregroundColor(.white)
+
                                 }
                                 
                             }
@@ -411,7 +397,7 @@ struct SpineView:View{
                     
                     HStack(spacing: 160){
                     Text("RECOMMENDED FOLLOWERS").foregroundColor(.white).font(.title3).padding()
-                        NavigationLink(destination: Home()){
+                        NavigationLink(destination: EventView()){
                             Text("See All").foregroundColor(Color(red: 237 / 255, green: 215 / 255, blue: 183 / 255)).font(.title3)
                         }
                     }
@@ -468,13 +454,19 @@ struct SpineView:View{
         .navigationBarHidden(true)
         .navigationBarBackButtonHidden(true)
 //        }
+        
     }
+    
+    private func fetch() {
+            model.getHomeWelcomeData()
+        }
+    
+    private func getImpulse() {
+        impulseModel.getHomeImpulseData()
+        }
+   
 
 }
-
-
-
-
 
 struct Home_Previews: PreviewProvider {
     static var previews: some View {

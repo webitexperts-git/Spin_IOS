@@ -53,6 +53,7 @@ struct ContentView: View {
                     }.navigationBarTitle(self.hasTitle ? " " : "").foregroundColor(.white)
                 }
             }
+            
         }.accentColor( .white)
     }
 }

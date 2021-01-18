@@ -32,8 +32,9 @@ public class LoginViewModel: ObservableObject, Identifiable {
     private var disposables: Set<AnyCancellable> = []
     
     var loginHandler = LoginHandler()
-    
+    @Published var data:[Data] = []
     @Published var woofUrl = false
+    @Published var image = String()
     
     private var isLoadingPublisher: AnyPublisher<Bool, Never> {
         loginHandler.$isLoading
@@ -49,7 +50,6 @@ public class LoginViewModel: ObservableObject, Identifiable {
                 guard let response = response else {
                     return false
                 }
-                
                 return response.status ?? false
         }
         .eraseToAnyPublisher()
@@ -65,40 +65,15 @@ public class LoginViewModel: ObservableObject, Identifiable {
             .receive(on: RunLoop.main)
             .assign(to: \.woofUrl, on: self)
             .store(in: &disposables)
-        print(woofUrl)
+            print(woofUrl)
     }
     
-    func getRandomDog() {
-        if(self.isValidInputs()){
-        loginHandler.getRandomDog(email: email, password1: password)
-        }
-    }
-    
-    fileprivate func isValidInputs() -> Bool {
-        
-        if self.email == "" {
-            self.alertMsg = "Email can't be blank."
-            self.showAlert.toggle()
-            return false
-        } else if !self.email.isValidEmail {
-            self.alertMsg = "Email is not valid."
-            self.showAlert.toggle()
-            return false
-        }else if self.password == "" {
-            self.alertMsg = "Password can't be blank."
-            self.showAlert.toggle()
-            return false
-        }
-    //    else if !(self.password.isValidPassword) {
-    //        self.alertMsg = "Please enter valid password"
-    //        self.showAlert.toggle()
-    //        return false
-    //    }
-        
-        return true
+    func getLogin() {
+     
+        loginHandler.getLogin(email: email, password1: password)
+       
     }
 
-   
 }
     
 

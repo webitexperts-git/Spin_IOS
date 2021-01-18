@@ -12,7 +12,7 @@ struct TrendingCatDetail: View {
         ScrollView(.vertical){
         VStack(alignment:.leading){
             HStack(spacing: 5){
-            NavigationLink(destination: Home()){
+            NavigationLink(destination: EventView()){
                 Button(action: {
                        print("sign up bin tapped")
                    }) {
@@ -47,7 +47,7 @@ struct TrendingCatDetail: View {
         }
             
             HStack(spacing:15){
-            NavigationLink(destination: Home()){
+            NavigationLink(destination: EventView()){
                 Text("LIFE TRANSFORMATION")
                     .padding()
 //                    .frame(minWidth: 0, maxWidth: 100, minHeight: 0, maxHeight: 40)
@@ -74,7 +74,7 @@ struct TrendingCatDetail: View {
             }
             
             HStack(spacing:100){
-            NavigationLink(destination: Home()){
+            NavigationLink(destination: EventView()){
                 Text("MEDITATION")
                     .padding()
 //                    .frame(minWidth: 0, maxWidth: 100, minHeight: 0, maxHeight: 40)
@@ -101,7 +101,7 @@ struct TrendingCatDetail: View {
             }
             
             HStack(spacing:.infinity){
-            NavigationLink(destination: Home()){
+            NavigationLink(destination: EventView()){
                 Text("MEDITATION")
                     .padding()
 //                    .frame(minWidth: 0, maxWidth: 100, minHeight: 0, maxHeight: 40)
@@ -128,7 +128,7 @@ struct TrendingCatDetail: View {
             }
             
             HStack(spacing:.infinity){
-            NavigationLink(destination: Home()){
+            NavigationLink(destination: EventView()){
                 Text("MEDITATION")
                     .padding()
 //                    .frame(minWidth: 0, maxWidth: 100, minHeight: 0, maxHeight: 40)
@@ -155,7 +155,7 @@ struct TrendingCatDetail: View {
             }
             
             HStack(spacing:.infinity){
-            NavigationLink(destination: Home()){
+            NavigationLink(destination: EventView()){
                 Text("MEDITATION")
                     .padding()
 //                    .frame(minWidth: 0, maxWidth: 100, minHeight: 0, maxHeight: 40)
@@ -182,7 +182,7 @@ struct TrendingCatDetail: View {
             }
             
             HStack(spacing:.infinity){
-            NavigationLink(destination: Home()){
+            NavigationLink(destination: EventView()){
                 Text("MEDITATION")
                     .padding()
 //                    .frame(minWidth: 0, maxWidth: 100, minHeight: 0, maxHeight: 40)
@@ -209,7 +209,7 @@ struct TrendingCatDetail: View {
             }
             
             HStack(spacing:.infinity){
-            NavigationLink(destination: Home()){
+            NavigationLink(destination: EventView()){
                 Text("MEDITATION")
                     .padding()
 //                    .frame(minWidth: 0, maxWidth: 100, minHeight: 0, maxHeight: 40)
@@ -236,7 +236,7 @@ struct TrendingCatDetail: View {
             }
             
             HStack(spacing:.infinity){
-            NavigationLink(destination: Home()){
+            NavigationLink(destination: EventView()){
                 Text("MEDITATION")
                     .padding()
 //                    .frame(minWidth: 0, maxWidth: 100, minHeight: 0, maxHeight: 40)

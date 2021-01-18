@@ -47,7 +47,7 @@ struct PhoneOTPVerification: View {
                     }
                 }.padding()
                 
-                NavigationLink(destination: Home().navigationBarBackButtonHidden(true)){
+                NavigationLink(destination: EventView().navigationBarBackButtonHidden(true)){
                     Text("VERIFY")
                         .frame(minWidth: 0, maxWidth: 250, minHeight: 0, maxHeight: 40)
                         .foregroundColor(Color(red: 237 / 255, green: 215 / 255, blue: 183 / 255))

@@ -8,7 +8,7 @@
 import Foundation
 
 
-struct HomeModel : Decodable {
+struct HomeModel : Codable {
     let status : Bool?
     let data : [Data]?
     let image : String?
@@ -31,9 +31,9 @@ struct HomeModel : Decodable {
     }
     
     
-    struct Data : Decodable {
+    struct Data : Codable {
         let id : String?
-        let image : String?
+        var image : String?
         let type : String?
         let name : String?
         let title : String?
@@ -70,5 +70,5 @@ struct HomeModel : Decodable {
 
     }
 
-
+ 
 }

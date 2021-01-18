@@ -20,7 +20,7 @@ struct ButtonView: View {
 //                .frame(width: 70, height: 70)
 //            Text(label)
             HStack(){
-            NavigationLink(destination: Home()){
+            NavigationLink(destination: EventView()){
                 Text("All").padding()
 //                    .frame(minWidth: 0, maxWidth: 300, minHeight: 0, maxHeight: 40)
                     .foregroundColor(Color(red: 237 / 255, green: 215 / 255, blue: 183 / 255))
@@ -30,7 +30,7 @@ struct ButtonView: View {
 //                    .padding()
                 
             }
-            NavigationLink(destination: Home()){
+            NavigationLink(destination: EventView()){
                 Text("Nearby").padding()
 //                    .frame(minWidth: 0, maxWidth: 300, minHeight: 0, maxHeight: 40)
                     .foregroundColor(Color(red: 237 / 255, green: 215 / 255, blue: 183 / 255))
@@ -40,7 +40,7 @@ struct ButtonView: View {
 //                    .padding()
                 
             }
-                NavigationLink(destination: Home()){
+                NavigationLink(destination: EventView()){
                     Text("Online").padding()
     //                    .frame(minWidth: 0, maxWidth: 300, minHeight: 0, maxHeight: 40)
                         .foregroundColor(Color(red: 237 / 255, green: 215 / 255, blue: 183 / 255))
@@ -51,7 +51,7 @@ struct ButtonView: View {
                     
                 }
                 
-                NavigationLink(destination: Home()){
+                NavigationLink(destination: EventView()){
                     Text("Following").padding()
     //                    .frame(minWidth: 0, maxWidth: 300, minHeight: 0, maxHeight: 40)
                         .foregroundColor(Color(red: 237 / 255, green: 215 / 255, blue: 183 / 255))

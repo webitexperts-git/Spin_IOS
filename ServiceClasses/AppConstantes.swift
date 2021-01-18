@@ -19,6 +19,7 @@ struct appConstants {
     static let kloginUser = "login/loginUsers"
     static let kwelcomeData = "other/getWelcomeData"
     static let kforgetPassword = "login/forgetPassword"
+    static let kaddUserStories = "/stories/addUserStories"
     
     
     
@@ -48,16 +49,5 @@ struct appConstants {
     static let kaddUserChat = "add-user-chat"
     static let kgetUserChat = "get-user-chat"
     static let kadRequestUserList = "ad-request-user-list"
-//    static let kgetTermsCondition = "login/getTermsCondition"
-//    static let kloginUser = "login/loginUsers"
-//    static let kmyPolicyList = "policy/getMyPolicyList"
-//    static let kgetPolicyDetail = "policy/getPolicyDetail"
-//    static let kprofileUpdate = "login/profileUpdate"
-//    static let kaddSchoolPolicy = "policy/addSchoolPolicy"
-//    static let kaddParentWithSchoolPolicy = "login/registerParent"
-//    static let kloginUsersCheckPassword = "login/loginUsersCheckPassword"
-//    static let kaddParentWithChild = "policy/addParentWithChild"
-//    static let kforgotPassword = "login/forgotPassword"
-//    static let kchangePassword = "login/changePassword"
 }
 

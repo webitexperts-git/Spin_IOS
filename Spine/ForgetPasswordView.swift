@@ -12,6 +12,13 @@ struct ForgetPasswordView: View {
     @ObservedObject var model = ForgetViewModel()
     @Binding var presentedAsModal: Bool
     
+    @State var alertMsg = ""
+    @State var showAlert = false
+  
+    var alert: Alert {
+        Alert(title: Text(""), message: Text(alertMsg), dismissButton: .default(Text("OK")))
+    }
+    
    var body: some View {
     NavigationView {
         LoadingView(isShowing: .constant(model.isLoading)) {
@@ -32,36 +39,54 @@ struct ForgetPasswordView: View {
                 .font(Font.system(size: 15, weight: .medium, design: .serif))
                 .overlay(RoundedRectangle(cornerRadius: 18).stroke(Color.white, lineWidth: 2))
                 .padding(.bottom,10)
-           
-//        }
-        
-      
-
-    
-//       Button("Forget Password?")
-//        {
-//        self.forgetPassword()
-//        self.presentedAsModal = false
-//       }
+        Spacer()
         
         Button(action: {
+            if(self.isValidInputs()){
             self.forgetPassword()
-//            self.presentedAsModal = false
-
+            }
                          }) {
                              Text("Send")
                          }  .frame(minWidth: 0, maxWidth: 250, minHeight: 0, maxHeight: 40)
                              .foregroundColor(Color(red: 237 / 255, green: 215 / 255, blue: 183 / 255))
                              .background(Color.white)
                              .cornerRadius(18)
-                             .padding(.top, 150)
+                             .padding(.top, 100)
       
-   }
-           
+   }.alert(isPresented: $showAlert, content: { self.alert })
+          
     }
-        Spacer()
+        .navigationBarTitle("")
+      .navigationBarHidden(true)
+        
     }
-}
+    }
+    
+    fileprivate func isValidInputs() -> Bool {
+        
+        if model.email == "" {
+            self.alertMsg = "Email can't be blank."
+            self.showAlert.toggle()
+            return false
+        } else if !model.email.isValidEmail {
+            self.alertMsg = "Email is not valid."
+            self.showAlert.toggle()
+            return false
+        }
+//        else if model.password == "" {
+//            self.alertMsg = "Password can't be blank."
+//            self.showAlert.toggle()
+//            return false
+//        }
+    //    else if !(self.password.isValidPassword) {
+    //        self.alertMsg = "Please enter valid password"
+    //        self.showAlert.toggle()
+    //        return false
+    //    }
+        
+        return true
+    }
+
     
     func forgetPassword(){
         model.getForget()

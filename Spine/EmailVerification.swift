@@ -10,6 +10,7 @@ import SwiftUI
 struct EmailVerification: View {
     @State private var text: String = ""
     @State private var hasTitle = true
+    @State private var isPresented = false
     var body: some View {
         ZStack{
             LinearGradient(gradient: Gradient(colors: [Color(red: 183 / 255, green: 152 / 255, blue: 136 / 255), Color(red: 215 / 255, green: 199 / 255, blue: 181 / 255)]), startPoint: .bottom, endPoint: .top).edgesIgnoringSafeArea(.all)
@@ -33,6 +34,8 @@ struct EmailVerification: View {
                  .padding(.horizontal, 30)
                  .background(Color.white)
                     .padding(.bottom, 30)
+
+                   
                 Text("Haven’t received a code?")
                     .foregroundColor(.white)
                 HStack{
@@ -49,15 +52,18 @@ struct EmailVerification: View {
                     }
                 }.padding()
                 
-                NavigationLink(destination: Home()){
+
+                Button(action: {
+                    self.isPresented.toggle()
+                }) {
                     Text("VERIFY")
-                       
                         .frame(minWidth: 0, maxWidth: 250, minHeight: 0, maxHeight: 40)
                         .foregroundColor(Color(red: 237 / 255, green: 215 / 255, blue: 183 / 255))
                         .background(Color.white)
                         .cornerRadius(18)
                         .padding(.bottom, 5)
-                }
+                } .fullScreenCover(isPresented: $isPresented, content: Home.init)
+                
                 Spacer()
                 
             }
@@ -75,6 +81,7 @@ struct EmailVerification: View {
 }
 
 
+    
 struct EmailVerification_Previews: PreviewProvider {
     static var previews: some View {
         EmailVerification()

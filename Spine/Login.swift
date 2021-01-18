@@ -9,9 +9,6 @@ import SwiftUI
 import FBSDKLoginKit
 import Combine
 
-
-
-
 struct Login: View {
     
     var headerView: some View {
@@ -78,30 +75,9 @@ struct Login: View {
                             .overlay(RoundedRectangle(cornerRadius: 18).stroke(Color.white, lineWidth: 2))
                             .padding(.bottom,10)
                     }
-                    .navigationBarHidden(true)
-                    .navigationBarBackButtonHidden(true)
+//                    .navigationBarHidden(true)
+//                    .navigationBarBackButtonHidden(true)
                    
-
-//                    if (self.model.shouldRedirectToUpdateView == true) {
-//
-//                      EmailVerification()
-////
-//                    }
-//                    else {
-//                        Button(action: {
-//                            if  self.isValidInputs(){
-//                            self.model.loginFunc(email: email, password: password)
-//                            }
-//                        }) {
-//                            Text("Login")
-//                        }  .frame(minWidth: 0, maxWidth: 250, minHeight: 0, maxHeight: 40)
-//                            .foregroundColor(Color(red: 237 / 255, green: 215 / 255, blue: 183 / 255))
-//                            .background(Color.white)
-//                            .cornerRadius(18)
-//                            .padding(.bottom, 10)
-//                    }
-                   
-
                        
                     NavigationLink(destination: EmailVerification(), isActive: .constant($model.woofUrl.wrappedValue != false)) {
                         VStack {
@@ -115,23 +91,18 @@ struct Login: View {
                         }
                         
                     }.simultaneousGesture(TapGesture().onEnded{
-                       
+                        if(self.isValidInputs()){
                         self.loginUser()
+                        }
                        
                     })
                     
                     
                     Button("Forget Password?") { self.presentingModal = true }
-                           .sheet(isPresented: $presentingModal) { ForgetPasswordView(presentedAsModal: self.$presentingModal) }
-                       
-                  
-//                    NavigationLink(destination: ForgetPasswordView()){
-//
-//                        Text("Forget Password?")
-//                            .underline()
-//                            .foregroundColor(Color.white)
-//                            .padding()
-//                        }
+                           .sheet(isPresented: $presentingModal) { ForgetPasswordView(presentedAsModal: self.$presentingModal)
+                            
+                    }
+                        
                     
                     Text("_________Or_________")
                         .foregroundColor(.white)
@@ -159,20 +130,22 @@ struct Login: View {
             }
         } .alert(isPresented: $showAlert, content: { self.alert })
     }
-}
+        }
+//        .navigationBarHidden(true)
+//        .navigationBarBackButtonHidden(true)
     }
 
 fileprivate func isValidInputs() -> Bool {
     
-    if self.email == "" {
+    if model.email == "" {
         self.alertMsg = "Email can't be blank."
         self.showAlert.toggle()
         return false
-    } else if !self.email.isValidEmail {
+    } else if !model.email.isValidEmail {
         self.alertMsg = "Email is not valid."
         self.showAlert.toggle()
         return false
-    }else if self.password == "" {
+    }else if model.password == "" {
         self.alertMsg = "Password can't be blank."
         self.showAlert.toggle()
         return false
@@ -187,7 +160,7 @@ fileprivate func isValidInputs() -> Bool {
 }
     
     private func loginUser() {
-        model.getRandomDog()
+        model.getLogin()
     }
 
 }

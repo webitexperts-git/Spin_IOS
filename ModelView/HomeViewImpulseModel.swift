@@ -1,16 +1,17 @@
 //
-//  HomeViewModel.swift
+//  HomeViewImpulseModel.swift
 //  Spine
 //
-//  Created by apple on 06/01/21.
+//  Created by apple on 15/01/21.
 //
+
 
 import Foundation
 import SwiftUI
 import Combine
 import Alamofire
 
-public class HomeViewModel: ObservableObject, Identifiable {
+public class HomeViewImpulseModel: ObservableObject, Identifiable {
     
 
     @Published var isLoggedIn = false
@@ -20,20 +21,22 @@ public class HomeViewModel: ObservableObject, Identifiable {
     
     private var disposables: Set<AnyCancellable> = []
     
-    var homeHandler = HomeHandler()
+    var homeImpulseHandler = HomeImpulseHandler()
     
     @Published var woofUrl = false
-    @Published var newData = [String]()
+    @Published var data:[HomeImpulseModel.Data] = []
    
+    
+
     private var isLoadingPublisher: AnyPublisher<Bool, Never> {
-        homeHandler.$isLoading
+        homeImpulseHandler.$isLoading
             .receive(on: RunLoop.main)
             .map { $0 }
             .eraseToAnyPublisher()
     }
     
     private var isAuthenticatedPublisher: AnyPublisher<Bool, Never> {
-        homeHandler.$homeWelcomeDataResponse
+        homeImpulseHandler.$homeImpulseDataResponse
             .receive(on: RunLoop.main)
             .map { response in
                 guard let response = response else {
@@ -45,24 +48,21 @@ public class HomeViewModel: ObservableObject, Identifiable {
     }
     
     
-    private var isDataPublisher: AnyPublisher<[String], Never> {
-        homeHandler.$homeWelcomeDataResponse
+    private var isDataPublisher: AnyPublisher<[HomeImpulseModel.Data], Never> {
+        homeImpulseHandler.$homeImpulseDataResponse
             .receive(on: RunLoop.main)
-            .map { [self] response in
+            .map { response in
                 guard let response = response else {
-            return []
-            }
-//                print("responseImage",response.data![0].image)
-                for item in response.data!{
-                    let img = item.image
-                    newData.append(img!)
+
+                    return []
                 }
-                print("newData", newData)
-                return newData
-    }
+                return response.data ?? []
+
+        }
         .eraseToAnyPublisher()
     }
     
+  
     
     init() {
         isLoadingPublisher
@@ -74,17 +74,18 @@ public class HomeViewModel: ObservableObject, Identifiable {
             .receive(on: RunLoop.main)
             .assign(to: \.woofUrl, on: self)
             .store(in: &disposables)
-                print("HomeStatus",woofUrl)
+//                print(woofUrl)
         
         isDataPublisher
             .receive(on: RunLoop.main)
-            .assign(to: \.newData, on: self)
+            .assign(to: \.data, on: self)
             .store(in: &disposables)
-            print("HomeViewModelData",newData)
+            print("HomeViewImpulseModelData",data)
     }
     
-    func getHomeWelcomeData() {
-        homeHandler.getHomeWelcomeData()
+    func getHomeImpulseData() {
+        homeImpulseHandler.getHomeImpulseData()
     }
     
 }
+
