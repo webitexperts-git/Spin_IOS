@@ -31,7 +31,7 @@ struct HomeModel : Codable {
     }
     
     
-    struct Data : Codable {
+    struct Data : Codable, Identifiable, Hashable {
         let id : String?
         var image : String?
         let type : String?

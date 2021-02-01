@@ -12,12 +12,12 @@ import Alamofire
 
 class TrendingCatHandler: APIHandler{
     
-    @Published var storiesDataResponse: TrendingCatModel?
+    @Published var trendingDataResponse: TrendingCatModel?
     @Published var isLoading = false
             
    
         
-func getStoriesData() {
+func getTrendingData() {
     isLoading = true
     
     let user = "devpankaj"
@@ -28,19 +28,19 @@ func getStoriesData() {
     print(headers)
     
     let url = appConstants.kBASE_URL + ""
-    let userId = UserDefaults.standard.string(forKey: "user_id")
-    let params:[String:Any] = ["userId", userId]
+    let userId = UserDefaults.standard.string(forKey: "user_id")!
+    let params:[String:Any] = ["userId": userId]
     
-    AF.request(url, method: .post, parameters: params , encoding: URLEncoding.default, headers: headers).responseDecodable { [weak self] (response: DataResponse<HomeImpulseModel, AFError>) in
+    AF.request(url, method: .get, parameters: params , encoding: URLEncoding.default, headers: headers).responseDecodable { [weak self] (response: DataResponse<TrendingCatModel, AFError>) in
         guard let weakSelf = self else { return }
         
-        guard let response = weakSelf.handleResponse(response) as? HomeImpulseModel else {
+        guard let response = weakSelf.handleResponse(response) as? TrendingCatModel else {
             weakSelf.isLoading = false
             return
         }
                         
         weakSelf.isLoading = false
-        weakSelf.storiesDataResponse = response
+        weakSelf.trendingDataResponse = response
         }
     }
 }

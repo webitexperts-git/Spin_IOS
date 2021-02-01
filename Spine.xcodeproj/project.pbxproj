@@ -33,6 +33,12 @@
 		182B346525947B6A00DFCEF3 /* RegisterModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182B346425947B6A00DFCEF3 /* RegisterModel.swift */; };
 		182C6CBD259074EA00742B1F /* PostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182C6CBC259074EA00742B1F /* PostView.swift */; };
 		1835CD6425A6D202004A2F63 /* TextFields.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1835CD6325A6D202004A2F63 /* TextFields.swift */; };
+		183C9FAE25B6FC6D00465D8D /* PostHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183C9FAD25B6FC6D00465D8D /* PostHandler.swift */; };
+		183C9FB125B6FC9400465D8D /* PostViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183C9FB025B6FC9400465D8D /* PostViewModel.swift */; };
+		183C9FB325B6FCB200465D8D /* PostModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183C9FB225B6FCB200465D8D /* PostModel.swift */; };
+		183C9FB925B70BF300465D8D /* FavouritPostModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183C9FB825B70BF300465D8D /* FavouritPostModel.swift */; };
+		183C9FBC25B70C0800465D8D /* FavouritViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183C9FBB25B70C0800465D8D /* FavouritViewModel.swift */; };
+		183C9FBF25B70C2400465D8D /* FavouritPostHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183C9FBE25B70C2400465D8D /* FavouritPostHandler.swift */; };
 		18578CF825B5542B00D70D98 /* HomeImpulseHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18578CF725B5542B00D70D98 /* HomeImpulseHandler.swift */; };
 		18578CFB25B5BC6E00D70D98 /* StoriesHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18578CFA25B5BC6E00D70D98 /* StoriesHandler.swift */; };
 		18578CFE25B5BC8C00D70D98 /* StoriesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18578CFD25B5BC8C00D70D98 /* StoriesViewModel.swift */; };
@@ -112,6 +118,12 @@
 		182B346425947B6A00DFCEF3 /* RegisterModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterModel.swift; sourceTree = "<group>"; };
 		182C6CBC259074EA00742B1F /* PostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostView.swift; sourceTree = "<group>"; };
 		1835CD6325A6D202004A2F63 /* TextFields.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFields.swift; sourceTree = "<group>"; };
+		183C9FAD25B6FC6D00465D8D /* PostHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostHandler.swift; sourceTree = "<group>"; };
+		183C9FB025B6FC9400465D8D /* PostViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewModel.swift; sourceTree = "<group>"; };
+		183C9FB225B6FCB200465D8D /* PostModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostModel.swift; sourceTree = "<group>"; };
+		183C9FB825B70BF300465D8D /* FavouritPostModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouritPostModel.swift; sourceTree = "<group>"; };
+		183C9FBB25B70C0800465D8D /* FavouritViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouritViewModel.swift; sourceTree = "<group>"; };
+		183C9FBE25B70C2400465D8D /* FavouritPostHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouritPostHandler.swift; sourceTree = "<group>"; };
 		18578CF725B5542B00D70D98 /* HomeImpulseHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeImpulseHandler.swift; sourceTree = "<group>"; };
 		18578CFA25B5BC6E00D70D98 /* StoriesHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoriesHandler.swift; sourceTree = "<group>"; };
 		18578CFD25B5BC8C00D70D98 /* StoriesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoriesViewModel.swift; sourceTree = "<group>"; };
@@ -204,6 +216,8 @@
 				18578CFA25B5BC6E00D70D98 /* StoriesHandler.swift */,
 				18578D0325B5BCD900D70D98 /* TrendingCatHandler.swift */,
 				18578D0C25B5BD1700D70D98 /* FollowersHandler.swift */,
+				183C9FAD25B6FC6D00465D8D /* PostHandler.swift */,
+				183C9FBE25B70C2400465D8D /* FavouritPostHandler.swift */,
 				1805B5E525A59CE300CE4C01 /* APIHandler.swift */,
 			);
 			path = Utility;
@@ -230,6 +244,8 @@
 				18578D0025B5BCA200D70D98 /* StoriesModel.swift */,
 				18578D0925B5BCFD00D70D98 /* TrendingCatModel.swift */,
 				18578D1225B5BE2000D70D98 /* FollowersModel.swift */,
+				183C9FB225B6FCB200465D8D /* PostModel.swift */,
+				183C9FB825B70BF300465D8D /* FavouritPostModel.swift */,
 				1821273025A2E866001B1553 /* EventModel.swift */,
 			);
 			path = Model;
@@ -246,6 +262,8 @@
 				18578CFD25B5BC8C00D70D98 /* StoriesViewModel.swift */,
 				18578D0625B5BCEE00D70D98 /* TrendingCatViewModel.swift */,
 				18578D0F25B5BD2900D70D98 /* FollowersViewModel.swift */,
+				183C9FB025B6FC9400465D8D /* PostViewModel.swift */,
+				183C9FBB25B70C0800465D8D /* FavouritViewModel.swift */,
 				1821272D25A2E846001B1553 /* EventViewModel.swift */,
 			);
 			path = ModelView;
@@ -565,6 +583,7 @@
 				1809E0AA256CD8A20007E9B2 /* EmailOTPVerification.swift in Sources */,
 				1805B5ED25A59D5100CE4C01 /* LoadingIndicator.swift in Sources */,
 				1805B60025A5C27600CE4C01 /* HomeHandler.swift in Sources */,
+				183C9FAE25B6FC6D00465D8D /* PostHandler.swift in Sources */,
 				187B70D5256849960055E5D0 /* singleton.swift in Sources */,
 				18A22CC225875E0C00020B28 /* LoginViewModel.swift in Sources */,
 				1805B5E325A59CCE00CE4C01 /* LoginHandler.swift in Sources */,
@@ -578,7 +597,9 @@
 				18675F512554671400758F81 /* IQUIView+Hierarchy.m in Sources */,
 				1809E0AD256CD8BA0007E9B2 /* PhoneOTPVerification.swift in Sources */,
 				18675F4F2554671400758F81 /* IQUITextFieldView+Additions.m in Sources */,
+				183C9FBF25B70C2400465D8D /* FavouritPostHandler.swift in Sources */,
 				18578D0D25B5BD1700D70D98 /* FollowersHandler.swift in Sources */,
+				183C9FB325B6FCB200465D8D /* PostModel.swift in Sources */,
 				18767E8525A746B100AF8943 /* RegisterViewModel.swift in Sources */,
 				18578D0125B5BCA200D70D98 /* StoriesModel.swift in Sources */,
 				18578CFE25B5BC8C00D70D98 /* StoriesViewModel.swift in Sources */,
@@ -590,6 +611,7 @@
 				1821F0F625678E8700F77583 /* Registration.swift in Sources */,
 				180902C5258B793200BB996E /* SettingsView.swift in Sources */,
 				1821F1052567949F00F77583 /* PhoneVerification.swift in Sources */,
+				183C9FB125B6FC9400465D8D /* PostViewModel.swift in Sources */,
 				18767E6525A712CE00AF8943 /* ForgetPasswordView.swift in Sources */,
 				1821F1022567947600F77583 /* EmailVerification.swift in Sources */,
 				1821272E25A2E846001B1553 /* EventViewModel.swift in Sources */,
@@ -608,10 +630,12 @@
 				1821272B25A2E813001B1553 /* HomeModel.swift in Sources */,
 				180902C8258BBA2900BB996E /* ActivitiesView.swift in Sources */,
 				18675F1325543EDF00758F81 /* SceneDelegate.swift in Sources */,
+				183C9FBC25B70C0800465D8D /* FavouritViewModel.swift in Sources */,
 				18675F1525543EDF00758F81 /* ContentView.swift in Sources */,
 				18767E6825A718B100AF8943 /* ForgetHandler.swift in Sources */,
 				1821F0F925678E9900F77583 /* Login.swift in Sources */,
 				18578D0425B5BCD900D70D98 /* TrendingCatHandler.swift in Sources */,
+				183C9FB925B70BF300465D8D /* FavouritPostModel.swift in Sources */,
 				18FEDBDE258A574A00CD9163 /* OtherData.swift in Sources */,
 				18675F4C2554671400758F81 /* IQPreviousNextView.m in Sources */,
 				18578D1025B5BD2900D70D98 /* FollowersViewModel.swift in Sources */,
@@ -762,6 +786,7 @@
 				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = Spine/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -787,6 +812,7 @@
 				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = Spine/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

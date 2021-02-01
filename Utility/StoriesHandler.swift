@@ -26,13 +26,15 @@ func getStoriesData() {
     let headers: HTTPHeaders = ["Authorization": "Basic \(base64Credentials)", "X-API-KEY": "123run", "Content-Type": "application/x-www-form-urlencoded"]
     print(headers)
     
-    let url = appConstants.kBASE_URL + "stories/getFollowingUsersStorieList/1/10/your_user_id"
-    let params:[String:Any] = [:]
+    let userId = UserDefaults.standard.string(forKey: "user_id")!
     
-    AF.request(url, method: .post, parameters: params , encoding: URLEncoding.default, headers: headers).responseDecodable { [weak self] (response: DataResponse<HomeImpulseModel, AFError>) in
+    let url = appConstants.kBASE_URL + "stories/getOwnStorieList/" + userId
+   
+    
+    AF.request(url, method: .get, parameters: nil , encoding: URLEncoding.default, headers: headers).responseDecodable { [weak self] (response: DataResponse<StoriesModel, AFError>) in
         guard let weakSelf = self else { return }
         
-        guard let response = weakSelf.handleResponse(response) as? HomeImpulseModel else {
+        guard let response = weakSelf.handleResponse(response) as? StoriesModel else {
             weakSelf.isLoading = false
             return
         }

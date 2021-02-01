@@ -11,14 +11,14 @@ import Combine
 import Alamofire
 
 
-class FollowersHandler: APIHandler{
+class PostHandler: APIHandler{
     
-    @Published var followersDataResponse: FollowersModel?
+    @Published var postDataResponse: PostModel?
     @Published var isLoading = false
             
    
         
-func getFollowersData() {
+func getPostData() {
     isLoading = true
     
     let user = "devpankaj"
@@ -28,20 +28,21 @@ func getFollowersData() {
     let headers: HTTPHeaders = ["Authorization": "Basic \(base64Credentials)", "X-API-KEY": "123run", "Content-Type": "application/x-www-form-urlencoded"]
     print(headers)
     
-    let url = appConstants.kBASE_URL + ""
     let userId = UserDefaults.standard.string(forKey: "user_id")!
-    let params:[String:Any] = ["userId": userId]
+    let url = appConstants.kBASE_URL + "post/getSpineUserFollowersPostList/1/10/" + userId + "/0/0"
+
+//    let params:[String:Any] = ["userId": userId]
     
-    AF.request(url, method: .get, parameters: params , encoding: URLEncoding.default, headers: headers).responseDecodable { [weak self] (response: DataResponse<FollowersModel, AFError>) in
+    AF.request(url, method: .get, parameters: nil , encoding: URLEncoding.default, headers: headers).responseDecodable { [weak self] (response: DataResponse<PostModel, AFError>) in
         guard let weakSelf = self else { return }
         
-        guard let response = weakSelf.handleResponse(response) as? FollowersModel else {
+        guard let response = weakSelf.handleResponse(response) as? PostModel else {
             weakSelf.isLoading = false
             return
         }
                         
         weakSelf.isLoading = false
-        weakSelf.followersDataResponse = response
+        weakSelf.postDataResponse = response
         }
     }
 }

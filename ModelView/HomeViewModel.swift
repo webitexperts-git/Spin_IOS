@@ -23,7 +23,7 @@ public class HomeViewModel: ObservableObject, Identifiable {
     var homeHandler = HomeHandler()
     
     @Published var woofUrl = false
-    @Published var newData = [String]()
+    @Published var newData = [HomeModel.Data]()
    
     private var isLoadingPublisher: AnyPublisher<Bool, Never> {
         homeHandler.$isLoading
@@ -45,20 +45,15 @@ public class HomeViewModel: ObservableObject, Identifiable {
     }
     
     
-    private var isDataPublisher: AnyPublisher<[String], Never> {
+    private var isDataPublisher: AnyPublisher<[HomeModel.Data], Never> {
         homeHandler.$homeWelcomeDataResponse
             .receive(on: RunLoop.main)
             .map { [self] response in
                 guard let response = response else {
             return []
             }
-//                print("responseImage",response.data![0].image)
-                for item in response.data!{
-                    let img = item.image
-                    newData.append(img!)
-                }
-                print("newData", newData)
-                return newData
+
+            return response.data! as [HomeModel.Data]
     }
         .eraseToAnyPublisher()
     }

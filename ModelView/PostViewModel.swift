@@ -1,4 +1,13 @@
 //
+//  PostViewModel.swift
+//  Spine
+//
+//  Created by apple on 19/01/21.
+//
+
+import Foundation
+
+//
 //  TrendingCatViewModel.swift
 //  Spine
 //
@@ -11,7 +20,7 @@ import Combine
 import Alamofire
 
 
-public class TrendingCatViewModel: ObservableObject, Identifiable {
+public class PostViewModel: ObservableObject, Identifiable {
     
 
     @Published var isLoggedIn = false
@@ -21,22 +30,22 @@ public class TrendingCatViewModel: ObservableObject, Identifiable {
     
     private var disposables: Set<AnyCancellable> = []
     
-    var trendingHandler = TrendingCatHandler()
+    var postHandler = PostHandler()
     
     @Published var woofUrl = false
-    @Published var data:[TrendingCatModel.Data] = []
+    @Published var data:[PostModel.Data] = []
    
     
 
     private var isLoadingPublisher: AnyPublisher<Bool, Never> {
-        trendingHandler.$isLoading
+        postHandler.$isLoading
             .receive(on: RunLoop.main)
             .map { $0 }
             .eraseToAnyPublisher()
     }
     
     private var isAuthenticatedPublisher: AnyPublisher<Bool, Never> {
-        trendingHandler.$trendingDataResponse
+        postHandler.$postDataResponse
             .receive(on: RunLoop.main)
             .map { response in
                 guard let response = response else {
@@ -48,8 +57,8 @@ public class TrendingCatViewModel: ObservableObject, Identifiable {
     }
     
     
-    private var isDataPublisher: AnyPublisher<[TrendingCatModel.Data], Never> {
-        trendingHandler.$trendingDataResponse
+    private var isDataPublisher: AnyPublisher<[PostModel.Data], Never> {
+        postHandler.$postDataResponse
             .receive(on: RunLoop.main)
             .map { response in
                 guard let response = response else {
@@ -83,10 +92,11 @@ public class TrendingCatViewModel: ObservableObject, Identifiable {
             print("HomeViewImpulseModelData",data)
     }
     
-    func getTrendingData() {
-        trendingHandler.getTrendingData()
+    func getPostData() {
+        postHandler.getPostData()
     }
     
 }
+
 
 

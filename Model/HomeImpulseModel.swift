@@ -38,7 +38,7 @@ struct HomeImpulseModel: Codable {
         }
     
     
-    struct Data : Codable {
+    struct Data : Codable, Hashable{
         let id : String?
         let image : String?
         let name : String?

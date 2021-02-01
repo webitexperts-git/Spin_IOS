@@ -17,6 +17,7 @@ struct Trail: Identifiable {
 
 struct TrailRow: View {
     var trail: Trail
+    @ObservedObject var model = HomeViewModel()
     var body: some View {
         ZStack{
             VStack(alignment: .leading, spacing: 20) {
@@ -38,6 +39,7 @@ struct TrailRow: View {
                         .padding(.trailing, 150)
                     Image("bookmark").resizable().frame(width:20, height: 20)
                     Image("menu").resizable().frame(width:20, height: 20)
+                    Text("18")
                 }
             }
         }
@@ -47,18 +49,17 @@ struct TrailRow: View {
 
 
 struct SpineRect: View{
-    @ObservedObject var model = HomeViewModel()
+    
+    
    
-    var player = AVPlayer(url: URL(string: "http://homeofbulldogs.com/dev/geev/assets/upload/images/160544651620201115.mov")!)
+    let player = AVPlayer(url: URL(string: "http://homeofbulldogs.com/dev/geev/assets/upload/images/160544651620201115.mov")!)
+    
+    
     
     var body: some View{
-        
+    
+        ZStack(){
        
-        ZStack{
-//            for item in model.newData{
-//                
-//            }
-//            Text(verbatim: model.data![model.data!.count].image!)
         Rectangle()
             .frame(width: 200, height: 150)
             VideoPlayer(player: player)
@@ -67,9 +68,8 @@ struct SpineRect: View{
             }
         }
     }
-    
-   
 }
+    
     
 
 struct SpineCircle: View{
@@ -108,6 +108,7 @@ struct SpineCircle2: View{
 
 
 struct SpineImpulse: View{
+    @Binding var title: String
     var body: some View{
         ZStack{
         Rectangle()
@@ -142,10 +143,14 @@ struct SpineImpulse: View{
 
 struct SpineButtonView: View {
     @State var label: String
+    @ObservedObject var trendingModel = TrendingCatViewModel()
+//    let menu = Bundle.main.decode([MenuSection].self, from: "menu.json")
+    
+   
         
     var body: some View {
         ZStack {
-
+            
             HStack(){
             NavigationLink(destination: EventView()){
                 Text("CBI_FOR_SSR").padding()
@@ -230,9 +235,14 @@ struct Home: View {
     }
 }
 
+
 struct SpineView:View{
     @ObservedObject var model = HomeViewModel()
     @ObservedObject var impulseModel = HomeViewImpulseModel()
+    @ObservedObject var storiesModel = StoriesViewModel()
+    @ObservedObject var trendingModel = TrendingCatViewModel()
+    @ObservedObject var followersModel = FollowersViewModel()
+    @ObservedObject var postModel = PostViewModel()
     @State private var searchText = ""
     @State private var showCancelButton: Bool = false
     @State private var favoriteColor = 0
@@ -245,13 +255,16 @@ struct SpineView:View{
         Trail(name: "Stanford Dish", day: "2 days"),
        ]
     
+    
+    
     @State private var selectedSport = 0
     private let triathlonSports = ["FOR YOU", "FOLLOWING"]
     private let ironmanDistances = ["2.4 miles", "112 miles", "26.2 miles"]
     let people = ["Adam", "James", "Adam", "James"]
+
     let people1 = ["Living with nature", "Living with nature", "Living with nature", "Living with nature"]
     @Environment(\.presentationMode) var presentationMode
-    
+    @State private var title = ""
     
     var body: some View{
      
@@ -259,14 +272,14 @@ struct SpineView:View{
         VStack (alignment: .leading){
             
             HStack {
-                
+//                NavigationView{
                 NavigationLink(destination: PlusButtonView()){
                     Text("+")
                         .font(.system(size: 50))
                        
                         .padding(.bottom, 5)
                 }
-                
+//                }
                 
                 HStack {
 
@@ -318,21 +331,62 @@ struct SpineView:View{
                         Text("Gaurav").padding(.leading,20).foregroundColor(.white)
                         Text("WELCOME").padding(.leading,20).padding(.bottom, 10).foregroundColor(.white)
                     }
+                    
+                                 
             
             ScrollView(.horizontal) {
              
                 HStack(spacing: 10) {
-//                    if($model.woofUrl.wrappedValue != false){
-                        
-                       
-                        ForEach(0..<1){ _ in
-                            
-                            SpineRect(model: model)
-                        }.onAppear(perform: fetch)
-                           
+                    if($model.woofUrl.wrappedValue != false){
+                
+//                    let url = model.newData[0]
+//                    print("url", url)
+                    let x =  model.newData
+                        let _ =  print("aaaaaa", x)
+                        ForEach(x, id: \.self) { data in
+//                        ZStack(){
+//                            Text(data).foregroundColor(.white)
+
+                            let player = AVPlayer(url: URL(string: "http://homeofbulldogs.com/dev/geev/assets/upload/images/" + data.image!)!)
+                          let _ =  print("player",player)
+
+                            ZStack{
+                            Rectangle()
+                                .frame(width: 200, height: 150)
+                            VideoPlayer(player: player)
+                                .onAppear() {
+                                    player.play()
+                                }
+                        }
 //                        }
 
-                    }
+//
+////                                       .padding()
+////                                       .background(data)
+//                               }
+                       
+                    
+                    
+                 
+                    
+                    
+//                        ForEach(0..<2){ _ in
+//
+//
+//
+//                            let player = AVPlayer(url: URL(string: "http://homeofbulldogs.com/dev/geev/assets/upload/images/160544651620201115.mov")!)
+//
+//
+//
+//
+                           
+
+                        }
+                      
+                           
+                        }
+                } .onAppear(perform: fetch)
+                    
                    
                 }.padding()
             .frame(height: 170)
@@ -349,10 +403,43 @@ struct SpineView:View{
 
                 ScrollView(.horizontal) {
                     HStack(spacing: 10) {
-                        ForEach(0..<4){_ in
-                            SpineImpulse()
+                        if($impulseModel.woofUrl.wrappedValue != false){
+                            ForEach(impulseModel.data, id: \.self) { data in
+                                ZStack{
+                                Rectangle()
+                                    .frame(width: 200, height: 300)
+                                    VStack{
+                                        Circle().strokeBorder(Color.white,lineWidth: 4)
+                                        .frame(width: 80, height: 80)
+                                            .padding()
+                                        Text(data.description!).foregroundColor(.white).font(.title2)
+                                        .multilineTextAlignment(.center)
+                                        .lineLimit(5)
+                                        .frame(width: 180)
+                                        .padding(.bottom, 30)
+                                        
+                                        Text(data.created_on!).foregroundColor(.white).font(.subheadline)
+                                        HStack(spacing:20){
+                                            Image("heart").resizable().frame(width:20, height:20)
+                                            Text("0").foregroundColor(.white)
+                                            Image("message").resizable().frame(width:20, height: 20)
+                                            Text("0").foregroundColor(.white)
+                                        }
+                                        Spacer()
+                                    }
+                                   
+                                }.overlay(
+                                    LinearGradient(gradient: Gradient(colors: [Color(red: 183 / 255, green: 152 / 255, blue: 136 / 255), Color(red: 215 / 255, green: 199 / 255, blue: 181 / 255)]), startPoint: .bottom, endPoint: .top).opacity(0.8).edgesIgnoringSafeArea(.all)
+                                )
+                                
+                            }
+                           
+//                            }
+                        
+//                        ForEach(0..<4){_ in
+//                            SpineImpulse()
+//                            }
                         }
-                       
                     }.padding()
                     .onAppear(perform: getImpulse)
                 }.frame(height: 300)
@@ -372,10 +459,11 @@ struct SpineView:View{
                                 VStack(spacing: 1){
                                     SpineCircle()
                                     Text("\(person)").foregroundColor(.white).padding()
-
+                                    Text("people")
+//                                    Text("\(StoriesViewModel().data[0].user_id!)")
                                 }
                                 
-                            }
+                            }.onAppear(perform: getStories)
                            
                         }.padding()
                     }.frame(height: 120)
@@ -402,13 +490,15 @@ struct SpineView:View{
                         }
                     }
                     ScrollView(.horizontal) {
+                       
                         HStack(spacing: 1) {
+                          
                             ForEach(people, id: \.self){person in
                                 VStack(spacing: 1){
                                     SpineCircle()
 //                                    Text("\(person)")
-                                }
-                                
+                                }.onAppear(perform: getFollowersData)
+
                             }
                            
                         }.padding()
@@ -419,6 +509,7 @@ struct SpineView:View{
                 List(hikingTrails) { trail in
                 TrailRow(trail: trail)
                 }.frame(minWidth:0, maxWidth: .infinity, minHeight: 1000, maxHeight: .infinity)
+                .onAppear(perform: getPostData)
         }
     }
             else if (selectedSport == 1){
@@ -428,12 +519,14 @@ struct SpineView:View{
                 ScrollView(.horizontal) {
 
                     HStack(spacing: 1) {
+                       
                         ForEach(people, id: \.self){person in
                             VStack(spacing: 1){
+                               
                                 SpineCircle2()
                                 Text("\(person)")
                                 Text("\(person)")
-                                
+
                             }
 
                         }
@@ -442,13 +535,13 @@ struct SpineView:View{
                 }.frame(height: 160)
             }
                 
-                List(hikingTrails) { trail in
-                TrailRow(trail: trail)
-                }.frame(minWidth:0, maxWidth: .infinity, minHeight: 300, maxHeight: .infinity)
+//                List(hikingTrails) { trail in
+//                TrailRow(trail: trail)
+//                }.frame(minWidth:0, maxWidth: .infinity, minHeight: 300, maxHeight: .infinity)
         }
             }
            
-            Spacer()
+//            Spacer()
             
         } .navigationBarTitle("")
         .navigationBarHidden(true)
@@ -465,7 +558,18 @@ struct SpineView:View{
         impulseModel.getHomeImpulseData()
         }
    
-
+    private func getStories(){
+       
+        storiesModel.getStoriesData()
+    }
+    
+    private func getFollowersData(){
+        followersModel.getFollowersData()
+    }
+    
+    private func getPostData(){
+        postModel.getPostData()
+    }
 }
 
 struct Home_Previews: PreviewProvider {

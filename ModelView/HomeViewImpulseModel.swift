@@ -24,7 +24,7 @@ public class HomeViewImpulseModel: ObservableObject, Identifiable {
     var homeImpulseHandler = HomeImpulseHandler()
     
     @Published var woofUrl = false
-    @Published var data:[HomeImpulseModel.Data] = []
+    @Published var data = [HomeImpulseModel.Data]()
    
     
 
@@ -48,17 +48,17 @@ public class HomeViewImpulseModel: ObservableObject, Identifiable {
     }
     
     
+    
     private var isDataPublisher: AnyPublisher<[HomeImpulseModel.Data], Never> {
         homeImpulseHandler.$homeImpulseDataResponse
             .receive(on: RunLoop.main)
-            .map { response in
+            .map { [self] response in
                 guard let response = response else {
+            return []
+            }
 
-                    return []
-                }
-                return response.data ?? []
-
-        }
+            return response.data! as [HomeImpulseModel.Data]
+    }
         .eraseToAnyPublisher()
     }
     

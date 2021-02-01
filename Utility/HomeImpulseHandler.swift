@@ -28,7 +28,9 @@ func getHomeImpulseData() {
     let headers: HTTPHeaders = ["Authorization": "Basic \(base64Credentials)", "X-API-KEY": "123run", "Content-Type": "application/x-www-form-urlencoded"]
     print(headers)
     
-    let url = "http://wiesoftware.com/spine/apisecure/impluse/impluseList/1/10/64"
+    let userId = UserDefaults.standard.string(forKey: "user_id")!
+    
+    let url = "http://wiesoftware.com/spine/apisecure/impluse/impluseList/1/10/" + userId
     
     AF.request(url, method: .get, parameters: nil , encoding: URLEncoding.default, headers: headers).responseDecodable { [weak self] (response: DataResponse<HomeImpulseModel, AFError>) in
         guard let weakSelf = self else { return }

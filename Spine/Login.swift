@@ -79,7 +79,7 @@ struct Login: View {
 //                    .navigationBarBackButtonHidden(true)
                    
                        
-                    NavigationLink(destination: EmailVerification(), isActive: .constant($model.woofUrl.wrappedValue != false)) {
+                    NavigationLink(destination: Home(), isActive: .constant($model.woofUrl.wrappedValue != false)) {
                         VStack {
                             HStack {
                                 Text("Login") .frame(minWidth: 0, maxWidth: 250, minHeight: 0, maxHeight: 40)

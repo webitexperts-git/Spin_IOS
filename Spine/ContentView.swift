@@ -44,6 +44,7 @@ struct ContentView: View {
                         Text("Login")
                             .onAppear {
                                 self.hasTitle = false
+                               
                             }
                             .onDisappear {
                                 self.hasTitle = true
@@ -56,6 +57,8 @@ struct ContentView: View {
             
         }.accentColor( .white)
     }
+    
+   
 }
 
 struct buttonWithBackground: View {
