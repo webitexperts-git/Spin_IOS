@@ -24,7 +24,7 @@ public class StoriesViewModel: ObservableObject, Identifiable {
     var storiesHandler = StoriesHandler()
     
     @Published var woofUrl = false
-    @Published var data:[StoriesModel.Data] = []
+    @Published var data = [StoriesModel.Data]()
    
     
 
@@ -56,13 +56,13 @@ public class StoriesViewModel: ObservableObject, Identifiable {
 
                     return []
                 }
-                return response.data ?? []
+                return (response.data ?? []) as [StoriesModel.Data] 
 
         }
         .eraseToAnyPublisher()
     }
     
-  
+   
     
     init() {
         isLoadingPublisher

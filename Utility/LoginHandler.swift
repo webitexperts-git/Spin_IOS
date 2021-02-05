@@ -41,6 +41,7 @@ class LoginHandler: APIHandler {
             weakSelf.isLoading = false
             weakSelf.woofResponse = response
             self?.userId = (response.data?.users_id)!
+            
             print("userId", self?.userId as Any)
             UserDefaults.standard.setValue(self?.userId, forKeyPath: "user_id")
             

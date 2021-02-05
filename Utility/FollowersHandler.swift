@@ -27,12 +27,12 @@ func getFollowersData() {
     let base64Credentials = credentialData.base64EncodedString(options: [])
     let headers: HTTPHeaders = ["Authorization": "Basic \(base64Credentials)", "X-API-KEY": "123run", "Content-Type": "application/x-www-form-urlencoded"]
     print(headers)
+        let userId = UserDefaults.standard.string(forKey: "user_id")!
+    let url = appConstants.kBASE_URL + "follow/getFollowingList/1/10/" + "50"
+
+//    let params:[String:Any] = ["userId": userId]
     
-    let url = appConstants.kBASE_URL + ""
-    let userId = UserDefaults.standard.string(forKey: "user_id")!
-    let params:[String:Any] = ["userId": userId]
-    
-    AF.request(url, method: .get, parameters: params , encoding: URLEncoding.default, headers: headers).responseDecodable { [weak self] (response: DataResponse<FollowersModel, AFError>) in
+    AF.request(url, method: .get, parameters: nil , encoding: URLEncoding.default, headers: headers).responseDecodable { [weak self] (response: DataResponse<FollowersModel, AFError>) in
         guard let weakSelf = self else { return }
         
         guard let response = weakSelf.handleResponse(response) as? FollowersModel else {

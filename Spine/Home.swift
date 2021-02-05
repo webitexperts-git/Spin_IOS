@@ -73,6 +73,7 @@ struct SpineRect: View{
     
 
 struct SpineCircle: View{
+    
     var body: some View{
         ZStack{
            
@@ -108,7 +109,7 @@ struct SpineCircle2: View{
 
 
 struct SpineImpulse: View{
-    @Binding var title: String
+    @State var title: String
     var body: some View{
         ZStack{
         Rectangle()
@@ -153,7 +154,7 @@ struct SpineButtonView: View {
             
             HStack(){
             NavigationLink(destination: EventView()){
-                Text("CBI_FOR_SSR").padding()
+                Text(label).padding()
 //                    .frame(minWidth: 0, maxWidth: 300, minHeight: 0, maxHeight: 40)
                     .background(Color(red: 183 / 255, green: 152 / 255, blue: 136 / 255))
                     .foregroundColor(Color.white)
@@ -162,41 +163,14 @@ struct SpineButtonView: View {
 //                    .padding()
                 
             }
-            NavigationLink(destination: EventView()){
-                Text("CBI_FOR_SSR").padding()
-//                    .frame(minWidth: 0, maxWidth: 300, minHeight: 0, maxHeight: 40)
-                    .background(Color(red: 183 / 255, green: 152 / 255, blue: 136 / 255))
-                    .foregroundColor(Color.white)
-                    .cornerRadius(18)
-                    .shadow(radius: 5)
-//                    .padding()
-                
-            }
-                NavigationLink(destination: EventView()){
-                    Text("CBI_FOR_SSR").padding()
-    //                    .frame(minWidth: 0, maxWidth: 300, minHeight: 0, maxHeight: 40)
-                        .background(Color(red: 183 / 255, green: 152 / 255, blue: 136 / 255))
-                        .foregroundColor(Color.white)
-                        .cornerRadius(18)
-                        .shadow(radius: 5)
-    //                    .padding()
-                    
-                }
-                
-                NavigationLink(destination: EventView()){
-                    Text("CBI_FOR_SSR").padding()
-    //                    .frame(minWidth: 0, maxWidth: 300, minHeight: 0, maxHeight: 40)
-                        .background(Color(red: 183 / 255, green: 152 / 255, blue: 136 / 255))
-                        .foregroundColor(Color.white)
-                        .cornerRadius(18)
-                        .shadow(radius: 5)
-    //                    .padding()
+          
+    
                     
                 }
             }
         }
     }
-}
+
 
 
 struct Home: View {
@@ -237,6 +211,7 @@ struct Home: View {
 
 
 struct SpineView:View{
+    
     @ObservedObject var model = HomeViewModel()
     @ObservedObject var impulseModel = HomeViewImpulseModel()
     @ObservedObject var storiesModel = StoriesViewModel()
@@ -342,13 +317,13 @@ struct SpineView:View{
 //                    let url = model.newData[0]
 //                    print("url", url)
                     let x =  model.newData
-                        let _ =  print("aaaaaa", x)
+//                        let _ =  print("aaaaaa", x)
                         ForEach(x, id: \.self) { data in
 //                        ZStack(){
 //                            Text(data).foregroundColor(.white)
 
-                            let player = AVPlayer(url: URL(string: "http://homeofbulldogs.com/dev/geev/assets/upload/images/" + data.image!)!)
-                          let _ =  print("player",player)
+                            let player = AVPlayer(url: URL(string: "http://wiesoftware.com/spine/assets/upload/welcome/" + data.image!)!)
+                            let _ =  print("player",data.image!)
 
                             ZStack{
                             Rectangle()
@@ -392,11 +367,13 @@ struct SpineView:View{
             .frame(height: 170)
                     
 //                    NavigationView{
-                    HStack(spacing: 100){
-                    Text("SPINE IMPULSE").foregroundColor(.white).font(.title3).padding()
+                    HStack(spacing:160){
+                    Text("SPINE IMPULSE").foregroundColor(.white).font(.system(size: 16)).padding()
                        
                         NavigationLink(destination: SpineImpulseDetail()){
                             Text("See All").foregroundColor(Color(red: 237 / 255, green: 215 / 255, blue: 183 / 255)).font(.title3)
+                            
+                            
                         }
                     }
 //                }
@@ -421,9 +398,9 @@ struct SpineView:View{
                                         Text(data.created_on!).foregroundColor(.white).font(.subheadline)
                                         HStack(spacing:20){
                                             Image("heart").resizable().frame(width:20, height:20)
-                                            Text("0").foregroundColor(.white)
+                                            Text(data.total_like!).foregroundColor(.white)
                                             Image("message").resizable().frame(width:20, height: 20)
-                                            Text("0").foregroundColor(.white)
+                                            Text(data.total_comment!).foregroundColor(.white)
                                         }
                                         Spacer()
                                     }
@@ -446,7 +423,7 @@ struct SpineView:View{
                     
                     HStack(spacing: 160){
 //                        NavigationView{
-                    Text("STORIES").foregroundColor(.white).font(.title3).padding()
+                    Text("STORIES").foregroundColor(.white).font(.system(size: 16)).padding()
                         NavigationLink(destination: StoriesDetail()){
                             Text("See All").foregroundColor(Color(red: 237 / 255, green: 215 / 255, blue: 183 / 255)).font(.title3)
                         }
@@ -455,22 +432,26 @@ struct SpineView:View{
                     
                     ScrollView(.horizontal) {
                         HStack(spacing: 1) {
-                            ForEach(people, id: \.self){person in
+                        if($storiesModel.woofUrl.wrappedValue != false){
+                            ForEach(storiesModel.data, id: \.self){data in
                                 VStack(spacing: 1){
                                     SpineCircle()
-                                    Text("\(person)").foregroundColor(.white).padding()
+//                                    Text("\(person)").foregroundColor(.white).padding()
                                     Text("people")
 //                                    Text("\(StoriesViewModel().data[0].user_id!)")
                                 }
                                 
-                            }.onAppear(perform: getStories)
+                            }
+                        }
+                           
                            
                         }.padding()
+                        .onAppear(perform: getStories)
                     }.frame(height: 120)
                     
                    
                     HStack(spacing: 160){
-                    Text("TRENDING CATEGORIES").foregroundColor(.white).font(.title3).padding()
+                    Text("TRENDING CATEGORIES").foregroundColor(.white).font(.system(size: 16)).padding()
                         NavigationLink(destination: TrendingCatDetail()){
                             Text("See All").foregroundColor(Color(red: 237 / 255, green: 215 / 255, blue: 183 / 255)).font(.title3)
                         }
@@ -479,12 +460,22 @@ struct SpineView:View{
                   
                     ScrollView(.horizontal) {
                         HStack(spacing: 10) {
-                           SpineButtonView(label: " ")
+                            if($trendingModel.woofUrl.wrappedValue != false){
+                                ForEach(trendingModel.data, id: \.self){data in
+                                    VStack(spacing: 1){
+                                        SpineButtonView(label: data.hash_title!)
+   
+                                    }
+                                    
+                                }
+                            }
+                               
                         }.padding()
+                        .onAppear(perform: getTrendingData)
                     }.frame(height: 60)
                     
                     HStack(spacing: 160){
-                    Text("RECOMMENDED FOLLOWERS").foregroundColor(.white).font(.title3).padding()
+                    Text("RECOMMENDED FOLLOWERS").foregroundColor(.white).font(.system(size: 16)).padding()
                         NavigationLink(destination: EventView()){
                             Text("See All").foregroundColor(Color(red: 237 / 255, green: 215 / 255, blue: 183 / 255)).font(.title3)
                         }
@@ -492,16 +483,31 @@ struct SpineView:View{
                     ScrollView(.horizontal) {
                        
                         HStack(spacing: 1) {
-                          
-                            ForEach(people, id: \.self){person in
+                            if($followersModel.woofUrl.wrappedValue != false){
+                            ForEach(followersModel.data, id: \.self){data in
                                 VStack(spacing: 1){
-                                    SpineCircle()
-//                                    Text("\(person)")
-                                }.onAppear(perform: getFollowersData)
+                                
+//                                    let url = URL(string: "https://image.tmdb.org/t/p/original/pThyQovXQrw2m0s9x82twj48Jq4.jpg")!
+                                    ZStack{
+                                  
+//                                        Circle().strokeBorder(Color.white,lineWidth: 4)
+//                                            .frame(width: 80, height: 80)
+//                                            .padding()
+                                        AsyncImage(url: URL(string: "http://wiesoftware.com/spine/assets/upload/profile/" + data.profile_pic!)!,
+                                                      placeholder: { Text("Loading ...") },
+                                                      image: { Image(uiImage: $0).resizable() })
+                                            .frame(width:80, height:80)
+                                            .clipShape(Circle())
+                                            
+                                        }
+                                    
+                                  
+                                    }
 
+                                }
                             }
-                           
                         }.padding()
+                        .onAppear(perform: getFollowersData)
                     }.frame(height: 100)
 
                 }.background(Color.black)
@@ -565,6 +571,10 @@ struct SpineView:View{
     
     private func getFollowersData(){
         followersModel.getFollowersData()
+    }
+    
+    private func getTrendingData(){
+        trendingModel.getTrendingData()
     }
     
     private func getPostData(){

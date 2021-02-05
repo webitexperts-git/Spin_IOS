@@ -24,8 +24,7 @@ public class TrendingCatViewModel: ObservableObject, Identifiable {
     var trendingHandler = TrendingCatHandler()
     
     @Published var woofUrl = false
-    @Published var data:[TrendingCatModel.Data] = []
-   
+    @Published var data = [TrendingCatModel.Data]()
     
 
     private var isLoadingPublisher: AnyPublisher<Bool, Never> {
@@ -56,8 +55,8 @@ public class TrendingCatViewModel: ObservableObject, Identifiable {
 
                     return []
                 }
-                return response.data ?? []
-
+              
+                return (response.data ?? []) as [TrendingCatModel.Data]
         }
         .eraseToAnyPublisher()
     }

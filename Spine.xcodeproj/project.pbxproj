@@ -86,6 +86,7 @@
 		18A22CC225875E0C00020B28 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A22CC125875E0C00020B28 /* LoginViewModel.swift */; };
 		18FEDBDE258A574A00CD9163 /* OtherData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18FEDBDD258A574A00CD9163 /* OtherData.swift */; };
 		7DEED95F9456EB187E894AD7 /* Pods_Spine.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DF920189D53FA29F2F788086 /* Pods_Spine.framework */; };
+		F1D889A425CAA780000ED8AE /* AsyncImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1D889A325CAA780000ED8AE /* AsyncImage.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -189,6 +190,7 @@
 		85B0F029B5D17F0B389B7556 /* Pods-Spine.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Spine.debug.xcconfig"; path = "Target Support Files/Pods-Spine/Pods-Spine.debug.xcconfig"; sourceTree = "<group>"; };
 		C13328C333B988C2B26F39D3 /* Pods-Spine.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Spine.debug.xcconfig"; path = "Target Support Files/Pods-Spine/Pods-Spine.debug.xcconfig"; sourceTree = "<group>"; };
 		DF920189D53FA29F2F788086 /* Pods_Spine.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Spine.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F1D889A325CAA780000ED8AE /* AsyncImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncImage.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -219,6 +221,7 @@
 				183C9FAD25B6FC6D00465D8D /* PostHandler.swift */,
 				183C9FBE25B70C2400465D8D /* FavouritPostHandler.swift */,
 				1805B5E525A59CE300CE4C01 /* APIHandler.swift */,
+				F1D889A325CAA780000ED8AE /* AsyncImage.swift */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -621,6 +624,7 @@
 				1821273125A2E866001B1553 /* EventModel.swift in Sources */,
 				18A22CBE2587525700020B28 /* LoginModel.swift in Sources */,
 				1893E0C2257E352A00B62212 /* TrendingCatDetail.swift in Sources */,
+				F1D889A425CAA780000ED8AE /* AsyncImage.swift in Sources */,
 				182C6CBD259074EA00742B1F /* PostView.swift in Sources */,
 				18251306257A099A00C315C2 /* EventView.swift in Sources */,
 				182B344D259468A100DFCEF3 /* PlusButtonView.swift in Sources */,

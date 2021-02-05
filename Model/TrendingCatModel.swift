@@ -26,7 +26,7 @@ struct TrendingCatModel : Codable {
         message = try values.decodeIfPresent(String.self, forKey: .message)
     }
     
-    struct Data : Codable {
+    struct Data : Codable, Hashable {
         let id : String?
         let users_id : String?
         let hash_title : String?

@@ -22,10 +22,9 @@ public class FollowersViewModel: ObservableObject, Identifiable {
     private var disposables: Set<AnyCancellable> = []
     
     var followersHandler = FollowersHandler()
-    
-    @Published var woofUrl = false
-    @Published var data:[FollowersModel.Data] = []
    
+    @Published var woofUrl = false
+    @Published var data = [FollowersModel.Data]()
     
 
     private var isLoadingPublisher: AnyPublisher<Bool, Never> {
@@ -56,8 +55,7 @@ public class FollowersViewModel: ObservableObject, Identifiable {
 
                     return []
                 }
-                return response.data ?? []
-
+                return (response.data ?? []) as [FollowersModel.Data]
         }
         .eraseToAnyPublisher()
     }

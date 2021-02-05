@@ -37,39 +37,29 @@ struct FollowersModel : Codable {
         image = try values.decodeIfPresent(String.self, forKey: .image)
         message = try values.decodeIfPresent(String.self, forKey: .message)
     }
+
     
-    struct Data : Codable {
-        let tbl_users_user_id : String?
-        let tbl_users_user_name : String?
-        let id : String?
-        let user_id : String?
-        let follow_user_id : String?
-        let private_req : String?
-        let created_on : String?
+    struct Data : Codable, Hashable {
+        let user_name : String?
+        let profile_pic : String?
+        let users_id : String?
+        let town : String?
 
         enum CodingKeys: String, CodingKey {
 
-            case tbl_users_user_id = "tbl_users_user_id"
-            case tbl_users_user_name = "tbl_users_user_name"
-            case id = "id"
-            case user_id = "user_id"
-            case follow_user_id = "follow_user_id"
-            case private_req = "private_req"
-            case created_on = "created_on"
+            case user_name = "user_name"
+            case profile_pic = "profile_pic"
+            case users_id = "users_id"
+            case town = "town"
         }
 
         init(from decoder: Decoder) throws {
             let values = try decoder.container(keyedBy: CodingKeys.self)
-            tbl_users_user_id = try values.decodeIfPresent(String.self, forKey: .tbl_users_user_id)
-            tbl_users_user_name = try values.decodeIfPresent(String.self, forKey: .tbl_users_user_name)
-            id = try values.decodeIfPresent(String.self, forKey: .id)
-            user_id = try values.decodeIfPresent(String.self, forKey: .user_id)
-            follow_user_id = try values.decodeIfPresent(String.self, forKey: .follow_user_id)
-            private_req = try values.decodeIfPresent(String.self, forKey: .private_req)
-            created_on = try values.decodeIfPresent(String.self, forKey: .created_on)
+            user_name = try values.decodeIfPresent(String.self, forKey: .user_name)
+            profile_pic = try values.decodeIfPresent(String.self, forKey: .profile_pic)
+            users_id = try values.decodeIfPresent(String.self, forKey: .users_id)
+            town = try values.decodeIfPresent(String.self, forKey: .town)
         }
 
     }
-
-
 }

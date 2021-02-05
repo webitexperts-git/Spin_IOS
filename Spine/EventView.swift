@@ -79,6 +79,7 @@ struct Event: Identifiable {
     
 }
 
+
 struct EventRow: View {
     var event: Event
     

@@ -29,7 +29,7 @@ struct StoriesModel : Codable {
         message = try values.decodeIfPresent(String.self, forKey: .message)
     }
     
-    struct Data : Codable {
+    struct Data : Codable, Hashable {
         let id : String?
         let user_id : String?
         let type : String?

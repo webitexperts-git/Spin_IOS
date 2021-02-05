@@ -20,7 +20,7 @@ struct appConstants {
     static let kwelcomeData = "other/getWelcomeData"
     static let kforgetPassword = "login/forgetPassword"
     static let kaddUserStories = "/stories/addUserStories"
-    
+    static let khashtagList = "hashtag/hashtagList"
     
     
     
