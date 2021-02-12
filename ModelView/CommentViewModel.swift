@@ -1,8 +1,8 @@
 //
-//  TrendingCatViewModel.swift
+//  CommentViewModel.swift
 //  Spine
 //
-//  Created by apple on 18/01/21.
+//  Created by Aashita Tyagi on 10/02/21.
 //
 
 import Foundation
@@ -11,7 +11,7 @@ import Combine
 import Alamofire
 
 
-public class FavouritViewModel: ObservableObject, Identifiable {
+public class CommentViewModel: ObservableObject, Identifiable {
 
 
     @Published var isLoggedIn = false
@@ -21,21 +21,21 @@ public class FavouritViewModel: ObservableObject, Identifiable {
 
     private var disposables: Set<AnyCancellable> = []
 
-    var favouriteHandler = FavouritPostHandler()
+    var commentHandler = CommentHandler()
 
     @Published var woofUrl = false
 //    @Published var data = [TrendinFgCatModel.Data]()
 
 
     private var isLoadingPublisher: AnyPublisher<Bool, Never> {
-        favouriteHandler.$isLoading
+        commentHandler.$isLoading
             .receive(on: RunLoop.main)
             .map { $0 }
             .eraseToAnyPublisher()
     }
 
     private var isAuthenticatedPublisher: AnyPublisher<Bool, Never> {
-        favouriteHandler.$favouritPostDataResponse
+        commentHandler.$commentDataResponse
             .receive(on: RunLoop.main)
             .map { response in
                 guard let response = response else {
@@ -47,6 +47,8 @@ public class FavouritViewModel: ObservableObject, Identifiable {
     }
 
 
+   
+
     init() {
         isLoadingPublisher
             .receive(on: RunLoop.main)
@@ -57,12 +59,12 @@ public class FavouritViewModel: ObservableObject, Identifiable {
             .receive(on: RunLoop.main)
             .assign(to: \.woofUrl, on: self)
             .store(in: &disposables)
-//                print(woofUrl)
+                print(woofUrl)
 
     }
     
-    func getFavouriteData(id: String) {
-        favouriteHandler.getFavouriteData(id:id)
+    func getCommentData() {
+        commentHandler.getCommentData()
     }
 
 }

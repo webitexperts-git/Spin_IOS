@@ -22,7 +22,7 @@ import Alamofire
 
 public class PostViewModel: ObservableObject, Identifiable {
     
-
+    @Published var comment = ""
     @Published var isLoggedIn = false
     @Published var isLoading = false
     

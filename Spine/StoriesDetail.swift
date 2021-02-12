@@ -25,36 +25,35 @@ struct StoriesDetail: View {
     ]
     
     var body: some View {
-//        NavigationView {
-        Text("Discover moments of Peopel's lifes and get inspired by them.")
-                    .font(.subheadline).multilineTextAlignment(.center)
-            .font(Font.system(size: 16)).foregroundColor(.gray)
-            .padding()
+        VStack(){
+        Text("Discover moments of People's lifes and inspired by them.").font(.subheadline).foregroundColor(.gray).multilineTextAlignment(.center)
+        }.padding()
         List {
         ForEach(data) { items in
         ForEach(0..<3) { item in
         CollectionView(data: items)
           }
         }
-        }
+    }
         .navigationTitle("STORIES").foregroundColor(.black)
-//        .toolbar { // <2>
-//            ToolbarItem(placement: .principal) { // <3>
-//                VStack {
-//                    Text("STORIES").font(.headline)
-//
+        .navigationBarTitleDisplayMode(.inline)
+//                .toolbar { // <2>
+//                    ToolbarItem(placement: .principal) { // <3>
+//                        VStack {
+//                            Text("Stories").font(.headline)
+//                            Text("Discover moments of People's lifes and inspired by them.").font(.subheadline)
+//                        }
+//                    }
 //                }
-//            }
-//        }
-//        }.navigationBarHidden(true)
-}
+    }
 }
 
 struct CollectionView: View {
     let data: DataModel
     var body: some View {
+       
         VStack {
-         
+          
             HStack {
                 ForEach(0..<3) { items in
                     Spacer()

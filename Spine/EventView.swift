@@ -60,6 +60,7 @@ struct ButtonView: View {
                         .shadow(radius: 5)
     //                    .padding()
                     
+                    
                 }
             }
         }
@@ -106,6 +107,7 @@ struct EventRow: View {
                         }
                         HStack(spacing: 180){
                             Text(event.day).font(.subheadline).foregroundColor(.black)
+                            Spacer()
                             Text("$75").font(.subheadline).foregroundColor(.black)
                         }
                        
@@ -121,6 +123,9 @@ struct EventRow: View {
             Spacer()
         }
     }
+
+
+
 
 
 struct EventView:View {

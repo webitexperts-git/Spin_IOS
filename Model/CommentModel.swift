@@ -1,14 +1,12 @@
 //
-//  FavouritPostModel.swift
+//  CommentModel.swift
 //  Spine
 //
-//  Created by apple on 19/01/21.
+//  Created by Aashita Tyagi on 10/02/21.
 //
 
 import Foundation
-
-
-struct FavouritPostModel : Codable {
+struct CommentModel : Codable {
     let status : Bool?
     let message : String?
 

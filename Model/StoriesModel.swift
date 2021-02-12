@@ -8,28 +8,56 @@
 import Foundation
 
 struct StoriesModel : Codable {
-    let status : Bool?
-    let data : [Data]?
-    let image : String?
-    let message : String?
+    
+        let status : Bool?
+        let data : [Data]?
+        let current_page : String?
+        let current_per_page : String?
+        let image : String?
+        let message : String?
 
-    enum CodingKeys: String, CodingKey {
+        enum CodingKeys: String, CodingKey {
 
-        case status = "status"
-        case data = "data"
-        case image = "image"
-        case message = "message"
-    }
+            case status = "status"
+            case data = "data"
+            case current_page = "current_page"
+            case current_per_page = "current_per_page"
+            case image = "image"
+            case message = "message"
+        }
 
-    init(from decoder: Decoder) throws {
-        let values = try decoder.container(keyedBy: CodingKeys.self)
-        status = try values.decodeIfPresent(Bool.self, forKey: .status)
-        data = try values.decodeIfPresent([Data].self, forKey: .data)
-        image = try values.decodeIfPresent(String.self, forKey: .image)
-        message = try values.decodeIfPresent(String.self, forKey: .message)
-    }
+        init(from decoder: Decoder) throws {
+            let values = try decoder.container(keyedBy: CodingKeys.self)
+            status = try values.decodeIfPresent(Bool.self, forKey: .status)
+            data = try values.decodeIfPresent([Data].self, forKey: .data)
+            current_page = try values.decodeIfPresent(String.self, forKey: .current_page)
+            current_per_page = try values.decodeIfPresent(String.self, forKey: .current_per_page)
+            image = try values.decodeIfPresent(String.self, forKey: .image)
+            message = try values.decodeIfPresent(String.self, forKey: .message)
+        }
     
     struct Data : Codable, Hashable {
+        let user_id : String?
+        let name : String?
+        let stories_data : [Stories_data]?
+
+        enum CodingKeys: String, CodingKey {
+
+            case user_id = "user_id"
+            case name = "name"
+            case stories_data = "stories_data"
+        }
+
+        init(from decoder: Decoder) throws {
+            let values = try decoder.container(keyedBy: CodingKeys.self)
+            user_id = try values.decodeIfPresent(String.self, forKey: .user_id)
+            name = try values.decodeIfPresent(String.self, forKey: .name)
+            stories_data = try values.decodeIfPresent([Stories_data].self, forKey: .stories_data)
+        }
+
+    
+    
+    struct Stories_data : Codable, Hashable, Identifiable {
         let id : String?
         let user_id : String?
         let type : String?
@@ -68,5 +96,8 @@ struct StoriesModel : Codable {
 
     }
 
-
 }
+
+    }
+
+

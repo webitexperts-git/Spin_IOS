@@ -67,3 +67,4 @@ class singleton: NSObject {
         NotificationCenter.default.removeObserver(self,name: .reachabilityChanged, object: reachability)
     }
 }
+

@@ -86,6 +86,19 @@
 		18A22CC225875E0C00020B28 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A22CC125875E0C00020B28 /* LoginViewModel.swift */; };
 		18FEDBDE258A574A00CD9163 /* OtherData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18FEDBDD258A574A00CD9163 /* OtherData.swift */; };
 		7DEED95F9456EB187E894AD7 /* Pods_Spine.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DF920189D53FA29F2F788086 /* Pods_Spine.framework */; };
+		F16D1C0525D411C0000BCFF8 /* CommentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F16D1C0425D411C0000BCFF8 /* CommentModel.swift */; };
+		F16D1C0825D41215000BCFF8 /* CommentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F16D1C0725D41215000BCFF8 /* CommentViewModel.swift */; };
+		F16D1C0B25D4122D000BCFF8 /* CommentHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = F16D1C0A25D4122D000BCFF8 /* CommentHandler.swift */; };
+		F16D504325D647AF00A7877A /* StoriesDetailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F16D504225D647AF00A7877A /* StoriesDetailModel.swift */; };
+		F16D504625D647C900A7877A /* StoriesDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F16D504525D647C900A7877A /* StoriesDetailViewModel.swift */; };
+		F16D504925D647ED00A7877A /* StoriesDetailHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = F16D504825D647ED00A7877A /* StoriesDetailHandler.swift */; };
+		F18B70BF25D107E3009B141A /* UserPostViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F18B70BE25D107E3009B141A /* UserPostViewModel.swift */; };
+		F18B70C225D107F8009B141A /* UserPostModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F18B70C125D107F8009B141A /* UserPostModel.swift */; };
+		F18B70C625D1084D009B141A /* UserPostHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = F18B70C525D1084D009B141A /* UserPostHandler.swift */; };
+		F18B70D025D17515009B141A /* FollowingHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = F18B70CF25D17515009B141A /* FollowingHandler.swift */; };
+		F18B70D325D17530009B141A /* FollowingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F18B70D225D17530009B141A /* FollowingViewModel.swift */; };
+		F18B70D625D17544009B141A /* FollowingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F18B70D525D17544009B141A /* FollowingModel.swift */; };
+		F192E46E25D69E98005B634F /* PostQuestionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F192E46D25D69E98005B634F /* PostQuestionView.swift */; };
 		F1D889A425CAA780000ED8AE /* AsyncImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1D889A325CAA780000ED8AE /* AsyncImage.swift */; };
 /* End PBXBuildFile section */
 
@@ -190,6 +203,19 @@
 		85B0F029B5D17F0B389B7556 /* Pods-Spine.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Spine.debug.xcconfig"; path = "Target Support Files/Pods-Spine/Pods-Spine.debug.xcconfig"; sourceTree = "<group>"; };
 		C13328C333B988C2B26F39D3 /* Pods-Spine.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Spine.debug.xcconfig"; path = "Target Support Files/Pods-Spine/Pods-Spine.debug.xcconfig"; sourceTree = "<group>"; };
 		DF920189D53FA29F2F788086 /* Pods_Spine.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Spine.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F16D1C0425D411C0000BCFF8 /* CommentModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentModel.swift; sourceTree = "<group>"; };
+		F16D1C0725D41215000BCFF8 /* CommentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentViewModel.swift; sourceTree = "<group>"; };
+		F16D1C0A25D4122D000BCFF8 /* CommentHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentHandler.swift; sourceTree = "<group>"; };
+		F16D504225D647AF00A7877A /* StoriesDetailModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoriesDetailModel.swift; sourceTree = "<group>"; };
+		F16D504525D647C900A7877A /* StoriesDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoriesDetailViewModel.swift; sourceTree = "<group>"; };
+		F16D504825D647ED00A7877A /* StoriesDetailHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoriesDetailHandler.swift; sourceTree = "<group>"; };
+		F18B70BE25D107E3009B141A /* UserPostViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPostViewModel.swift; sourceTree = "<group>"; };
+		F18B70C125D107F8009B141A /* UserPostModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPostModel.swift; sourceTree = "<group>"; };
+		F18B70C525D1084D009B141A /* UserPostHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPostHandler.swift; sourceTree = "<group>"; };
+		F18B70CF25D17515009B141A /* FollowingHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowingHandler.swift; sourceTree = "<group>"; };
+		F18B70D225D17530009B141A /* FollowingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowingViewModel.swift; sourceTree = "<group>"; };
+		F18B70D525D17544009B141A /* FollowingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowingModel.swift; sourceTree = "<group>"; };
+		F192E46D25D69E98005B634F /* PostQuestionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostQuestionView.swift; sourceTree = "<group>"; };
 		F1D889A325CAA780000ED8AE /* AsyncImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncImage.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -222,6 +248,10 @@
 				183C9FBE25B70C2400465D8D /* FavouritPostHandler.swift */,
 				1805B5E525A59CE300CE4C01 /* APIHandler.swift */,
 				F1D889A325CAA780000ED8AE /* AsyncImage.swift */,
+				F18B70C525D1084D009B141A /* UserPostHandler.swift */,
+				F18B70CF25D17515009B141A /* FollowingHandler.swift */,
+				F16D1C0A25D4122D000BCFF8 /* CommentHandler.swift */,
+				F16D504825D647ED00A7877A /* StoriesDetailHandler.swift */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -250,6 +280,10 @@
 				183C9FB225B6FCB200465D8D /* PostModel.swift */,
 				183C9FB825B70BF300465D8D /* FavouritPostModel.swift */,
 				1821273025A2E866001B1553 /* EventModel.swift */,
+				F18B70C125D107F8009B141A /* UserPostModel.swift */,
+				F18B70D525D17544009B141A /* FollowingModel.swift */,
+				F16D1C0425D411C0000BCFF8 /* CommentModel.swift */,
+				F16D504225D647AF00A7877A /* StoriesDetailModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -268,6 +302,10 @@
 				183C9FB025B6FC9400465D8D /* PostViewModel.swift */,
 				183C9FBB25B70C0800465D8D /* FavouritViewModel.swift */,
 				1821272D25A2E846001B1553 /* EventViewModel.swift */,
+				F18B70BE25D107E3009B141A /* UserPostViewModel.swift */,
+				F18B70D225D17530009B141A /* FollowingViewModel.swift */,
+				F16D1C0725D41215000BCFF8 /* CommentViewModel.swift */,
+				F16D504525D647C900A7877A /* StoriesDetailViewModel.swift */,
 			);
 			path = ModelView;
 			sourceTree = "<group>";
@@ -322,6 +360,7 @@
 				180902C7258BBA2900BB996E /* ActivitiesView.swift */,
 				182C6CBC259074EA00742B1F /* PostView.swift */,
 				182B344C259468A100DFCEF3 /* PlusButtonView.swift */,
+				F192E46D25D69E98005B634F /* PostQuestionView.swift */,
 				18675F1625543EE300758F81 /* Assets.xcassets */,
 				18675F1B25543EE300758F81 /* LaunchScreen.storyboard */,
 				EF6AEC45BE58E3D2AB7AE26B /* Pods */,
@@ -576,6 +615,7 @@
 				18675F522554671400758F81 /* IQUIViewController+Additions.m in Sources */,
 				1821F0FF25678EBE00F77583 /* Home.swift in Sources */,
 				1821F108256794C800F77583 /* ForgetPassword.swift in Sources */,
+				F18B70D325D17530009B141A /* FollowingViewModel.swift in Sources */,
 				1835CD6425A6D202004A2F63 /* TextFields.swift in Sources */,
 				1805B5EA25A59D4600CE4C01 /* LoadingView.swift in Sources */,
 				18675F482554671400758F81 /* IQToolbar.m in Sources */,
@@ -585,7 +625,10 @@
 				18675F4A2554671400758F81 /* IQBarButtonItem.m in Sources */,
 				1809E0AA256CD8A20007E9B2 /* EmailOTPVerification.swift in Sources */,
 				1805B5ED25A59D5100CE4C01 /* LoadingIndicator.swift in Sources */,
+				F16D1C0525D411C0000BCFF8 /* CommentModel.swift in Sources */,
+				F18B70BF25D107E3009B141A /* UserPostViewModel.swift in Sources */,
 				1805B60025A5C27600CE4C01 /* HomeHandler.swift in Sources */,
+				F18B70C625D1084D009B141A /* UserPostHandler.swift in Sources */,
 				183C9FAE25B6FC6D00465D8D /* PostHandler.swift in Sources */,
 				187B70D5256849960055E5D0 /* singleton.swift in Sources */,
 				18A22CC225875E0C00020B28 /* LoginViewModel.swift in Sources */,
@@ -598,6 +641,7 @@
 				1805B60325A5C29A00CE4C01 /* HomeViewModel.swift in Sources */,
 				18578CF825B5542B00D70D98 /* HomeImpulseHandler.swift in Sources */,
 				18675F512554671400758F81 /* IQUIView+Hierarchy.m in Sources */,
+				F16D504325D647AF00A7877A /* StoriesDetailModel.swift in Sources */,
 				1809E0AD256CD8BA0007E9B2 /* PhoneOTPVerification.swift in Sources */,
 				18675F4F2554671400758F81 /* IQUITextFieldView+Additions.m in Sources */,
 				183C9FBF25B70C2400465D8D /* FavouritPostHandler.swift in Sources */,
@@ -609,18 +653,23 @@
 				18675F532554671400758F81 /* IQKeyboardReturnKeyHandler.m in Sources */,
 				1805B5E625A59CE300CE4C01 /* APIHandler.swift in Sources */,
 				18578CFB25B5BC6E00D70D98 /* StoriesHandler.swift in Sources */,
+				F16D504625D647C900A7877A /* StoriesDetailViewModel.swift in Sources */,
 				18578D0725B5BCEE00D70D98 /* TrendingCatViewModel.swift in Sources */,
 				18675F502554671400758F81 /* IQUIScrollView+Additions.m in Sources */,
+				F192E46E25D69E98005B634F /* PostQuestionView.swift in Sources */,
 				1821F0F625678E8700F77583 /* Registration.swift in Sources */,
 				180902C5258B793200BB996E /* SettingsView.swift in Sources */,
 				1821F1052567949F00F77583 /* PhoneVerification.swift in Sources */,
 				183C9FB125B6FC9400465D8D /* PostViewModel.swift in Sources */,
 				18767E6525A712CE00AF8943 /* ForgetPasswordView.swift in Sources */,
+				F18B70D025D17515009B141A /* FollowingHandler.swift in Sources */,
 				1821F1022567947600F77583 /* EmailVerification.swift in Sources */,
 				1821272E25A2E846001B1553 /* EventViewModel.swift in Sources */,
 				1893E0BF257E348E00B62212 /* StoriesDetail.swift in Sources */,
+				F16D1C0B25D4122D000BCFF8 /* CommentHandler.swift in Sources */,
 				18578D1325B5BE2000D70D98 /* FollowersModel.swift in Sources */,
 				18675F472554671300758F81 /* IQTextView.m in Sources */,
+				F16D1C0825D41215000BCFF8 /* CommentViewModel.swift in Sources */,
 				1821273125A2E866001B1553 /* EventModel.swift in Sources */,
 				18A22CBE2587525700020B28 /* LoginModel.swift in Sources */,
 				1893E0C2257E352A00B62212 /* TrendingCatDetail.swift in Sources */,
@@ -631,13 +680,16 @@
 				182B346525947B6A00DFCEF3 /* RegisterModel.swift in Sources */,
 				18767E6E25A71AB600AF8943 /* ForgetViewModel.swift in Sources */,
 				18578D0A25B5BCFD00D70D98 /* TrendingCatModel.swift in Sources */,
+				F18B70D625D17544009B141A /* FollowingModel.swift in Sources */,
 				1821272B25A2E813001B1553 /* HomeModel.swift in Sources */,
 				180902C8258BBA2900BB996E /* ActivitiesView.swift in Sources */,
 				18675F1325543EDF00758F81 /* SceneDelegate.swift in Sources */,
+				F18B70C225D107F8009B141A /* UserPostModel.swift in Sources */,
 				183C9FBC25B70C0800465D8D /* FavouritViewModel.swift in Sources */,
 				18675F1525543EDF00758F81 /* ContentView.swift in Sources */,
 				18767E6825A718B100AF8943 /* ForgetHandler.swift in Sources */,
 				1821F0F925678E9900F77583 /* Login.swift in Sources */,
+				F16D504925D647ED00A7877A /* StoriesDetailHandler.swift in Sources */,
 				18578D0425B5BCD900D70D98 /* TrendingCatHandler.swift in Sources */,
 				183C9FB925B70BF300465D8D /* FavouritPostModel.swift in Sources */,
 				18FEDBDE258A574A00CD9163 /* OtherData.swift in Sources */,

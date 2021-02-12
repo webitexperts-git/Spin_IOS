@@ -25,6 +25,7 @@ public class StoriesViewModel: ObservableObject, Identifiable {
     
     @Published var woofUrl = false
     @Published var data = [StoriesModel.Data]()
+//    @Published var stories_data = [StoriesModel.Data.Stories_data]()
    
     
 
@@ -62,6 +63,22 @@ public class StoriesViewModel: ObservableObject, Identifiable {
         .eraseToAnyPublisher()
     }
     
+//    private var isDataStoriesPublisher: AnyPublisher<[StoriesModel.Data.Stories_data], Never> {
+//        storiesHandler.$storiesDataResponse
+//            .receive(on: RunLoop.main)
+//            .map { response in
+//                guard let response = response else {
+//
+//                    return []
+//                }
+//                print(response.data?[0].stories_data ?? [])
+//                return (response.data?[0].stories_data ?? []) as [StoriesModel.Data.Stories_data]
+//
+//
+//        }
+//        .eraseToAnyPublisher()
+//    }
+    
    
     
     init() {
@@ -81,7 +98,17 @@ public class StoriesViewModel: ObservableObject, Identifiable {
             .assign(to: \.data, on: self)
             .store(in: &disposables)
             print("HomeViewImpulseModelData",data)
+        
+        
+//        isDataStoriesPublisher
+//            .receive(on: RunLoop.main)
+//            .assign(to: \.stories_data, on: self)
+//            .store(in: &disposables)
+//        print("HomeViewImpulseModelData",stories_data)
     }
+    
+  
+
     
     func getStoriesData() {
         storiesHandler.getStoriesData()
