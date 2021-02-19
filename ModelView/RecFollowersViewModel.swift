@@ -1,19 +1,19 @@
 //
-//  HomeViewImpulseModel.swift
+//  RecFollowersViewModel.swift
 //  Spine
 //
-//  Created by apple on 15/01/21.
+//  Created by Aashita Tyagi on 19/02/21.
 //
-
 
 import Foundation
 import SwiftUI
 import Combine
 import Alamofire
 
-public class HomeViewImpulseModel: ObservableObject, Identifiable {
-    
 
+public class RecFollowersViewModel: ObservableObject, Identifiable {
+    
+   
     @Published var isLoggedIn = false
     @Published var isLoading = false
     
@@ -21,22 +21,22 @@ public class HomeViewImpulseModel: ObservableObject, Identifiable {
     
     private var disposables: Set<AnyCancellable> = []
     
-    var homeImpulseHandler = HomeImpulseHandler()
+    var recFollowersHandler = RecFollowersHandler()
     
     @Published var woofUrl = false
-    @Published var data = [HomeImpulseModel.Data]()
+    @Published var data:[RecFollowersModel.Data] = []
    
     
 
     private var isLoadingPublisher: AnyPublisher<Bool, Never> {
-        homeImpulseHandler.$isLoading
+        recFollowersHandler.$isLoading
             .receive(on: RunLoop.main)
             .map { $0 }
             .eraseToAnyPublisher()
     }
     
     private var isAuthenticatedPublisher: AnyPublisher<Bool, Never> {
-        homeImpulseHandler.$homeImpulseDataResponse
+        recFollowersHandler.$recFollowersDataResponse
             .receive(on: RunLoop.main)
             .map { response in
                 guard let response = response else {
@@ -48,17 +48,17 @@ public class HomeViewImpulseModel: ObservableObject, Identifiable {
     }
     
     
-    
-    private var isDataPublisher: AnyPublisher<[HomeImpulseModel.Data], Never> {
-        homeImpulseHandler.$homeImpulseDataResponse
+    private var isDataPublisher: AnyPublisher<[RecFollowersModel.Data], Never> {
+        recFollowersHandler.$recFollowersDataResponse
             .receive(on: RunLoop.main)
             .map { response in
                 guard let response = response else {
-            return []
-            }
 
-            return response.data! as [HomeImpulseModel.Data]
-    }
+                    return []
+                }
+               
+                return (response.data ?? []) as [RecFollowersModel.Data]
+        }
         .eraseToAnyPublisher()
     }
     
@@ -83,9 +83,8 @@ public class HomeViewImpulseModel: ObservableObject, Identifiable {
             print("HomeViewImpulseModelData",data)
     }
     
-    func getHomeImpulseData() {
-        homeImpulseHandler.getHomeImpulseData()
+    func getRecFollowerstData() {
+        recFollowersHandler.getRecFollowersData()
     }
     
 }
-

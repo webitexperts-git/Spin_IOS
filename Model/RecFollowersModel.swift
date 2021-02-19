@@ -1,13 +1,13 @@
 //
-//  FollowingModel.swift
+//  RecFollowersModel.swift
 //  Spine
 //
-//  Created by Aashita Tyagi on 08/02/21.
+//  Created by Aashita Tyagi on 19/02/21.
 //
 
 import Foundation
 
-struct FollowingModel : Codable {
+struct RecFollowersModel : Codable {
     let status : Bool?
     let total : String?
     let data : [Data]?
@@ -39,43 +39,29 @@ struct FollowingModel : Codable {
     }
     
     struct Data : Codable, Hashable {
-        let tbl_users_user_id : String?
-        let tbl_users_user_name : String?
-        let bio : String?
+        let user_name : String?
         let profile_pic : String?
-        let id : String?
-        let user_id : String?
-        let follow_user_id : String?
-        let private_req : String?
-        let created_on : String?
+        let users_id : String?
+        let town : String?
 
         enum CodingKeys: String, CodingKey {
 
-            case tbl_users_user_id = "tbl_users_user_id"
-            case tbl_users_user_name = "tbl_users_user_name"
-            case bio = "bio"
+            case user_name = "user_name"
             case profile_pic = "profile_pic"
-            case id = "id"
-            case user_id = "user_id"
-            case follow_user_id = "follow_user_id"
-            case private_req = "private_req"
-            case created_on = "created_on"
+            case users_id = "users_id"
+            case town = "town"
         }
 
         init(from decoder: Decoder) throws {
             let values = try decoder.container(keyedBy: CodingKeys.self)
-            tbl_users_user_id = try values.decodeIfPresent(String.self, forKey: .tbl_users_user_id)
-            tbl_users_user_name = try values.decodeIfPresent(String.self, forKey: .tbl_users_user_name)
-            bio = try values.decodeIfPresent(String.self, forKey: .bio)
+            user_name = try values.decodeIfPresent(String.self, forKey: .user_name)
             profile_pic = try values.decodeIfPresent(String.self, forKey: .profile_pic)
-            id = try values.decodeIfPresent(String.self, forKey: .id)
-            user_id = try values.decodeIfPresent(String.self, forKey: .user_id)
-            follow_user_id = try values.decodeIfPresent(String.self, forKey: .follow_user_id)
-            private_req = try values.decodeIfPresent(String.self, forKey: .private_req)
-            created_on = try values.decodeIfPresent(String.self, forKey: .created_on)
+            users_id = try values.decodeIfPresent(String.self, forKey: .users_id)
+            town = try values.decodeIfPresent(String.self, forKey: .town)
         }
 
     }
 
 
 }
+

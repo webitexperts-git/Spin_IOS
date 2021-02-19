@@ -1,19 +1,20 @@
+
 //
-//  HomeViewImpulseModel.swift
+//  UserPostViewModel.swift
 //  Spine
 //
-//  Created by apple on 15/01/21.
+//  Created by Aashita Tyagi on 08/02/21.
 //
-
 
 import Foundation
 import SwiftUI
 import Combine
 import Alamofire
 
-public class HomeViewImpulseModel: ObservableObject, Identifiable {
-    
 
+public class ImpulseCommentViewModel: ObservableObject, Identifiable {
+    
+    @Published var email = ""
     @Published var isLoggedIn = false
     @Published var isLoading = false
     
@@ -21,22 +22,22 @@ public class HomeViewImpulseModel: ObservableObject, Identifiable {
     
     private var disposables: Set<AnyCancellable> = []
     
-    var homeImpulseHandler = HomeImpulseHandler()
+    var impulseCommentHandler = ImpulseCommentHandler()
     
     @Published var woofUrl = false
-    @Published var data = [HomeImpulseModel.Data]()
+    @Published var data:[ImpulseCommentModel.Data] = []
    
     
 
     private var isLoadingPublisher: AnyPublisher<Bool, Never> {
-        homeImpulseHandler.$isLoading
+        impulseCommentHandler.$isLoading
             .receive(on: RunLoop.main)
             .map { $0 }
             .eraseToAnyPublisher()
     }
     
     private var isAuthenticatedPublisher: AnyPublisher<Bool, Never> {
-        homeImpulseHandler.$homeImpulseDataResponse
+        impulseCommentHandler.$impulseCommentDataResponse
             .receive(on: RunLoop.main)
             .map { response in
                 guard let response = response else {
@@ -48,17 +49,17 @@ public class HomeViewImpulseModel: ObservableObject, Identifiable {
     }
     
     
-    
-    private var isDataPublisher: AnyPublisher<[HomeImpulseModel.Data], Never> {
-        homeImpulseHandler.$homeImpulseDataResponse
+    private var isDataPublisher: AnyPublisher<[ImpulseCommentModel.Data], Never> {
+        impulseCommentHandler.$impulseCommentDataResponse
             .receive(on: RunLoop.main)
             .map { response in
                 guard let response = response else {
-            return []
-            }
 
-            return response.data! as [HomeImpulseModel.Data]
-    }
+                    return []
+                }
+               
+                return (response.data ?? []) as [ImpulseCommentModel.Data]
+        }
         .eraseToAnyPublisher()
     }
     
@@ -83,9 +84,11 @@ public class HomeViewImpulseModel: ObservableObject, Identifiable {
             print("HomeViewImpulseModelData",data)
     }
     
-    func getHomeImpulseData() {
-        homeImpulseHandler.getHomeImpulseData()
+    func getImpulseCommentData() {
+        impulseCommentHandler.getImpulseCommentData()
     }
     
 }
+
+
 

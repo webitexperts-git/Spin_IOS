@@ -26,9 +26,10 @@ struct StoriesDetail: View {
     
     var body: some View {
         VStack(){
-        Text("Discover moments of People's lifes and inspired by them.").font(.subheadline).foregroundColor(.gray).multilineTextAlignment(.center)
-        }.padding()
+       
         List {
+            Text("Discover moments of People's lifes and inspired by them.").font(.subheadline).foregroundColor(.gray).multilineTextAlignment(.center)
+            }.padding()
         ForEach(data) { items in
         ForEach(0..<3) { item in
         CollectionView(data: items)
@@ -36,15 +37,8 @@ struct StoriesDetail: View {
         }
     }
         .navigationTitle("STORIES").foregroundColor(.black)
-        .navigationBarTitleDisplayMode(.inline)
-//                .toolbar { // <2>
-//                    ToolbarItem(placement: .principal) { // <3>
-//                        VStack {
-//                            Text("Stories").font(.headline)
-//                            Text("Discover moments of People's lifes and inspired by them.").font(.subheadline)
-//                        }
-//                    }
-//                }
+//        .navigationBarTitleDisplayMode(.inline)
+
     }
 }
 
