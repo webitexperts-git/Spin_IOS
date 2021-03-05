@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct RecFollowersModel : Codable {
+struct RecFollowersModel: Codable {
     let status : Bool?
     let total : String?
     let data : [Data]?
@@ -43,6 +43,8 @@ struct RecFollowersModel : Codable {
         let profile_pic : String?
         let users_id : String?
         let town : String?
+        let category : String?
+        let category_name : String?
 
         enum CodingKeys: String, CodingKey {
 
@@ -50,6 +52,8 @@ struct RecFollowersModel : Codable {
             case profile_pic = "profile_pic"
             case users_id = "users_id"
             case town = "town"
+            case category = "category"
+            case category_name = "category_name"
         }
 
         init(from decoder: Decoder) throws {
@@ -58,10 +62,11 @@ struct RecFollowersModel : Codable {
             profile_pic = try values.decodeIfPresent(String.self, forKey: .profile_pic)
             users_id = try values.decodeIfPresent(String.self, forKey: .users_id)
             town = try values.decodeIfPresent(String.self, forKey: .town)
+            category = try values.decodeIfPresent(String.self, forKey: .category)
+            category_name = try values.decodeIfPresent(String.self, forKey: .category_name)
         }
 
     }
 
 
 }
-

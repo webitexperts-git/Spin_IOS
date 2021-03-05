@@ -15,6 +15,7 @@ struct Registration: View {
     @State var town: String = ""
     @State var alertMsg = ""
     @State var showAlert = false
+//    @State var verification_pin: String = ""
   
     @ObservedObject var model = RegisterViewModel()
 //    @ObservedObject var registerViewModel: RegisterViewModel = RegisterViewModel()
@@ -95,8 +96,7 @@ struct Registration: View {
                         .padding(.bottom,5)
                     }
                    
-                    
-                    NavigationLink(destination: Login(), isActive: .constant($model.woofUrl.wrappedValue != false)) {
+                    NavigationLink(destination: EmailVerification(email: model.email, verificationPin: model.verificationPin, userId: model.userId), isActive: .constant($model.woofUrl.wrappedValue != false)) {
                     VStack {
                         HStack {
                             Text("CONTINUE") .frame(minWidth: 0, maxWidth: 250, minHeight: 0, maxHeight: 40)

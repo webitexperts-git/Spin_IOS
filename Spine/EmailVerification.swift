@@ -11,13 +11,19 @@ struct EmailVerification: View {
     @State private var text: String = ""
     @State private var hasTitle = true
     @State private var isPresented = false
+    @State var email:String
+    @State var verificationPin: String
+    @State var userId:String
+    
+    @ObservedObject var emailVerificationViewModel = EmailVerificationViewModel()
+    
     var body: some View {
         ZStack{
             LinearGradient(gradient: Gradient(colors: [Color(red: 183 / 255, green: 152 / 255, blue: 136 / 255), Color(red: 215 / 255, green: 199 / 255, blue: 181 / 255)]), startPoint: .bottom, endPoint: .top).edgesIgnoringSafeArea(.all)
             
             VStack{
 //
-                Text("srivastava.gaurava@gmail.com").font(.system(size:20)).bold()
+                Text(email).font(.system(size:20)).bold()
                     .foregroundColor(.white)
                     .padding(.bottom, 50)
                 Text("Verification code has been sent to your email. Please check junk folder in case code is not received.").foregroundColor(.white)
@@ -54,7 +60,20 @@ struct EmailVerification: View {
                 
 
                 Button(action: {
-                    self.isPresented.toggle()
+                    print(text)
+                    print(verificationPin)
+                    if text == String(verificationPin){
+                        print("userid",userId)
+                        if(userId != ""){
+                        UserDefaults.standard.setValue(userId, forKey: "user_id")
+                        self.isPresented.toggle()
+                        print("code matched!!!")
+                        callApi()
+                        }
+                    }
+                    
+                    
+//                    self.isPresented.toggle()
                 }) {
                     Text("VERIFY")
                         .frame(minWidth: 0, maxWidth: 250, minHeight: 0, maxHeight: 40)
@@ -76,14 +95,23 @@ struct EmailVerification: View {
 //                            }
 //                        )
         } .frame(maxWidth: .infinity, maxHeight: .infinity)
+        
+     
        
+    }
+    func callApi(){
+        print("Success ho gaya")
+        emailVerificationViewModel.getEmailVerificationData()
+        
     }
 }
 
 
     
-struct EmailVerification_Previews: PreviewProvider {
-    static var previews: some View {
-        EmailVerification()
-    }
-}
+//struct EmailVerification_Previews: PreviewProvider {
+//    @State var email:String
+//    @State var verificationPin: String
+//    static var previews: some View {
+//        EmailVerification(email: email, verificationPin: verificationPin)
+//    }
+//}

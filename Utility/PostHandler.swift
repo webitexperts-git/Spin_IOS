@@ -29,7 +29,7 @@ func getPostData() {
     print(headers)
     
     let userId = UserDefaults.standard.string(forKey: "user_id")!
-    let url = appConstants.kBASE_URL + "post/getSpineUserFollowersPostList/1/10/" + userId + "/0/0"
+    let url = appConstants.kBASE_URL + "post/getSpineUserFollowersPostList/1/100/" + userId + "/0/0"
 
 //    let params:[String:Any] = ["userId": userId]
     

@@ -31,7 +31,7 @@ struct RegisterModel: Codable {
 
 
 
-struct Data : Codable {
+struct Data : Codable,Hashable {
     let users_id : String?
     let name : String?
     let town : String?

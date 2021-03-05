@@ -7,10 +7,11 @@
 
 import SwiftUI
 
+
 struct PlusButtonView: View {
     var body: some View {
         VStack{
-            Text("What would you like to post?").font(.system(size: 25))
+//            Text("What would you like to post?").font(.system(size: 25))
 
                     List {
                         HStack(){
@@ -18,20 +19,16 @@ struct PlusButtonView: View {
                             NavigationLink(destination: PostQuestionView()){
                                 Text("+")
                                     .font(.system(size: 50))
-                                   
+                                    .foregroundColor(Color("backColor"))
                                     .padding(.bottom, 5)
+                                Text("Post a question or thought")
                             }
-//                            NavigationLink(destination: PostQuestionView()){
-//                                .font(.system(size: 50)).foregroundColor(Color("backColor"))
-//
-//                                .padding(.bottom, 5)
-//                            Text("Post a question or thought")
-//                            }
 
                         }
                         HStack(){
                             Text("+")
-                                .font(.system(size: 50)).foregroundColor(Color("backColor"))
+                                .font(.system(size: 50))
+                                .foregroundColor(Color("backColor"))
                                
                                 .padding(.bottom, 5)
                             Text("Post a picture or video")
@@ -46,8 +43,8 @@ struct PlusButtonView: View {
                       
                     }
             Spacer()
-                }
-       
+        }.navigationBarTitleDisplayMode(.inline)
+        .navigationTitle("What would you like to post?")
        
        
     }

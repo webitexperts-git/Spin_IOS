@@ -31,13 +31,20 @@ struct SettingsView: View {
                         }
               
                     }.navigationTitle("Settings")
-           
-                Rectangle()
-                    .frame(width:300, height:80)
-                    .overlay(
-                        LinearGradient(gradient: Gradient(colors: [Color(red: 183 / 255, green: 152 / 255, blue: 136 / 255), Color(red: 215 / 255, green: 199 / 255, blue: 181 / 255)]), startPoint: .bottom, endPoint: .top).opacity(0.8).edgesIgnoringSafeArea(.all))
             
-                Text("LOGOUT").padding()
+            Button(action: {}, label: {
+                Text("INVITE FRIENDS")
+            }).frame(width:300, height:80)
+            .overlay(
+                LinearGradient(gradient: Gradient(colors: [Color(red: 183 / 255, green: 152 / 255, blue: 136 / 255), Color(red: 215 / 255, green: 199 / 255, blue: 181 / 255)]), startPoint: .bottom, endPoint: .top).opacity(0.8).edgesIgnoringSafeArea(.all))
+           
+            
+//                Text("LOGOUT").padding()
+            Button(action: {
+                UserDefaults.standard.setValue(nil, forKeyPath: "user_id")
+            }, label: {
+                Text("LOGOUT")
+            }).padding()
            
                 }
           

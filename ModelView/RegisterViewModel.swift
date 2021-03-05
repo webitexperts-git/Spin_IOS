@@ -20,7 +20,11 @@ public class RegisterViewModel: ObservableObject, Identifiable {
     @Published var user_ip = ""
     @Published var user_latitude = ""
     @Published var user_longitude = ""
-    
+//    @Published var verification_pin = ""
+//    @Published var data = [RegisterModel.Data]()
+    @Published var data:[RegisterModel.Data] = []
+    @Published var verificationPin = ""
+    @Published var userId = ""
     @Published var isLoggedIn = false
     @Published var isLoading = false
     
@@ -47,7 +51,7 @@ public class RegisterViewModel: ObservableObject, Identifiable {
     }
     
     private var isAuthenticatedPublisher: AnyPublisher<Bool, Never> {
-        registerHandler.$woofResponse
+        registerHandler.$woofResponse1
             .receive(on: RunLoop.main)
             .map { response in
                 guard let response = response else {
@@ -58,6 +62,37 @@ public class RegisterViewModel: ObservableObject, Identifiable {
         }
         .eraseToAnyPublisher()
     }
+    
+    
+    private var isDataPublisher: AnyPublisher<String, Never> {
+        registerHandler.$woofResponse1
+            .receive(on: RunLoop.main)
+            .map { response in
+                guard let response = response else {
+                    return ""
+            }
+
+                return (response.data?.verification_pin) ?? ""
+    }
+        .eraseToAnyPublisher()
+    }
+    
+    private var isuserPublisher: AnyPublisher<String, Never> {
+        registerHandler.$woofResponse1
+            .receive(on: RunLoop.main)
+            .map { response in
+                guard let response = response else {
+                    return ""
+            }
+
+                return (response.data?.users_id)!
+    }
+        .eraseToAnyPublisher()
+    }
+    
+    
+    
+    
     
     init() {
         isLoadingPublisher
@@ -70,6 +105,19 @@ public class RegisterViewModel: ObservableObject, Identifiable {
             .assign(to: \.woofUrl, on: self)
             .store(in: &disposables)
         print(woofUrl)
+        
+        
+        isDataPublisher
+            .receive(on: RunLoop.main)
+            .assign(to: \.verificationPin, on: self)
+            .store(in: &disposables)
+            print("Register",verificationPin)
+        
+        isuserPublisher
+            .receive(on: RunLoop.main)
+            .assign(to: \.userId, on: self)
+            .store(in: &disposables)
+            print("Register",userId)
     }
     
     

@@ -7,7 +7,7 @@
 
 import SwiftUI
 import AVKit
-
+import Combine
 
 
 struct TrailRow: View {
@@ -19,19 +19,27 @@ struct TrailRow: View {
 
     @State private var comment: String = ""
     @State private var isShowingRed = false
-
+    @State private var background = ""
+    var color = ""
     var body: some View {
         ZStack{
             VStack(alignment: .leading, spacing: 20) {
                 
               
                 HStack(){
-                    AsyncImage(url: URL(string: "http://wiesoftware.com/spine/assets/upload/spine-post/" + (trail.profile_pic ?? "default.jpg"))!,
+                    
+                    
+                    AsyncImage(url: URL(string: "http://wiesoftware.com/spine/assets/upload/profile/" + (trail.profile_pic ?? "default.jpg"))!,
                                   placeholder: { Text("") },
                                   image: { Image(uiImage: $0).resizable() })
                         .frame(width:80, height:80)
                         .cornerRadius(80/2)
                         .padding(.leading,5)
+                    
+                    
+                    
+                    
+                    
                 Text(trail.post_user_name!).font(.subheadline).foregroundColor(.black)
                     Spacer()
                     
@@ -39,13 +47,72 @@ struct TrailRow: View {
                     
                     
                 }
-
+               
+//                let type = trail.type
+                let color = trail.post_backround_color_id ?? "#B89A8A"
+               
+               let _ = print("MyColor", color)
+              
+              
+//                AsyncImage(url: URL(string: "http://wiesoftware.com/spine/assets/upload/spine-post/" + (trail.files ?? "http://wiesoftware.com/spine/assets/upload/profile/default.jpg"))!,
+//                              placeholder: { Text("") },
+//                              image: { Image(uiImage: $0).resizable() })
+//
+//                    .frame(minWidth: 0, maxWidth: .infinity, minHeight: 200, maxHeight: 200, alignment: .topLeading)
+//
+////                    .background(Color(UIColor(hex: color)))
+//
+//                    .overlay(Text(trail.title!))
                 
-                AsyncImage(url: URL(string: "http://wiesoftware.com/spine/assets/upload/spine-post/" + (trail.files ?? "http://wiesoftware.com/spine/assets/upload/profile/default.jpg"))!,
-                              placeholder: { Text("") },
-                              image: { Image(uiImage: $0).resizable() })
-                    .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: 200, alignment: .topLeading)
-                    .overlay(Text(trail.title!))
+                
+//                let url1 : String = "http://wiesoftware.com/spine/assets/upload/spine-stories/" + (data.stories_data![0].media_file ?? "default.jpg")
+                
+                let url1: String = "http://wiesoftware.com/spine/assets/upload/spine-post/" + (trail.files ?? "http://wiesoftware.com/spine/assets/upload/profile/default.jpg")!
+                
+                
+                let imageExtensions = ["png", "jpg", "gif"]
+
+                let url: URL? = NSURL(fileURLWithPath: url1) as URL
+
+                let pathExtention = url?.pathExtension
+                  
+                if imageExtensions.contains(pathExtention!){
+                    if trail.type! == "1"{
+                    AsyncImage(url: URL(string: "http://wiesoftware.com/spine/assets/upload/spine-post/" + (trail.files ?? "http://wiesoftware.com/spine/assets/upload/profile/default.jpg"))!,
+                                  placeholder: { Text("") },
+                                  image: { Image(uiImage: $0).resizable() })
+                        .frame(minWidth: 0, maxWidth: .infinity, minHeight: 200, maxHeight: 200)
+                    }else{
+                    VStack(alignment: .leading){
+                        Text(trail.title!).foregroundColor(.white).font(.title2).multilineTextAlignment(.center).padding(.bottom)
+                    Text(trail.hashtag_ids!).foregroundColor(.white).font(.title2).multilineTextAlignment(.center)
+                    }  .frame(minWidth: 0, maxWidth: .infinity, minHeight: 200, maxHeight: 200)
+                    
+                    .background(Color(UIColor(hex: color)))
+                    }
+
+                }
+                else{
+                    ZStack{
+                        let player = AVPlayer(url: URL(string: "http://wiesoftware.com/spine/assets/upload/spine-post/" + trail.files!)!)
+                       
+                    VideoPlayer(player: player)
+                        .frame(minWidth: 0, maxWidth: .infinity, minHeight: 200, maxHeight: 200, alignment: .topLeading)
+                   
+                        .background(Color(UIColor(hex: color)))
+                       
+//                        .overlay(Text(trail.title!))
+                        .onAppear() {
+                            player.play()
+                        }
+                }
+            }
+                
+                
+                
+                
+                
+                
                 
                 HStack{
                     Image("heart").resizable().frame(width: 20, height: 20)
@@ -297,6 +364,9 @@ struct SpineView:View{
     @ObservedObject var postModel = PostViewModel()
     @ObservedObject var userPostModel = UserPostViewModel()
     @ObservedObject var followingModel = FollowingViewModel()
+    @ObservedObject var recFollowerModel = RecFollowersViewModel()
+    @ObservedObject var followingListModel = FollowingListViewModel()
+    
     @State private var searchText = ""
     @State private var showCancelButton: Bool = false
     @State private var actionState: Int? = 0
@@ -324,13 +394,16 @@ struct SpineView:View{
             
             HStack {
 //                NavigationView{
+//                    ZStack{
+//                        Color.red
                 NavigationLink(destination: PlusButtonView()){
                     Text("+")
                         .font(.system(size: 50))
                        
                         .padding(.bottom, 5)
                 }
-//                }
+//            }
+//        }
                 
                 HStack {
 
@@ -571,8 +644,14 @@ struct SpineView:View{
                                                     }
                                             }
                                         }
-                                                    Text(data.stories_data![0].title ?? "")
+                                                Text(data.stories_data![0].title ?? "")
+                                                    .frame(width:110).fixedSize(horizontal: true, vertical: false)
+                                                    .foregroundColor(.white).padding(.bottom)
+                                                
+                                                Text(data.name ?? "").bold()
+                                                    .frame(width:110).fixedSize(horizontal: true, vertical: false)
                                                     .foregroundColor(.white)
+                                                        
 //                                            }
 
 
@@ -626,8 +705,8 @@ struct SpineView:View{
                     ScrollView(.horizontal) {
                        
                         HStack(spacing: 10) {
-                            if($followersModel.woofUrl.wrappedValue != false){
-                            ForEach(followersModel.data, id: \.self){data in
+                            if($recFollowerModel.woofUrl.wrappedValue != false){
+                            ForEach(recFollowerModel.data, id: \.self){data in
                                 VStack(spacing: 1){
 //
                                     ZStack{
@@ -646,7 +725,7 @@ struct SpineView:View{
                                 }
                             }
                         }.padding()
-                        .onAppear(perform: getFollowersData)
+                        .onAppear(perform: getRecFollowersData)
                     }.frame(height: 100)
 
                 }.background(Color.black)
@@ -667,44 +746,98 @@ struct SpineView:View{
             else if (selectedSport == 1){
                 Text("STORIES").foregroundColor(.black).font(.system(size: 18)).padding()
              
-                ScrollView(.vertical){
+//                ScrollView(.vertical){
                    
-                VStack(spacing:10){
+//                VStack(spacing:10){
                  
-                ScrollView(.horizontal) {
-                    HStack(spacing: 10) {
-                      
-                        if($followingModel.woofUrl.wrappedValue != false){
-                            ForEach(followingModel.data, id: \.self){data in
-                            VStack(spacing: 1){
-//                                Circle().strokeBorder(Color.white,lineWidth: 4)
-                                AsyncImage(url: URL(string: "http://wiesoftware.com/spine/assets/upload/profile/" + (data.profile_pic ?? "default.jpg"))!,
+//                ScrollView(.horizontal) {
+                    HStack() {
+                        if($storiesModel.woofUrl.wrappedValue != false){
+                            ForEach(storiesModel.data, id: \.self){data in
+                                VStack(spacing: 1){
+                                        
+                                        ZStack{
+                                            VStack(){
+                                               
+                                            let url1 : String = "http://wiesoftware.com/spine/assets/upload/spine-stories/" + (data.stories_data![0].media_file ?? "default.jpg")
+
+                                            let imageExtensions = ["png", "jpg", "gif"]
+
+                                            let url: URL? = NSURL(fileURLWithPath: url1) as URL
+
+                                            let pathExtention = url?.pathExtension
+                                              
+                                            if imageExtensions.contains(pathExtention!){
+                                               
+                                                AsyncImage(url: URL(string: "http://wiesoftware.com/spine/assets/upload/spine-stories/" + (data.stories_data![0].media_file ?? "http://wiesoftware.com/spine/assets/upload/profile/default.jpg"))!,
+                                                              placeholder: { Text("") },
+                                                              image: { Image(uiImage: $0).resizable() })
+                                               
+                                                
+                                                    .clipShape(Circle())
+                                                                .overlay(Circle().stroke(Color.white, lineWidth: 3.0))
+                                                                .frame(width: 70.0, height: 70.0)
+                                            }
+                                            else{
+                                                ZStack{
+                                                    let player = AVPlayer(url: URL(string: "http://wiesoftware.com/spine/assets/upload/spine-stories/" + data.stories_data![0].media_file!)!)
+                                                    Circle().strokeBorder(Color.white,lineWidth: 2)
+                                                    .padding()
+                                                    .frame(width: 80, height: 80)
+//                                                    .clipShape(Circle())
+                                                VideoPlayer(player: player)
+                                                    .frame(width: 80, height: 80)
+                                                    .clipShape(Circle())
+                                                    .onAppear() {
+                                                        player.play()
+                                                    }
+                                            }
+                                        }
+                                                    Text(data.stories_data![0].title ?? "")
+                                                        .frame(width:80)
+                                                    .foregroundColor(.white)
+//                                            }
+
+
+                                            }
+                                        }
+                                }
+                                
+                            }
+                        }
+                           
+                           
+                        }.padding()
+                    .onAppear(perform: getFollowingData)
+                    .frame(height: 100)
+                
+                ScrollView(){
+                if($followingListModel.woofUrl.wrappedValue != false){
+                    ForEach(followingListModel.data, id: \.self){data in
+                        VStack(){
+                            HStack(){
+                                AsyncImage(url: URL(string: "http://wiesoftware.com/spine/assets/upload/profile/" + (data.profile_pic ?? "http://wiesoftware.com/spine/assets/upload/profile/default.jpg"))!,
                                               placeholder: { Text("") },
                                               image: { Image(uiImage: $0).resizable() })
-                                    .frame(width:80, height:80)
+                               
+                                
                                     .clipShape(Circle())
-                                    .overlay(
-                                           RoundedRectangle(cornerRadius: 40)
-                                               .stroke(Color("backColor"), lineWidth: 4)
-                                       )
-                                Text("\(data.tbl_users_user_name!)")
-                                Text("\(data.bio ?? "")")
-
+                                                .overlay(Circle().stroke(Color.white, lineWidth: 3.0))
+                                                .frame(width: 70.0, height: 70.0)
+                                Text(data.post_user_name!)
                             }
-
+                            
+                            
+                           
                         }
-                        }
-
-                    }.padding()
-                    .onAppear(perform: getFollowingData)
-                }.frame(height: 160)
-            }
-                
+                       
+                    }
+                }
+                }.onAppear(perform: getFollowingListData)
 
         }
-            }
            
-//            Spacer()
+            Spacer()
             
         } .navigationBarTitle("")
         .navigationBarHidden(true)
@@ -712,6 +845,10 @@ struct SpineView:View{
 //        }
         
     }
+    
+    private func getFollowingListData() {
+        followingListModel.getFollowingListData()
+        }
     
     private func fetch() {
             model.getHomeWelcomeData()
@@ -728,6 +865,10 @@ struct SpineView:View{
     
     private func getFollowersData(){
         followersModel.getFollowersData()
+    }
+    
+    private func getRecFollowersData(){
+        recFollowerModel.getRecFollowerstData()
     }
     
     private func getTrendingData(){

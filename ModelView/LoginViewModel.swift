@@ -65,16 +65,81 @@ public class LoginViewModel: ObservableObject, Identifiable {
             .receive(on: RunLoop.main)
             .assign(to: \.woofUrl, on: self)
             .store(in: &disposables)
-            print(woofUrl)
+            print("xxxxx",woofUrl)
     }
     
     func getLogin() {
-     
-        loginHandler.getLogin(email: email, password1: password)
        
+        loginHandler.getLogin(email: email, password1: password)
+      
+    }
+    
+    func getSocialLogin() {
+        
+      
+        loginHandler.getSocialLogin()
+      
     }
 
 }
+
+
+extension UIColor {
+    convenience init(hex: String, alpha: CGFloat = 1) {
+        var newHex: String
+        let string : String = hex
+        let characters = Array(string)
+        if hex == "#rt5465"{
+            newHex = "#B89A8A"
+           
+        }else if hex == "0"{
+            newHex = "#B89A8A"
+           
+        }
+        else if characters[0] != "#"{
+            newHex = "#B89A8A"
+           
+        }
+        else{
+            newHex = hex
+           
+        }
+        
+        print("newHex", newHex)
+        
+        assert(newHex[newHex.startIndex] == "#", "Expected hex string of format #RRGGBB")
+        
+        let scanner = Scanner(string: newHex)
+        scanner.scanLocation = 1  // skip #
+        
+        var rgb: UInt32 = 0
+        scanner.scanHexInt32(&rgb)
+        
+        self.init(
+            red:   CGFloat((rgb & 0xFF0000) >> 16)/255.0,
+            green: CGFloat((rgb &   0xFF00) >>  8)/255.0,
+            blue:  CGFloat((rgb &     0xFF)      )/255.0,
+            alpha: alpha)
+    }
     
+    
+    
+}
 
+extension UIColor {
+   convenience init(red: Int, green: Int, blue: Int) {
+       assert(red >= 0 && red <= 255, "Invalid red component")
+       assert(green >= 0 && green <= 255, "Invalid green component")
+       assert(blue >= 0 && blue <= 255, "Invalid blue component")
 
+       self.init(red: CGFloat(red) / 255.0, green: CGFloat(green) / 255.0, blue: CGFloat(blue) / 255.0, alpha: 1.0)
+   }
+
+   convenience init(rgb: Int) {
+       self.init(
+           red: (rgb >> 16) & 0xFF,
+           green: (rgb >> 8) & 0xFF,
+           blue: rgb & 0xFF
+       )
+   }
+}

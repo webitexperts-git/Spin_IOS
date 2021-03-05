@@ -8,6 +8,8 @@
 
 import Alamofire
 import Combine
+import UIKit
+import Foundation
 
 class APIHandler {
         
@@ -22,5 +24,17 @@ class APIHandler {
         case .failure:
             return nil
         }
+    }
+    
+    
+    func alertAction(message:String){
+
+        let alertView = UIAlertController(title: "Alert", message: message, preferredStyle: .alert)
+        var rootViewController = UIApplication.shared.keyWindow?.rootViewController
+               let alertAction = UIAlertAction(title: "ok", style: .cancel) { (alert) in
+                rootViewController?.dismiss(animated: true, completion: nil)
+               }
+               alertView.addAction(alertAction)
+                rootViewController?.present(alertView, animated: true, completion: nil)
     }
 }

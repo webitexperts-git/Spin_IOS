@@ -25,7 +25,7 @@ public class HomeViewImpulseModel: ObservableObject, Identifiable {
     
     @Published var woofUrl = false
     @Published var data = [HomeImpulseModel.Data]()
-   
+//    @Published var date = HomeImpulseModel.Data
     
 
     private var isLoadingPublisher: AnyPublisher<Bool, Never> {
@@ -57,10 +57,35 @@ public class HomeViewImpulseModel: ObservableObject, Identifiable {
             return []
             }
 
-            return response.data! as [HomeImpulseModel.Data]
+                return (response.data ?? []) as [HomeImpulseModel.Data]
     }
         .eraseToAnyPublisher()
     }
+    
+    
+//    @Published var post: String {
+//        didSet {
+//            homeImpulseHandler.homeImpulseDataResponse?.data
+//        }
+//    }
+    
+//    init() {
+//        self.post = UserDefaults.standard.object(forKey: "post") as? String ?? ""
+//    }
+//
+    
+//    private var isDatePublisher: AnyPublisher<HomeImpulseModel.Data, Never> {
+//        homeImpulseHandler.$homeImpulseDataResponse
+//            .receive(on: RunLoop.main)
+//            .map { response in
+//                guard let response = response else {
+//                    return "" as HomeImpulseModel.Data
+//            }
+//
+//                return (response.data![0].created_on!)
+//    }
+//        .eraseToAnyPublisher()
+//    }
     
   
     
@@ -81,7 +106,19 @@ public class HomeViewImpulseModel: ObservableObject, Identifiable {
             .assign(to: \.data, on: self)
             .store(in: &disposables)
             print("HomeViewImpulseModelData",data)
+        
+        
+//        isDatePublisher
+//            .receive(on: RunLoop.main)
+//            .assign(to: \.date, on: self)
+//            .store(in: &disposables)
+//            print("HomeViewImpulseModelData",data)
     }
+    
+  
+
+    
+    
     
     func getHomeImpulseData() {
         homeImpulseHandler.getHomeImpulseData()

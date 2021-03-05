@@ -12,7 +12,7 @@ import Combine
 
 class RegisterHandler: APIHandler {
     
-    @Published var woofResponse: RegisterModel?
+    @Published var woofResponse1: RegisterModel?
     @Published var isLoading = false
   
 
@@ -38,7 +38,11 @@ class RegisterHandler: APIHandler {
             }
                             
             weakSelf.isLoading = false
-            weakSelf.woofResponse = response
+            weakSelf.woofResponse1 = response
+            
+            if(weakSelf.woofResponse1?.status != true){
+                weakSelf.alertAction(message:response.message!)
+            }
         }
     }
     

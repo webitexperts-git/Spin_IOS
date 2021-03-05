@@ -35,6 +35,7 @@ struct ImpulseRow: View {
     var impulse: HomeImpulseModel.Data
     @ObservedObject var userPostModel = UserPostViewModel()
     @ObservedObject var impulseModel = HomeViewImpulseModel()
+    @ObservedObject var date = HomeViewImpulseModel()
     var body: some View {
         ZStack{
             VStack(alignment: .leading, spacing: 20) {
@@ -48,6 +49,8 @@ struct ImpulseRow: View {
                         .clipShape(Circle())
                    
                     Text(impulse.name!).font(.subheadline).foregroundColor(.black)
+                    
+                    
                     Text(impulse.created_on!).font(.subheadline).foregroundColor(.gray)
                 }
                 

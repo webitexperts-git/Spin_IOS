@@ -9,6 +9,38 @@ import SwiftUI
 //import Combine
 
 
+
+struct HeaderButton1:View{
+    var body: some View{
+        VStack(alignment: .leading){
+            Text("ALL")
+            .frame(minWidth: 0, maxWidth: 150, minHeight: 40, maxHeight:40)
+            .background(Color("backColor"))
+            .foregroundColor(Color.white)
+            .cornerRadius(18)
+            .shadow(radius: 5)
+            .padding(.leading, 10)
+    }
+    }
+}
+
+struct HeaderButton2:View{
+    var body: some View{
+        Text("Trending")
+            .frame(minWidth: 0, maxWidth: 180, minHeight: 40, maxHeight:40)
+            .overlay(
+                RoundedRectangle(cornerRadius: 18)
+                    .stroke(Color.gray, lineWidth: 2)
+        )
+            .foregroundColor(Color.gray)
+            .cornerRadius(18)
+            .shadow(radius: 5)
+            .padding(.leading, 10)
+            
+    }
+}
+
+
 struct SpineButtonView1: View {
     @State var label: String
     @ObservedObject var trendingModel = TrendingCatViewModel()
@@ -17,7 +49,7 @@ struct SpineButtonView1: View {
         ZStack {
             
           
-            HStack(spacing: 5)
+            HStack(spacing: 0)
             {
                 Text(label)
                     .frame(width: 200, height: 35)
@@ -25,13 +57,14 @@ struct SpineButtonView1: View {
                     .foregroundColor(Color.white)
                     .cornerRadius(18)
                     .shadow(radius: 5)
+                    .padding(.leading, 10)
                 
                 Spacer()
                 Button(action: {
                        print("sign up bin tapped")
                    }) {
                        Text("+FOLLOW")
-                           .font(.system(size: 15))
+                        .font(.system(size: 15)).bold()
                            .padding()
                            .foregroundColor(Color(red: 237 / 255, green: 215 / 255, blue: 183 / 255))
                    }
@@ -50,42 +83,36 @@ struct TrendingCatDetail: View {
         @ObservedObject var trendingModel = TrendingCatViewModel()
     
     var body: some View {
+        VStack(spacing: 5){
         ScrollView(.vertical){
-       
+//            VStack(){
             HStack(){
            
-                Button(action: {
-                       print("sign up bin tapped")
-                   }) {
-                       Text("All")
-                           .frame(minWidth: 0, maxWidth: 100, minHeight: 0, maxHeight: 18)
-                           .font(.system(size: 18))
-                           .padding()
-                        .foregroundColor(.white)
-                        .background(Color(red: 183 / 255, green: 152 / 255, blue: 136 / 255))
-                        .cornerRadius(18)
-//
-                   }
+                HeaderButton1()
+                HeaderButton2()
                 
-                Button(action: {
-                       print("sign up bin tapped")
-                   }) {
-                    Text("Trending")
-                           .frame(minWidth: 0, maxWidth: 100, minHeight: 0, maxHeight:18)
-                           .font(.system(size: 18))
-                           .padding()
-                           .foregroundColor(.gray)
-                           .overlay(
-                               RoundedRectangle(cornerRadius: 18)
-                                   .stroke(Color.gray, lineWidth: 2)
-                       )
-                   }
+//                Button(action: {
+//                       print("sign up bin tapped")
+//                   }) {
+//                    Text("Trending")
+//                           .frame(minWidth: 0, maxWidth: 100, minHeight: 0, maxHeight:8)
+//                           .font(.system(size: 18))
+//                           .padding()
+//                           .foregroundColor(.gray)
+//                           .overlay(
+//                               RoundedRectangle(cornerRadius: 18)
+//                                   .stroke(Color.gray, lineWidth: 2)
+//                       )
+//                   }
 
                 
         }
+//        }
             
             HStack(){
+            
                 ScrollView(.vertical){
+                   
                 if($trendingModel.woofUrl.wrappedValue != false){
                     ForEach(trendingModel.data, id: \.self){data in
                         VStack(spacing: 1){
@@ -96,26 +123,21 @@ struct TrendingCatDetail: View {
                     }
                 }
                 
-                
-                
-           
-                
-                
-              
-
-                }
             }
+        }
             
             
             
            
             
-    
+        }
             
         }.navigationTitle("CATEGORIES")
         .onAppear(perform: getTrending)
         Spacer()
     }
+    
+
     
     func getTrending(){
         trendingModel.getTrendingData()
