@@ -38,6 +38,7 @@ struct ImpulseRow: View {
     @ObservedObject var date = HomeViewImpulseModel()
     var body: some View {
         ZStack{
+           
             VStack(alignment: .leading, spacing: 20) {
                
                 HStack{
@@ -104,7 +105,7 @@ struct SpineImpulseDetail: View {
     var body: some View {
 
         VStack(alignment:.leading){
-
+            Text("Inspirational thoughts and wishdom to encourage...").multilineTextAlignment(.center).foregroundColor(.gray).padding()
             if($impulseModel.woofUrl.wrappedValue != false){
             List(impulseModel.data, id: \.self){ data in
                 ImpulseRow(impulse: data)
@@ -116,6 +117,7 @@ struct SpineImpulseDetail: View {
         .onAppear(perform: getImpulse)
 
         .navigationTitle("SPINE IMPULSES").foregroundColor(.black)
+        .navigationBarTitleDisplayMode(.inline)
         .toolbar {
             Button("Follow") {
                 print("Help tapped!")

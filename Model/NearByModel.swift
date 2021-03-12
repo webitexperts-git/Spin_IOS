@@ -1,18 +1,18 @@
 //
-//  AllEventModel.swift
+//  NearByModel.swift
 //  Spine
 //
-//  Created by Aashita Tyagi on 01/03/21.
+//  Created by Aashita Tyagi on 10/03/21.
 //
 
 import Foundation
-struct AllEventModel : Codable {
-    var status : Bool?
-    var data : [Data]?
-    var current_page : String?
-    var current_per_page : String?
-    var image : String?
-    var message : String?
+struct NearByModel : Codable {
+    let status : Bool?
+    let data : [Data]?
+    let current_page : String?
+    let current_per_page : String?
+    let image : String?
+    let message : String?
 
     enum CodingKeys: String, CodingKey {
 
@@ -22,8 +22,6 @@ struct AllEventModel : Codable {
         case current_per_page = "current_per_page"
         case image = "image"
         case message = "message"
-        
-       
     }
 
     init(from decoder: Decoder) throws {
@@ -34,13 +32,11 @@ struct AllEventModel : Codable {
         current_per_page = try values.decodeIfPresent(String.self, forKey: .current_per_page)
         image = try values.decodeIfPresent(String.self, forKey: .image)
         message = try values.decodeIfPresent(String.self, forKey: .message)
-        
-      
     }
     
     struct Data : Codable, Hashable {
-        var start_date : String?
-        var records : [Records]?
+        let start_date : String?
+        let records : [Records]?
 
         enum CodingKeys: String, CodingKey {
 
@@ -55,7 +51,7 @@ struct AllEventModel : Codable {
         }
 
     }
-    
+
     struct Records : Codable, Hashable {
         let id : String?
         let user_id : String?
@@ -87,6 +83,7 @@ struct AllEventModel : Codable {
         let updated_on : String?
         let use_name : String?
         let use_display_name : String?
+        let distance : String?
         let total_comment : String?
         let total_save : String?
         let total_share : String?
@@ -125,6 +122,7 @@ struct AllEventModel : Codable {
             case updated_on = "updated_on"
             case use_name = "use_name"
             case use_display_name = "use_display_name"
+            case distance = "distance"
             case total_comment = "total_comment"
             case total_save = "total_save"
             case total_share = "total_share"
@@ -164,6 +162,7 @@ struct AllEventModel : Codable {
             updated_on = try values.decodeIfPresent(String.self, forKey: .updated_on)
             use_name = try values.decodeIfPresent(String.self, forKey: .use_name)
             use_display_name = try values.decodeIfPresent(String.self, forKey: .use_display_name)
+            distance = try values.decodeIfPresent(String.self, forKey: .distance)
             total_comment = try values.decodeIfPresent(String.self, forKey: .total_comment)
             total_save = try values.decodeIfPresent(String.self, forKey: .total_save)
             total_share = try values.decodeIfPresent(String.self, forKey: .total_share)
@@ -172,7 +171,6 @@ struct AllEventModel : Codable {
         }
 
     }
-
 
 
 }

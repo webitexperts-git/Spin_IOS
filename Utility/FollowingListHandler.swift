@@ -30,7 +30,7 @@ func getFollowingListData() {
     print(headers)
     
     let userId = UserDefaults.standard.string(forKey: "user_id")!
-    let url = appConstants.kBASE_URL + "post/getSpineUserFollowersPostList/1/100/" + userId + "/1/1"
+    let url = appConstants.kBASE_URL + "post/getSpineUserFollowersPostList/1/100/" + userId + "/1/0"
 
 //    let params:[String:Any] = ["userId": userId]
     

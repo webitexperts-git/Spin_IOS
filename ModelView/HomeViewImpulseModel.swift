@@ -25,6 +25,7 @@ public class HomeViewImpulseModel: ObservableObject, Identifiable {
     
     @Published var woofUrl = false
     @Published var data = [HomeImpulseModel.Data]()
+//    @Published var date = HomeImpulseModel.Data()
 //    @Published var date = HomeImpulseModel.Data
     
 
@@ -63,30 +64,26 @@ public class HomeViewImpulseModel: ObservableObject, Identifiable {
     }
     
     
-//    @Published var post: String {
-//        didSet {
-//            homeImpulseHandler.homeImpulseDataResponse?.data
-//        }
-//    }
-    
-//    init() {
-//        self.post = UserDefaults.standard.object(forKey: "post") as? String ?? ""
-//    }
-//
-    
 //    private var isDatePublisher: AnyPublisher<HomeImpulseModel.Data, Never> {
 //        homeImpulseHandler.$homeImpulseDataResponse
 //            .receive(on: RunLoop.main)
 //            .map { response in
 //                guard let response = response else {
-//                    return "" as HomeImpulseModel.Data
+//            return ""
 //            }
+//                let date1 = Date()
+//                let date2 = response.data.created_on!
+//                print("date2", date2, date1)
+//                let diffs = Calendar.current.dateComponents([.day], from: date1, to: date2)
+//                print(diffs)
 //
-//                return (response.data![0].created_on!)
+//
+//                return (response.data.created_on ?? "") as String
 //    }
 //        .eraseToAnyPublisher()
 //    }
     
+        
   
     
     init() {
@@ -112,7 +109,7 @@ public class HomeViewImpulseModel: ObservableObject, Identifiable {
 //            .receive(on: RunLoop.main)
 //            .assign(to: \.date, on: self)
 //            .store(in: &disposables)
-//            print("HomeViewImpulseModelData",data)
+//            print("Date",date)
     }
     
   

@@ -1,22 +1,19 @@
 //
-//  AllEventViewModel.swift
+//  NearByViewModel.swift
 //  Spine
 //
-//  Created by Aashita Tyagi on 01/03/21.
+//  Created by Aashita Tyagi on 10/03/21.
 //
 
+import Foundation
 import SwiftUI
 import Combine
 import Alamofire
 
 
-public class AllEventViewModel: ObservableObject, Identifiable {
+public class NearByViewModel: ObservableObject, Identifiable {
     
-    
-    @Published var email = ""
-    @Published var data:[AllEventModel.Data] = []
-    
-    @Published var isLoggedIn = false
+    @Published var string = ""
     @Published var isLoading = false
     
     @Published var shouldNavigate = false
@@ -26,8 +23,8 @@ public class AllEventViewModel: ObservableObject, Identifiable {
     var allEventHandler = AllEventHandler()
     
     @Published var woofUrl = false
-//    @Published var data:[RecFollowersModel.Data] = []
-   
+    @Published var data:[NearByModel.Data] = []
+    
     
 
     private var isLoadingPublisher: AnyPublisher<Bool, Never> {
@@ -38,7 +35,7 @@ public class AllEventViewModel: ObservableObject, Identifiable {
     }
     
     private var isAuthenticatedPublisher: AnyPublisher<Bool, Never> {
-        allEventHandler.$allEventDataResponse
+        allEventHandler.$nearByEventDataResponse
             .receive(on: RunLoop.main)
             .map { response in
                 guard let response = response else {
@@ -50,8 +47,8 @@ public class AllEventViewModel: ObservableObject, Identifiable {
     }
     
     
-    private var isDataPublisher: AnyPublisher<[AllEventModel.Data], Never> {
-        allEventHandler.$allEventDataResponse
+    private var isDataPublisher: AnyPublisher<[NearByModel.Data], Never> {
+        allEventHandler.$nearByEventDataResponse
             .receive(on: RunLoop.main)
             .map { response in
                 guard let response = response else {
@@ -59,28 +56,11 @@ public class AllEventViewModel: ObservableObject, Identifiable {
                     return []
                 }
                
-                return (response.data ?? []) as [AllEventModel.Data]
+                return (response.data ?? []) as [NearByModel.Data]
         }
         .eraseToAnyPublisher()
     }
     
-    
-//    private var isEventPublisher: AnyPublisher<String, Never> {
-//        allEventHandler.$allEventDataResponse
-//            .receive(on: RunLoop.main)
-//            .map { [self] response in
-//                guard let response = response else {
-//
-//                    return ""
-//                }
-//
-//                return (string )
-//        }
-//        .eraseToAnyPublisher()
-//    }
-    
-    
-       
   
     
     init() {
@@ -95,25 +75,17 @@ public class AllEventViewModel: ObservableObject, Identifiable {
             .store(in: &disposables)
 //                print(woofUrl)
         
-        
         isDataPublisher
             .receive(on: RunLoop.main)
             .assign(to: \.data, on: self)
             .store(in: &disposables)
-            print("AllEventsData",data)
+            print("FollowersDetail",data)
         
-//        isEventPublisher
-//            .receive(on: RunLoop.main)
-//            .assign(to: \.string, on: self)
-//            .store(in: &disposables)
-//            print("string",string)
-        
+
     }
     
-    func getAllEventData(event:String) {
-        let event = event
-        print("viewModelstring", event)
-        allEventHandler.getAllEventData(event:event)
+    func getNearByEventData() {
+        allEventHandler.getNearByEventData()
     }
     
 }

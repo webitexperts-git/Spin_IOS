@@ -39,12 +39,14 @@ struct StoriesModel : Codable {
     struct Data : Codable, Hashable {
         let user_id : String?
         let name : String?
+        let display_name : String?
         let stories_data : [Stories_data]?
 
         enum CodingKeys: String, CodingKey {
 
             case user_id = "user_id"
             case name = "name"
+            case display_name = "display_name"
             case stories_data = "stories_data"
         }
 
@@ -52,6 +54,7 @@ struct StoriesModel : Codable {
             let values = try decoder.container(keyedBy: CodingKeys.self)
             user_id = try values.decodeIfPresent(String.self, forKey: .user_id)
             name = try values.decodeIfPresent(String.self, forKey: .name)
+            display_name = try values.decodeIfPresent(String.self, forKey: .display_name)
             stories_data = try values.decodeIfPresent([Stories_data].self, forKey: .stories_data)
         }
 

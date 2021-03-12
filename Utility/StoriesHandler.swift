@@ -29,7 +29,7 @@ func getStoriesData() {
     
     let userId = UserDefaults.standard.string(forKey: "user_id")!
     
-    let url = appConstants.kBASE_URL + "stories/getFollowingUsersStorieList/1/100/130"
+    let url = appConstants.kBASE_URL + "stories/getFollowingUsersStorieList/1/100/" + userId
 //    http://wiesoftware.com/spine/apisecure/stories/getFollowingUsersStorieList/1/100/50
     
     AF.request(url, method: .get, parameters: nil , encoding: URLEncoding.default, headers: headers).responseDecodable { [weak self] (response: DataResponse<StoriesModel, AFError>) in

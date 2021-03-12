@@ -17,17 +17,18 @@ struct ButtonView: View {
     @State private var didTap4:Bool = false
     @State private var didTap5:Bool = false
     @State private var didTap6:Bool = false
-    
-    @State var string = ""
-    
+    @State var eventStatus = ""
     @ObservedObject var allEventViewModel = AllEventViewModel()
+    @ObservedObject var nearByViewModel = NearByViewModel()
+    @StateObject var string = NearByViewModel()
+    
     var body: some View {
         ZStack {
 
             HStack(){
                 
                 Button(action:{
-                    allEvent()
+//                    allEvent()
                     self.didTap = true
                     self.didTap1 = false
                     self.didTap2 = false
@@ -35,6 +36,11 @@ struct ButtonView: View {
                     self.didTap4 = false
                     self.didTap5 = false
                     self.didTap6 = false
+//                    string.string = "all"
+//                    allEvent(event: "all")
+                    eventStatus = "all"
+//                    print("all", allEventViewModel.string)
+                    EventView(eventStatus: $eventStatus).getAllEventData()
                     
                 }){
                     Text("All").padding()
@@ -48,7 +54,7 @@ struct ButtonView: View {
                 
                 
                 Button(action:{
-                    nearBy()
+//                    nearBy()
                     self.didTap = false
                     self.didTap1 = true
                     self.didTap2 = false
@@ -56,8 +62,9 @@ struct ButtonView: View {
                     self.didTap4 = false
                     self.didTap5 = false
                     self.didTap6 = false
-                    self.string = "getUsersEventsList"
-                    
+                    eventStatus = "nearby"
+                    EventView(eventStatus: $eventStatus).getAllEventData()
+
                 }){
                     Text("Nearby").padding()
                        
@@ -67,19 +74,8 @@ struct ButtonView: View {
                 .shadow(radius: 5)
                 
                 
-//                NavigationLink(destination: EventView()){
-//                Text("Nearby").padding()
-////                    .frame(minWidth: 0, maxWidth: 300, minHeight: 0, maxHeight: 40)
-//                    .foregroundColor(Color(red: 237 / 255, green: 215 / 255, blue: 183 / 255))
-//                    .background(Color.white)
-//                    .cornerRadius(18)
-//                    .shadow(radius: 5)
-////                    .padding()
-//
-//            }
-                
                 Button(action:{
-                    allEvent()
+//                    allEvent()
                     self.didTap = false
                     self.didTap1 = false
                     self.didTap2 = true
@@ -99,9 +95,8 @@ struct ButtonView: View {
                 
                 
                 
-                
                 Button(action:{
-                    allEvent()
+//                    allEvent()
                     self.didTap = false
                     self.didTap1 = false
                     self.didTap2 = false
@@ -120,7 +115,7 @@ struct ButtonView: View {
                 
                 
                 Button(action:{
-                    allEvent()
+//                    allEvent()
                     self.didTap = false
                     self.didTap1 = false
                     self.didTap2 = false
@@ -140,7 +135,7 @@ struct ButtonView: View {
                 
                 
                 Button(action:{
-                    allEvent()
+//                    allEvent()
                     self.didTap = false
                     self.didTap1 = false
                     self.didTap2 = false
@@ -160,7 +155,7 @@ struct ButtonView: View {
                 
                 
                 Button(action:{
-                    allEvent()
+//                    allEvent()
                     self.didTap = false
                     self.didTap1 = false
                     self.didTap2 = false
@@ -183,28 +178,35 @@ struct ButtonView: View {
         
     }
     
-    func allEvent(){
-        print("abcd")
-        allEventViewModel.getAllEventData()
-    }
+
     
-    func nearBy(){
-        allEventViewModel.getAllEventData()
+    func getAllEventData(){
+        print("evening", eventStatus)
+        allEventViewModel.getAllEventData(event: eventStatus)
+}
+//
+    func getNearByEventData(event:String){
+        
+//        allEventViewModel.getAllEventData()
     }
 }
 
 
 
 struct EventRow: View {
+   
     var event: AllEventModel.Data
     
+    @State private var hasTitle = true
+    @ObservedObject var nearbyViewModel = NearByViewModel()
     var body: some View {
-       
+
         VStack(alignment:.leading) {
+           
                 Text(event.start_date!)
                 Divider()
 //                HStack{
-          
+//            NavigationLink(destination: EventDetailView()){
                         ForEach(event.records!, id: \.self){ data in
                             NavigationLink(destination: EventDetailView()){
                             ZStack(){
@@ -259,15 +261,106 @@ struct EventRow: View {
                             
                                 }
                 
-                            }}
+                            }.navigationBarTitle(self.hasTitle ? " " : "").foregroundColor(.white)
+                                
+                            }
                 
             
                         }
           
-            Spacer()
+//            Spacer()
     }
         
+   
     }
+   
+}
+
+
+
+
+
+struct EventRow1: View {
+   
+    var event: NearByModel.Data
+    
+    @State private var hasTitle = true
+    @ObservedObject var nearbyViewModel = NearByViewModel()
+    var body: some View {
+
+        VStack(alignment:.leading) {
+           
+                Text(event.start_date!)
+                Divider()
+//                HStack{
+//            NavigationLink(destination: EventDetailView()){
+                        ForEach(event.records!, id: \.self){ data in
+                            NavigationLink(destination: EventDetailView()){
+                            ZStack(){
+                                VStack(){
+                                    HStack(){
+                                       
+                                        VStack(){
+                                          
+                                            AsyncImage(url: URL(string: "http://wiesoftware.com/spine/assets/upload/spine-post/" + (data.file ?? "default.jpg"))!,
+                                                       placeholder: { Text("") },
+                                                       image: { Image(uiImage: $0).resizable() })
+                                                .frame(width:80, height:80)
+                                                .cornerRadius(80/2)
+                                                .padding(.leading,5)
+                                            
+//                                            Image("back") .resizable().frame(width: 80, height: 80)
+//                                .cornerRadius(80/2)
+                                   
+                                Text(data.use_name!).font(.subheadline)
+                                            
+                                
+//                                Spacer()
+                                        }
+                                        VStack(alignment: .leading){
+                                            Text(data.title!).font(.title3).foregroundColor(Color(red: 183 / 255, green: 152 / 255, blue: 136 / 255)).bold()
+                                            Text(data.description!).font(.subheadline).foregroundColor(.black)  .lineLimit(2)
+                                            
+                                            
+                                            Text(data.location!).font(.subheadline).foregroundColor(.gray)
+                                            HStack(){
+                                            Text(data.start_date!).font(.subheadline).foregroundColor(.black)
+                                                Spacer()
+                                                let fee = data.fee_currency! + data.fee!
+                                            Text(fee).font(.subheadline).foregroundColor(.black)
+                                            }
+                                            HStack(){
+                                            Text(data.event_categories!).font(.subheadline).foregroundColor(.black)
+                                                Spacer()
+                                                let type = data.type!
+                                                if(type == "0"){
+                                                    Text("Local").font(.subheadline).foregroundColor(Color(red: 183 / 255, green: 152 / 255, blue: 136 / 255))
+                                                }
+                                            }
+                                        }
+                                Spacer()
+                                Image("bookmark").resizable().frame(width: 25, height: 25, alignment: .trailing)
+                                     
+                            
+
+                       
+                                }
+                            
+                                }
+                
+                            }.navigationBarTitle(self.hasTitle ? " " : "").foregroundColor(.white)
+                                
+                            }
+                
+            
+                        }
+          
+//            Spacer()
+    }
+        
+   
+    }
+   
 }
 
 
@@ -276,23 +369,16 @@ struct EventView:View {
     @State private var showCancelButton: Bool = false
     @State private var favoriteColor = 0
     @ObservedObject var allEventViewModel = AllEventViewModel()
+    @ObservedObject var nearByEventViewModel = NearByViewModel()
+    @EnvironmentObject var string: NearByViewModel
+//    @ObservedObject var event = ScoreModel()
+    @Binding var eventStatus:String
     
     var body: some View{
         NavigationView(){
         VStack(alignment: .leading) {
             HStack {
 
-//                Button(action: {
-//
-//                }) {
-//                    Text("+")
-//
-//                        .frame(width: 40, height: 40)
-//                        .font(.system(size: 50))
-//                        .foregroundColor(Color(red: 237 / 255, green: 215 / 255, blue: 183 / 255))
-//
-//                }.padding(.bottom, 10)
-                
                 NavigationLink(destination: EventPostView()){
                     Text("+")
                         .foregroundColor(Color(red: 237 / 255, green: 215 / 255, blue: 183 / 255))
@@ -349,34 +435,59 @@ struct EventView:View {
                  Spacer()
             
             
-          
-            
+//            if allEventViewModel.string == "all"{
+            ScrollView(){
             if($allEventViewModel.woofUrl.wrappedValue != false){
             
-                List(allEventViewModel.data, id: \.self){ data in
+                ForEach(allEventViewModel.data, id: \.self){ data in
                   
-                EventRow(event: data)
+                    EventRow(event: data)
                  
                     }
-                
-
-//                .frame(minWidth:0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
-            
+                }
+    
             }
+            .onAppear(perform: getAllEventData)
+//            }
+//            if $string.string.wrappedValue == "nearby" {
+////
+//                ScrollView(){
+//                if($nearByEventViewModel.woofUrl.wrappedValue != false){
+//
+//                    ForEach(nearByEventViewModel.data, id: \.self){ data in
+//
+//                        EventRow1(event: data)
+//                        
+//
+//                        }
+//                    }
+//
+//                }.onAppear(perform: getNearbyEventData)
+//            }
+
             
-        }.onAppear(perform: getAllEventData)
-        .navigationBarHidden(true)
+            
+            
+        }.navigationBarHidden(true)
+        
     }
     }
     
     func getAllEventData(){
-        allEventViewModel.getAllEventData()
+        print("evening", self.eventStatus)
+        allEventViewModel.getAllEventData(event: self.eventStatus)
     }
+    
+//    func getNearbyEventData(){
+//        nearByEventViewModel.getNearByEventData()
+//    }
 }
 
 
 struct EventView_Previews: PreviewProvider {
+    @State static var isShowing = ""
     static var previews: some View {
-        EventView()
+        EventView(eventStatus: $isShowing)
+//        EventView()
     }
 }

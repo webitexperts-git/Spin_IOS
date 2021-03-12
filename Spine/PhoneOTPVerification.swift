@@ -9,6 +9,7 @@ import SwiftUI
 
 struct PhoneOTPVerification: View {
     @State private var text: String = ""
+    @State private var eventStatus = "all"
     var body: some View {
         ZStack{
             LinearGradient(gradient: Gradient(colors: [Color(red: 183 / 255, green: 152 / 255, blue: 136 / 255), Color(red: 215 / 255, green: 199 / 255, blue: 181 / 255)]), startPoint: .bottom, endPoint: .top).edgesIgnoringSafeArea(.all)
@@ -47,7 +48,7 @@ struct PhoneOTPVerification: View {
                     }
                 }.padding()
                 
-                NavigationLink(destination: EventView().navigationBarBackButtonHidden(true)){
+                NavigationLink(destination: EventView(eventStatus: $eventStatus).navigationBarBackButtonHidden(true)){
                     Text("VERIFY")
                         .frame(minWidth: 0, maxWidth: 250, minHeight: 0, maxHeight: 40)
                         .foregroundColor(Color(red: 237 / 255, green: 215 / 255, blue: 183 / 255))
