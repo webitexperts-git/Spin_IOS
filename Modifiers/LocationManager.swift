@@ -17,8 +17,9 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
         self.locationManager.desiredAccuracy = kCLLocationAccuracyBest
         self.locationManager.requestWhenInUseAuthorization()
         self.locationManager.startUpdatingLocation()
+        
     }
-
+    let objectWillChange = PassthroughSubject<Void, Never>()
     @Published var locationStatus: CLAuthorizationStatus? {
         willSet {
             objectWillChange.send()
@@ -30,6 +31,21 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
             objectWillChange.send()
         }
     }
+    
+    @Published var placemark: String? {
+       willSet { objectWillChange.send() }
+     }
+    
+  
+
+    private let locationManager = CLLocationManager()
+    
+   
+    
+//    @Published var placemark: CLPlacemark? {
+//       willSet { objectWillChange.send() }
+//     }
+    
 
     var statusString: String {
         guard let status = locationStatus else {
@@ -47,22 +63,19 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
 
     }
 
-    let objectWillChange = PassthroughSubject<Void, Never>()
-
-    private let locationManager = CLLocationManager()
-    @Published var placemark: CLPlacemark? {
-       willSet { objectWillChange.send() }
-     }
-    private func geocode() {
+    func geocode() {
        guard let location = self.lastLocation else { return }
        geocoder.reverseGeocodeLocation(location, completionHandler: { (places, error) in
          if error == nil {
-           self.placemark = places?[0]
+            self.placemark = places?[0].description 
+//            self.place = "\(self.placemark)"
          } else {
-           self.placemark = nil
+           self.placemark = "nil"
          }
        })
      }
+    
+    
 }
 
 extension LocationManager {
@@ -76,6 +89,11 @@ extension LocationManager {
         guard let location = locations.last else { return }
         self.lastLocation = location
         print(#function, location)
+      geocode()
     }
+    
+    
+   
 
 }
+

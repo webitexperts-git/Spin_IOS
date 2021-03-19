@@ -6,21 +6,24 @@
 //
 
 import SwiftUI
+import Combine
 
 
 struct ButtonView: View {
     @State var label: String
-    @State private var didTap1:Bool = false
-    @State private var didTap:Bool = true
+    @State private var tap1:Bool = false
+    @State private var tap:Bool = false
     @State private var didTap2:Bool = false
     @State private var didTap3:Bool = false
     @State private var didTap4:Bool = false
     @State private var didTap5:Bool = false
     @State private var didTap6:Bool = false
     @State var eventStatus = ""
+    @State var event1 = ""
     @ObservedObject var allEventViewModel = AllEventViewModel()
     @ObservedObject var nearByViewModel = NearByViewModel()
     @StateObject var string = NearByViewModel()
+    @State private var showingSheet = false
     
     var body: some View {
         ZStack {
@@ -28,25 +31,25 @@ struct ButtonView: View {
             HStack(){
                 
                 Button(action:{
-//                    allEvent()
-                    self.didTap = true
-                    self.didTap1 = false
-                    self.didTap2 = false
+                   
                     self.didTap3 = false
                     self.didTap4 = false
                     self.didTap5 = false
                     self.didTap6 = false
 //                    string.string = "all"
 //                    allEvent(event: "all")
-                    eventStatus = "all"
+                    allEventViewModel.event = "all"
 //                    print("all", allEventViewModel.string)
-                    EventView(eventStatus: $eventStatus).getAllEventData()
+//                    EventView(eventStatus: $eventStatus).getAllEventData()
+//                    getAllEventData(event:eventStatus)
+//                    getAllEventData(event: "all")
                     
                 }){
                     Text("All").padding()
                        
-                } .background(didTap ? Color("backColor") : Color.white)
-                .foregroundColor(didTap ? Color.white : Color("backColor"))
+                }
+                .background(tap ? Color("backColor") : Color.white)
+                .foregroundColor(tap ? Color.white : Color("backColor"))
                 .cornerRadius(18)
                 .shadow(radius: 5)
                 
@@ -54,36 +57,39 @@ struct ButtonView: View {
                 
                 
                 Button(action:{
-//                    nearBy()
-                    self.didTap = false
-                    self.didTap1 = true
+//                    allEventViewModel.tap = false
+//                    allEventViewModel.tap1 = true
+                  
+                    self.tap = false
+                    self.tap1 = true
                     self.didTap2 = false
                     self.didTap3 = false
                     self.didTap4 = false
                     self.didTap5 = false
                     self.didTap6 = false
-                    eventStatus = "nearby"
-                    EventView(eventStatus: $eventStatus).getAllEventData()
+                    allEventViewModel.event = "nearby"
+//                    getAllEventData(event: "nearby")
 
                 }){
                     Text("Nearby").padding()
                        
-                } .background(didTap1 ? Color("backColor") : Color.white)
-                .foregroundColor(didTap1 ? Color.white : Color("backColor"))
+                }
+                .background(tap1 ? Color("backColor") : Color.white)
+                .foregroundColor(tap1 ? Color.white : Color("backColor"))
                 .cornerRadius(18)
                 .shadow(radius: 5)
                 
                 
                 Button(action:{
 //                    allEvent()
-                    self.didTap = false
-                    self.didTap1 = false
+//                    self.didTap = false
+//                    self.didTap1 = false
                     self.didTap2 = true
                     self.didTap3 = false
                     self.didTap4 = false
                     self.didTap5 = false
                     self.didTap6 = false
-                    
+                   
                     
                 }){
                     Text("Online").padding()
@@ -97,8 +103,8 @@ struct ButtonView: View {
                 
                 Button(action:{
 //                    allEvent()
-                    self.didTap = false
-                    self.didTap1 = false
+//                    self.didTap = false
+//                    self.didTap1 = false
                     self.didTap2 = false
                     self.didTap3 = true
                     self.didTap4 = false
@@ -116,8 +122,8 @@ struct ButtonView: View {
                 
                 Button(action:{
 //                    allEvent()
-                    self.didTap = false
-                    self.didTap1 = false
+//                    self.didTap = false
+//                    self.didTap1 = false
                     self.didTap2 = false
                     self.didTap3 = false
                     self.didTap4 = true
@@ -136,8 +142,8 @@ struct ButtonView: View {
                 
                 Button(action:{
 //                    allEvent()
-                    self.didTap = false
-                    self.didTap1 = false
+//                    self.didTap = false
+//                    self.didTap1 = false
                     self.didTap2 = false
                     self.didTap3 = false
                     self.didTap4 = false
@@ -156,8 +162,8 @@ struct ButtonView: View {
                 
                 Button(action:{
 //                    allEvent()
-                    self.didTap = false
-                    self.didTap1 = false
+//                    self.didTap = false
+//                    self.didTap1 = false
                     self.didTap2 = false
                     self.didTap3 = false
                     self.didTap4 = false
@@ -175,19 +181,23 @@ struct ButtonView: View {
             }
             
         }
+       
+       
+        
         
     }
     
 
     
-    func getAllEventData(){
+    func getAllEventData(event:String){
+        let event = event
         print("evening", eventStatus)
-        allEventViewModel.getAllEventData(event: eventStatus)
+        allEventViewModel.getAllEventData(event:event)
 }
 //
-    func getNearByEventData(event:String){
+    func getNearByEventData(){
         
-//        allEventViewModel.getAllEventData()
+       nearByViewModel.getNearByEventData()
     }
 }
 
@@ -199,6 +209,7 @@ struct EventRow: View {
     
     @State private var hasTitle = true
     @ObservedObject var nearbyViewModel = NearByViewModel()
+   
     var body: some View {
 
         VStack(alignment:.leading) {
@@ -275,17 +286,15 @@ struct EventRow: View {
     }
    
 }
-
-
-
 
 
 struct EventRow1: View {
    
-    var event: NearByModel.Data
+    var event: NearByEventModel.Data
     
     @State private var hasTitle = true
     @ObservedObject var nearbyViewModel = NearByViewModel()
+   
     var body: some View {
 
         VStack(alignment:.leading) {
@@ -362,6 +371,9 @@ struct EventRow1: View {
     }
    
 }
+
+
+
 
 
 struct EventView:View {
@@ -370,10 +382,11 @@ struct EventView:View {
     @State private var favoriteColor = 0
     @ObservedObject var allEventViewModel = AllEventViewModel()
     @ObservedObject var nearByEventViewModel = NearByViewModel()
-    @EnvironmentObject var string: NearByViewModel
+//    @EnvironmentObject var string: NearByViewModel
 //    @ObservedObject var event = ScoreModel()
-    @Binding var eventStatus:String
-    
+   
+//    @Binding var tap:Bool
+//    @Binding var tap1:Bool
     var body: some View{
         NavigationView(){
         VStack(alignment: .leading) {
@@ -436,18 +449,54 @@ struct EventView:View {
             
             
 //            if allEventViewModel.string == "all"{
-            ScrollView(){
+           
+            if($allEventViewModel.event.wrappedValue == "all"){
+                    ScrollView(){
             if($allEventViewModel.woofUrl.wrappedValue != false){
             
                 ForEach(allEventViewModel.data, id: \.self){ data in
                   
                     EventRow(event: data)
                  
+                        }
                     }
-                }
-    
+                }.onAppear(perform: getAllEventData)
             }
-            .onAppear(perform: getAllEventData)
+           
+                if($allEventViewModel.event.wrappedValue == "nearby"){
+                    ScrollView(){
+            if($allEventViewModel.woofUrl.wrappedValue != false){
+            
+                ForEach(allEventViewModel.data, id: \.self){ data in
+                  
+                    EventRow(event: data)
+                 
+                        }
+                    }
+                }.onAppear(perform: getAllEventData)
+            }
+        }
+            
+            
+            
+//            ScrollView(){
+//
+//                if($nearByEventViewModel.tap1.wrappedValue != false){
+//            if($nearByEventViewModel.woofUrl.wrappedValue != false){
+//
+//                ForEach(nearByEventViewModel.data, id: \.self){ data in
+//
+//                    EventRow1(event: data)
+//
+//                    }
+//
+//                }
+//            }
+//        }.onAppear(perform: getNearbyEventData)
+//    }
+                
+}.navigationBarHidden(true)
+           
 //            }
 //            if $string.string.wrappedValue == "nearby" {
 ////
@@ -468,26 +517,28 @@ struct EventView:View {
             
             
             
-        }.navigationBarHidden(true)
-        
-    }
-    }
+        }
     
     func getAllEventData(){
-        print("evening", self.eventStatus)
-        allEventViewModel.getAllEventData(event: self.eventStatus)
+//        let event = "all"
+        allEventViewModel.getAllEventData(event:"all")
     }
     
-//    func getNearbyEventData(){
-//        nearByEventViewModel.getNearByEventData()
-//    }
-}
+    func getNearbyEventData(){
+        nearByEventViewModel.getNearByEventData()
+    }
+    
+        
+    }
+
+    
+ 
+
 
 
 struct EventView_Previews: PreviewProvider {
-    @State static var isShowing = ""
     static var previews: some View {
-        EventView(eventStatus: $isShowing)
+        EventView()
 //        EventView()
     }
 }

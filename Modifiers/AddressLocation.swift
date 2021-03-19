@@ -61,4 +61,6 @@ extension CLLocation {
     var longitude: Double {
         return self.coordinate.longitude
     }
+    
+
 }

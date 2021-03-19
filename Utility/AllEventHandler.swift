@@ -14,8 +14,8 @@ class AllEventHandler: APIHandler{
     
     @Published var allEventDataResponse: AllEventModel?
     @Published var isLoading = false
-//    var eventStatus = ""
-    @Published var nearByEventDataResponse: NearByModel?
+    @Published var eventStatus = "all"
+    @Published var nearByEventDataResponse: NearByEventModel?
 //    http://wiesoftware.com/spine/apisecure/post/addUserPost
         var url = ""
     func getAllEventData(event: String) {
@@ -23,13 +23,13 @@ class AllEventHandler: APIHandler{
     print("event", event)
         let userId = UserDefaults.standard.string(forKey: "user_id")!
         if event == "all"{
-//            eventStatus = "getUsersEventsList"
+            eventStatus = "all"
 //            print(eventStatus)
             url = appConstants.kBASE_URL + "events/getUsersEventsList/1/100/" + userId
         }else{
 //            eventStatus = "getDistanceUsersEventsList/1/100/" + userId + "/27.45/77.567/100"
-    
-            url = appConstants.kBASE_URL + "events/getDistanceUsersEventsList/1/100/" + userId + "/27.45/77.567/1000"
+                eventStatus = "nearby"
+            url = appConstants.kBASE_URL + "events/getDistanceUsersEventsList/1/100/" + userId + "/27.45/77.56/500"
           
 //            print(eventStatus)
         }
@@ -59,11 +59,12 @@ class AllEventHandler: APIHandler{
                         
         weakSelf.isLoading = false
         weakSelf.allEventDataResponse = response
+        weakSelf.eventStatus = event
         }
     }
     
     
-    func getNearByEventData() {
+    func getNearByEventData(event:String) {
         isLoading = true
         
         let user = "devpankaj"
@@ -79,10 +80,10 @@ class AllEventHandler: APIHandler{
         let url = appConstants.kBASE_URL + "events/getDistanceUsersEventsList/1/100/" + userId + "/27.45/77.567/100/"
 
         
-        AF.request(url, method: .get, parameters: nil , encoding: URLEncoding.default, headers: headers).responseDecodable { [weak self] (response: DataResponse<NearByModel, AFError>) in
+        AF.request(url, method: .get, parameters: nil , encoding: URLEncoding.default, headers: headers).responseDecodable { [weak self] (response: DataResponse<NearByEventModel, AFError>) in
             guard let weakSelf = self else { return }
             
-            guard let response = weakSelf.handleResponse(response) as? NearByModel else {
+            guard let response = weakSelf.handleResponse(response) as? NearByEventModel else {
                 weakSelf.isLoading = false
                 return
             }

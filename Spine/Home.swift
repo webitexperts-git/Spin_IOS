@@ -20,7 +20,7 @@ struct TrailRow: View {
     @State private var comment: String = ""
     @State private var isShowingRed = false
     @State private var background = ""
-   
+    
     var color = ""
     var body: some View {
         ZStack{
@@ -295,16 +295,18 @@ struct SpineImpulse: View{
 
 struct SpineButtonView: View {
     @State var label: String
+    @State private var Tapping = true
+    @State private var Tapping1 = false
     @ObservedObject var trendingModel = TrendingCatViewModel()
 //    let menu = Bundle.main.decode([MenuSection].self, from: "menu.json")
-    @State private var eventStatus = "all"
+   
    
         
     var body: some View {
         ZStack {
             
             HStack(){
-                NavigationLink(destination: EventView(eventStatus: $eventStatus)){
+                NavigationLink(destination: EventView()){
                 Text(label).padding()
 //                    .frame(minWidth: 0, maxWidth: 300, minHeight: 0, maxHeight: 40)
                     .background(Color(red: 183 / 255, green: 152 / 255, blue: 136 / 255))
@@ -325,7 +327,7 @@ struct SpineButtonView: View {
 
 
 struct Home: View {
-    @State private var eventStatus = "all"
+   
     var body: some View {
     
         TabView {
@@ -338,7 +340,7 @@ struct Home: View {
                 }
             
            
-            EventView(eventStatus: $eventStatus)
+            EventView()
           
                 .tabItem {
                     Image(systemName: "calendar")

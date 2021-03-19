@@ -90,8 +90,10 @@
 		F10BDE2A25E7A5C00076EE22 /* PostPreviewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F10BDE2925E7A5C00076EE22 /* PostPreviewViewModel.swift */; };
 		F10BDE2D25E7A5EB0076EE22 /* PostPreviewHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = F10BDE2C25E7A5EB0076EE22 /* PostPreviewHandler.swift */; };
 		F10BDE3025E7A67E0076EE22 /* HashTags.swift in Sources */ = {isa = PBXBuildFile; fileRef = F10BDE2F25E7A67E0076EE22 /* HashTags.swift */; };
+		F10C2A3225FF46AF00A13C07 /* NearByEventHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = F10C2A3125FF46AF00A13C07 /* NearByEventHandler.swift */; };
+		F10C2A3525FF46F900A13C07 /* NearByEventViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F10C2A3425FF46F900A13C07 /* NearByEventViewModel.swift */; };
+		F10C2A3825FF473600A13C07 /* NearByEventModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F10C2A3725FF473600A13C07 /* NearByEventModel.swift */; };
 		F113BF2125F8D597006A6396 /* PagingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F113BF2025F8D597006A6396 /* PagingView.swift */; };
-		F113BF2425F8F936006A6396 /* NearByModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F113BF2325F8F936006A6396 /* NearByModel.swift */; };
 		F113BF2725F8F9C2006A6396 /* NearByViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F113BF2625F8F9C2006A6396 /* NearByViewModel.swift */; };
 		F114974725ECB3F1002889A0 /* EventModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F114974625ECB3F1002889A0 /* EventModel.swift */; };
 		F114974A25ECB63C002889A0 /* AllEventHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = F114974925ECB63C002889A0 /* AllEventHandler.swift */; };
@@ -248,8 +250,10 @@
 		F10BDE2925E7A5C00076EE22 /* PostPreviewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostPreviewViewModel.swift; sourceTree = "<group>"; };
 		F10BDE2C25E7A5EB0076EE22 /* PostPreviewHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostPreviewHandler.swift; sourceTree = "<group>"; };
 		F10BDE2F25E7A67E0076EE22 /* HashTags.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HashTags.swift; sourceTree = "<group>"; };
+		F10C2A3125FF46AF00A13C07 /* NearByEventHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearByEventHandler.swift; sourceTree = "<group>"; };
+		F10C2A3425FF46F900A13C07 /* NearByEventViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearByEventViewModel.swift; sourceTree = "<group>"; };
+		F10C2A3725FF473600A13C07 /* NearByEventModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearByEventModel.swift; sourceTree = "<group>"; };
 		F113BF2025F8D597006A6396 /* PagingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PagingView.swift; sourceTree = "<group>"; };
-		F113BF2325F8F936006A6396 /* NearByModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearByModel.swift; sourceTree = "<group>"; };
 		F113BF2625F8F9C2006A6396 /* NearByViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearByViewModel.swift; sourceTree = "<group>"; };
 		F114974625ECB3F1002889A0 /* EventModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventModel.swift; sourceTree = "<group>"; };
 		F114974925ECB63C002889A0 /* AllEventHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllEventHandler.swift; sourceTree = "<group>"; };
@@ -338,6 +342,7 @@
 				F171704325DFE3C500FD60A1 /* RecFollowersHandler.swift */,
 				F10BDE2C25E7A5EB0076EE22 /* PostPreviewHandler.swift */,
 				F114974925ECB63C002889A0 /* AllEventHandler.swift */,
+				F10C2A3125FF46AF00A13C07 /* NearByEventHandler.swift */,
 				F17099C125EF717800FF1298 /* EmailVerificationHandler.swift */,
 				F17099CB25EFB19300FF1298 /* FollowersDetailHandler.swift */,
 				F16757B325F2593F003DEEB9 /* FollowingListHandler.swift */,
@@ -379,10 +384,10 @@
 				F117998425E4E54100900179 /* PostHashTagModel.swift */,
 				F10BDE2625E7A5990076EE22 /* PostPreviewModel.swift */,
 				F114974F25ECB665002889A0 /* AllEventModel.swift */,
+				F10C2A3725FF473600A13C07 /* NearByEventModel.swift */,
 				F17099BB25EF713E00FF1298 /* EmailVerificationModel.swift */,
 				F17099C825EFB17A00FF1298 /* FollowersDetailModel.swift */,
 				F16757B925F25977003DEEB9 /* FollowingListModel.swift */,
-				F113BF2325F8F936006A6396 /* NearByModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -409,6 +414,7 @@
 				F117998725E4E56100900179 /* PostHashTagViewModel.swift */,
 				F10BDE2925E7A5C00076EE22 /* PostPreviewViewModel.swift */,
 				F114974C25ECB653002889A0 /* AllEventViewModel.swift */,
+				F10C2A3425FF46F900A13C07 /* NearByEventViewModel.swift */,
 				F17099BE25EF715E00FF1298 /* EmailVerificationViewModel.swift */,
 				F17099C525EFB16300FF1298 /* FollowersDetailViewModel.swift */,
 				F113BF2625F8F9C2006A6396 /* NearByViewModel.swift */,
@@ -752,6 +758,7 @@
 				18830D6725B1BEED00842278 /* HomeViewImpulseModel.swift in Sources */,
 				18675F4D2554671400758F81 /* IQKeyboardManager.m in Sources */,
 				18675F522554671400758F81 /* IQUIViewController+Additions.m in Sources */,
+				F10C2A3525FF46F900A13C07 /* NearByEventViewModel.swift in Sources */,
 				1821F0FF25678EBE00F77583 /* Home.swift in Sources */,
 				1821F108256794C800F77583 /* ForgetPassword.swift in Sources */,
 				F10BDE2725E7A5990076EE22 /* PostPreviewModel.swift in Sources */,
@@ -797,6 +804,7 @@
 				F117998525E4E54100900179 /* PostHashTagModel.swift in Sources */,
 				183C9FBF25B70C2400465D8D /* FavouritPostHandler.swift in Sources */,
 				18578D0D25B5BD1700D70D98 /* FollowersHandler.swift in Sources */,
+				F10C2A3225FF46AF00A13C07 /* NearByEventHandler.swift in Sources */,
 				F114974D25ECB653002889A0 /* AllEventViewModel.swift in Sources */,
 				183C9FB325B6FCB200465D8D /* PostModel.swift in Sources */,
 				18767E8525A746B100AF8943 /* RegisterViewModel.swift in Sources */,
@@ -831,7 +839,6 @@
 				F16D1C0825D41215000BCFF8 /* CommentViewModel.swift in Sources */,
 				F10BDE1F25E786880076EE22 /* UserSetting.swift in Sources */,
 				18A22CBE2587525700020B28 /* LoginModel.swift in Sources */,
-				F113BF2425F8F936006A6396 /* NearByModel.swift in Sources */,
 				F10BDE2425E78B3A0076EE22 /* PostColor.swift in Sources */,
 				1893E0C2257E352A00B62212 /* TrendingCatDetail.swift in Sources */,
 				F1D889A425CAA780000ED8AE /* AsyncImage.swift in Sources */,
@@ -857,6 +864,7 @@
 				F18B70C225D107F8009B141A /* UserPostModel.swift in Sources */,
 				F171703E25DFE39600FD60A1 /* RecFollowersModel.swift in Sources */,
 				F16757B425F2593F003DEEB9 /* FollowingListHandler.swift in Sources */,
+				F10C2A3825FF473600A13C07 /* NearByEventModel.swift in Sources */,
 				F16757BA25F25977003DEEB9 /* FollowingListModel.swift in Sources */,
 				183C9FBC25B70C0800465D8D /* FavouritViewModel.swift in Sources */,
 				F1DD5A2925FB833900DD1A29 /* AddressLocation.swift in Sources */,

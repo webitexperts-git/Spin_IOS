@@ -23,16 +23,19 @@ struct EventPostView: View {
     
 //    @ObservedObject var lm = AddressLocation()
 //    var placemark: String { return("\(String(describing: lm.placemark?.locality))") }
-    @State var place:String = ""
+    
     @State private var placeholder = "Who should join, and why? What will you do at your event? (minimum 50 characters)"
     @State private var showGreeting = true
     @State var showImagePicker: Bool = false
+    @State var showCameraPicker: Bool = false
     @State var image: Image? = nil
     
     @State var selectedDateStart = Date()
     @State var selectedDateEnd = Date()
     @State var selectedTimeStart = Date()
     @State var selectedTimeEnd = Date()
+    
+    @State private var showPopUp = false
     
     @ObservedObject var locationManager = LocationManager()
     
@@ -43,8 +46,21 @@ struct EventPostView: View {
        var userLongitude: String {
            return "\(locationManager.lastLocation?.coordinate.longitude ?? 0)"
        }
+    @State var place = LocationManager().placemark
+ 
+    var textBinding: Binding<String> {
+            Binding<String>(
+                get: {
+                    return self.locationManager.placemark ?? ""
+            },
+                set: { newString in
+                    self.locationManager.placemark = newString
+            })
+        }
     
-    var placemark: String { return("\(String(describing: locationManager.placemark?.locality))") }
+    
+    @State private var showingSheet = false
+    
      var localTimeZoneAbbreviation: String { return TimeZone.current.abbreviation() ?? "" }
     
 //    @State var localTimeZoneAbbreviation: Int = TimeZone.current.secondsFromGMT()
@@ -62,28 +78,49 @@ struct EventPostView: View {
                     .frame(minWidth:0, maxWidth: .infinity, minHeight: 250, maxHeight: 250)
                     VStack{
 //                    Image("camera")
-                        Button(action: {
-                            self.showImagePicker.toggle()
-                            print("Button Tapped")
+                        ZStack(){
+                            image?.resizable().frame(minWidth:0, maxWidth: .infinity, minHeight: 250, maxHeight: 250)
+                            Text("Add Photo").foregroundColor(.white).font(.subheadline).padding(.top,80)
+                            Image("camera")
+                        }
+                        Button("Add Photo") {
+                                    showingSheet = true
+                                }
+                                .actionSheet(isPresented: $showingSheet) {
+                                    ActionSheet(
+                                        title: Text("What do you want to do?"),
+                                        message: Text("There's only one choice..."),
+                                        buttons: [.default(Text("Camera"), action: {
+                                            self.showCameraPicker.toggle()
+                                        }), .default(Text("Gallery"), action: {
+                                            self.showImagePicker.toggle()
+                                            }), .destructive(Text("Cancel"), action: {
+                                                print("Default tapped")
+                                                })]
+                                    )
+                                }
+//                        Button(action: {
+//                            self.showImagePicker.toggle()
+//                            print("Button Tapped")
+//
+//                        }) {
                             
-                        }) {
-                            
-                            ZStack(){
-                                image?.resizable().frame(minWidth:0, maxWidth: .infinity, minHeight: 250, maxHeight: 250)
-                                Text("Add Photo").foregroundColor(.white).font(.subheadline).padding(.top,80)
-                                Image("camera")
-                            }
+                          
                            
                             
-                        }
+//                        }
                        
-                   
                     }.navigationBarTitle("NEW EVENT")
                     .navigationBarTitleDisplayMode(.inline)
                     .padding()
                     
                     .sheet(isPresented: $showImagePicker) {
                                     ImagePicker(sourceType: .photoLibrary) { image in
+                                        self.image = Image(uiImage: image)
+                                    }
+                                }
+                    .sheet(isPresented: $showCameraPicker) {
+                                    ImagePicker(sourceType: .camera) { image in
                                         self.image = Image(uiImage: image)
                                     }
                                 }
@@ -168,13 +205,6 @@ struct EventPostView: View {
             Group{
             Text("Timezone").bold().padding(.leading)
             ZStack(alignment: .leading) {
-              
-//                if gmtAbbreviation.isEmpty{
-//                    Text("").foregroundColor(.gray)
-//                        .padding(.bottom, 10)
-//                        .padding(.leading, 10)
-//                }
-          
             TextField("Timezone", text: $name)
                 .padding(10)
                 .foregroundColor(Color.black)
@@ -184,19 +214,13 @@ struct EventPostView: View {
                 .padding(.bottom,10)
             }.padding(10)
             
-            
+               
             
             
             Text("Location").bold().padding(.leading)
             ZStack(alignment: .leading) {
-                Text(placemark)
-                if placemark.isEmpty{
-                    Text("").foregroundColor(.gray)
-                        .padding(.bottom, 10)
-                        .padding(.leading, 10)
-                }
-          
-                TextField("Location", text: $place)
+                TextField("Location", text: textBinding)
+//                TextField("Location", text: $place)
                 .padding(10)
                 .foregroundColor(Color.black)
 //                .frame(width:250.0, height: 40.0)
@@ -249,19 +273,71 @@ struct EventPostView: View {
                 Text("Event categories").bold().padding(.leading)
                 ZStack(alignment: .leading) {
                     
+
                     if eventCategory.isEmpty{
                         Text("").foregroundColor(.gray)
                             .padding(.bottom, 10)
                             .padding(.leading, 10)
                     }
               
-                TextField("Event categories", text: $eventCategory)
+                    TextField("Event categories", text: $eventCategory)
+                        .onTapGesture {
+                            self.showPopUp = true
+                        }
                     .padding(10)
                     .foregroundColor(Color.black)
                     .font(Font.system(size: 15, weight: .medium, design: .serif))
                     .overlay(RoundedRectangle(cornerRadius: 10).stroke(Color(#colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)), lineWidth: 2))
                     .padding(.bottom,10)
+                    
+                    
+                    ZStack(){
+                        if $showPopUp.wrappedValue {
+                            ZStack(alignment:.center) {
+                                Color.white
+                                VStack (alignment:.center){
+                                    Text("Select Events").bold()
+                                    Spacer()
+                                    ScrollView(){
+                                        VStack(){
+                                            HStack(){
+                                            Text("Alternative pain treatment")
+                                            Spacer()
+                                            CheckboxFieldView()
+                                        }
+                                        HStack(){
+                                            Text("Alternative pain treatment")
+                                            Spacer()
+                                            CheckboxFieldView()
+                                        }
+//                                        HStack(){
+//                                            Text("Alternative pain treatment")
+//                                            Spacer()
+//                                            CheckboxFieldView()
+//                                        }
+                                       
+//                                        Text("Alternative pain treatment")
+//                                        Text("Alternative pain treatment")
+                                        }.padding()
+                                    }
+                                   
+                                    Button(action: {
+                                        self.showPopUp = false
+                                    }, label: {
+                                        Text("Close").padding()
+                                    })
+                                }.padding()
+                            }
+                            .frame(minWidth: 0, maxWidth: .infinity, minHeight: 400, maxHeight: 400)
+                            .cornerRadius(20).shadow(radius: 20)
+                            
+                        }
+                    }
+                    
+                    
                 }.padding(10)
+                
+                
             }
             
             
@@ -360,21 +436,51 @@ struct EventPostView: View {
                                   
                     }.foregroundColor(Color("backColor"))
                 }
-                
-                
-            
             }
-            
-           
-//            
-            
-            
         
         }.padding()
-//            Spacer()
 
         }
     }
+    
+    func timezone(){
+        for timeZone in TimeZone.knownTimeZoneIdentifiers {
+            print("timeZone",timeZone)
+        }
+    }
+}
+
+struct CheckboxFieldView : View {
+
+    @State var checkState:Bool = false
+
+    var body: some View {
+
+         Button(action:
+            {
+                //1. Save state
+                self.checkState = !self.checkState
+                print("State : \(self.checkState)")
+
+
+        }) {
+            VStack(alignment: .center){
+            HStack(alignment: .top) {
+
+                        //2. Will update according to state
+                Image(checkState ? "checkbox-on" :  "checkbox-off")
+                .renderingMode(.original)
+                .resizable()
+                .frame(width: 30.0, height: 30.0)
+//                .background(Color.blue)
+//                   Text("Todo  item ")
+
+                }
+            } .foregroundColor(Color.red)
+        }
+       
+    }
+
 }
 
 
