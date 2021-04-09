@@ -12,10 +12,12 @@ struct PostHashTagView: View {
 //    @State private var hash = ""
     @State private var placeholder = "Enter up to 5 hastags, e.g. #lorem #lorem"
     @ObservedObject var hashTags = HashTags()
+    @State var post = ""
+    @State var hashTag = ""
     var body: some View {
         ZStack{
 //        Text("ADD HASHTAGS")
-            if hashTags.hash.isEmpty {
+            if hashTag.isEmpty {
                 
                 VStack() {
                    Text(placeholder)
@@ -27,7 +29,7 @@ struct PostHashTagView: View {
 
             }
             
-            TextEditor(text: $hashTags.hash)
+            TextEditor(text: $hashTag)
                 .font(.custom("Helvetica", size: 34))
                 .foregroundColor(.black)
                 .padding(.all)
@@ -36,7 +38,7 @@ struct PostHashTagView: View {
         }.navigationTitle("ADD HASHTAGS")
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
-            NavigationLink(destination: PostPreviewView(), tag: 1, selection: $tag) {
+            NavigationLink(destination: PostPreviewView(postPreview: post, hashTag: hashTag), tag: 1, selection: $tag) {
                   Button("Next") {
                       self.tag = 1
                   }

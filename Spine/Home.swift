@@ -28,61 +28,28 @@ struct TrailRow: View {
                 
               
                 HStack(){
-                    
-                    
-                    AsyncImage(url: URL(string: "http://wiesoftware.com/spine/assets/upload/profile/" + (trail.profile_pic ?? "default.jpg"))!,
+                   
+                    AsyncImage(url: URL(string: "https://seobywebitindia.com/dev/spine/assets/upload/profile/" + (trail.profile_pic ?? "default.jpg"))!,
                                   placeholder: { Text("") },
                                   image: { Image(uiImage: $0).resizable() })
                         .frame(width:80, height:80)
                         .cornerRadius(80/2)
                         .padding(.leading,5)
-                    
-                    
-                    
-                    
+
                     
                 Text(trail.post_user_name!).font(.subheadline).foregroundColor(.black)
                     Spacer()
-                    
-//                    Text("2 days").font(.subheadline).foregroundColor(.gray)
-                    var date1 = trail.created_on!
-                    
-                    var dateFormatter = DateFormatter()
-//                       dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
-//
-//                       //DateFormatter To change By chakshu
-//                       var enUSPOSIXLocale:NSLocale=NSLocale(localeIdentifier: "en_US_POSIX")
-//                       dateFormatter.locale=enUSPOSIXLocale
-//                       dateFormatter.timeZone = NSTimeZone(name: "GMT")
-//                       dateFormatter.timeZone = NSTimeZone.localTimeZone()
-//
-//                       var date = dateFormatter.dateFromString(date1)
-////                       print(date)
 
                     Text(trail.created_on!).font(.subheadline).foregroundColor(.gray)
                     
                 }
                
-//                let type = trail.type
                 let color = trail.post_backround_color_id ?? "#B89A8A"
                
                let _ = print("MyColor", color)
               
-              
-//                AsyncImage(url: URL(string: "http://wiesoftware.com/spine/assets/upload/spine-post/" + (trail.files ?? "http://wiesoftware.com/spine/assets/upload/profile/default.jpg"))!,
-//                              placeholder: { Text("") },
-//                              image: { Image(uiImage: $0).resizable() })
-//
-//                    .frame(minWidth: 0, maxWidth: .infinity, minHeight: 200, maxHeight: 200, alignment: .topLeading)
-//
-////                    .background(Color(UIColor(hex: color)))
-//
-//                    .overlay(Text(trail.title!))
                 
-                
-//                let url1 : String = "http://wiesoftware.com/spine/assets/upload/spine-stories/" + (data.stories_data![0].media_file ?? "default.jpg")
-                
-                let url1: String = "http://wiesoftware.com/spine/assets/upload/spine-post/" + (trail.files ?? "http://wiesoftware.com/spine/assets/upload/profile/default.jpg")!
+                let url1: String = "https://seobywebitindia.com/dev/spine/assets/upload/spine-post/" + (trail.files ?? "https://seobywebitindia.com/dev/spine/assets/upload/default.jpg")!
                 
                 
                 let imageExtensions = ["png", "jpg", "gif"]
@@ -93,7 +60,7 @@ struct TrailRow: View {
                   
                 if imageExtensions.contains(pathExtention!){
                     if trail.type! == "1"{
-                    AsyncImage(url: URL(string: "http://wiesoftware.com/spine/assets/upload/spine-post/" + (trail.files ?? "http://wiesoftware.com/spine/assets/upload/profile/default.jpg"))!,
+                    AsyncImage(url: URL(string: "https://seobywebitindia.com/dev/spine/assets/upload/spine-post/" + (trail.files ?? "http://wiesoftware.com/spine/assets/upload/profile/default.jpg"))!,
                                   placeholder: { Text("") },
                                   image: { Image(uiImage: $0).resizable() })
                         .frame(minWidth: 0, maxWidth: .infinity, minHeight: 200, maxHeight: 200)
@@ -109,7 +76,7 @@ struct TrailRow: View {
                 }
                 else{
                     ZStack{
-                        let player = AVPlayer(url: URL(string: "http://wiesoftware.com/spine/assets/upload/spine-post/" + trail.files!)!)
+                        let player = AVPlayer(url: URL(string: "https://seobywebitindia.com/dev/spine/assets/upload/spine-post/" + trail.files!)!)
                        
                     VideoPlayer(player: player)
                         .frame(minWidth: 0, maxWidth: .infinity, minHeight: 200, maxHeight: 200, alignment: .topLeading)
@@ -202,24 +169,24 @@ struct TrailRow: View {
 }
 
 
-struct SpineRect: View{
-    
-    let player = AVPlayer(url: URL(string: "http://homeofbulldogs.com/dev/geev/assets/upload/images/160544651620201115.mov")!)
-    
-
-    var body: some View{
-    
-        ZStack(){
-       
-        Rectangle()
-            .frame(width: 200, height: 150)
-            VideoPlayer(player: player)
-                .onAppear() {
-                    player.play()
-            }
-        }
-    }
-}
+//struct SpineRect: View{
+//
+//    let player = AVPlayer(url: URL(string: "http://homeofbulldogs.com/dev/geev/assets/upload/images/160544651620201115.mov")!)
+//
+//
+//    var body: some View{
+//
+//        ZStack(){
+//
+//        Rectangle()
+//            .frame(width: 200, height: 150)
+//            VideoPlayer(player: player)
+//                .onAppear() {
+//                    player.play()
+//            }
+//        }
+//    }
+//}
     
     
 
@@ -334,13 +301,18 @@ struct Home: View {
             NavigationView{
             SpineView()
             }
+            .navigationBarTitle("")
+            .navigationBarHidden(true)
                 .tabItem {
                     Image(systemName: "house.fill")
                     Text("Spine")
                 }
             
            
-            EventView()
+//            EventView()
+            NavigationView{
+            ButtonsView()
+            }
           
                 .tabItem {
                     Image(systemName: "calendar")
@@ -379,6 +351,7 @@ struct SpineView:View{
     @ObservedObject var followingModel = FollowingViewModel()
     @ObservedObject var recFollowerModel = RecFollowersViewModel()
     @ObservedObject var followingListModel = FollowingListViewModel()
+    @ObservedObject var impulseLikeViewModel = ImpulseLikeViewModel()
     
     @State private var searchText = ""
     @State private var showCancelButton: Bool = false
@@ -399,7 +372,7 @@ struct SpineView:View{
     let people1 = ["Living with nature", "Living with nature", "Living with nature", "Living with nature"]
     @Environment(\.presentationMode) var presentationMode
     @State private var title = ""
-    
+    @State var likeImage : Bool = false
     var body: some View{
      
 //        print("xx",xx)
@@ -479,12 +452,13 @@ struct SpineView:View{
 //                    let url = model.newData[0]
 //                    print("url", url)
                     let x =  model.newData
+                    let imgurl = model.imageUrl
 //                        let _ =  print("aaaaaa", x)
                         ForEach(x, id: \.self) { data in
 //                        ZStack(){
 //                            Text(data).foregroundColor(.white)
-
-                            let player = AVPlayer(url: URL(string: "http://wiesoftware.com/spine/assets/upload/welcome/" + data.image!)!)
+                          
+                            let player = AVPlayer(url: URL(string: imgurl + data.image!)!)
                             let _ =  print("player",data.image!)
 
                             ZStack{
@@ -551,7 +525,7 @@ struct SpineView:View{
                                     ZStack{
 //                                        Image(data.image!)
                                             
-                                        AsyncImage(url: URL(string: "http://wiesoftware.com/spine/assets/upload/impulse/" + (data.image ?? "default.jpg"))!,
+                                        AsyncImage(url: URL(string: impulseModel.imageUrl + (data.image ?? "default.jpg"))!,
                                                       placeholder: { Text("") },
                                                       image: { Image(uiImage: $0).resizable() })
                                             
@@ -579,7 +553,20 @@ struct SpineView:View{
                                        
                                         
                                         HStack(spacing:20){
-                                            Image("heart").resizable().frame(width:20, height:20)
+//                                            Image("heart").resizable().frame(width:20, height:20)
+//                                            if($impulseLikeViewModel.woofUrl.wrappedValue != false){
+                                                Button(action: {
+                                                    
+                                                    self.likeImage.toggle()
+                                                   
+                                                }) {
+                                                    Image(self.likeImage == true ? "heart" : "heartred")
+                                                              .resizable()
+                                                              .frame(width: 20, height: 20)
+                                                    
+                                                }
+//                                            }
+                                                
                                             
                                             Text(data.total_like!).foregroundColor(.white)
                                             NavigationLink(destination: ImpulseCommentView()) {
@@ -623,7 +610,7 @@ struct SpineView:View{
                                         ZStack{
                                             VStack(){
                                                
-                                            let url1 : String = "http://wiesoftware.com/spine/assets/upload/spine-stories/" + (data.stories_data![0].media_file ?? "default.jpg")
+                                                let url1 : String = storiesModel.imageUrl + (data.stories_data![0].media_file ?? "default.jpg")
 
                                             let imageExtensions = ["png", "jpg", "gif"]
 
@@ -633,7 +620,7 @@ struct SpineView:View{
                                               
                                             if imageExtensions.contains(pathExtention!){
                                                
-                                                AsyncImage(url: URL(string: "http://wiesoftware.com/spine/assets/upload/spine-stories/" + (data.stories_data![0].media_file ?? "http://wiesoftware.com/spine/assets/upload/profile/default.jpg"))!,
+                                                AsyncImage(url: URL(string: storiesModel.imageUrl + (data.stories_data![0].media_file ?? "http://wiesoftware.com/spine/assets/upload/profile/default.jpg"))!,
                                                               placeholder: { Text("") },
                                                               image: { Image(uiImage: $0).resizable() })
                                                
@@ -644,7 +631,7 @@ struct SpineView:View{
                                             }
                                             else{
                                                 ZStack{
-                                                    let player = AVPlayer(url: URL(string: "http://wiesoftware.com/spine/assets/upload/spine-stories/" + data.stories_data![0].media_file!)!)
+                                                    let player = AVPlayer(url: URL(string: storiesModel.imageUrl + data.stories_data![0].media_file!)!)
                                                     Circle().strokeBorder(Color.white,lineWidth: 2)
                                                     .padding()
                                                     .frame(width: 80, height: 80)
@@ -725,7 +712,7 @@ struct SpineView:View{
                                     ZStack{
 //
                                        
-                                        AsyncImage(url: URL(string: "http://wiesoftware.com/spine/assets/upload/profile/" + (data.profile_pic ?? "default.jpg"))!,
+                                        AsyncImage(url: URL(string: recFollowerModel.imageUrl + (data.profile_pic ?? "default.jpg"))!,
                                                       placeholder: { Text("") },
                                                       image: { Image(uiImage: $0).resizable() })
                                             .frame(width:80, height:80)
@@ -772,7 +759,7 @@ struct SpineView:View{
                                         ZStack{
                                             VStack(){
                                                
-                                            let url1 : String = "http://wiesoftware.com/spine/assets/upload/spine-stories/" + (data.stories_data![0].media_file ?? "default.jpg")
+                                                let url1 : String = appConstants.kBASE_URL + storiesModel.imageUrl + (data.stories_data![0].media_file ?? "default.jpg")
 
                                             let imageExtensions = ["png", "jpg", "gif"]
 
@@ -782,7 +769,7 @@ struct SpineView:View{
                                               
                                             if imageExtensions.contains(pathExtention!){
                                                
-                                                AsyncImage(url: URL(string: "http://wiesoftware.com/spine/assets/upload/spine-stories/" + (data.stories_data![0].media_file ?? "http://wiesoftware.com/spine/assets/upload/profile/default.jpg"))!,
+                                                AsyncImage(url: URL(string: storiesModel.imageUrl + (data.stories_data![0].media_file ?? "http://wiesoftware.com/spine/assets/upload/profile/default.jpg"))!,
                                                               placeholder: { Text("") },
                                                               image: { Image(uiImage: $0).resizable() })
                                                
@@ -793,7 +780,7 @@ struct SpineView:View{
                                             }
                                             else{
                                                 ZStack{
-                                                    let player = AVPlayer(url: URL(string: "http://wiesoftware.com/spine/assets/upload/spine-stories/" + data.stories_data![0].media_file!)!)
+                                                    let player = AVPlayer(url: URL(string: storiesModel.imageUrl + data.stories_data![0].media_file!)!)
                                                     Circle().strokeBorder(Color.white,lineWidth: 2)
                                                     .padding()
                                                     .frame(width: 80, height: 80)
@@ -823,7 +810,7 @@ struct SpineView:View{
                            
                         }.padding()
                     .onAppear(perform: getFollowingData)
-                    .frame(height: 100)
+//                    .frame(height: 100)
                 
                 
                 ScrollView(){
@@ -831,7 +818,7 @@ struct SpineView:View{
                     ForEach(followingListModel.data, id: \.self){data in
                         VStack(alignment: .leading){
                             HStack(){
-                                AsyncImage(url: URL(string: "http://wiesoftware.com/spine/assets/upload/profile/" + (data.profile_pic ?? "http://wiesoftware.com/spine/assets/upload/profile/default.jpg"))!,
+                                AsyncImage(url: URL(string: followingListModel.imageUrl + (data.profile_pic ?? "http://wiesoftware.com/spine/assets/upload/profile/default.jpg"))!,
                                               placeholder: { Text("") },
                                               image: { Image(uiImage: $0).resizable() })
                                
@@ -866,7 +853,7 @@ struct SpineView:View{
                                     
                                     else{
                                         
-                                        let url1 : String = "http://wiesoftware.com/spine/assets/upload/spine-post/" + (data.files ?? "default.jpg")
+                                        let url1 : String = followingListModel.imageUrl + (data.files ?? "default.jpg")
 
                                         let imageExtensions = ["png", "jpg", "gif"]
 
@@ -877,7 +864,7 @@ struct SpineView:View{
                                         if imageExtensions.contains(pathExtention!){
                                             Rectangle()
                                                 .fill(Color(UIColor(hex: "#B89A8A")))
-                                            AsyncImage(url: URL(string: "http://wiesoftware.com/spine/assets/upload/spine-post/" + (data.files ?? "http://wiesoftware.com/spine/assets/upload/profile/default.jpg"))!,
+                                            AsyncImage(url: URL(string: followingListModel.imageUrl + (data.files ?? "http://wiesoftware.com/spine/assets/upload/profile/default.jpg"))!,
                                                        placeholder: { Image("default").resizable() },
                                                           image: { Image(uiImage: $0).resizable() })
 //                                                .aspectRatio(contentMode: .fill)
@@ -891,7 +878,7 @@ struct SpineView:View{
                                         
                                         else{
                                             ZStack{
-                                                let player = AVPlayer(url: URL(string: "http://wiesoftware.com/spine/assets/upload/spine-post/" + data.files!)!)
+                                                let player = AVPlayer(url: URL(string: followingListModel.imageUrl + data.files!)!)
 //                                                Circle().strokeBorder(Color.white,lineWidth: 2)
 //                                                .padding()
 //                                                .frame(width: 80, height: 80)
@@ -956,6 +943,8 @@ struct SpineView:View{
                     }
                 }
                 }.onAppear(perform: getFollowingListData)
+               
+                
 
         }
            

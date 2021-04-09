@@ -13,18 +13,20 @@ struct appConstants {
     
 //    static let kSimulatorDeviceToken = "b1e2d3bb55d44bfc4492bd33aac79afeaee474e92c12138e18b021e2326"
 //
+    static let kBASE_URL = "http://162.214.165.52/~pirituc5/apisecure/"
+//    static let kBASE_URL = "https://seobywebitindia.com/dev/spine/apisecure/"
     static let kImageBASE_URL = "http://homeofbulldogs.com/dev/geev/assets/upload/images/"
-    static let kBASE_URL = "http://wiesoftware.com/spine/apisecure/"
+//    static let kBASE_URL = "http://wiesoftware.com/spine/apisecure/"
     static let kregisterUsers = "login/registerUsers"
     static let kloginUser = "login/loginUsers"
     static let kwelcomeData = "other/getWelcomeData"
     static let kforgetPassword = "login/forgetPassword"
     static let kaddUserStories = "/stories/addUserStories"
     static let khashtagList = "hashtag/hashtagList"
-    
-    
-    
-    
+    static let kimpulseFollow = "impluse/followUnfollowImpluse/"
+    static let kuserDetails = "userDetails/"
+    static let kimpluseLike = "impluse/impluseLike/"
+    static let kgetEventsDetail = "getEventsDetail/"
     
     static let kcategories = "categories"
     static let ksethomecategories = "set-home-categories"

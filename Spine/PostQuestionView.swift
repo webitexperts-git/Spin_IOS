@@ -33,7 +33,7 @@ struct ColorModel: Identifiable {
 
 
 struct PageView: View {
-
+    @State var text = ""
     let colors: [Color] = [Color("PostColor1"), Color("PostColor2"), Color("PostColor3"), Color("PostColor4")]
     let colors2:[String] = ["#B89A8A","#D7C5B9","#C86845","#2196F3"]
     @State var color1: Color = Color.red
@@ -79,14 +79,16 @@ struct PageView: View {
                        ForEach(colors2, id: \.self) { color in
                        
                         ZStack(alignment: .leading) {
-                            
+                           
+                            let gold = UIColor(hex: color)
+                            Color(gold)
                             VStack(alignment: .leading){
                                 HStack(alignment: .top){
                                     btnBack
                                         .padding()
                                     Spacer()
 //                                    Text("Next")
-                                    NavigationLink(destination: PostHashTagView()) {
+                                    NavigationLink(destination: PostHashTagView(post : text)) {
                                         Text("Next")
                                             .foregroundColor(.white)
                                             .bold()
@@ -95,7 +97,7 @@ struct PageView: View {
                                 }
                                 Spacer()
 
-                                if userSetting.post.isEmpty {
+                                if text.isEmpty {
                                     
                                     VStack() {
                                        Text(placeholder)
@@ -108,7 +110,7 @@ struct PageView: View {
                                 }
                             }
                             
-                            TextEditor(text: $userSetting.post)
+                            TextEditor(text: $text)
                                 .font(.custom("Helvetica", size: 34))
                                 .foregroundColor(.white)
                                 .padding(.all)
@@ -117,9 +119,10 @@ struct PageView: View {
                         }.onAppear{
 //                            UserDefaults.standard.set(UIColor(Int(rgb:color)), forKey: "postColor")
 //                            let color2 = UIColor(rgb: color)
+                            UserDefaults.standard.set(color, forKey: "color")
                         }
                       
-//                        .background(UIColor(Int(rgb:color))).edgesIgnoringSafeArea(.all)
+//                        .background(Color(red: 123, green: 234, blue: 123)).edgesIgnoringSafeArea(.all)
                        
 //                           .clipShape(RoundedRectangle(cornerRadius: 10.0, style: .continuous))
                        

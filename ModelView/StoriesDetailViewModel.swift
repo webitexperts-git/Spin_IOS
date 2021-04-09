@@ -24,7 +24,7 @@ public class StoriesDetailViewModel: ObservableObject, Identifiable {
     var storiesDetailHandler = StoriesDetailHandler()
     @Published var data:[StoriesDetailModel.Data] = []
     @Published var woofUrl = false
-
+    @Published var imageUrl = ""
 
 
     private var isLoadingPublisher: AnyPublisher<Bool, Never> {
@@ -42,6 +42,19 @@ public class StoriesDetailViewModel: ObservableObject, Identifiable {
                 return false
                 }
             return response.status ?? false
+        }
+        .eraseToAnyPublisher()
+    }
+    
+    
+    private var isImageUrl: AnyPublisher<String, Never> {
+        storiesDetailHandler.$storiesDetailDataResponse
+            .receive(on: RunLoop.main)
+            .map { response in
+                guard let response = response else {
+                return ""
+                }
+            return response.image ?? ""
         }
         .eraseToAnyPublisher()
     }
@@ -77,6 +90,12 @@ public class StoriesDetailViewModel: ObservableObject, Identifiable {
         isDataPublisher
             .receive(on: RunLoop.main)
             .assign(to: \.data, on: self)
+            .store(in: &disposables)
+            print("StoriesDetail",data)
+        
+        isImageUrl
+            .receive(on: RunLoop.main)
+            .assign(to: \.imageUrl, on: self)
             .store(in: &disposables)
             print("StoriesDetail",data)
 

@@ -24,7 +24,7 @@ public class FollowingListViewModel: ObservableObject, Identifiable {
     
     @Published var woofUrl = false
     @Published var data:[FollowingListModel.Data] = []
-   
+   @Published var imageUrl = ""
     
 
     private var isLoadingPublisher: AnyPublisher<Bool, Never> {
@@ -42,6 +42,18 @@ public class FollowingListViewModel: ObservableObject, Identifiable {
                 return false
                 }
             return response.status ?? false
+        }
+        .eraseToAnyPublisher()
+    }
+    
+    private var isImageUrl: AnyPublisher<String, Never> {
+        followingListHandler.$followingListResponse
+            .receive(on: RunLoop.main)
+            .map { response in
+                guard let response = response else {
+                return ""
+                }
+            return response.image ?? ""
         }
         .eraseToAnyPublisher()
     }
@@ -78,6 +90,12 @@ public class FollowingListViewModel: ObservableObject, Identifiable {
         isDataPublisher
             .receive(on: RunLoop.main)
             .assign(to: \.data, on: self)
+            .store(in: &disposables)
+            print("FollowersDetail",data)
+        
+        isImageUrl
+            .receive(on: RunLoop.main)
+            .assign(to: \.imageUrl, on: self)
             .store(in: &disposables)
             print("FollowersDetail",data)
     }

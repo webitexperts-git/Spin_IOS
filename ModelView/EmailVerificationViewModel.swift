@@ -20,15 +20,18 @@ public class EmailVerificationViewModel: ObservableObject, Identifiable {
     
     @Published var shouldNavigate = false
     
+    @Published var email = ""
+    @Published var verificationPin = ""
+   
+
+   
     private var disposables: Set<AnyCancellable> = []
     
     var emailVerificationHandler = EmailVerificationHandler()
     var uu = RegisterHandler()
     
     @Published var woofUrl = false
-//    @Published var data:[RecFollowersModel.Data] = []
-//    @Published var userId:String
-    
+
 
     private var isLoadingPublisher: AnyPublisher<Bool, Never> {
         emailVerificationHandler.$isLoading
@@ -49,21 +52,33 @@ public class EmailVerificationViewModel: ObservableObject, Identifiable {
         .eraseToAnyPublisher()
     }
     
-    
-//    private var isDataPublisher: AnyPublisher<String, Never> {
+//    private var isEmailPublisher: AnyPublisher<String, Never> {
 //        emailVerificationHandler.$emailVerificationDataResponse
 //            .receive(on: RunLoop.main)
 //            .map { response in
 //                guard let response = response else {
-//
-//                    return ""
+//                return ""
 //                }
-//
-//                return (response.data?.users_id ?? "")
+//                return response.data?.email ?? ""
 //        }
 //        .eraseToAnyPublisher()
 //    }
     
+    
+    private var isPinPublisher: AnyPublisher<String, Never> {
+        emailVerificationHandler.$emailVerificationDataResponse
+            .receive(on: RunLoop.main)
+            .map { response in
+                guard let response = response else {
+                return ""
+                }
+                return response.data?.verification_pin ?? ""
+        }
+        .eraseToAnyPublisher()
+    }
+    
+    
+
     init() {
         isLoadingPublisher
             .receive(on: RunLoop.main)
@@ -74,14 +89,17 @@ public class EmailVerificationViewModel: ObservableObject, Identifiable {
             .receive(on: RunLoop.main)
             .assign(to: \.woofUrl, on: self)
             .store(in: &disposables)
-//                print(woofUrl)
         
-        
-//        isDataPublisher
+//        isEmailPublisher
 //            .receive(on: RunLoop.main)
-//            .assign(to: \.userId, on: self)
+//            .assign(to: \.email, on: self)
 //            .store(in: &disposables)
-//            print("HomeViewImpulseModelData",userId)
+        
+//        isPinPublisher
+//            .receive(on: RunLoop.main)
+//            .assign(to: \.verificationPin, on: self)
+//            .store(in: &disposables)
+
         
     }
     

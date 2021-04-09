@@ -24,6 +24,7 @@ public class StoriesViewModel: ObservableObject, Identifiable {
     var storiesHandler = StoriesHandler()
     
     @Published var woofUrl = false
+    @Published var imageUrl = ""
     @Published var data = [StoriesModel.Data]()
 //    @Published var stories_data = [StoriesModel.Data.Stories_data]()
    
@@ -49,6 +50,19 @@ public class StoriesViewModel: ObservableObject, Identifiable {
     }
     
     
+    private var isImageUrl: AnyPublisher<String, Never> {
+        storiesHandler.$storiesDataResponse
+            .receive(on: RunLoop.main)
+            .map { response in
+                guard let response = response else {
+                return ""
+                }
+            return response.image ?? ""
+        }
+        .eraseToAnyPublisher()
+    }
+    
+    
     private var isDataPublisher: AnyPublisher<[StoriesModel.Data], Never> {
         storiesHandler.$storiesDataResponse
             .receive(on: RunLoop.main)
@@ -63,21 +77,6 @@ public class StoriesViewModel: ObservableObject, Identifiable {
         .eraseToAnyPublisher()
     }
     
-//    private var isDataStoriesPublisher: AnyPublisher<[StoriesModel.Data.Stories_data], Never> {
-//        storiesHandler.$storiesDataResponse
-//            .receive(on: RunLoop.main)
-//            .map { response in
-//                guard let response = response else {
-//
-//                    return []
-//                }
-//                print(response.data?[0].stories_data ?? [])
-//                return (response.data?[0].stories_data ?? []) as [StoriesModel.Data.Stories_data]
-//
-//
-//        }
-//        .eraseToAnyPublisher()
-//    }
     
    
     
@@ -99,12 +98,11 @@ public class StoriesViewModel: ObservableObject, Identifiable {
             .store(in: &disposables)
             print("HomeViewImpulseModelData",data)
         
-        
-//        isDataStoriesPublisher
-//            .receive(on: RunLoop.main)
-//            .assign(to: \.stories_data, on: self)
-//            .store(in: &disposables)
-//        print("HomeViewImpulseModelData",stories_data)
+        isImageUrl
+            .receive(on: RunLoop.main)
+            .assign(to: \.imageUrl, on: self)
+            .store(in: &disposables)
+        print("HomeViewImpulseModelData",imageUrl)
     }
     
   

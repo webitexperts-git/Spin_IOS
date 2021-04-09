@@ -25,23 +25,24 @@ public class NearByEventViewModel: ObservableObject, Identifiable {
     @Published var woofUrl = false
     @Published var data:[NearByEventModel.Data] = []
     
+//    @Published var event = "nearby"
+//    @Published var tap = false
+//    @Published var tap1 = false
     
-    @Published var tap = false
-    @Published var tap1 = false
+//    private var isTapPublisher: AnyPublisher<Bool, Never> {
+//        nearByEventHandler.$tap
+//            .receive(on: RunLoop.main)
+//            .map { $0 }
+//            .eraseToAnyPublisher()
+//    }
+//
+//    private var isTap1Publisher: AnyPublisher<Bool, Never> {
+//        nearByEventHandler.$tap1
+//            .receive(on: RunLoop.main)
+//            .map { $0 }
+//            .eraseToAnyPublisher()
+//    }
     
-    private var isTapPublisher: AnyPublisher<Bool, Never> {
-        nearByEventHandler.$tap
-            .receive(on: RunLoop.main)
-            .map { $0 }
-            .eraseToAnyPublisher()
-    }
-
-    private var isTap1Publisher: AnyPublisher<Bool, Never> {
-        nearByEventHandler.$tap1
-            .receive(on: RunLoop.main)
-            .map { $0 }
-            .eraseToAnyPublisher()
-    }
     private var isLoadingPublisher: AnyPublisher<Bool, Never> {
         nearByEventHandler.$isLoading
             .receive(on: RunLoop.main)
@@ -97,17 +98,17 @@ public class NearByEventViewModel: ObservableObject, Identifiable {
             print("FollowersDetail",data)
         
         
-        isTapPublisher
-            .receive(on: RunLoop.main)
-            .assign(to: \.tap, on: self)
-            .store(in: &disposables)
-            print("tap",tap)
-
-        isTap1Publisher
-            .receive(on: RunLoop.main)
-            .assign(to: \.tap1, on: self)
-            .store(in: &disposables)
-            print("tap1",tap1)
+//        isTapPublisher
+//            .receive(on: RunLoop.main)
+//            .assign(to: \.tap, on: self)
+//            .store(in: &disposables)
+//            print("tap",tap)
+//
+//        isTap1Publisher
+//            .receive(on: RunLoop.main)
+//            .assign(to: \.tap1, on: self)
+//            .store(in: &disposables)
+//            print("tap1",tap1)
         
 
     }

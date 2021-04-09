@@ -92,7 +92,7 @@ struct AllEventModel : Codable {
         let total_share : String?
         let user_share_status : Int?
         let user_save_status : Int?
-
+        let symbol: String?
         enum CodingKeys: String, CodingKey {
 
             case id = "id"
@@ -130,6 +130,7 @@ struct AllEventModel : Codable {
             case total_share = "total_share"
             case user_share_status = "user_share_status"
             case user_save_status = "user_save_status"
+            case symbol = "symbol"
         }
 
         init(from decoder: Decoder) throws {
@@ -169,6 +170,7 @@ struct AllEventModel : Codable {
             total_share = try values.decodeIfPresent(String.self, forKey: .total_share)
             user_share_status = try values.decodeIfPresent(Int.self, forKey: .user_share_status)
             user_save_status = try values.decodeIfPresent(Int.self, forKey: .user_save_status)
+            symbol = try values.decodeIfPresent(String.self, forKey: .symbol)
         }
 
     }

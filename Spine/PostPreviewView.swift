@@ -8,7 +8,9 @@
 import SwiftUI
 
 struct PostPreviewView: View {
-    
+    @State var postPreview = ""
+    @State var hashTag = ""
+   
     var body: some View {
         
         ZStack(){
@@ -16,7 +18,7 @@ struct PostPreviewView: View {
             
             
             VStack {
-                PageView1()
+                PageView1(postPreview1: $postPreview, hashTag1: $hashTag)
             }
             
         }
@@ -26,11 +28,15 @@ struct PostPreviewView: View {
 
 
 struct PageView1: View {
-
+    
+    @Binding var postPreview1: String
+    @Binding var hashTag1: String
+    @State private var advertising = false
+    var advertise = false
     @State var tag:Int? = nil
     @Environment(\.presentationMode) var presentation
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
-
+   
        var btnBack : some View { Button(action: {
            self.presentationMode.wrappedValue.dismiss()
            }) {
@@ -51,9 +57,9 @@ struct PageView1: View {
     @ObservedObject var postModel = PostPreviewViewModel()
     @State private var placeholder = "Post a question or share what's on your mind"
     
-    init() {
-           UITextView.appearance().backgroundColor = .clear
-       }
+//    init() {
+//           UITextView.appearance().backgroundColor = .clear
+//       }
     
   
     var body: some View {
@@ -62,7 +68,7 @@ struct PageView1: View {
             let color = UserDefaults.standard.color(forKey: "postColor")
             let _ = print("color",color)
             Color(color!).ignoresSafeArea(.all)
-            ZStack(alignment: .leading) {
+//            ZStack(alignment: .leading) {
                 
                 VStack(alignment: .leading){
                     HStack(alignment: .top){
@@ -74,37 +80,90 @@ struct PageView1: View {
                             Text("Post")
                                 .foregroundColor(.white)
                                 .bold()
-                            }
+                            }.onAppear(perform: getPostData)
                             .padding()
                     }
-                    Spacer()
-
-                    if userSetting.post.isEmpty {
-                        
-                        VStack() {
-                           Text(placeholder)
-                            .font(.custom("Helvetica", size: 34))
-                            .foregroundColor(.white)
-                            .padding(.all)
-                           Spacer()
-                        }
-
-                    }
-                }
+                    
+                    Text(postPreview1)
+                        .font(.custom("Helvetica", size: 24))
+                        .foregroundColor(.white)
+                        .padding(.all)
                 
-                TextEditor(text: $userSetting.post)
-                    .font(.custom("Helvetica", size: 34))
+                
+                Text(hashTag1)
+                    .font(.custom("Helvetica", size: 24))
                     .foregroundColor(.white)
                     .padding(.all)
-                    .padding(.top, 50)
-            }
-            .onAppear(perform: getPostData)
+                    
+                    HStack(alignment: .center){
+//                        Text("Do you wish to advertise your post?")
+//                            .multilineTextAlignment(.leading)
+                        Spacer()
+                        
+                        Toggle("Do you wish to advertise your post?", isOn: $advertising).foregroundColor(.white)
+                            .padding(.trailing, 20)
+                            .toggleStyle(SwitchToggleStyle(tint: .white))
+
+                                   if advertising {
+                                      
+                                    
+                                   }
+                        
+                    }
+                    HStack(){
+                        Button(action:{
+                            
+                        }){
+                            Text("Delete")
+                                .foregroundColor(.white)
+                        }.padding()
+                        Spacer()
+                        Button(action:{
+                            
+                        }){
+                            Text("Preview")
+                                .foregroundColor(.white)
+                        }.padding()
+                        
+                    }
+                    
+                    Spacer()
+                    
+                
+
+//                    if postPreview1.isEmpty {
+//
+//                        VStack() {
+//                           Text(placeholder)
+//                            .font(.custom("Helvetica", size: 34))
+//                            .foregroundColor(.white)
+//                            .padding(.all)
+//                           Spacer()
+//                        }
+//
+//                    }
+                    
+                   
+                }
+//
+//                TextEditor(text: $postPreview1)
+//                    .font(.custom("Helvetica", size: 34))
+//                    .foregroundColor(.white)
+//                    .padding(.all)
+//                    .padding(.top, 50)
+                    
+          
+               
+//            }
+            
 //            .background(Color.red).edgesIgnoringSafeArea(.all)
                .clipShape(RoundedRectangle(cornerRadius: 10.0, style: .continuous))
             
 //            .onDisappear{
 //                UserDefaults.standard.setValue(nil, forKey: "postColor")
 //            }
+            
+            Spacer()
            
         }.navigationBarHidden(true)
 //        .toolbar {
@@ -117,7 +176,7 @@ struct PageView1: View {
 
                    }
     func getPostData(){
-        postModel.getPostData()
+        postModel.getPostData(title: postPreview1, hashTag:hashTag1)
         
     }
           

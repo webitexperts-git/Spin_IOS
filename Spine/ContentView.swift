@@ -52,6 +52,7 @@ struct ContentView: View {
                             .foregroundColor(Color.white)
                         
                     }.navigationBarTitle(self.hasTitle ? " " : "").foregroundColor(.white)
+                    .navigationBarHidden(false)
                 }
             }
             

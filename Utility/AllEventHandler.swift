@@ -14,25 +14,24 @@ class AllEventHandler: APIHandler{
     
     @Published var allEventDataResponse: AllEventModel?
     @Published var isLoading = false
-    @Published var eventStatus = "all"
-    @Published var nearByEventDataResponse: NearByEventModel?
+
 //    http://wiesoftware.com/spine/apisecure/post/addUserPost
-        var url = ""
+//    https://seobywebitindia.com/dev/spine/apisecure/events/getOnlineUsersEventsList/page/per_page/your_user_id
+    var url = ""
     func getAllEventData(event: String) {
     isLoading = true
     print("event", event)
-        let userId = UserDefaults.standard.string(forKey: "user_id")!
-        if event == "all"{
-            eventStatus = "all"
-//            print(eventStatus)
-            url = appConstants.kBASE_URL + "events/getUsersEventsList/1/100/" + userId
-        }else{
-//            eventStatus = "getDistanceUsersEventsList/1/100/" + userId + "/27.45/77.567/100"
-                eventStatus = "nearby"
-            url = appConstants.kBASE_URL + "events/getDistanceUsersEventsList/1/100/" + userId + "/27.45/77.56/500"
-          
-//            print(eventStatus)
-        }
+        let userId = UserDefaults.standard.string(forKey: "user_id") ?? ""
+        url = appConstants.kBASE_URL + "events/getUsersEventsList/1/100/" + userId
+        
+//        else if event == "nearby"{
+////            eventStatus = "getDistanceUsersEventsList/1/100/" + userId + "/27.45/77.567/100"
+//                eventStatus = "nearby"
+//            url = appConstants.kBASE_URL + "events/getDistanceUsersEventsList/1/100/" + userId + "/27.45/77.56/500"
+//        }
+//        else{
+//            url = appConstants.kBASE_URL + "events/getOnlineUsersEventsList/1/100/" + userId
+//        }
     let user = "devpankaj"
     let password = "devpankaj"
     let credentialData = "\(user):\(password)".data(using: String.Encoding.utf8)!
@@ -59,7 +58,6 @@ class AllEventHandler: APIHandler{
                         
         weakSelf.isLoading = false
         weakSelf.allEventDataResponse = response
-        weakSelf.eventStatus = event
         }
     }
     
@@ -89,7 +87,7 @@ class AllEventHandler: APIHandler{
             }
                             
             weakSelf.isLoading = false
-            weakSelf.nearByEventDataResponse = response
+//           weakSelf.nearByEventDataResponse = response
             }
         }
 

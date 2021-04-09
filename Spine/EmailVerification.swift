@@ -11,11 +11,18 @@ struct EmailVerification: View {
     @State private var text: String = ""
     @State private var hasTitle = true
     @State private var isPresented = false
-    @State var email:String
-    @State var verificationPin: String
-    @State var userId:String
+//    @State var email:String
+//    @State var verificationPin: String
+//    @State var userId:String
     
     @ObservedObject var emailVerificationViewModel = EmailVerificationViewModel()
+    @ObservedObject var pinRegisterViewModel = RegisterViewModel()
+    @State private var entry = ""
+    let characterLimit = 4
+    
+    var verificationPin = ""
+    var userId = ""
+//    var email = ""
     
     var body: some View {
         ZStack{
@@ -23,25 +30,46 @@ struct EmailVerification: View {
             
             VStack{
 //
-                Text(email).font(.system(size:20)).bold()
+                Text(verificationPin).font(.system(size:20)).bold()
                     .foregroundColor(.white)
                     .padding(.bottom, 50)
                 Text("Verification code has been sent to your email. Please check junk folder in case code is not received.").foregroundColor(.white)
                     .padding()
-                TextField("", text: $text)
+//                HStack(spacing: 5){
+                TextField("", text: $emailVerificationViewModel.email)
+                        .foregroundColor(.white)
+                    .font(Font.system(size: 30, design: .monospaced))
+                        .frame(width: 90, height: 30, alignment: .center)
+                        .keyboardType(.numberPad)
+                        .textContentType(nil)
+                        .disabled(entry.count > (characterLimit - 1))
+                        .multilineTextAlignment(.center)
+                
+                
+//                SATextField(tag: 0, placeholder: "Placeholder", changeHandler: { (newText) in
+//                            self.text = newText
+//                        }) {
+//                            // do something when the editing of this textfield ends
+//                        }
+                
+                HStack(){
+                    Rectangle()
+                        .frame(width: 15, height: 2.0, alignment: .center)
+                        .foregroundColor(.white)
+                Rectangle()
+                    .frame(width: 15, height: 2.0, alignment: .center)
                     .foregroundColor(.white)
-                    .font(Font.system(size: 25, design: .default))
-                    .frame(width: 100, height: 30, alignment: .center)
-                           .keyboardType(.numberPad)
-                           .textContentType(nil)
-                    .multilineTextAlignment(.center)
-                Divider()
-                    .frame(width: 100,height: 1, alignment: .center)
-                 .padding(.horizontal, 30)
-                 .background(Color.white)
-                    .padding(.bottom, 30)
-
-                   
+                Rectangle()
+                    .frame(width: 15, height: 2.0, alignment: .center)
+                    .foregroundColor(.white)
+                Rectangle()
+                    .frame(width: 15, height: 2.0, alignment: .center)
+                    .foregroundColor(.white)
+                    
+                  
+                }
+               
+                
                 Text("Haven’t received a code?")
                     .foregroundColor(.white)
                 HStack{
@@ -50,7 +78,7 @@ struct EmailVerification: View {
                     .foregroundColor(.white)
                     .font(.system(size: 18))
 //                    }
-                    NavigationLink(destination: PhoneVerification().navigationBarBackButtonHidden(false)){
+                    NavigationLink(destination: PhoneVerification()){
                     
                     Text("| Get code via SMS")
                         .foregroundColor(.white)
@@ -58,22 +86,22 @@ struct EmailVerification: View {
                     }
                 }.padding()
                 
-
+                
                 Button(action: {
-                    print(text)
+                    print(emailVerificationViewModel.email)
                     print(verificationPin)
-                    if text == String(verificationPin){
+                    if verificationPin == emailVerificationViewModel.email{
                         print("userid",userId)
                         if(userId != ""){
                         UserDefaults.standard.setValue(userId, forKey: "user_id")
                         self.isPresented.toggle()
                         print("code matched!!!")
-                        callApi()
+//                        callApi()
                         }
+                    }else{
+                        alertAction(message: "OTP is wrong!")
                     }
                     
-                    
-//                    self.isPresented.toggle()
                 }) {
                     Text("VERIFY")
                         .frame(minWidth: 0, maxWidth: 250, minHeight: 0, maxHeight: 40)
@@ -85,15 +113,11 @@ struct EmailVerification: View {
                 
                 Spacer()
                 
-            }
+            }.onAppear(perform: {
+                callApi()
+            })
             .navigationBarHidden(true)
-//            .navigationBarItems(leading:
-//                            Button(action: {
-//                                print("Edit button pressed...")
-//                            }) {
-//                                Text("srivastava.gaurava@gmail.com")
-//                            }
-//                        )
+
         } .frame(maxWidth: .infinity, maxHeight: .infinity)
         
      
@@ -104,6 +128,19 @@ struct EmailVerification: View {
         emailVerificationViewModel.getEmailVerificationData()
         
     }
+    
+    func alertAction(message:String){
+
+        let alertView = UIAlertController(title: "Alert", message: message, preferredStyle: .alert)
+        var rootViewController = UIApplication.shared.keyWindow?.rootViewController
+               let alertAction = UIAlertAction(title: "ok", style: .cancel) { (alert) in
+                rootViewController?.dismiss(animated: true, completion: nil)
+               }
+               alertView.addAction(alertAction)
+                rootViewController?.present(alertView, animated: true, completion: nil)
+    }
+    
+    
 }
 
 

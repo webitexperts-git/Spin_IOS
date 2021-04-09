@@ -24,6 +24,7 @@ public class HomeViewModel: ObservableObject, Identifiable {
     
     @Published var woofUrl = false
     @Published var newData = [HomeModel.Data]()
+    @Published var imageUrl = ""
    
     private var isLoadingPublisher: AnyPublisher<Bool, Never> {
         homeHandler.$isLoading
@@ -44,11 +45,23 @@ public class HomeViewModel: ObservableObject, Identifiable {
         .eraseToAnyPublisher()
     }
     
+    private var isImageUrl: AnyPublisher<String, Never> {
+        homeHandler.$homeWelcomeDataResponse
+            .receive(on: RunLoop.main)
+            .map { response in
+                guard let response = response else {
+                return ""
+                }
+            return response.image ?? ""
+        }
+        .eraseToAnyPublisher()
+    }
+    
     
     private var isDataPublisher: AnyPublisher<[HomeModel.Data], Never> {
         homeHandler.$homeWelcomeDataResponse
             .receive(on: RunLoop.main)
-            .map { [self] response in
+            .map { response in
                 guard let response = response else {
             return []
             }
@@ -76,6 +89,14 @@ public class HomeViewModel: ObservableObject, Identifiable {
             .assign(to: \.newData, on: self)
             .store(in: &disposables)
             print("HomeViewModelData",newData)
+        
+        
+        isImageUrl
+            .receive(on: RunLoop.main)
+            .assign(to: \.imageUrl, on: self)
+            .store(in: &disposables)
+            print("HomeViewModelData",imageUrl)
+        
     }
     
     func getHomeWelcomeData() {

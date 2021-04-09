@@ -27,7 +27,7 @@ class HomeHandler: APIHandler{
         let headers: HTTPHeaders = ["Authorization": "Basic \(base64Credentials)", "X-API-KEY": "123run", "Content-Type": "application/x-www-form-urlencoded"]
         print(headers)
         
-        let url = "http://wiesoftware.com/spine/apisecure/other/getWelcomeData"
+        let url = appConstants.kBASE_URL + "other/getWelcomeData"
         
         AF.request(url, method: .get, parameters: nil , encoding: URLEncoding.default, headers: headers).responseDecodable { [weak self] (response: DataResponse<HomeModel, AFError>) in
             guard let weakSelf = self else { return }

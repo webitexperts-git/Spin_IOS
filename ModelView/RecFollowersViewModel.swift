@@ -25,7 +25,7 @@ public class RecFollowersViewModel: ObservableObject, Identifiable {
     
     @Published var woofUrl = false
     @Published var data:[RecFollowersModel.Data] = []
-   
+   @Published var imageUrl = ""
     
 
     private var isLoadingPublisher: AnyPublisher<Bool, Never> {
@@ -43,6 +43,19 @@ public class RecFollowersViewModel: ObservableObject, Identifiable {
                 return false
                 }
             return response.status ?? false
+        }
+        .eraseToAnyPublisher()
+    }
+    
+    
+    private var isImageUrl: AnyPublisher<String, Never> {
+        recFollowersHandler.$recFollowersDataResponse
+            .receive(on: RunLoop.main)
+            .map { response in
+                guard let response = response else {
+                return ""
+                }
+            return response.image ?? ""
         }
         .eraseToAnyPublisher()
     }
@@ -79,6 +92,12 @@ public class RecFollowersViewModel: ObservableObject, Identifiable {
         isDataPublisher
             .receive(on: RunLoop.main)
             .assign(to: \.data, on: self)
+            .store(in: &disposables)
+            print("RecFollowersViewModel",data)
+        
+        isImageUrl
+            .receive(on: RunLoop.main)
+            .assign(to: \.imageUrl, on: self)
             .store(in: &disposables)
             print("RecFollowersViewModel",data)
     }

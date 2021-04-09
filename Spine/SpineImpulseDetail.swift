@@ -43,7 +43,7 @@ struct ImpulseRow: View {
                
                 HStack{
 
-                    AsyncImage(url: URL(string: "http://wiesoftware.com/spine/assets/upload/impulse/" + (impulse.image ?? ""))!,
+                    AsyncImage(url: URL(string: "https://seobywebitindia.com/dev/spine/assets/upload/impulse/" + (impulse.image ?? ""))!,
                                   placeholder: { Text("") },
                                   image: { Image(uiImage: $0).resizable() })
                         .frame(width:80, height:80)
@@ -101,6 +101,11 @@ struct SpineImpulseDetail: View {
     @Environment(\.presentationMode) var mode: Binding<PresentationMode>
 //    @ObservedObject var userPostModel = UserPostViewModel()
     @ObservedObject var impulseModel = HomeViewImpulseModel()
+    @ObservedObject var impulseFollowModel = ImpulseFollowViewModel()
+    @ObservedObject var userDetailModel = UserDetailViewModel()
+    @State var someText = ""
+   
+   
 //    let hikingTrails = [UserPostModel.Data]()
     var body: some View {
 
@@ -115,17 +120,46 @@ struct SpineImpulseDetail: View {
             
         }.navigationBarHidden(false)
         .onAppear(perform: getImpulse)
-
+        .onAppear(perform: userDetail)
+        .onAppear(perform: {
+            if ($userDetailModel.userDetailFollow.wrappedValue == "0") {
+                self.someText = "Follow"
+                        } else {
+                            self.someText = "Following"
+                        }
+        })
+        
         .navigationTitle("SPINE IMPULSES").foregroundColor(.black)
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
-            Button("Follow") {
-                print("Help tapped!")
+            Button(action: {
+//                if $userDetailModel.woofUrl.wrappedValue != false{
+                self.someText = userDetailModel.userDetailFollow
+                print("someText", someText)
+                  
+                if (someText == "Follow") {
+                        self.someText = "Following"
+                    } else {
+                        self.someText = "Follow"
                     }
+                    follow()
+                
+                        }) {
+                            Text(self.someText).font(.largeTitle)
+
+                        }
                 }
 //        Spacer()
 
         }
+    
+    private func userDetail(){
+        userDetailModel.getUserDetailData()
+    }
+    private func follow(){
+        impulseFollowModel.getImpulseFollowData(title: self.someText)
+    }
+    
     
     private func getImpulse() {
         impulseModel.getHomeImpulseData()

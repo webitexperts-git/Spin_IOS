@@ -65,8 +65,10 @@ public class PostPreviewViewModel: ObservableObject, Identifiable {
         
     }
     
-    func getPostData() {
-        postPreviewHandler.getPostData()
+    func getPostData(title: String, hashTag:String) {
+        let title1 = title
+        let hashTag1 = hashTag
+        postPreviewHandler.getPostData(title:title1, hashTag:hashTag1)
     }
     
 }

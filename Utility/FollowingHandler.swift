@@ -26,7 +26,7 @@ func getFollowingData() {
     let base64Credentials = credentialData.base64EncodedString(options: [])
     let headers: HTTPHeaders = ["Authorization": "Basic \(base64Credentials)", "X-API-KEY": "123run", "Content-Type": "application/x-www-form-urlencoded"]
     print(headers)
-        let userId = UserDefaults.standard.string(forKey: "user_id")!
+        let userId = UserDefaults.standard.string(forKey: "user_id") ?? ""
     let url = appConstants.kBASE_URL + "stories/getFollowingUsersStorieList/1/100/" + userId
     
 

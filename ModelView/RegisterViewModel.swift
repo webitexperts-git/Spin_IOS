@@ -17,12 +17,12 @@ public class RegisterViewModel: ObservableObject, Identifiable {
     @Published var password = ""
     @Published var name = ""
     @Published var town = ""
+    
     @Published var user_ip = ""
     @Published var user_latitude = ""
     @Published var user_longitude = ""
-//    @Published var verification_pin = ""
+    
 //    @Published var data = [RegisterModel.Data]()
-    @Published var data:[RegisterModel.Data] = []
     @Published var verificationPin = ""
     @Published var userId = ""
     @Published var isLoggedIn = false
@@ -40,6 +40,7 @@ public class RegisterViewModel: ObservableObject, Identifiable {
     private var disposables: Set<AnyCancellable> = []
     
     var registerHandler = RegisterHandler()
+   
     
     @Published var woofUrl = false
     
@@ -64,6 +65,8 @@ public class RegisterViewModel: ObservableObject, Identifiable {
     }
     
     
+    
+    
     private var isDataPublisher: AnyPublisher<String, Never> {
         registerHandler.$woofResponse1
             .receive(on: RunLoop.main)
@@ -85,7 +88,7 @@ public class RegisterViewModel: ObservableObject, Identifiable {
                     return ""
             }
 
-                return (response.data?.users_id)!
+                return (response.data?.users_id) ?? ""
     }
         .eraseToAnyPublisher()
     }
@@ -107,17 +110,17 @@ public class RegisterViewModel: ObservableObject, Identifiable {
         print(woofUrl)
         
         
-        isDataPublisher
-            .receive(on: RunLoop.main)
-            .assign(to: \.verificationPin, on: self)
-            .store(in: &disposables)
-            print("Register",verificationPin)
-        
         isuserPublisher
             .receive(on: RunLoop.main)
             .assign(to: \.userId, on: self)
             .store(in: &disposables)
-            print("Register",userId)
+            print("userId",userId)
+        
+        isDataPublisher
+            .receive(on: RunLoop.main)
+            .assign(to: \.verificationPin, on: self)
+            .store(in: &disposables)
+            print("verificationPin",verificationPin)
     }
     
     

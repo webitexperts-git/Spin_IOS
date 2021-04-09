@@ -17,7 +17,7 @@ public class NearByViewModel: ObservableObject, Identifiable {
     @Published var isLoading = false
     
     @Published var shouldNavigate = false
-    
+    @Published var event = ""
     private var disposables: Set<AnyCancellable> = []
     
     var nearByEventHandler = NearByEventHandler()
