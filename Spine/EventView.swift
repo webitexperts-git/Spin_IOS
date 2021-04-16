@@ -176,9 +176,6 @@ struct ButtonView: View {
             
         }
        
-       
-        
-        
     }
     
 
@@ -198,7 +195,7 @@ struct EventRow: View {
     @State private var hasTitle = true
     
     @ObservedObject var allEventViewModel = AllEventViewModel()
-   
+   @State var dayDate = ""
     
     var body: some View {
         
@@ -243,22 +240,17 @@ struct EventRow: View {
                                     
                                     Text(data.title!).font(.subheadline).foregroundColor(.black)  .lineLimit(2)
                                     
-//                                    Text(data.location!).font(.subheadline).foregroundColor(.black)  .lineLimit(2)
-                                    
                                     
                                     Text(data.location!).font(.subheadline).foregroundColor(.gray)
                                     HStack(){
-                                        Text(data.start_date!).font(.subheadline).foregroundColor(.black)
+//                                        let dayDate = weekDay("2020-12-23")
+//                                    Text(dayDate).font(.subheadline).foregroundColor(.black)
                                     Spacer()
                                        
                                     let fee = data.symbol ?? "$" + data.fee!
                                     Text(fee).font(.subheadline).foregroundColor(.black)
                                     }
-//                                    HStack(){
-//                                        Text(data.event_categories!).font(.subheadline).foregroundColor(.black)
-//                                        Spacer()
-                                       
-//                                    }
+
                                 }
 //                                Spacer()
                                 Image("bookmark").resizable().frame(width: 25, height: 25, alignment: .trailing)
@@ -282,6 +274,22 @@ struct EventRow: View {
         }
         
     }
+    
+    func weekDay(dateString:String)->String?{
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.locale = Locale(identifier: "en_US_POSIX") // set locale to reliable US_POSIX
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        let date = dateFormatter.date(from:dateString)!
+        
+        
+        let dateFormatter1 = DateFormatter()
+        dateFormatter1.dateFormat = "EEE"
+        let dayOfTheWeekString = dateFormatter1.string(from: date)
+        
+         return dayOfTheWeekString
+    }
+    
     
 }
 

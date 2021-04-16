@@ -63,6 +63,8 @@ struct EventDetailModel : Codable {
         let booking_id : String?
         let user_display_name : String?
         let use_name : String?
+        let profile_pic : String?
+        let symbol: String?
 
         enum CodingKeys: String, CodingKey {
 
@@ -98,6 +100,8 @@ struct EventDetailModel : Codable {
             case booking_id = "booking_id"
             case user_display_name = "user_display_name"
             case use_name = "use_name"
+            case profile_pic = "profile_pic"
+            case symbol = "symbol"
         }
 
         init(from decoder: Decoder) throws {
@@ -134,6 +138,8 @@ struct EventDetailModel : Codable {
             booking_id = try values.decodeIfPresent(String.self, forKey: .booking_id)
             user_display_name = try values.decodeIfPresent(String.self, forKey: .user_display_name)
             use_name = try values.decodeIfPresent(String.self, forKey: .use_name)
+            profile_pic = try values.decodeIfPresent(String.self, forKey: .profile_pic)
+            symbol = try values.decodeIfPresent(String.self, forKey: .symbol)
         }
 
     }

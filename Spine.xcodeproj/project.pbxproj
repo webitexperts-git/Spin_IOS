@@ -114,6 +114,12 @@
 		F12B8166261D759A005566B4 /* EventGoingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F12B8165261D759A005566B4 /* EventGoingModel.swift */; };
 		F12B8169261D7634005566B4 /* EventGoingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F12B8168261D7634005566B4 /* EventGoingViewModel.swift */; };
 		F12B816C261D768C005566B4 /* EventGoingHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = F12B816B261D768C005566B4 /* EventGoingHandler.swift */; };
+		F15DA04D26280C210003DD0F /* EventLanguageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F15DA04C26280C210003DD0F /* EventLanguageModel.swift */; };
+		F15DA05026280CF00003DD0F /* EventLanguageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F15DA04F26280CF00003DD0F /* EventLanguageViewModel.swift */; };
+		F15DA05326280D360003DD0F /* EventLanguageHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = F15DA05226280D360003DD0F /* EventLanguageHandler.swift */; };
+		F164D01C26244F6B0096C9B6 /* EventBookModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F164D01B26244F6B0096C9B6 /* EventBookModel.swift */; };
+		F164D01F26244F7F0096C9B6 /* EventBookViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F164D01E26244F7F0096C9B6 /* EventBookViewModel.swift */; };
+		F164D02226244F960096C9B6 /* EventBookHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = F164D02126244F960096C9B6 /* EventBookHandler.swift */; };
 		F16757B425F2593F003DEEB9 /* FollowingListHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = F16757B325F2593F003DEEB9 /* FollowingListHandler.swift */; };
 		F16757B725F25961003DEEB9 /* FollowingListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F16757B625F25961003DEEB9 /* FollowingListViewModel.swift */; };
 		F16757BA25F25977003DEEB9 /* FollowingListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F16757B925F25977003DEEB9 /* FollowingListModel.swift */; };
@@ -186,6 +192,9 @@
 		F18D165126207BC5006179A9 /* BookEventView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F18D165026207BC5006179A9 /* BookEventView.swift */; };
 		F18D165826207CB6006179A9 /* MessageEventView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F18D165726207CB6006179A9 /* MessageEventView.swift */; };
 		F192E46E25D69E98005B634F /* PostQuestionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F192E46D25D69E98005B634F /* PostQuestionView.swift */; };
+		F19D27562625AEFF001F31E9 /* EventCategoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F19D27552625AEFF001F31E9 /* EventCategoryModel.swift */; };
+		F19D27592625AF44001F31E9 /* EventCategoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F19D27582625AF44001F31E9 /* EventCategoryViewModel.swift */; };
+		F19D275C2625AF92001F31E9 /* EventCategoryHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = F19D275B2625AF92001F31E9 /* EventCategoryHandler.swift */; };
 		F1D889A425CAA780000ED8AE /* AsyncImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1D889A325CAA780000ED8AE /* AsyncImage.swift */; };
 		F1DD59EF25FB416F00DD1A29 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1DD59EE25FB416F00DD1A29 /* ImagePicker.swift */; };
 		F1DD5A2425FB6F9A00DD1A29 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1DD5A2325FB6F9A00DD1A29 /* LocationManager.swift */; };
@@ -321,6 +330,12 @@
 		F12B8165261D759A005566B4 /* EventGoingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventGoingModel.swift; sourceTree = "<group>"; };
 		F12B8168261D7634005566B4 /* EventGoingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventGoingViewModel.swift; sourceTree = "<group>"; };
 		F12B816B261D768C005566B4 /* EventGoingHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventGoingHandler.swift; sourceTree = "<group>"; };
+		F15DA04C26280C210003DD0F /* EventLanguageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventLanguageModel.swift; sourceTree = "<group>"; };
+		F15DA04F26280CF00003DD0F /* EventLanguageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventLanguageViewModel.swift; sourceTree = "<group>"; };
+		F15DA05226280D360003DD0F /* EventLanguageHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventLanguageHandler.swift; sourceTree = "<group>"; };
+		F164D01B26244F6B0096C9B6 /* EventBookModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventBookModel.swift; sourceTree = "<group>"; };
+		F164D01E26244F7F0096C9B6 /* EventBookViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventBookViewModel.swift; sourceTree = "<group>"; };
+		F164D02126244F960096C9B6 /* EventBookHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventBookHandler.swift; sourceTree = "<group>"; };
 		F16757B325F2593F003DEEB9 /* FollowingListHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowingListHandler.swift; sourceTree = "<group>"; };
 		F16757B625F25961003DEEB9 /* FollowingListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowingListViewModel.swift; sourceTree = "<group>"; };
 		F16757B925F25977003DEEB9 /* FollowingListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowingListModel.swift; sourceTree = "<group>"; };
@@ -393,6 +408,9 @@
 		F18D165026207BC5006179A9 /* BookEventView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookEventView.swift; sourceTree = "<group>"; };
 		F18D165726207CB6006179A9 /* MessageEventView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageEventView.swift; sourceTree = "<group>"; };
 		F192E46D25D69E98005B634F /* PostQuestionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostQuestionView.swift; sourceTree = "<group>"; };
+		F19D27552625AEFF001F31E9 /* EventCategoryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventCategoryModel.swift; sourceTree = "<group>"; };
+		F19D27582625AF44001F31E9 /* EventCategoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventCategoryViewModel.swift; sourceTree = "<group>"; };
+		F19D275B2625AF92001F31E9 /* EventCategoryHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventCategoryHandler.swift; sourceTree = "<group>"; };
 		F1D889A325CAA780000ED8AE /* AsyncImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncImage.swift; sourceTree = "<group>"; };
 		F1DD59EE25FB416F00DD1A29 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		F1DD5A2325FB6F9A00DD1A29 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
@@ -452,6 +470,9 @@
 				F12B816B261D768C005566B4 /* EventGoingHandler.swift */,
 				F187CB1A261EDFBA00DD0C4C /* EventGetCommentHandler.swift */,
 				F18D164D2620701C006179A9 /* EventCommentDetailHandler.swift */,
+				F164D02126244F960096C9B6 /* EventBookHandler.swift */,
+				F19D275B2625AF92001F31E9 /* EventCategoryHandler.swift */,
+				F15DA05226280D360003DD0F /* EventLanguageHandler.swift */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -507,6 +528,9 @@
 				F12B8165261D759A005566B4 /* EventGoingModel.swift */,
 				F187CB13261EDF7500DD0C4C /* EventGetCommentModel.swift */,
 				F18D1647262069FC006179A9 /* EventCommentDetailModel.swift */,
+				F164D01B26244F6B0096C9B6 /* EventBookModel.swift */,
+				F19D27552625AEFF001F31E9 /* EventCategoryModel.swift */,
+				F15DA04C26280C210003DD0F /* EventLanguageModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -550,6 +574,9 @@
 				F12B8168261D7634005566B4 /* EventGoingViewModel.swift */,
 				F187CB17261EDFA300DD0C4C /* EventGetCommentViewModel.swift */,
 				F18D164A26206A4D006179A9 /* EventCommentDetailViewModel.swift */,
+				F164D01E26244F7F0096C9B6 /* EventBookViewModel.swift */,
+				F19D27582625AF44001F31E9 /* EventCategoryViewModel.swift */,
+				F15DA04F26280CF00003DD0F /* EventLanguageViewModel.swift */,
 			);
 			path = ModelView;
 			sourceTree = "<group>";
@@ -908,10 +935,13 @@
 				F18B70D325D17530009B141A /* FollowingViewModel.swift in Sources */,
 				F1782A5F261C448800C5D327 /* SavedEventView.swift in Sources */,
 				1835CD6425A6D202004A2F63 /* SATextField.swift in Sources */,
+				F15DA05326280D360003DD0F /* EventLanguageHandler.swift in Sources */,
 				F18D1648262069FD006179A9 /* EventCommentDetailModel.swift in Sources */,
 				F10BDE2D25E7A5EB0076EE22 /* PostPreviewHandler.swift in Sources */,
 				F1782A65261C454200C5D327 /* SavedEventViewModel.swift in Sources */,
 				F114975025ECB665002889A0 /* AllEventModel.swift in Sources */,
+				F164D01C26244F6B0096C9B6 /* EventBookModel.swift in Sources */,
+				F15DA04D26280C210003DD0F /* EventLanguageModel.swift in Sources */,
 				1805B5EA25A59D4600CE4C01 /* LoadingView.swift in Sources */,
 				18675F482554671400758F81 /* IQToolbar.m in Sources */,
 				18767E6B25A7192800AF8943 /* ForgetModel.swift in Sources */,
@@ -930,6 +960,7 @@
 				F18D165826207CB6006179A9 /* MessageEventView.swift in Sources */,
 				1805B5ED25A59D5100CE4C01 /* LoadingIndicator.swift in Sources */,
 				F16D1C0525D411C0000BCFF8 /* CommentModel.swift in Sources */,
+				F19D275C2625AF92001F31E9 /* EventCategoryHandler.swift in Sources */,
 				F18B70BF25D107E3009B141A /* UserPostViewModel.swift in Sources */,
 				F184520E26149D1E008D5C50 /* UserDetailViewModel.swift in Sources */,
 				1805B60025A5C27600CE4C01 /* HomeHandler.swift in Sources */,
@@ -946,6 +977,7 @@
 				18675F492554671400758F81 /* IQTitleBarButtonItem.m in Sources */,
 				18675F4B2554671400758F81 /* IQUIView+IQKeyboardToolbar.m in Sources */,
 				18830D6A25B1BF1700842278 /* HomeImpulseModel.swift in Sources */,
+				F15DA05026280CF00003DD0F /* EventLanguageViewModel.swift in Sources */,
 				F17099C225EF717800FF1298 /* EmailVerificationHandler.swift in Sources */,
 				18675F1125543EDF00758F81 /* AppDelegate.swift in Sources */,
 				F1782A7E261C675500C5D327 /* EventDetailHandler.swift in Sources */,
@@ -955,6 +987,7 @@
 				18578CF825B5542B00D70D98 /* HomeImpulseHandler.swift in Sources */,
 				F187CB1B261EDFBA00DD0C4C /* EventGetCommentHandler.swift in Sources */,
 				18675F512554671400758F81 /* IQUIView+Hierarchy.m in Sources */,
+				F164D01F26244F7F0096C9B6 /* EventBookViewModel.swift in Sources */,
 				F12B8166261D759A005566B4 /* EventGoingModel.swift in Sources */,
 				F16D504325D647AF00A7877A /* StoriesDetailModel.swift in Sources */,
 				1809E0AD256CD8BA0007E9B2 /* PhoneOTPVerification.swift in Sources */,
@@ -1000,6 +1033,7 @@
 				F117998825E4E56100900179 /* PostHashTagViewModel.swift in Sources */,
 				F18B70D025D17515009B141A /* FollowingHandler.swift in Sources */,
 				1821F1022567947600F77583 /* EmailVerification.swift in Sources */,
+				F19D27592625AF44001F31E9 /* EventCategoryViewModel.swift in Sources */,
 				F17099C925EFB17A00FF1298 /* FollowersDetailModel.swift in Sources */,
 				1893E0BF257E348E00B62212 /* StoriesDetail.swift in Sources */,
 				F1782A74261C4EAA00C5D327 /* PastEventHandler.swift in Sources */,
@@ -1017,6 +1051,7 @@
 				F10BDE2425E78B3A0076EE22 /* PostColor.swift in Sources */,
 				F1782A53261C394F00C5D327 /* GoingEventView.swift in Sources */,
 				1893E0C2257E352A00B62212 /* TrendingCatDetail.swift in Sources */,
+				F164D02226244F960096C9B6 /* EventBookHandler.swift in Sources */,
 				F1D889A425CAA780000ED8AE /* AsyncImage.swift in Sources */,
 				F1DD5A2425FB6F9A00DD1A29 /* LocationManager.swift in Sources */,
 				182C6CBD259074EA00742B1F /* PostView.swift in Sources */,
@@ -1028,6 +1063,7 @@
 				182B346525947B6A00DFCEF3 /* RegisterModel.swift in Sources */,
 				18767E6E25A71AB600AF8943 /* ForgetViewModel.swift in Sources */,
 				18578D0A25B5BCFD00D70D98 /* TrendingCatModel.swift in Sources */,
+				F19D27562625AEFF001F31E9 /* EventCategoryModel.swift in Sources */,
 				F171704125DFE3AD00FD60A1 /* RecFollowersViewModel.swift in Sources */,
 				F1782A68261C45BA00C5D327 /* SavedEventHandler.swift in Sources */,
 				F12B8169261D7634005566B4 /* EventGoingViewModel.swift in Sources */,

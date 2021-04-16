@@ -25,6 +25,7 @@ public class UserDetailViewModel: ObservableObject, Identifiable {
     @Published var woofUrl = false
     
     @Published var userDetailFollow = ""
+    @Published var userImgProfileStr = ""
 //    @Published var data:[FollowingListModel.Data] = []
 //   @Published var imageUrl = ""
     
@@ -55,8 +56,21 @@ public class UserDetailViewModel: ObservableObject, Identifiable {
                 guard let response = response else {
                 return ""
                 }
-                print("userDetail",response.data?.impulse_follow )
+//                print("userDetail",response.data?.impulse_follow )
                 return response.data?.impulse_follow ?? ""
+        }
+        .eraseToAnyPublisher()
+    }
+    
+    private var isUserDetailImgProfileStrPublisher: AnyPublisher<String, Never> {
+        userDetailHandler.$userDetailResponse
+            .receive(on: RunLoop.main)
+            .map { response in
+                guard let response = response else {
+                return ""
+                }
+//                print("userDetail",response.data?.impulse_follow )
+                return response.data?.profile_pic ?? ""
         }
         .eraseToAnyPublisher()
     }
@@ -81,6 +95,12 @@ public class UserDetailViewModel: ObservableObject, Identifiable {
             .assign(to: \.userDetailFollow, on: self)
             .store(in: &disposables)
             print(userDetailFollow)
+        
+        isUserDetailImgProfileStrPublisher
+            .receive(on: RunLoop.main)
+            .assign(to: \.userImgProfileStr, on: self)
+            .store(in: &disposables)
+            print(userImgProfileStr)
         
     }
     

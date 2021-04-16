@@ -20,6 +20,9 @@ struct EventPostView: View {
     @State private var eventCurrency: String = ""
     @State private var eventAttendee: String = ""
     @State private var eventLanguage: String = ""
+    @State private var showingSheet = false
+    @State private var languageList = false
+    @State private var language = ""
     
 //    @ObservedObject var lm = AddressLocation()
 //    var placemark: String { return("\(String(describing: lm.placemark?.locality))") }
@@ -35,9 +38,13 @@ struct EventPostView: View {
     @State var selectedTimeStart = Date()
     @State var selectedTimeEnd = Date()
     
+    @State var timeZone = ""
+    
     @State private var showPopUp = false
     
     @ObservedObject var locationManager = LocationManager()
+    @ObservedObject var eventCategoryModel = EventCategoryViewModel()
+    @ObservedObject var eventLanguageModel = EventLanguageViewModel()
     
     var userLatitude: String {
            return "\(locationManager.lastLocation?.coordinate.latitude ?? 0)"
@@ -58,8 +65,18 @@ struct EventPostView: View {
             })
         }
     
+    var timeZoneBinding: Binding<String> {
+            Binding<String>(
+                get: {
+                    return TimeZone.current.identifier
+            },
+                set: { newString in
+                    _ = newString
+            })
+        }
     
-    @State private var showingSheet = false
+   
+    @State private var showingSheetEvent = false
     
      var localTimeZoneAbbreviation: String { return TimeZone.current.abbreviation() ?? "" }
     
@@ -80,7 +97,7 @@ struct EventPostView: View {
 //                    Image("camera")
                         ZStack(){
                             image?.resizable().frame(minWidth:0, maxWidth: .infinity, minHeight: 250, maxHeight: 250)
-                            Text("Add Photo").foregroundColor(.white).font(.subheadline).padding(.top,80)
+//                            Text("Add Photo").foregroundColor(.white).font(.subheadline).padding(.top,80)
                             Image("camera")
                         }
                         Button("Add Photo") {
@@ -160,20 +177,30 @@ struct EventPostView: View {
                 .overlay(RoundedRectangle(cornerRadius: 10).stroke(Color(#colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)), lineWidth: 2))
                 .padding(.bottom,10)
         }.padding(10)
+            .simultaneousGesture(TapGesture().onEnded{
+                showingSheetEvent = true
+                })
+            .actionSheet(isPresented: $showingSheetEvent) {
+                    ActionSheet(
+                        title: Text("Select event type"),
+//                        message: Text("There's only one choice..."),
+                        buttons: [.default(Text("Local event"), action: {
+                            eventType = "Local event"
+                        }), .default(Text("Online event"), action: {
+                            eventType = "Online event"
+                            }), .destructive(Text("Cancel"), action: {
+                                print("Default tapped")
+                                })]
+                    )
+                }
+            
+            
             HStack(){
             Text("Start").bold().padding(.leading)
                 .padding(.trailing,160)
             Text("End").bold().padding(.leading)
             }
             VStack(){
-                
-//                VStack {
-//                        DatePicker("", selection: $selectedDateStart, displayedComponents: .date)
-//                    Text("\(selectedDateStart)").multilineTextAlignment(.center).lineLimit(nil)
-//                    let _ = print("wwww", selectedDateStart)
-//                       }
-//                Text("latitude: \(userLatitude)")
-//                Text("longitude: \(userLongitude)")
                 
             HStack(){
            
@@ -205,13 +232,19 @@ struct EventPostView: View {
             Group{
             Text("Timezone").bold().padding(.leading)
             ZStack(alignment: .leading) {
-            TextField("Timezone", text: $name)
-                .padding(10)
-                .foregroundColor(Color.black)
-//                .frame(width:250.0, height: 40.0)
-                .font(Font.system(size: 15, weight: .medium, design: .serif))
-                .overlay(RoundedRectangle(cornerRadius: 10).stroke(Color(#colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)), lineWidth: 2))
-                .padding(.bottom,10)
+//                let tz = utcToLocal()
+//                let _ = print("timeZone1", tz)
+                ZStack(){
+    
+                    TextField("TimeZone", text: timeZoneBinding)
+                        .padding(10)
+                        .foregroundColor(Color.black)
+        //                .frame(width:250.0, height: 40.0)
+                        .font(Font.system(size: 15, weight: .medium, design: .serif))
+                        .overlay(RoundedRectangle(cornerRadius: 10).stroke(Color(#colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)), lineWidth: 2))
+                        .padding(.bottom,10)
+                }
+           
             }.padding(10)
             
                
@@ -298,28 +331,25 @@ struct EventPostView: View {
                                 VStack (alignment:.center){
                                     Text("Select Events").bold()
                                     Spacer()
+                                   
                                     ScrollView(){
-                                        VStack(){
-                                            HStack(){
-                                            Text("Alternative pain treatment")
-                                            Spacer()
-                                            CheckboxFieldView()
-                                        }
-                                        HStack(){
-                                            Text("Alternative pain treatment")
-                                            Spacer()
-                                            CheckboxFieldView()
-                                        }
-//                                        HStack(){
-//                                            Text("Alternative pain treatment")
-//                                            Spacer()
-//                                            CheckboxFieldView()
-//                                        }
                                        
-//                                        Text("Alternative pain treatment")
-//                                        Text("Alternative pain treatment")
+                                        VStack(){
+                                         
+                                            HStack(){
+                                                if $eventCategoryModel.woofUrl.wrappedValue != false{
+                                                List(eventCategoryModel.data, id: \.self){ data in
+                                                    Text(data.category_name!)
+                                                    Spacer()
+                                                    CheckboxFieldView(catName: data.category_name!)
+                                                }.frame(minWidth: 0, maxWidth: .infinity, minHeight: 400, maxHeight: 400)
+                                              
+                                           
+                                        }
+                                            }
+                                       
                                         }.padding()
-                                    }
+                                    }.onAppear(perform: eventCategoryApi)
                                    
                                     Button(action: {
                                         self.showPopUp = false
@@ -393,26 +423,31 @@ struct EventPostView: View {
                 .padding(.bottom,10)
             }.padding(10)
             
-            
-            
+              
+                
             Text("Language the event is hosted in").bold().padding(.leading)
             ZStack(alignment: .leading) {
-                
+//                if $eventLanguageModel.woofUrl.wrappedValue != false{
                 if eventLanguage.isEmpty{
                     Text("").foregroundColor(.gray)
                         .padding(.bottom, 10)
                         .padding(.leading, 10)
                 }
           
-            TextField("Afar", text: $eventLanguage)
+            TextField("Afar", text: $language)
                 .padding(10)
                 .foregroundColor(Color.black)
                 .font(Font.system(size: 15, weight: .medium, design: .serif))
                 .overlay(RoundedRectangle(cornerRadius: 10).stroke(Color(#colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)), lineWidth: 2))
                 .padding(.bottom,10)
+                .onTapGesture {
+                    languageList = true
+                }
+                
             }.padding(10)
+
                 
-                
+          
                 
                 Toggle("Want to accept participants?", isOn: $showGreeting)
                     .toggleStyle(SwitchToggleStyle(tint: .orange))
@@ -436,38 +471,92 @@ struct EventPostView: View {
                                   
                     }.foregroundColor(Color("backColor"))
                 }
+                
             }
         
         }.padding()
+            
+            
+           
 
         }
+        
+      
+        if $languageList.wrappedValue != false{
+           
+            ZStack(alignment:.top){
+                Rectangle()
+                .fill(Color.white)
+                .opacity(0.5)
+            ScrollView(){
+
+                        if $eventLanguageModel.woofUrl.wrappedValue != false{
+                        ForEach(eventLanguageModel.data, id: \.self){ data in
+                            Text(data.name!).padding()
+                                .onTapGesture {
+                                    language = data.name!
+                                    languageList = false
+                                }
+
+                        }
+                }
+              
+
+            }
+            }.onAppear(perform: geteventLanguage)
+            .frame(width:400, height:300)
+            .cornerRadius(10)
+            .shadow(color: .gray, radius: 10)
+        }
+     
+       
     }
     
-    func timezone(){
-        for timeZone in TimeZone.knownTimeZoneIdentifiers {
-            print("timeZone",timeZone)
-        }
+    
+    func eventCategoryApi(){
+        eventCategoryModel.getEventCategoryData()
     }
+    
+    func geteventLanguage(){
+        eventLanguageModel.getEventLanguageData()
+    }
+
 }
 
 struct CheckboxFieldView : View {
-
+    var catName:String
     @State var checkState:Bool = false
-
+     @State var catNameArr:[String] = []
+    var aa = ""
     var body: some View {
 
          Button(action:
             {
                 //1. Save state
                 self.checkState = !self.checkState
-                print("State : \(self.checkState)")
+                if self.checkState {
+                    catNameArr.append(catName)
+//                    catNameArr.insert(contentsOf:catName, at: 0)
+                    
+                  
+                    print("State : \(catNameArr)")
+                }else{
+                    
+//                    catNameArr = catNameArr.filter { $0 !== catName }
+                    if let index = catNameArr.firstIndex(of: catName) {
+                        catNameArr.remove(at: index)
+                        print("State : \(catNameArr)")
 
+                    }
+                }
+               
+                    
 
         }) {
             VStack(alignment: .center){
             HStack(alignment: .top) {
 
-                        //2. Will update according to state
+            //2. Will update according to state
                 Image(checkState ? "checkbox-on" :  "checkbox-off")
                 .renderingMode(.original)
                 .resizable()
@@ -483,6 +572,59 @@ struct CheckboxFieldView : View {
 
 }
 
+struct EventLanguagePopUp:View{
+    @Binding var languageList:Bool
+    var body: some View{
+        ZStack{
+              Rectangle()
+              .fill(Color.gray)
+              .opacity(0.5)
+          
+            Button(action:{
+                languageList.toggle()
+            }){
+                Image("close").resizable().frame(width: 25, height: 25)
+            }  .position(x: 30, y: 200)
+          
+              VStack {
+               
+                  Spacer()
+               
+                  HStack {
+                      VStack(spacing: 20) {
+                          Text("I'd like to join!").fontWeight(.bold).padding(.all, 20)
+                      
+                       
+                      
+                       
+                      
+                        Text("Once the host accepts your request, the link to the event is shared with you.").padding()
+                            .multilineTextAlignment(.center)
+                        Button(action:{
+                            
+                        }){
+                            Text("SEND REQUEST TO HOST")
+                                .foregroundColor(.white)
+                                .padding()
+                          
+                        }.background(Color("backColor"))
+                        .cornerRadius(20.0)
+                        
+                      }
+                  }
+                  .frame(minWidth: 300, maxWidth: .infinity, minHeight: 250, maxHeight: 350, alignment: .top)
+                  .fixedSize(horizontal: false, vertical: false)
+                  .background(RoundedRectangle(cornerRadius: 20).fill(Color.white.opacity(1)))
+                  .overlay(RoundedRectangle(cornerRadius: 20).stroke(Color.white, lineWidth: 1))
+                  .padding()
+                  Spacer()
+              }
+          }
+//        .onTapGesture {
+//              self.displayItem = -1
+//          }
+        }
+}
 
 
 struct EventPostView_Previews: PreviewProvider {

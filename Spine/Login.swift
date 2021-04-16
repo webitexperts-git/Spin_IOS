@@ -75,29 +75,6 @@ struct Login: View {
                             .overlay(RoundedRectangle(cornerRadius: 18).stroke(Color.white, lineWidth: 2))
                             .padding(.bottom,10)
                     }
-//                    .navigationBarHidden(true)
-//                    .navigationBarBackButtonHidden(true)
-//                    NavigationLink(destination: Home(), isActive: .constant($model.woofUrl.wrappedValue != false)) {
-//                     
-//                   
-//                    
-//                    Button(action: {
-//                       
-//                            self.isPresented.toggle()
-//                        if(self.isValidInputs()){
-//                        self.loginUser()
-//                        }
-//                        
-//                        
-//                    }) {
-//                        Text("VERIFY")
-//                            .frame(minWidth: 0, maxWidth: 250, minHeight: 0, maxHeight: 40)
-//                            .foregroundColor(Color(red: 237 / 255, green: 215 / 255, blue: 183 / 255))
-//                            .background(Color.white)
-//                            .cornerRadius(18)
-//                            .padding(.bottom, 5)
-//                    } .fullScreenCover(isPresented: $isPresented, content: Home.init)
-//                    }
                        
                     NavigationLink(destination: Home(), isActive: .constant($model.woofUrl.wrappedValue != false)) {
                         VStack {
@@ -151,9 +128,9 @@ struct Login: View {
             }
         } .alert(isPresented: $showAlert, content: { self.alert })
     }
-        }
-        .navigationBarHidden(false)
-    }
+}
+        .navigationBarHidden(true)
+}
 
 fileprivate func isValidInputs() -> Bool {
     

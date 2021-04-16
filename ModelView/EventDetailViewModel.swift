@@ -34,7 +34,14 @@ public class EventDetailViewModel: ObservableObject, Identifiable {
     @Published var hostDisplayName = ""
     @Published var hostName = ""
     @Published var eventUserId = ""
+    @Published var profileImageStr = ""
     @Published var woofUrl = false
+    @Published var actualStartDate = ""
+    @Published var symbol = ""
+    @Published var fee = ""
+    @Published var language = ""
+    @Published var endDate = ""
+  
 //    @Publish var imageArr:Any = []
     
     @Published var userDetailFollow = ""
@@ -230,6 +237,93 @@ public class EventDetailViewModel: ObservableObject, Identifiable {
         .eraseToAnyPublisher()
     }
     
+    private var isEventactualStartDatePublisher: AnyPublisher<String, Never> {
+        eventDetailHandler.$eventDetailResponse
+            .receive(on: RunLoop.main)
+            .map { response in
+                guard let response = response else {
+
+                    return ""
+                }
+               
+                return response.data?.acctual_start_datetime ?? ""
+        }
+        .eraseToAnyPublisher()
+    }
+    
+    private var isEventProfilePicPublisher: AnyPublisher<String, Never> {
+        eventDetailHandler.$eventDetailResponse
+            .receive(on: RunLoop.main)
+            .map { response in
+                guard let response = response else {
+
+                    return ""
+                }
+               
+                return response.data?.profile_pic ?? ""
+        }
+        .eraseToAnyPublisher()
+        
+    }
+    
+    
+    private var isEventFeePublisher: AnyPublisher<String, Never> {
+        eventDetailHandler.$eventDetailResponse
+            .receive(on: RunLoop.main)
+            .map { response in
+                guard let response = response else {
+
+                    return ""
+                }
+               
+                return response.data?.fee ?? ""
+        }
+        .eraseToAnyPublisher()
+    }
+    
+    private var isEventFeeSymbolPublisher: AnyPublisher<String, Never> {
+        eventDetailHandler.$eventDetailResponse
+            .receive(on: RunLoop.main)
+            .map { response in
+                guard let response = response else {
+
+                    return ""
+                }
+               
+                return response.data?.fee ?? ""
+        }
+        .eraseToAnyPublisher()
+    }
+    
+    
+    private var isEventLanguagePublisher: AnyPublisher<String, Never> {
+        eventDetailHandler.$eventDetailResponse
+            .receive(on: RunLoop.main)
+            .map { response in
+                guard let response = response else {
+
+                    return ""
+                }
+               
+                return response.data?.language ?? ""
+        }
+        .eraseToAnyPublisher()
+    }
+    
+    private var isEndDatePublisher: AnyPublisher<String, Never> {
+        eventDetailHandler.$eventDetailResponse
+            .receive(on: RunLoop.main)
+            .map { response in
+                guard let response = response else {
+
+                    return ""
+                }
+               
+                return response.data?.end_date ?? ""
+        }
+        .eraseToAnyPublisher()
+    }
+    
     init() {
         isLoadingPublisher
             .receive(on: RunLoop.main)
@@ -311,6 +405,42 @@ public class EventDetailViewModel: ObservableObject, Identifiable {
         isEventUserIdPublisher
             .receive(on: RunLoop.main)
             .assign(to: \.eventUserId, on: self)
+            .store(in: &disposables)
+                print(startDate)
+        
+        isEventactualStartDatePublisher
+            .receive(on: RunLoop.main)
+            .assign(to: \.actualStartDate, on: self)
+            .store(in: &disposables)
+                print(startDate)
+        
+        isEventProfilePicPublisher
+            .receive(on: RunLoop.main)
+            .assign(to: \.profileImageStr, on: self)
+            .store(in: &disposables)
+                print(startDate)
+        
+        isEventFeePublisher
+            .receive(on: RunLoop.main)
+            .assign(to: \.fee, on: self)
+            .store(in: &disposables)
+                print(startDate)
+        
+        isEventFeeSymbolPublisher
+            .receive(on: RunLoop.main)
+            .assign(to: \.symbol, on: self)
+            .store(in: &disposables)
+                print(startDate)
+        
+        isEventFeeSymbolPublisher
+            .receive(on: RunLoop.main)
+            .assign(to: \.language, on: self)
+            .store(in: &disposables)
+                print(startDate)
+        
+        isEndDatePublisher
+            .receive(on: RunLoop.main)
+            .assign(to: \.endDate, on: self)
             .store(in: &disposables)
                 print(startDate)
         

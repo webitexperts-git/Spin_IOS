@@ -24,7 +24,7 @@ struct TrailRow: View {
     var color = ""
     var body: some View {
         ZStack{
-            VStack(alignment: .leading, spacing: 20) {
+            VStack() {
                 
               
                 HStack(){
@@ -63,12 +63,12 @@ struct TrailRow: View {
                     AsyncImage(url: URL(string: "https://seobywebitindia.com/dev/spine/assets/upload/spine-post/" + (trail.files ?? "http://wiesoftware.com/spine/assets/upload/profile/default.jpg"))!,
                                   placeholder: { Text("") },
                                   image: { Image(uiImage: $0).resizable() })
-                        .frame(minWidth: 0, maxWidth: .infinity, minHeight: 200, maxHeight: 200)
+                        .frame(minWidth: 0, maxWidth: .infinity, minHeight: 300, maxHeight: 300)
                     }else{
-                    VStack(alignment: .leading){
+                    VStack(){
                         Text(trail.title!).foregroundColor(.white).font(.title2).multilineTextAlignment(.center).padding(.bottom)
                     Text(trail.hashtag_ids!).foregroundColor(.white).font(.title2).multilineTextAlignment(.center)
-                    }  .frame(minWidth: 0, maxWidth: .infinity, minHeight: 200, maxHeight: 200)
+                    }  .frame(minWidth: 0, maxWidth: .infinity, minHeight: 300, maxHeight: 300)
                     
                     .background(Color(UIColor(hex: color)))
                     }
@@ -79,7 +79,7 @@ struct TrailRow: View {
                         let player = AVPlayer(url: URL(string: "https://seobywebitindia.com/dev/spine/assets/upload/spine-post/" + trail.files!)!)
                        
                     VideoPlayer(player: player)
-                        .frame(minWidth: 0, maxWidth: .infinity, minHeight: 200, maxHeight: 200, alignment: .topLeading)
+                        .frame(minWidth: 0, maxWidth: .infinity, minHeight: 300, maxHeight: 300, alignment: .topLeading)
                    
                         .background(Color(UIColor(hex: color)))
                        
@@ -738,20 +738,16 @@ struct SpineView:View{
                 List(userPostModel.data, id: \.self){ data in
                     TrailRow(trail: data)
                 } .frame(minWidth:0, maxWidth: .infinity, minHeight: 1000, maxHeight: .infinity)
-                
+                .padding(.leading, -20)
+                .padding(.trailing, -25)
                 }
         }.onAppear(perform: getUserPostData)
                 
     }
             else if (selectedSport == 1){
-                Text("STORIES").foregroundColor(.black).font(.system(size: 18)).padding()
-             
-//                ScrollView(.vertical){
-                   
-//                VStack(spacing:10){
-                 
-//                ScrollView(.horizontal) {
-                    HStack() {
+                Text("STORIES").foregroundColor(.black).font(.system(size: 18)).padding(.leading)
+
+                HStack() {
                         if($storiesModel.woofUrl.wrappedValue != false){
                             ForEach(storiesModel.data, id: \.self){data in
                                 VStack(spacing: 1){
@@ -802,20 +798,20 @@ struct SpineView:View{
 
                                             }
                                         }
-                                }
                                 
+                                    }
+                                
+                                }
                             }
-                        }
                            
                            
                         }.padding()
                     .onAppear(perform: getFollowingData)
-//                    .frame(height: 100)
-                
-                
-                ScrollView(){
+                    .frame(height: 150)
+//                ScrollView(){
+                VStack(){
                 if($followingListModel.woofUrl.wrappedValue != false){
-                    ForEach(followingListModel.data, id: \.self){data in
+                    List(followingListModel.data, id: \.self){data in
                         VStack(alignment: .leading){
                             HStack(){
                                 AsyncImage(url: URL(string: followingListModel.imageUrl + (data.profile_pic ?? "http://wiesoftware.com/spine/assets/upload/profile/default.jpg"))!,
@@ -872,7 +868,7 @@ struct SpineView:View{
 //                                                .aspectRatio(4/3, contentMode: .fit)
 //                                                .clipShape(Circle())
 //                                                            .overlay(Circle().stroke(Color.white, lineWidth: 3.0))
-                                                .frame(minWidth:0, maxWidth: .infinity, minHeight: 280, maxHeight: 280)
+                                                .frame(minWidth:0, maxWidth: .infinity, minHeight: 300, maxHeight: 300)
 //                                                .background(hex: "#2196F3")
                                         }
                                         
@@ -884,7 +880,7 @@ struct SpineView:View{
 //                                                .frame(width: 80, height: 80)
 //                                                    .clipShape(Circle())
                                             VideoPlayer(player: player)
-                                                .frame(minWidth:0, maxWidth: .infinity, minHeight: 250, maxHeight: 250)
+                                                .frame(minWidth:0, maxWidth: .infinity, minHeight: 300, maxHeight: 300)
 //                                                .clipShape(Circle())
                                                 .onAppear() {
                                                     player.play()
@@ -892,13 +888,12 @@ struct SpineView:View{
                                         }
                                     }
                                                
-                                       
-//                                            }
+//                              }
 
                                         
-                                    }
+                            }
                                     
-                                }
+                        }
                        ///////////////////////
                             
                             
@@ -930,20 +925,15 @@ struct SpineView:View{
 
                             }.padding()
                             
+//                         }
                             
-                            
-                              
-                                
-//                            }
-                            
-                            
-                           
                         }
                        
-                    }
+                    }.padding(.horizontal, -25)
+                    .padding(.top, -20)
                 }
                 }.onAppear(perform: getFollowingListData)
-               
+//            }
                 
 
         }
