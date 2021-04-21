@@ -7,15 +7,16 @@
 
 import Foundation
 import Alamofire
-import Combine
+import Reachability
+import PKHUD
 
 
 class RegisterHandler: APIHandler {
     
     @Published var woofResponse1: RegisterModel?
     @Published var isLoading = false
-  
-
+    
+    
     func getRagistration(email:String, password:String, name:String, town:String, user_ip:String, user_latitude:String, user_longitude:String) {
         isLoading = true
       

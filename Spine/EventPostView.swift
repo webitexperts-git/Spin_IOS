@@ -10,6 +10,15 @@ import Combine
 import CoreLocation
 
 struct EventPostView: View {
+    
+    enum ActiveSheet: Identifiable {
+        case first, second
+        
+        var id: Int {
+            hashValue
+        }
+    }
+    @State var activeSheet: ActiveSheet?
     @State private var name: String = ""
     @State private var eventTitle: String = ""
     @State private var eventType: String = ""
@@ -23,6 +32,14 @@ struct EventPostView: View {
     @State private var showingSheet = false
     @State private var languageList = false
     @State private var language = ""
+    @State private var currency = ""
+    @State private var currencyList = false
+    @State private var acceptParticipaient = ""
+    @State private var allowComment = ""
+    @State private var participaients = false
+    @State private var comment = false
+   
+    
     
 //    @ObservedObject var lm = AddressLocation()
 //    var placemark: String { return("\(String(describing: lm.placemark?.locality))") }
@@ -32,12 +49,18 @@ struct EventPostView: View {
     @State var showImagePicker: Bool = false
     @State var showCameraPicker: Bool = false
     @State var image: Image? = nil
+    @State var imgData: Data? = nil
     
     @State var selectedDateStart = Date()
     @State var selectedDateEnd = Date()
     @State var selectedTimeStart = Date()
     @State var selectedTimeEnd = Date()
     
+    var selectedDateStartStr = ""
+    @State var selectedDateEndStr = ""
+    @State var selectedTimeStartStr = ""
+    @State var selectedTimeEndStr = ""
+
     @State var timeZone = ""
     
     @State private var showPopUp = false
@@ -45,6 +68,8 @@ struct EventPostView: View {
     @ObservedObject var locationManager = LocationManager()
     @ObservedObject var eventCategoryModel = EventCategoryViewModel()
     @ObservedObject var eventLanguageModel = EventLanguageViewModel()
+    @ObservedObject var eventPostModel = EventPostViewModel()
+    @ObservedObject var eventCurrencyModel = EventCurrencyViewModel()
     
     var userLatitude: String {
            return "\(locationManager.lastLocation?.coordinate.latitude ?? 0)"
@@ -100,47 +125,63 @@ struct EventPostView: View {
 //                            Text("Add Photo").foregroundColor(.white).font(.subheadline).padding(.top,80)
                             Image("camera")
                         }
-                        Button("Add Photo") {
-                                    showingSheet = true
-                                }
+//                        Button("Add Photo") {
+//                                showingSheet = true
+//                        }
+                        
+                        Button(action: {
+                            self.showImagePicker = true
+                            showingSheet = true
+                            self.showCameraPicker = true
+                        }){
+                            Text("Add Image")
+                        }
+//                        {
+//                            HStack {
+//                                Image(systemName: "photo")
+//                                    .font(.system(size: 20))
+//
+//                                Text("Photo library")
+//                                    .font(.headline)
+//                            }
+//                            .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: 50)
+//                            .background(Color.blue)
+//                            .foregroundColor(.white)
+//                            .cornerRadius(20)
+//                            .padding(.horizontal)
+//                        }
+                        
                                 .actionSheet(isPresented: $showingSheet) {
                                     ActionSheet(
                                         title: Text("What do you want to do?"),
                                         message: Text("There's only one choice..."),
                                         buttons: [.default(Text("Camera"), action: {
                                             self.showCameraPicker.toggle()
+                                            activeSheet = .first
                                         }), .default(Text("Gallery"), action: {
                                             self.showImagePicker.toggle()
+                                            activeSheet = .second
                                             }), .destructive(Text("Cancel"), action: {
                                                 print("Default tapped")
                                                 })]
                                     )
                                 }
-//                        Button(action: {
-//                            self.showImagePicker.toggle()
-//                            print("Button Tapped")
-//
-//                        }) {
-                            
-                          
-                           
-                            
-//                        }
+
                        
                     }.navigationBarTitle("NEW EVENT")
                     .navigationBarTitleDisplayMode(.inline)
+                    .toolbar {
+                        ToolbarItem(placement: .navigationBarTrailing) {
+                            Button("Post") {
+                                print("Help tapped!")
+                                
+                                geteventPost(eventTitle: eventTitle, eventType: eventType, startDate: formattedDateTimeFromString(dateString: selectedDateStart, withFormat: "yy-MM-dd")!, startTime: formattedTimeFromString(dateString: selectedTimeStart, withFormat: "HH:mm:ss")!, endDate: formattedDateTimeFromString(dateString: selectedDateEnd, withFormat: "yy-MM-dd")!, endTime: formattedTimeFromString(dateString: selectedTimeEnd, withFormat: "HH:mm:ss")!, timeZone: TimeZone.current.identifier, location: self.locationManager.placemark!, addLink: eventLink, aboutEvent: aboutEvent, eventCategory: "eye", fee: eventFee, symbol: currency, attendee: eventAttendee, language: language, acceptParticipaient: "2", allowComment: comment, image: imgData!)
+                                print("image")
+                            }
+                        }
+                    }
                     .padding()
                     
-                    .sheet(isPresented: $showImagePicker) {
-                                    ImagePicker(sourceType: .photoLibrary) { image in
-                                        self.image = Image(uiImage: image)
-                                    }
-                                }
-                    .sheet(isPresented: $showCameraPicker) {
-                                    ImagePicker(sourceType: .camera) { image in
-                                        self.image = Image(uiImage: image)
-                                    }
-                                }
                 }
         VStack(alignment:.leading){
             Text("Event Title").bold().padding()
@@ -206,10 +247,12 @@ struct EventPostView: View {
            
                 DatePicker("", selection: $selectedDateStart, displayedComponents: .date)
                     .fixedSize().frame(maxWidth: .infinity, alignment: .leading)
+//                let stringA = formattedDateTimeFromString(dateString: selectedDateStart, withFormat: "yy-MM-dd")!
+             
                 Spacer()
                 
                
-                    DatePicker("", selection: $selectedDateEnd, displayedComponents: .date)
+                DatePicker("", selection: $selectedDateEnd, displayedComponents: .date)
                         .fixedSize().frame(maxWidth: .infinity, alignment: .trailing)
             }
                 
@@ -390,20 +433,69 @@ struct EventPostView: View {
             }.padding(10)
                 
                 ZStack(alignment: .leading) {
-                if eventCurrency.isEmpty{
+                if currency.isEmpty{
                     Text("$").foregroundColor(.gray)
 //                        .padding(.bottom, 10)
                         .padding(.leading, 10)
                 }
           
-            TextField("", text: $eventCurrency)
+            TextField("", text: $currency)
                 .padding(10)
                 .foregroundColor(Color.black)
                 .font(Font.system(size: 15, weight: .medium, design: .serif))
                 .overlay(RoundedRectangle(cornerRadius: 10).stroke(Color(#colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)), lineWidth: 2))
                 
-            }
+                }.onTapGesture {
+                    currencyList = true
+                }
             }.padding(10)
+            
+            
+            ZStack(){
+                if $currencyList.wrappedValue {
+                    ZStack(alignment:.center) {
+                        Color.white
+                        VStack (alignment:.center){
+                            Text("Select Currency").bold()
+                            Spacer()
+                           
+                            ScrollView(){
+                               
+                                VStack(){
+                                 
+                                    HStack(){
+                                        if $eventCurrencyModel.woofUrl.wrappedValue != false{
+                                        List(eventCurrencyModel.data, id: \.self){ data in
+                                            let curName = data.currency! + ", " +  data.code!
+                                            Text(curName)
+                                                .onTapGesture {
+                                                    currency = data.symbol!
+                                                    currencyList = false
+                                                }
+                                            Spacer()
+                                        }.frame(minWidth: 0, maxWidth: .infinity, minHeight: 400, maxHeight: .infinity)
+                                      
+                                   
+                                }
+                                    }
+                               
+                                }.padding()
+                            }.onAppear(perform: eventCurrencyApi)
+                           
+                            Button(action: {
+                                self.showPopUp = false
+                            }, label: {
+                                Text("Close").padding()
+                            })
+                        }.padding()
+                    }
+                    .frame(minWidth: 0, maxWidth: .infinity, minHeight: 400, maxHeight: 400)
+                    .cornerRadius(20).shadow(radius: 20)
+                    
+                }
+            }
+            
+            
         
             Group{
             Text("Max. number of attendees").bold().padding(.leading)
@@ -428,7 +520,7 @@ struct EventPostView: View {
             Text("Language the event is hosted in").bold().padding(.leading)
             ZStack(alignment: .leading) {
 //                if $eventLanguageModel.woofUrl.wrappedValue != false{
-                if eventLanguage.isEmpty{
+                if language.isEmpty{
                     Text("").foregroundColor(.gray)
                         .padding(.bottom, 10)
                         .padding(.leading, 10)
@@ -449,17 +541,20 @@ struct EventPostView: View {
                 
           
                 
-                Toggle("Want to accept participants?", isOn: $showGreeting)
+                Toggle("Want to accept participants?", isOn: $participaients)
                     .toggleStyle(SwitchToggleStyle(tint: .orange))
 
-                           if showGreeting {
+                           if participaients {
 //                               Text("Hello World!")
+                           
+                            
                            }
                 
-                Toggle("Allow comments", isOn: $showGreeting)
+                Toggle("Allow comments", isOn: $comment)
                     .toggleStyle(SwitchToggleStyle(tint: .orange))
-                           if showGreeting {
+                           if comment {
 //                               Text("Hello World!")
+                           
                            }
                 Divider().padding()
                 HStack(){
@@ -479,7 +574,34 @@ struct EventPostView: View {
             
            
 
+        } .sheet(item: $activeSheet) { item in
+            switch item {
+            case .first:
+                ImagePicker(sourceType: .camera) { image in
+                self.image = Image(uiImage: image)
+                    self.imgData = image.pngData()
+                    
+                }
+            case .second:
+                ImagePicker(sourceType: .photoLibrary) { image in
+                    self.image = Image(uiImage: image)
+                    self.imgData = image.pngData()
+            }
         }
+    }
+                
+        
+        
+//        .sheet(isPresented: $showImagePicker) {
+//            ImagePicker(sourceType: .photoLibrary) { image in
+//                self.image = Image(uiImage: image)
+//            }
+//        }
+//        .sheet(isPresented: $showCameraPicker) {
+//            ImagePicker(sourceType: .camera) { image in
+//                self.image = Image(uiImage: image)
+//            }
+//        }
         
       
         if $languageList.wrappedValue != false{
@@ -520,6 +642,60 @@ struct EventPostView: View {
     func geteventLanguage(){
         eventLanguageModel.getEventLanguageData()
     }
+    
+    func geteventPost(eventTitle: String, eventType:String, startDate: String, startTime: String, endDate: String, endTime: String, timeZone: String, location: String, addLink: String, aboutEvent: String, eventCategory: String, fee: String, symbol: String, attendee: String, language: String, acceptParticipaient: String, allowComment: Bool, image: Data){
+       
+        let eventTitle = eventTitle
+        let eventType = eventType
+        let startDate = startDate
+        let startTime = startTime
+        let endDate = endDate
+        let endTime = endTime
+        let timeZone = timeZone
+        let location = location
+        let eventLink = addLink
+        let aboutEvent = aboutEvent
+        let eventCategory = eventCategory
+        let fee = fee
+        let symbol = symbol
+        let attendee = attendee
+        let language = language
+        let acceptParticipaient = acceptParticipaient
+        let allowComment = allowComment
+        let image = image
+        
+        
+//        print("image", image)
+       
+        eventPostModel.getEventPostData(eventTitle: eventTitle, eventType: eventType, startDate: startDate, startTime: startTime, endDate: endDate, endTime: endTime, timeZone: timeZone, location: location, addLink: eventLink, aboutEvent: aboutEvent, eventCategory: "eye", fee: fee, symbol: symbol, attendee: attendee, language: language, acceptParticipaient: "2", allowComment: allowComment, image: image)
+    }
+    
+    func eventCurrencyApi(){
+        eventCurrencyModel.getEventCurrencyData()
+    }
+    
+    
+    func formattedDateTimeFromString(dateString: Date, withFormat format: String) -> String? {
+
+        let inputFormatter = DateFormatter()
+        inputFormatter.dateFormat = "yyyy-MM-dd"
+        
+          let outputFormatter = DateFormatter()
+          outputFormatter.dateFormat = format
+        return outputFormatter.string(from: dateString)
+
+    }
+    
+    func formattedTimeFromString(dateString: Date, withFormat format: String) -> String? {
+
+        let inputFormatter = DateFormatter()
+        inputFormatter.dateFormat = "HH:mm:ss"
+        
+          let outputFormatter = DateFormatter()
+          outputFormatter.dateFormat = format
+        return outputFormatter.string(from: dateString)
+
+    }
 
 }
 
@@ -548,6 +724,7 @@ struct CheckboxFieldView : View {
                         print("State : \(catNameArr)")
 
                     }
+//                    eventCategory = "\(catNameArr)"
                 }
                
                     
@@ -593,10 +770,6 @@ struct EventLanguagePopUp:View{
                   HStack {
                       VStack(spacing: 20) {
                           Text("I'd like to join!").fontWeight(.bold).padding(.all, 20)
-                      
-                       
-                      
-                       
                       
                         Text("Once the host accepts your request, the link to the event is shared with you.").padding()
                             .multilineTextAlignment(.center)

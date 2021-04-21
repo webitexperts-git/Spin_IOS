@@ -100,5 +100,9 @@
 	<string>This App needs your location for your post</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>This App needs your location for your post</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>This App needs to access your Photo Library for Posts</string>
+	<key>NSCameraUsageDescription</key>
+	<string>This App needs to access your Camera for Posts</string>
 </dict>
 </plist>

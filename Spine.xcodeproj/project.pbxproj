@@ -199,6 +199,11 @@
 		F1DD59EF25FB416F00DD1A29 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1DD59EE25FB416F00DD1A29 /* ImagePicker.swift */; };
 		F1DD5A2425FB6F9A00DD1A29 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1DD5A2325FB6F9A00DD1A29 /* LocationManager.swift */; };
 		F1DD5A2925FB833900DD1A29 /* AddressLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1DD5A2825FB833900DD1A29 /* AddressLocation.swift */; };
+		F1F54A04262D5922008F8F38 /* EventPostViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F54A03262D5922008F8F38 /* EventPostViewModel.swift */; };
+		F1F54A08262D595D008F8F38 /* EventPostHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F54A07262D595D008F8F38 /* EventPostHandler.swift */; };
+		F1F54A0D262D963C008F8F38 /* EventCurrencyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F54A0C262D963B008F8F38 /* EventCurrencyModel.swift */; };
+		F1F54A10262D96BD008F8F38 /* EventCurrencyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F54A0F262D96BD008F8F38 /* EventCurrencyViewModel.swift */; };
+		F1F54A13262D9855008F8F38 /* EventCurrencyHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F54A12262D9854008F8F38 /* EventCurrencyHandler.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -415,6 +420,11 @@
 		F1DD59EE25FB416F00DD1A29 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		F1DD5A2325FB6F9A00DD1A29 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		F1DD5A2825FB833900DD1A29 /* AddressLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressLocation.swift; sourceTree = "<group>"; };
+		F1F54A03262D5922008F8F38 /* EventPostViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventPostViewModel.swift; sourceTree = "<group>"; };
+		F1F54A07262D595D008F8F38 /* EventPostHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventPostHandler.swift; sourceTree = "<group>"; };
+		F1F54A0C262D963B008F8F38 /* EventCurrencyModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventCurrencyModel.swift; sourceTree = "<group>"; };
+		F1F54A0F262D96BD008F8F38 /* EventCurrencyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventCurrencyViewModel.swift; sourceTree = "<group>"; };
+		F1F54A12262D9854008F8F38 /* EventCurrencyHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventCurrencyHandler.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -473,6 +483,8 @@
 				F164D02126244F960096C9B6 /* EventBookHandler.swift */,
 				F19D275B2625AF92001F31E9 /* EventCategoryHandler.swift */,
 				F15DA05226280D360003DD0F /* EventLanguageHandler.swift */,
+				F1F54A07262D595D008F8F38 /* EventPostHandler.swift */,
+				F1F54A12262D9854008F8F38 /* EventCurrencyHandler.swift */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -508,7 +520,6 @@
 				F16D504225D647AF00A7877A /* StoriesDetailModel.swift */,
 				F11FE68125DCE5A400AD9F90 /* ImpulseCommentModel.swift */,
 				F171703D25DFE39600FD60A1 /* RecFollowersModel.swift */,
-				F11C453325E3D7B7004E2EBA /* EventPostModel.swift */,
 				F117998425E4E54100900179 /* PostHashTagModel.swift */,
 				F10BDE2625E7A5990076EE22 /* PostPreviewModel.swift */,
 				F114974F25ECB665002889A0 /* AllEventModel.swift */,
@@ -531,6 +542,8 @@
 				F164D01B26244F6B0096C9B6 /* EventBookModel.swift */,
 				F19D27552625AEFF001F31E9 /* EventCategoryModel.swift */,
 				F15DA04C26280C210003DD0F /* EventLanguageModel.swift */,
+				F11C453325E3D7B7004E2EBA /* EventPostModel.swift */,
+				F1F54A0C262D963B008F8F38 /* EventCurrencyModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -577,6 +590,8 @@
 				F164D01E26244F7F0096C9B6 /* EventBookViewModel.swift */,
 				F19D27582625AF44001F31E9 /* EventCategoryViewModel.swift */,
 				F15DA04F26280CF00003DD0F /* EventLanguageViewModel.swift */,
+				F1F54A03262D5922008F8F38 /* EventPostViewModel.swift */,
+				F1F54A0F262D96BD008F8F38 /* EventCurrencyViewModel.swift */,
 			);
 			path = ModelView;
 			sourceTree = "<group>";
@@ -635,12 +650,12 @@
 				F192E46D25D69E98005B634F /* PostQuestionView.swift */,
 				F11FE67E25DCE17500AD9F90 /* ImpulseCommentView.swift */,
 				F171703A25DFE37C00FD60A1 /* RecFollowersView.swift */,
-				F11C453025E3D7A0004E2EBA /* EventPostView.swift */,
 				F117998125E4E52400900179 /* PostHashTagView.swift */,
 				F17A8B3C25E633D3009E81A7 /* PostPreviewView.swift */,
 				F113BF2025F8D597006A6396 /* PagingView.swift */,
 				F1786350261643FF00C81084 /* ButtonsView.swift */,
 				F114975225ED0D1D002889A0 /* EventDetailView.swift */,
+				F11C453025E3D7A0004E2EBA /* EventPostView.swift */,
 				18251305257A099A00C315C2 /* EventView.swift */,
 				F17C3A5A26183A700023D95B /* NearbyEventView.swift */,
 				F17C3A5D26183D410023D95B /* OnlineEventView.swift */,
@@ -956,6 +971,7 @@
 				1809E0AA256CD8A20007E9B2 /* EmailOTPVerification.swift in Sources */,
 				F17099BC25EF713E00FF1298 /* EmailVerificationModel.swift in Sources */,
 				F17C3A5E26183D410023D95B /* OnlineEventView.swift in Sources */,
+				F1F54A13262D9855008F8F38 /* EventCurrencyHandler.swift in Sources */,
 				F17C3A61261840890023D95B /* OnlineEventHandler.swift in Sources */,
 				F18D165826207CB6006179A9 /* MessageEventView.swift in Sources */,
 				1805B5ED25A59D5100CE4C01 /* LoadingIndicator.swift in Sources */,
@@ -997,6 +1013,7 @@
 				F117998525E4E54100900179 /* PostHashTagModel.swift in Sources */,
 				183C9FBF25B70C2400465D8D /* FavouritPostHandler.swift in Sources */,
 				18578D0D25B5BD1700D70D98 /* FollowersHandler.swift in Sources */,
+				F1F54A08262D595D008F8F38 /* EventPostHandler.swift in Sources */,
 				F187CB18261EDFA300DD0C4C /* EventGetCommentViewModel.swift in Sources */,
 				F1782A7B261C673F00C5D327 /* EventDetailViewModel.swift in Sources */,
 				F18452142614A913008D5C50 /* ImpulseLikeModel.swift in Sources */,
@@ -1035,6 +1052,7 @@
 				1821F1022567947600F77583 /* EmailVerification.swift in Sources */,
 				F19D27592625AF44001F31E9 /* EventCategoryViewModel.swift in Sources */,
 				F17099C925EFB17A00FF1298 /* FollowersDetailModel.swift in Sources */,
+				F1F54A10262D96BD008F8F38 /* EventCurrencyViewModel.swift in Sources */,
 				1893E0BF257E348E00B62212 /* StoriesDetail.swift in Sources */,
 				F1782A74261C4EAA00C5D327 /* PastEventHandler.swift in Sources */,
 				F11FE68225DCE5A400AD9F90 /* ImpulseCommentModel.swift in Sources */,
@@ -1062,6 +1080,7 @@
 				F171703B25DFE37C00FD60A1 /* RecFollowersView.swift in Sources */,
 				182B346525947B6A00DFCEF3 /* RegisterModel.swift in Sources */,
 				18767E6E25A71AB600AF8943 /* ForgetViewModel.swift in Sources */,
+				F1F54A0D262D963C008F8F38 /* EventCurrencyModel.swift in Sources */,
 				18578D0A25B5BCFD00D70D98 /* TrendingCatModel.swift in Sources */,
 				F19D27562625AEFF001F31E9 /* EventCategoryModel.swift in Sources */,
 				F171704125DFE3AD00FD60A1 /* RecFollowersViewModel.swift in Sources */,
@@ -1085,6 +1104,7 @@
 				F10C2A3825FF473600A13C07 /* NearByEventModel.swift in Sources */,
 				F16757BA25F25977003DEEB9 /* FollowingListModel.swift in Sources */,
 				183C9FBC25B70C0800465D8D /* FavouritViewModel.swift in Sources */,
+				F1F54A04262D5922008F8F38 /* EventPostViewModel.swift in Sources */,
 				F1DD5A2925FB833900DD1A29 /* AddressLocation.swift in Sources */,
 				18675F1525543EDF00758F81 /* ContentView.swift in Sources */,
 				F1782A47261C34CF00C5D327 /* FollowingEventView.swift in Sources */,
@@ -1251,7 +1271,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"Spine/Preview Content\"";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = HKW4E7T482;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = Spine/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
@@ -1277,7 +1297,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"Spine/Preview Content\"";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = HKW4E7T482;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = Spine/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.1;

@@ -264,7 +264,7 @@ struct EventRow: View {
                 }.simultaneousGesture(TapGesture().onEnded{
                     let x = data.id
                      let _ = print("1234", x!)
-                     let userId = UserDefaults.standard.set(x, forKey:"eventId")
+                     UserDefaults.standard.set(x, forKey:"eventId")
                     
                    
                 })
