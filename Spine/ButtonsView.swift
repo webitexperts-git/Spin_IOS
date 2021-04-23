@@ -226,8 +226,7 @@ struct ButtonsView: View {
                 }
                 Spacer()
                 if didTap == true{
-                  
-                                  
+                    ScrollView(){
                     VStack(alignment: .leading) {
                       
                         if($allEventViewModel.woofUrl.wrappedValue != false){
@@ -242,33 +241,46 @@ struct ButtonsView: View {
 
                         Spacer()
                     }
+                    }
                     .onAppear(perform: getAllEventData)
 //                    .navigationBarHidden(false)
                            
                           
                          
                 }else if didTap1 == true{
+                    ScrollView(){
                   NearbyEventView()
+                    }
                 }else if didTap2 == true{
+                    ScrollView(){
                     OnlineEventView()
+                    }
                 }else if didTap3 == true{
+                    ScrollView(){
                     FollowingEventView()
+                    }
                 }else if didTap4 == true{
+                    ScrollView(){
                     GoingEventView()
+                    }
                 }else if didTap5 == true{
+                    ScrollView(){
                     SavedEventView()
+                    }
                 }else if didTap6 == true{
+                    ScrollView(){
                     PastEventView()
+//                        }
+                    }
                 }
                 
             }
        
         }.navigationBarHidden(true)
-//        .onAppear(perform: getAllEventData)
+
         
     }
     func getAllEventData(){
-//        allEventViewModel.woofUrl = true
         allEventViewModel.getAllEventData(event:"all")
     }
         

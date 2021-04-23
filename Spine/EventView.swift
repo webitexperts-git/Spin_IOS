@@ -302,10 +302,11 @@ struct EventView:View {
     @ObservedObject var nearByEventViewModel = NearByViewModel()
 
     var body: some View{
+       
         VStack(alignment: .leading) {
-          
+           
             if($allEventViewModel.woofUrl.wrappedValue != false){
-            
+                ScrollView(.vertical){
                 ForEach(allEventViewModel.data, id: \.self){ data in
                    
                     EventRow(event: data)
@@ -313,6 +314,7 @@ struct EventView:View {
                         }
                
                     }
+            }
 
             Spacer()
         }

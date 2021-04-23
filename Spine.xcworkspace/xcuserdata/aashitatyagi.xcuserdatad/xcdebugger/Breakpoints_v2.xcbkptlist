@@ -1563,8 +1563,8 @@
             filePath = "Spine/EventView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "311"
-            endingLineNumber = "311"
+            startingLineNumber = "312"
+            endingLineNumber = "312"
             landmarkName = "body"
             landmarkType = "24">
          </BreakpointContent>
@@ -2947,39 +2947,39 @@
             filePath = "Spine/EventView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "309"
-            endingLineNumber = "309"
+            startingLineNumber = "310"
+            endingLineNumber = "310"
             landmarkName = "body"
             landmarkType = "24">
             <Locations>
                <Location
-                  uuid = "FCE94048-DEAE-4393-B127-3A2C704AB13A - c46e7acb64434dfd"
+                  uuid = "FCE94048-DEAE-4393-B127-3A2C704AB13A - f472350ddff8739c"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "closure #1 () -&gt; SwiftUI.TupleView&lt;(Swift.Optional&lt;SwiftUI.ForEach&lt;Swift.Array&lt;Spine.AllEventModel.Data&gt;, Spine.AllEventModel.Data, Spine.EventRow&gt;&gt;, SwiftUI.Spacer)&gt; in Spine.EventView.body.getter : some"
+                  symbolName = "closure #1 () -&gt; SwiftUI.ForEach&lt;Swift.Array&lt;Spine.AllEventModel.Data&gt;, Spine.AllEventModel.Data, Spine.EventRow&gt; in closure #1 () -&gt; SwiftUI.TupleView&lt;(Swift.Optional&lt;SwiftUI.ScrollView&lt;SwiftUI.ForEach&lt;Swift.Array&lt;Spine.AllEventModel.Data&gt;, Spine.AllEventModel.Data, Spine.EventRow&gt;&gt;&gt;, SwiftUI.Spacer)&gt; in Spine.EventView.body.getter : some"
                   moduleName = "Spine"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/aashitatyagi/Downloads/Spine/Spine/EventView.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "309"
-                  endingLineNumber = "309"
-                  offsetFromSymbolStart = "900">
+                  startingLineNumber = "310"
+                  endingLineNumber = "310"
+                  offsetFromSymbolStart = "216">
                </Location>
                <Location
-                  uuid = "FCE94048-DEAE-4393-B127-3A2C704AB13A - d404da2607c430da"
+                  uuid = "FCE94048-DEAE-4393-B127-3A2C704AB13A - f2ee52813663fa55"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Spine.AllEventModel.Data) -&gt; Spine.EventRow in closure #1 () -&gt; SwiftUI.TupleView&lt;(Swift.Optional&lt;SwiftUI.ForEach&lt;Swift.Array&lt;Spine.AllEventModel.Data&gt;, Spine.AllEventModel.Data, Spine.EventRow&gt;&gt;, SwiftUI.Spacer)&gt; in Spine.EventView.body.getter : some"
+                  symbolName = "closure #1 (Spine.AllEventModel.Data) -&gt; Spine.EventRow in closure #1 () -&gt; SwiftUI.ForEach&lt;Swift.Array&lt;Spine.AllEventModel.Data&gt;, Spine.AllEventModel.Data, Spine.EventRow&gt; in closure #1 () -&gt; SwiftUI.TupleView&lt;(Swift.Optional&lt;SwiftUI.ScrollView&lt;SwiftUI.ForEach&lt;Swift.Array&lt;Spine.AllEventModel.Data&gt;, Spine.AllEventModel.Data, Spine.EventRow&gt;&gt;&gt;, SwiftUI.Spacer)&gt; in Spine.EventView.body.getter : some"
                   moduleName = "Spine"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/aashitatyagi/Downloads/Spine/Spine/EventView.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "311"
-                  endingLineNumber = "311"
+                  startingLineNumber = "312"
+                  endingLineNumber = "312"
                   offsetFromSymbolStart = "156">
                </Location>
             </Locations>
@@ -2995,8 +2995,8 @@
             filePath = "Spine/EventView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "307"
-            endingLineNumber = "307"
+            startingLineNumber = "308"
+            endingLineNumber = "308"
             landmarkName = "body"
             landmarkType = "24">
          </BreakpointContent>
@@ -4037,8 +4037,8 @@
             filePath = "Spine/EventView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "326"
-            endingLineNumber = "326"
+            startingLineNumber = "328"
+            endingLineNumber = "328"
             landmarkName = "getAllEventData()"
             landmarkType = "7">
          </BreakpointContent>
@@ -4053,10 +4053,10 @@
             filePath = "Spine/ButtonsView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "272"
-            endingLineNumber = "272"
+            startingLineNumber = "284"
+            endingLineNumber = "284"
             landmarkName = "getAllEventData()"
-            landmarkType = "7">
+            landmarkType = "9">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -4839,8 +4839,8 @@
             filePath = "Spine/EventPostView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "278"
-            endingLineNumber = "278"
+            startingLineNumber = "280"
+            endingLineNumber = "280"
             landmarkName = "body"
             landmarkType = "24">
          </BreakpointContent>
@@ -4887,8 +4887,8 @@
             filePath = "Spine/EventPostView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "385"
-            endingLineNumber = "385"
+            startingLineNumber = "387"
+            endingLineNumber = "387"
             landmarkName = "body"
             landmarkType = "24">
          </BreakpointContent>
@@ -4903,8 +4903,8 @@
             filePath = "Spine/EventPostView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "705"
-            endingLineNumber = "705"
+            startingLineNumber = "706"
+            endingLineNumber = "706"
             landmarkName = "CheckboxFieldView"
             landmarkType = "14">
             <Locations>
@@ -5011,8 +5011,8 @@
             filePath = "Spine/EventPostView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "722"
-            endingLineNumber = "722"
+            startingLineNumber = "723"
+            endingLineNumber = "723"
             landmarkName = "body"
             landmarkType = "24">
          </BreakpointContent>
@@ -5059,8 +5059,8 @@
             filePath = "Spine/EventPostView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "158"
-            endingLineNumber = "158"
+            startingLineNumber = "160"
+            endingLineNumber = "160"
             landmarkName = "body"
             landmarkType = "24">
             <Locations>
@@ -5107,8 +5107,8 @@
             filePath = "Spine/EventPostView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "596"
-            endingLineNumber = "596"
+            startingLineNumber = "597"
+            endingLineNumber = "597"
             landmarkName = "body"
             landmarkType = "24">
          </BreakpointContent>
@@ -5123,8 +5123,8 @@
             filePath = "Spine/EventPostView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "601"
-            endingLineNumber = "601"
+            startingLineNumber = "602"
+            endingLineNumber = "602"
             landmarkName = "body"
             landmarkType = "24">
          </BreakpointContent>
@@ -5139,8 +5139,8 @@
             filePath = "Spine/EventPostView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "179"
-            endingLineNumber = "179"
+            startingLineNumber = "181"
+            endingLineNumber = "181"
             landmarkName = "body"
             landmarkType = "24">
          </BreakpointContent>
@@ -5155,10 +5155,74 @@
             filePath = "Utility/EventPostHandler.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "81"
-            endingLineNumber = "81"
-            landmarkName = "unknown"
-            landmarkType = "0">
+            startingLineNumber = "134"
+            endingLineNumber = "134"
+            landmarkName = "getEventPostData1(eventTitle:eventType:startDate:startTime:endDate:endTime:timeZone:location:addLink:aboutEvent:eventCategory:fee:symbol:attendee:language:acceptParticipaient:allowComment:image:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "31C0A10D-27A6-4AA2-BDBC-32A775CBA89B"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Spine/EventPostView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "586"
+            endingLineNumber = "586"
+            landmarkName = "body"
+            landmarkType = "24">
+            <Locations>
+               <Location
+                  uuid = "31C0A10D-27A6-4AA2-BDBC-32A775CBA89B - fbe7841413f85f18"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #2 (Spine.EventPostView.ActiveSheet) -&gt; SwiftUI._ConditionalContent&lt;Spine.ImagePicker, Spine.ImagePicker&gt; in Spine.EventPostView.body.getter : some"
+                  moduleName = "Spine"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/aashitatyagi/Downloads/Spine/Spine/EventPostView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "586"
+                  endingLineNumber = "586"
+                  offsetFromSymbolStart = "784">
+               </Location>
+               <Location
+                  uuid = "31C0A10D-27A6-4AA2-BDBC-32A775CBA89B - c57db96fe06235de"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #2 (__C.UIImage) -&gt; () in closure #2 (Spine.EventPostView.ActiveSheet) -&gt; SwiftUI._ConditionalContent&lt;Spine.ImagePicker, Spine.ImagePicker&gt; in Spine.EventPostView.body.getter : some"
+                  moduleName = "Spine"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/aashitatyagi/Downloads/Spine/Spine/EventPostView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "587"
+                  endingLineNumber = "587"
+                  offsetFromSymbolStart = "120">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "908610C0-F69D-435C-B3E0-6AC88A527031"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Spine/EventPostView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "582"
+            endingLineNumber = "582"
+            landmarkName = "body"
+            landmarkType = "24">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

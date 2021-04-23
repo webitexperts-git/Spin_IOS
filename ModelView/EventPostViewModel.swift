@@ -13,7 +13,7 @@ import Alamofire
 
 public class EventPostViewModel: ObservableObject, Identifiable {
     
-   
+    var image: Image? = nil
     @Published var isLoading = false
     
     @Published var shouldNavigate = false
@@ -63,7 +63,7 @@ public class EventPostViewModel: ObservableObject, Identifiable {
         
     }
     
-    func getEventPostData(eventTitle: String, eventType:String, startDate: String, startTime: String, endDate: String, endTime: String, timeZone: String, location: String, addLink: String, aboutEvent: String, eventCategory: String, fee: String, symbol: String, attendee: String, language: String, acceptParticipaient: String, allowComment: Bool, image: Data) {
+    func getEventPostData(eventTitle: String, eventType:String, startDate: String, startTime: String, endDate: String, endTime: String, timeZone: String, location: String, addLink: String, aboutEvent: String, eventCategory: String, fee: String, symbol: String, attendee: String, language: String, acceptParticipaient: String, allowComment: Bool, image: UIImage) {
         
         let eventTitle = eventTitle
         let eventType = eventType

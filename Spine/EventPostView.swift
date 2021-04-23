@@ -51,6 +51,8 @@ struct EventPostView: View {
     @State var image: Image? = nil
     @State var imgData: Data? = nil
     
+    @State var image1 = UIImage()
+    
     @State var selectedDateStart = Date()
     @State var selectedDateEnd = Date()
     @State var selectedTimeStart = Date()
@@ -175,8 +177,8 @@ struct EventPostView: View {
                             Button("Post") {
                                 print("Help tapped!")
                                 
-                                geteventPost(eventTitle: eventTitle, eventType: eventType, startDate: formattedDateTimeFromString(dateString: selectedDateStart, withFormat: "yy-MM-dd")!, startTime: formattedTimeFromString(dateString: selectedTimeStart, withFormat: "HH:mm:ss")!, endDate: formattedDateTimeFromString(dateString: selectedDateEnd, withFormat: "yy-MM-dd")!, endTime: formattedTimeFromString(dateString: selectedTimeEnd, withFormat: "HH:mm:ss")!, timeZone: TimeZone.current.identifier, location: self.locationManager.placemark!, addLink: eventLink, aboutEvent: aboutEvent, eventCategory: "eye", fee: eventFee, symbol: currency, attendee: eventAttendee, language: language, acceptParticipaient: "2", allowComment: comment, image: imgData!)
-                                print("image")
+                                geteventPost(eventTitle: eventTitle, eventType: eventType, startDate: formattedDateTimeFromString(dateString: selectedDateStart, withFormat: "yy-MM-dd")!, startTime: formattedTimeFromString(dateString: selectedTimeStart, withFormat: "HH:mm:ss")!, endDate: formattedDateTimeFromString(dateString: selectedDateEnd, withFormat: "yy-MM-dd")!, endTime: formattedTimeFromString(dateString: selectedTimeEnd, withFormat: "HH:mm:ss")!, timeZone: TimeZone.current.identifier, location: self.locationManager.placemark!, addLink: eventLink, aboutEvent: aboutEvent, eventCategory: "eye", fee: eventFee, symbol: currency, attendee: eventAttendee, language: language, acceptParticipaient: "2", allowComment: comment, image: image1)
+                                print("image", image1)
                             }
                         }
                     }
@@ -538,9 +540,6 @@ struct EventPostView: View {
                 
             }.padding(10)
 
-                
-          
-                
                 Toggle("Want to accept participants?", isOn: $participaients)
                     .toggleStyle(SwitchToggleStyle(tint: .orange))
 
@@ -579,12 +578,14 @@ struct EventPostView: View {
             case .first:
                 ImagePicker(sourceType: .camera) { image in
                 self.image = Image(uiImage: image)
+                    self.image1 = image
                     self.imgData = image.pngData()
                     
                 }
             case .second:
                 ImagePicker(sourceType: .photoLibrary) { image in
                     self.image = Image(uiImage: image)
+                    self.image1 = image
                     self.imgData = image.pngData()
             }
         }
@@ -643,7 +644,7 @@ struct EventPostView: View {
         eventLanguageModel.getEventLanguageData()
     }
     
-    func geteventPost(eventTitle: String, eventType:String, startDate: String, startTime: String, endDate: String, endTime: String, timeZone: String, location: String, addLink: String, aboutEvent: String, eventCategory: String, fee: String, symbol: String, attendee: String, language: String, acceptParticipaient: String, allowComment: Bool, image: Data){
+    func geteventPost(eventTitle: String, eventType:String, startDate: String, startTime: String, endDate: String, endTime: String, timeZone: String, location: String, addLink: String, aboutEvent: String, eventCategory: String, fee: String, symbol: String, attendee: String, language: String, acceptParticipaient: String, allowComment: Bool, image: UIImage){
        
         let eventTitle = eventTitle
         let eventType = eventType
