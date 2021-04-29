@@ -77,7 +77,6 @@ public class LoginViewModel: ObservableObject, Identifiable {
     
     func getSocialLogin() {
         
-      
         loginHandler.getSocialLogin()
       
     }

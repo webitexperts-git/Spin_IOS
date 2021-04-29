@@ -9,10 +9,7 @@ import SwiftUI
 import Combine
 
 struct Registration: View {
-//    @State var name: String = ""
-//    @State var password: String = ""
-//    @State var email: String = ""
-//    @State var town: String = ""
+
     @State var alertMsg = ""
     @State var showAlert = false
 

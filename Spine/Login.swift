@@ -166,28 +166,32 @@ fileprivate func isValidInputs() -> Bool {
 class UserLoginManager: ObservableObject {
     @ObservedObject var model = LoginViewModel()
         let loginManager = LoginManager()
+    
+    
+
         func facebookLogin() {
-            loginManager.logIn(permissions: [.publicProfile, .email], viewController: nil) { loginResult in
-                switch loginResult {
-                case .failed(let error):
-                    print(error)
-                case .cancelled:
-                    print("User cancelled login.")
-                case .success(let grantedPermissions, let declinedPermissions, let accessToken):
-                    print("Logged in! \(grantedPermissions) \(declinedPermissions) \(accessToken)")
-                    GraphRequest(graphPath: "me", parameters: ["fields": "id, name, first_name, email"]).start(completionHandler: { [self] (connection, result, error) -> Void in
-                        if (error == nil){
-                            let fbDetails = result as! NSDictionary
-                            print(fbDetails)
-                            let socialEmail = fbDetails["email"]
-                            let socialName = fbDetails["name"]
-                            let fbId = fbDetails["id"]
-                            model.getSocialLogin()
-                            
-                        }
-                    })
-                }
-            }
+            
+//            loginManager.logIn(permissions: [.publicProfile, .email], viewController: nil) { loginResult in
+//                switch loginResult {
+//                case .failed(let error):
+//                    print(error)
+//                case .cancelled:
+//                    print("User cancelled login.")
+//                case .success(let grantedPermissions, let declinedPermissions, let accessToken):
+//                    print("Logged in! \(grantedPermissions) \(declinedPermissions) \(accessToken)")
+//                    GraphRequest(graphPath: "me", parameters: ["fields": "id, name, first_name, email"]).start(completionHandler: { [self] (connection, result, error) -> Void in
+//                        if (error == nil){
+//                            let fbDetails = result as! NSDictionary
+//                            print(fbDetails)
+//                            let socialEmail = fbDetails["email"]
+//                            let socialName = fbDetails["name"]
+//                            let fbId = fbDetails["id"]
+//                            model.getSocialLogin()
+//
+//                        }
+//                    })
+//                }
+//            }
         }
     }
 

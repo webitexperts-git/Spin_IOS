@@ -279,7 +279,7 @@ struct EventDetailView: View {
                                 let username = data.post_user_display_name ?? data.post_user_name
                                 Text(username!)
                                 let comment = data.comment ?? ""
-                                Text(comment!).foregroundColor(.gray)
+                                    Text(comment).foregroundColor(.gray)
                                 HStack(spacing:20){
                                     Image("heart").resizable().frame(width:25, height:25)
                                     Text("Reply").foregroundColor(Color("backColor"))

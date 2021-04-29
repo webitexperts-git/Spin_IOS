@@ -11,5 +11,6 @@ target 'Spine' do
   	pod 'ReachabilitySwift'
   	pod 'PKHUD', '~> 5.0'
 	pod 'AlamofireImage'
+	
 
 end

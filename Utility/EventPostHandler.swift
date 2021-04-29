@@ -45,7 +45,7 @@ class EventPostHandler: APIHandler{
                     })
                 }
             }
-            multiPart.append(image, withName: "file", fileName: "file.png", mimeType: "image/png")
+//            multiPart.append(image, withName: "file", fileName: "file.png", mimeType: "image/png")
         }, with: url as! URLRequestConvertible)
             .uploadProgress(queue: .main, closure: { progress in
                 //Current upload progress of file

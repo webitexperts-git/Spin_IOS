@@ -47,7 +47,6 @@
 		18578D0D25B5BD1700D70D98 /* FollowersHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18578D0C25B5BD1700D70D98 /* FollowersHandler.swift */; };
 		18578D1025B5BD2900D70D98 /* FollowersViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18578D0F25B5BD2900D70D98 /* FollowersViewModel.swift */; };
 		18578D1325B5BE2000D70D98 /* FollowersModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18578D1225B5BE2000D70D98 /* FollowersModel.swift */; };
-		1859CF4B256C03A000EFC1EA /* FacebookLogin in Frameworks */ = {isa = PBXBuildFile; productRef = 1859CF4A256C03A000EFC1EA /* FacebookLogin */; };
 		18675F1125543EDF00758F81 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18675F1025543EDF00758F81 /* AppDelegate.swift */; };
 		18675F1325543EDF00758F81 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18675F1225543EDF00758F81 /* SceneDelegate.swift */; };
 		18675F1525543EDF00758F81 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18675F1425543EDF00758F81 /* ContentView.swift */; };
@@ -139,6 +138,9 @@
 		F171703E25DFE39600FD60A1 /* RecFollowersModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F171703D25DFE39600FD60A1 /* RecFollowersModel.swift */; };
 		F171704125DFE3AD00FD60A1 /* RecFollowersViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F171704025DFE3AD00FD60A1 /* RecFollowersViewModel.swift */; };
 		F171704425DFE3C500FD60A1 /* RecFollowersHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = F171704325DFE3C500FD60A1 /* RecFollowersHandler.swift */; };
+		F176ECEB263AAAE200B7CDCE /* FacebookCore in Frameworks */ = {isa = PBXBuildFile; productRef = F176ECEA263AAAE200B7CDCE /* FacebookCore */; };
+		F176ECED263AAAE200B7CDCE /* FacebookLogin in Frameworks */ = {isa = PBXBuildFile; productRef = F176ECEC263AAAE200B7CDCE /* FacebookLogin */; };
+		F176ECEF263AAAE200B7CDCE /* FacebookShare in Frameworks */ = {isa = PBXBuildFile; productRef = F176ECEE263AAAE200B7CDCE /* FacebookShare */; };
 		F1782A47261C34CF00C5D327 /* FollowingEventView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1782A46261C34CF00C5D327 /* FollowingEventView.swift */; };
 		F1782A4A261C355200C5D327 /* FollowingEventModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1782A49261C355200C5D327 /* FollowingEventModel.swift */; };
 		F1782A4D261C35DA00C5D327 /* FollowingEventViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1782A4C261C35DA00C5D327 /* FollowingEventViewModel.swift */; };
@@ -432,8 +434,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1859CF4B256C03A000EFC1EA /* FacebookLogin in Frameworks */,
+				F176ECED263AAAE200B7CDCE /* FacebookLogin in Frameworks */,
 				1809E0A6256CD24C0007E9B2 /* NetworkExtension.framework in Frameworks */,
+				F176ECEB263AAAE200B7CDCE /* FacebookCore in Frameworks */,
+				F176ECEF263AAAE200B7CDCE /* FacebookShare in Frameworks */,
 				7DEED95F9456EB187E894AD7 /* Pods_Spine.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -836,7 +840,9 @@
 			);
 			name = Spine;
 			packageProductDependencies = (
-				1859CF4A256C03A000EFC1EA /* FacebookLogin */,
+				F176ECEA263AAAE200B7CDCE /* FacebookCore */,
+				F176ECEC263AAAE200B7CDCE /* FacebookLogin */,
+				F176ECEE263AAAE200B7CDCE /* FacebookShare */,
 			);
 			productName = Spine;
 			productReference = 18675F0D25543EDF00758F81 /* Spine.app */;
@@ -866,7 +872,7 @@
 			);
 			mainGroup = 18675F0425543EDF00758F81;
 			packageReferences = (
-				1859CF49256C039F00EFC1EA /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */,
+				F176ECE9263AAAE200B7CDCE /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */,
 			);
 			productRefGroup = 18675F0E25543EDF00758F81 /* Products */;
 			projectDirPath = "";
@@ -1274,7 +1280,7 @@
 				DEVELOPMENT_TEAM = HKW4E7T482;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = Spine/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.3;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1300,7 +1306,7 @@
 				DEVELOPMENT_TEAM = HKW4E7T482;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = Spine/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.3;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1337,21 +1343,31 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		1859CF49256C039F00EFC1EA /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */ = {
+		F176ECE9263AAAE200B7CDCE /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/facebook/facebook-ios-sdk";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 8.2.0;
+				minimumVersion = 9.2.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		1859CF4A256C03A000EFC1EA /* FacebookLogin */ = {
+		F176ECEA263AAAE200B7CDCE /* FacebookCore */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 1859CF49256C039F00EFC1EA /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */;
+			package = F176ECE9263AAAE200B7CDCE /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */;
+			productName = FacebookCore;
+		};
+		F176ECEC263AAAE200B7CDCE /* FacebookLogin */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F176ECE9263AAAE200B7CDCE /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */;
 			productName = FacebookLogin;
+		};
+		F176ECEE263AAAE200B7CDCE /* FacebookShare */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F176ECE9263AAAE200B7CDCE /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */;
+			productName = FacebookShare;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
