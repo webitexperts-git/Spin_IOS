@@ -23,16 +23,16 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
       
-//        if(UserDefaults.standard.string(forKey: "user_id") != nil){
-//            let home = Home()
-//
-//            if let windowScene = scene as? UIWindowScene {
-//                let window = UIWindow(windowScene: windowScene)
-//                window.rootViewController = UIHostingController(rootView: home)
-//                self.window = window
-//                window.makeKeyAndVisible()
-//            }
-//        }else{
+        if(UserDefaults.standard.string(forKey: "user_id") != nil){
+            let home = Home()
+
+            if let windowScene = scene as? UIWindowScene {
+                let window = UIWindow(windowScene: windowScene)
+                window.rootViewController = UIHostingController(rootView: home)
+                self.window = window
+                window.makeKeyAndVisible()
+            }
+        }else{
             let contentView = ContentView()
 
             if let windowScene = scene as? UIWindowScene {
@@ -43,7 +43,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             }
         }
 
-//    }
+    }
     
     
     

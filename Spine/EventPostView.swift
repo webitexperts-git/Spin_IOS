@@ -51,8 +51,8 @@ struct EventPostView: View {
     @State var image: Image? = nil
     @State var imgData: Data? = nil
     
-    @State var image1 = UIImage()
-    
+    @State var image1 : UIImage? = nil
+    @State var uiImage: UIImage? = nil
     @State var selectedDateStart = Date()
     @State var selectedDateEnd = Date()
     @State var selectedTimeStart = Date()
@@ -177,8 +177,8 @@ struct EventPostView: View {
                             Button("Post") {
                                 print("Help tapped!")
                                 
-                                geteventPost(eventTitle: eventTitle, eventType: eventType, startDate: formattedDateTimeFromString(dateString: selectedDateStart, withFormat: "yy-MM-dd")!, startTime: formattedTimeFromString(dateString: selectedTimeStart, withFormat: "HH:mm:ss")!, endDate: formattedDateTimeFromString(dateString: selectedDateEnd, withFormat: "yy-MM-dd")!, endTime: formattedTimeFromString(dateString: selectedTimeEnd, withFormat: "HH:mm:ss")!, timeZone: TimeZone.current.identifier, location: self.locationManager.placemark!, addLink: eventLink, aboutEvent: aboutEvent, eventCategory: "eye", fee: eventFee, symbol: currency, attendee: eventAttendee, language: language, acceptParticipaient: "2", allowComment: comment, image: image1)
-                                print("image", image1)
+                                geteventPost(eventTitle: eventTitle, eventType: eventType, startDate: formattedDateTimeFromString(dateString: selectedDateStart, withFormat: "yy-MM-dd")!, startTime: formattedTimeFromString(dateString: selectedTimeStart, withFormat: "HH:mm:ss")!, endDate: formattedDateTimeFromString(dateString: selectedDateEnd, withFormat: "yy-MM-dd")!, endTime: formattedTimeFromString(dateString: selectedTimeEnd, withFormat: "HH:mm:ss")!, timeZone: TimeZone.current.identifier, location: self.locationManager.placemark!, addLink: eventLink, aboutEvent: aboutEvent, eventCategory: "eye", fee: eventFee, symbol: currency, attendee: eventAttendee, language: language, acceptParticipaient: "2", allowComment: comment, image: imgData!)
+                                print("image", imgData!)
                             }
                         }
                     }
@@ -644,7 +644,7 @@ struct EventPostView: View {
         eventLanguageModel.getEventLanguageData()
     }
     
-    func geteventPost(eventTitle: String, eventType:String, startDate: String, startTime: String, endDate: String, endTime: String, timeZone: String, location: String, addLink: String, aboutEvent: String, eventCategory: String, fee: String, symbol: String, attendee: String, language: String, acceptParticipaient: String, allowComment: Bool, image: UIImage){
+    func geteventPost(eventTitle: String, eventType:String, startDate: String, startTime: String, endDate: String, endTime: String, timeZone: String, location: String, addLink: String, aboutEvent: String, eventCategory: String, fee: String, symbol: String, attendee: String, language: String, acceptParticipaient: String, allowComment: Bool, image: Data){
        
         let eventTitle = eventTitle
         let eventType = eventType
@@ -801,9 +801,9 @@ struct EventLanguagePopUp:View{
 }
 
 
-struct EventPostView_Previews: PreviewProvider {
-    static var previews: some View {
-        EventPostView()
-        
-    }
-}
+//struct EventPostView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        EventPostView(imgData: Data)
+//        
+//    }
+//}

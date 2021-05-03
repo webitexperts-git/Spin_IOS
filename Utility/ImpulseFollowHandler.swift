@@ -28,9 +28,9 @@ class ImpulseFollowHandler: APIHandler{
     print(headers)
         var title = title2
         if title == "Follow"{
-            title = "1"
-        }else{
             title = "0"
+        }else{
+            title = "1"
         }
     
     let userId = UserDefaults.standard.string(forKey: "user_id") ?? ""

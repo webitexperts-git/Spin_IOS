@@ -29,7 +29,7 @@ struct TrailRow: View {
               
                 HStack(){
                    
-                    AsyncImage(url: URL(string: "https://seobywebitindia.com/dev/spine/assets/upload/profile/" + (trail.profile_pic ?? "default.jpg"))!,
+                    AsyncImage(url: URL(string: "http://162.214.165.52/~pirituc5/assets/upload/profile/" + (trail.profile_pic ?? "default.jpg"))!,
                                   placeholder: { Text("") },
                                   image: { Image(uiImage: $0).resizable() })
                         .frame(width:80, height:80)
@@ -49,7 +49,7 @@ struct TrailRow: View {
                let _ = print("MyColor", color)
               
                 
-                let url1: String = "https://seobywebitindia.com/dev/spine/assets/upload/spine-post/" + (trail.files ?? "https://seobywebitindia.com/dev/spine/assets/upload/default.jpg")!
+                let url1: String = "http://162.214.165.52/~pirituc5/assets/upload/spine-post/" + (trail.files ?? "http://162.214.165.52/~pirituc5/assets/upload/default.jpg")!
                 
                 
                 let imageExtensions = ["png", "jpg", "gif"]
@@ -60,7 +60,7 @@ struct TrailRow: View {
                   
                 if imageExtensions.contains(pathExtention!){
                     if trail.type! == "1"{
-                    AsyncImage(url: URL(string: "https://seobywebitindia.com/dev/spine/assets/upload/spine-post/" + (trail.files ?? "http://wiesoftware.com/spine/assets/upload/profile/default.jpg"))!,
+                    AsyncImage(url: URL(string: "http://162.214.165.52/~pirituc5/assets/upload/spine-post/" + (trail.files ?? "http://162.214.165.52/~pirituc5/assets/upload/profile/default.jpg"))!,
                                   placeholder: { Text("") },
                                   image: { Image(uiImage: $0).resizable() })
                         .frame(minWidth: 0, maxWidth: .infinity, minHeight: 300, maxHeight: 300)
@@ -76,7 +76,7 @@ struct TrailRow: View {
                 }
                 else{
                     ZStack{
-                        let player = AVPlayer(url: URL(string: "https://seobywebitindia.com/dev/spine/assets/upload/spine-post/" + trail.files!)!)
+                        let player = AVPlayer(url: URL(string: "http://162.214.165.52/~pirituc5/assets/upload/spine-post/" + trail.files!)!)
                        
                     VideoPlayer(player: player)
                         .frame(minWidth: 0, maxWidth: .infinity, minHeight: 300, maxHeight: 300, alignment: .topLeading)
@@ -334,6 +334,7 @@ struct Home: View {
                     Text("Profile")
                 }
         }.accentColor(Color(red: 183 / 255, green: 152 / 255, blue: 136 / 255))
+        .navigationBarHidden(true)
 //        }.navigationBarHidden(false)
     }
 }
@@ -620,7 +621,7 @@ struct SpineView:View{
                                               
                                             if imageExtensions.contains(pathExtention!){
                                                
-                                                AsyncImage(url: URL(string: storiesModel.imageUrl + (data.stories_data![0].media_file ?? "http://wiesoftware.com/spine/assets/upload/profile/default.jpg"))!,
+                                                AsyncImage(url: URL(string: storiesModel.imageUrl + (data.stories_data![0].media_file ?? "http://162.214.165.52/~pirituc5/assets/upload/profile/default.jpg"))!,
                                                               placeholder: { Text("") },
                                                               image: { Image(uiImage: $0).resizable() })
                                                
@@ -765,7 +766,7 @@ struct SpineView:View{
                                               
                                             if imageExtensions.contains(pathExtention!){
                                                
-                                                AsyncImage(url: URL(string: storiesModel.imageUrl + (data.stories_data![0].media_file ?? "http://wiesoftware.com/spine/assets/upload/profile/default.jpg"))!,
+                                                AsyncImage(url: URL(string: storiesModel.imageUrl + (data.stories_data![0].media_file ?? "http://162.214.165.52/~pirituc5/assets/upload/profile/default.jpg"))!,
                                                               placeholder: { Text("") },
                                                               image: { Image(uiImage: $0).resizable() })
                                                
@@ -814,7 +815,7 @@ struct SpineView:View{
                     List(followingListModel.data, id: \.self){data in
                         VStack(alignment: .leading){
                             HStack(){
-                                AsyncImage(url: URL(string: followingListModel.imageUrl + (data.profile_pic ?? "http://wiesoftware.com/spine/assets/upload/profile/default.jpg"))!,
+                                AsyncImage(url: URL(string: followingListModel.imageUrl + (data.profile_pic ?? "http://162.214.165.52/~pirituc5/assets/upload/profile/default.jpg"))!,
                                               placeholder: { Text("") },
                                               image: { Image(uiImage: $0).resizable() })
                                
@@ -860,7 +861,7 @@ struct SpineView:View{
                                         if imageExtensions.contains(pathExtention!){
                                             Rectangle()
                                                 .fill(Color(UIColor(hex: "#B89A8A")))
-                                            AsyncImage(url: URL(string: followingListModel.imageUrl + (data.files ?? "http://wiesoftware.com/spine/assets/upload/profile/default.jpg"))!,
+                                            AsyncImage(url: URL(string: followingListModel.imageUrl + (data.files ?? "http://162.214.165.52/~pirituc5/assets/upload/profile/default.jpg"))!,
                                                        placeholder: { Image("default").resizable() },
                                                           image: { Image(uiImage: $0).resizable() })
 //                                                .aspectRatio(contentMode: .fill)
@@ -994,9 +995,6 @@ struct SpineView:View{
     }
 
 }
-
-
-
 
 
 struct Home_Previews: PreviewProvider {

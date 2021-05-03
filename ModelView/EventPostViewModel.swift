@@ -63,7 +63,7 @@ public class EventPostViewModel: ObservableObject, Identifiable {
         
     }
     
-    func getEventPostData(eventTitle: String, eventType:String, startDate: String, startTime: String, endDate: String, endTime: String, timeZone: String, location: String, addLink: String, aboutEvent: String, eventCategory: String, fee: String, symbol: String, attendee: String, language: String, acceptParticipaient: String, allowComment: Bool, image: UIImage) {
+    func getEventPostData(eventTitle: String, eventType:String, startDate: String, startTime: String, endDate: String, endTime: String, timeZone: String, location: String, addLink: String, aboutEvent: String, eventCategory: String, fee: String, symbol: String, attendee: String, language: String, acceptParticipaient: String, allowComment: Bool, image: Data) {
         
         let eventTitle = eventTitle
         let eventType = eventType
@@ -84,7 +84,11 @@ public class EventPostViewModel: ObservableObject, Identifiable {
         let allowComment = allowComment
         let image = image
         
-        eventPostHandler.getEventPostData(eventTitle: eventTitle, eventType: eventType, startDate: startDate, startTime: startTime, endDate: endDate, endTime: endTime, timeZone: timeZone, location: location, addLink: eventLink, aboutEvent: aboutEvent, eventCategory: "eye", fee: eventFee, symbol: currency, attendee: attendee, language: language, acceptParticipaient: "2", allowComment: allowComment, image: image)
+        let userId  = UserDefaults.standard.string(forKey: "user_id")
+        
+        eventPostHandler.upload(image: image, params:["user_id": userId!, "type": eventType, "allow_comments": 1, "title": eventTitle, "description": aboutEvent, "start_time": startTime, "start_date": startDate, "end_time": endTime, "end_date": endDate, "timezone": timeZone, "location": location, "latitude": "27.567", "longitude": "27.567", "link_of_event": addLink, "event_categories": "art", "fee_currency": symbol, "max_attendees": attendee, "language": language, "accept_participants": acceptParticipaient, "multiple": "0", "fee": fee])
+        
+    
     }
     
 }

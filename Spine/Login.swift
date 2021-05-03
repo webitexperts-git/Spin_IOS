@@ -35,7 +35,7 @@ struct Login: View {
     
     
     var body: some View {
-        NavigationView {
+//        NavigationView {
             LoadingView(isShowing: .constant(model.isLoading)) {
         ZStack{
             LinearGradient(gradient: Gradient(colors: [Color(red: 183 / 255, green: 152 / 255, blue: 136 / 255), Color(red: 215 / 255, green: 199 / 255, blue: 181 / 255)]), startPoint: .bottom, endPoint: .top).edgesIgnoringSafeArea(.all)
@@ -127,9 +127,9 @@ struct Login: View {
                 }
             }
         } .alert(isPresented: $showAlert, content: { self.alert })
-    }
-}
-        .navigationBarHidden(true)
+    } .navigationBarHidden(false)
+//}
+       
 }
 
 fileprivate func isValidInputs() -> Bool {
