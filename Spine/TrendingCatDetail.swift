@@ -79,35 +79,16 @@ struct SpineButtonView1: View {
 
 struct TrendingCatDetail: View {
     
-//        var trending: TrendingCatModel.Data
         @ObservedObject var trendingModel = TrendingCatViewModel()
     
     var body: some View {
         VStack(spacing: 5){
         ScrollView(.vertical){
-//            VStack(){
+
             HStack(){
-           
                 HeaderButton1()
                 HeaderButton2()
-                
-//                Button(action: {
-//                       print("sign up bin tapped")
-//                   }) {
-//                    Text("Trending")
-//                           .frame(minWidth: 0, maxWidth: 100, minHeight: 0, maxHeight:8)
-//                           .font(.system(size: 18))
-//                           .padding()
-//                           .foregroundColor(.gray)
-//                           .overlay(
-//                               RoundedRectangle(cornerRadius: 18)
-//                                   .stroke(Color.gray, lineWidth: 2)
-//                       )
-//                   }
-
-                
         }
-//        }
             
             HStack(){
             
@@ -126,16 +107,12 @@ struct TrendingCatDetail: View {
             }
         }
             
-            
-            
-           
-            
-        }
-            
-        }.navigationTitle("CATEGORIES")
-        .onAppear(perform: getTrending)
-        Spacer()
     }
+            
+}.navigationTitle("CATEGORIES")
+.onAppear(perform: getTrending)
+    Spacer()
+}
     
 
     

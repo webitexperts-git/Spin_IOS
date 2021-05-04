@@ -25,8 +25,6 @@ struct TrailRow: View {
     var body: some View {
         ZStack{
             VStack() {
-                
-              
                 HStack(){
                    
                     AsyncImage(url: URL(string: "http://162.214.165.52/~pirituc5/assets/upload/profile/" + (trail.profile_pic ?? "default.jpg"))!,
@@ -323,7 +321,9 @@ struct Home: View {
                     Image(systemName: "headphones")
                     Text("Podcasts")
                 }
+            NavigationView{
             ActivitiesView()
+            }
                 .tabItem {
                     Image(systemName: "bell.fill")
                     Text("Activities")

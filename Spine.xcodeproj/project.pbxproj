@@ -168,6 +168,9 @@
 		F17C3A61261840890023D95B /* OnlineEventHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = F17C3A60261840890023D95B /* OnlineEventHandler.swift */; };
 		F17C3A68261841630023D95B /* OnlineEventViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F17C3A67261841630023D95B /* OnlineEventViewModel.swift */; };
 		F17C3A6B261842B60023D95B /* OnlineEventModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F17C3A6A261842B60023D95B /* OnlineEventModel.swift */; };
+		F18338D5264124E800E94897 /* ActivitiesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F18338D4264124E800E94897 /* ActivitiesModel.swift */; };
+		F18338D72641250A00E94897 /* ActivitiesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F18338D62641250A00E94897 /* ActivitiesViewModel.swift */; };
+		F18338D92641252700E94897 /* ActivitiesHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = F18338D82641252700E94897 /* ActivitiesHandler.swift */; };
 		F184520226148BA4008D5C50 /* ImpulseFollow.swift in Sources */ = {isa = PBXBuildFile; fileRef = F184520126148BA4008D5C50 /* ImpulseFollow.swift */; };
 		F184520526148C49008D5C50 /* ImpulseFollowViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F184520426148C49008D5C50 /* ImpulseFollowViewModel.swift */; };
 		F184520826148C98008D5C50 /* ImpulseFollowHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = F184520726148C98008D5C50 /* ImpulseFollowHandler.swift */; };
@@ -201,6 +204,8 @@
 		F1DD59EF25FB416F00DD1A29 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1DD59EE25FB416F00DD1A29 /* ImagePicker.swift */; };
 		F1DD5A2425FB6F9A00DD1A29 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1DD5A2325FB6F9A00DD1A29 /* LocationManager.swift */; };
 		F1DD5A2925FB833900DD1A29 /* AddressLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1DD5A2825FB833900DD1A29 /* AddressLocation.swift */; };
+		F1F1912626419301000BF747 /* ActivitiesFollowingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F1912526419301000BF747 /* ActivitiesFollowingModel.swift */; };
+		F1F1912826419410000BF747 /* ActivitiesFollowingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F1912726419410000BF747 /* ActivitiesFollowingViewModel.swift */; };
 		F1F54A04262D5922008F8F38 /* EventPostViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F54A03262D5922008F8F38 /* EventPostViewModel.swift */; };
 		F1F54A08262D595D008F8F38 /* EventPostHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F54A07262D595D008F8F38 /* EventPostHandler.swift */; };
 		F1F54A0D262D963C008F8F38 /* EventCurrencyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F54A0C262D963B008F8F38 /* EventCurrencyModel.swift */; };
@@ -389,6 +394,9 @@
 		F17C3A60261840890023D95B /* OnlineEventHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnlineEventHandler.swift; sourceTree = "<group>"; };
 		F17C3A67261841630023D95B /* OnlineEventViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnlineEventViewModel.swift; sourceTree = "<group>"; };
 		F17C3A6A261842B60023D95B /* OnlineEventModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnlineEventModel.swift; sourceTree = "<group>"; };
+		F18338D4264124E800E94897 /* ActivitiesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivitiesModel.swift; sourceTree = "<group>"; };
+		F18338D62641250A00E94897 /* ActivitiesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivitiesViewModel.swift; sourceTree = "<group>"; };
+		F18338D82641252700E94897 /* ActivitiesHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivitiesHandler.swift; sourceTree = "<group>"; };
 		F184520126148BA4008D5C50 /* ImpulseFollow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImpulseFollow.swift; sourceTree = "<group>"; };
 		F184520426148C49008D5C50 /* ImpulseFollowViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImpulseFollowViewModel.swift; sourceTree = "<group>"; };
 		F184520726148C98008D5C50 /* ImpulseFollowHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImpulseFollowHandler.swift; sourceTree = "<group>"; };
@@ -422,6 +430,8 @@
 		F1DD59EE25FB416F00DD1A29 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		F1DD5A2325FB6F9A00DD1A29 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		F1DD5A2825FB833900DD1A29 /* AddressLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressLocation.swift; sourceTree = "<group>"; };
+		F1F1912526419301000BF747 /* ActivitiesFollowingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivitiesFollowingModel.swift; sourceTree = "<group>"; };
+		F1F1912726419410000BF747 /* ActivitiesFollowingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivitiesFollowingViewModel.swift; sourceTree = "<group>"; };
 		F1F54A03262D5922008F8F38 /* EventPostViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventPostViewModel.swift; sourceTree = "<group>"; };
 		F1F54A07262D595D008F8F38 /* EventPostHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventPostHandler.swift; sourceTree = "<group>"; };
 		F1F54A0C262D963B008F8F38 /* EventCurrencyModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventCurrencyModel.swift; sourceTree = "<group>"; };
@@ -489,6 +499,7 @@
 				F15DA05226280D360003DD0F /* EventLanguageHandler.swift */,
 				F1F54A07262D595D008F8F38 /* EventPostHandler.swift */,
 				F1F54A12262D9854008F8F38 /* EventCurrencyHandler.swift */,
+				F18338D82641252700E94897 /* ActivitiesHandler.swift */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -548,6 +559,8 @@
 				F15DA04C26280C210003DD0F /* EventLanguageModel.swift */,
 				F11C453325E3D7B7004E2EBA /* EventPostModel.swift */,
 				F1F54A0C262D963B008F8F38 /* EventCurrencyModel.swift */,
+				F18338D4264124E800E94897 /* ActivitiesModel.swift */,
+				F1F1912526419301000BF747 /* ActivitiesFollowingModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -596,6 +609,8 @@
 				F15DA04F26280CF00003DD0F /* EventLanguageViewModel.swift */,
 				F1F54A03262D5922008F8F38 /* EventPostViewModel.swift */,
 				F1F54A0F262D96BD008F8F38 /* EventCurrencyViewModel.swift */,
+				F18338D62641250A00E94897 /* ActivitiesViewModel.swift */,
+				F1F1912726419410000BF747 /* ActivitiesFollowingViewModel.swift */,
 			);
 			path = ModelView;
 			sourceTree = "<group>";
@@ -997,6 +1012,8 @@
 				F11FE68825DCE5E200AD9F90 /* ImpulseCommentHandler.swift in Sources */,
 				1805B5E325A59CCE00CE4C01 /* LoginHandler.swift in Sources */,
 				18675F492554671400758F81 /* IQTitleBarButtonItem.m in Sources */,
+				F18338D5264124E800E94897 /* ActivitiesModel.swift in Sources */,
+				F1F1912826419410000BF747 /* ActivitiesFollowingViewModel.swift in Sources */,
 				18675F4B2554671400758F81 /* IQUIView+IQKeyboardToolbar.m in Sources */,
 				18830D6A25B1BF1700842278 /* HomeImpulseModel.swift in Sources */,
 				F15DA05026280CF00003DD0F /* EventLanguageViewModel.swift in Sources */,
@@ -1033,6 +1050,7 @@
 				18578D0125B5BCA200D70D98 /* StoriesModel.swift in Sources */,
 				18578CFE25B5BC8C00D70D98 /* StoriesViewModel.swift in Sources */,
 				18675F532554671400758F81 /* IQKeyboardReturnKeyHandler.m in Sources */,
+				F1F1912626419301000BF747 /* ActivitiesFollowingModel.swift in Sources */,
 				1805B5E625A59CE300CE4C01 /* APIHandler.swift in Sources */,
 				F18D164E2620701E006179A9 /* EventCommentDetailHandler.swift in Sources */,
 				F1782A5C261C3C9100C5D327 /* GoingEventModel.swift in Sources */,
@@ -1047,6 +1065,7 @@
 				F11C453125E3D7A0004E2EBA /* EventPostView.swift in Sources */,
 				1821F0F625678E8700F77583 /* Registration.swift in Sources */,
 				180902C5258B793200BB996E /* SettingsView.swift in Sources */,
+				F18338D72641250A00E94897 /* ActivitiesViewModel.swift in Sources */,
 				1821F1052567949F00F77583 /* PhoneVerification.swift in Sources */,
 				183C9FB125B6FC9400465D8D /* PostViewModel.swift in Sources */,
 				F1782A78261C672600C5D327 /* EventDetailModel.swift in Sources */,
@@ -1076,6 +1095,7 @@
 				F1782A53261C394F00C5D327 /* GoingEventView.swift in Sources */,
 				1893E0C2257E352A00B62212 /* TrendingCatDetail.swift in Sources */,
 				F164D02226244F960096C9B6 /* EventBookHandler.swift in Sources */,
+				F18338D92641252700E94897 /* ActivitiesHandler.swift in Sources */,
 				F1D889A425CAA780000ED8AE /* AsyncImage.swift in Sources */,
 				F1DD5A2425FB6F9A00DD1A29 /* LocationManager.swift in Sources */,
 				182C6CBD259074EA00742B1F /* PostView.swift in Sources */,
