@@ -78,14 +78,110 @@ struct ActivitiesView: View {
                                 else if(data.tbl_action == "Post-comment"){
                                     let msg = data.u_name! + " has commented on your post"
                                     Text(msg).multilineTextAlignment(.leading)
+                                        let url1: String = activitiesModel.post_image + (data.files ?? "http://162.214.165.52/~pirituc5/assets/upload/default.jpg")
+//
+//
+                                    let imageExtensions = ["png", "jpg", "gif"]
+//
+                                    let url: URL? = NSURL(fileURLWithPath: url1) as URL
+//
+                                    let pathExtention = url?.pathExtension
+//
+                                    if imageExtensions.contains(pathExtention!){
+
+                                        AsyncImage(url: URL(string: activitiesModel.post_image + (data.files ?? "http://162.214.165.52/~pirituc5/assets/upload/profile/default.jpg"))!,
+                                                      placeholder: { Text("") },
+                                                      image: { Image(uiImage: $0).resizable() })
+                                            .frame(minWidth: 0, maxWidth: .infinity, minHeight: 80, maxHeight: 80)
+
+                                    }
+                                    else{
+                                        ZStack{
+                                            let player = AVPlayer(url: URL(string: "http://162.214.165.52/~pirituc5/assets/upload/spine-post/" + data.files!))
+                                           
+//                                        VideoPlayer(player: player)
+//                                            .frame(minWidth: 0, maxWidth: .infinity, minHeight: 300, maxHeight: 300, alignment: .topLeading)
+
+                        
+                                            .onAppear() {
+                                                player.play()
+                                            }
+                                    }
+                                }
+                                    
+                                }
                                 }
                                 else if(data.tbl_action == "Post-save"){
                                     let msg = data.u_name! + " has save your post"
                                     Text(msg).multilineTextAlignment(.leading)
+                                        let url1: String = activitiesModel.post_image + (data.files ?? "http://162.214.165.52/~pirituc5/assets/upload/default.jpg")
+//
+//
+                                    let imageExtensions = ["png", "jpg", "gif"]
+//
+                                    let url: URL? = NSURL(fileURLWithPath: url1) as URL
+//
+                                    let pathExtention = url?.pathExtension
+//
+                                    if imageExtensions.contains(pathExtention!){
+
+                                        AsyncImage(url: URL(string: activitiesModel.post_image + (data.files ?? "http://162.214.165.52/~pirituc5/assets/upload/profile/default.jpg"))!,
+                                                      placeholder: { Text("") },
+                                                      image: { Image(uiImage: $0).resizable() })
+                                            .frame(minWidth: 0, maxWidth: .infinity, minHeight: 80, maxHeight: 80)
+
+                                    }
+                                    else{
+                                        ZStack{
+                                            let player = AVPlayer(url: URL(string: "http://162.214.165.52/~pirituc5/assets/upload/spine-post/" + data.files!))
+                                           
+//                                        VideoPlayer(player: player)
+//                                            .frame(minWidth: 0, maxWidth: .infinity, minHeight: 300, maxHeight: 300, alignment: .topLeading)
+
+                        
+                                            .onAppear() {
+                                                player.play()
+                                            }
+                                    }
+                                }
+                                    
+                                }
                                 }
                                 else if(data.tbl_action == "Post-share"){
                                     let msg = data.u_name! + " has share your post"
                                     Text(msg).multilineTextAlignment(.leading)
+                                        let url1: String = activitiesModel.post_image + (data.files ?? "http://162.214.165.52/~pirituc5/assets/upload/default.jpg")
+//
+//
+                                    let imageExtensions = ["png", "jpg", "gif"]
+//
+                                    let url: URL? = NSURL(fileURLWithPath: url1) as URL
+//
+                                    let pathExtention = url?.pathExtension
+//
+                                    if imageExtensions.contains(pathExtention!){
+
+                                        AsyncImage(url: URL(string: activitiesModel.post_image + (data.files ?? "http://162.214.165.52/~pirituc5/assets/upload/profile/default.jpg"))!,
+                                                      placeholder: { Text("") },
+                                                      image: { Image(uiImage: $0).resizable() })
+                                            .frame(minWidth: 0, maxWidth: .infinity, minHeight: 80, maxHeight: 80)
+
+                                    }
+                                    else{
+                                        ZStack{
+                                            let player = AVPlayer(url: URL(string: "http://162.214.165.52/~pirituc5/assets/upload/spine-post/" + data.files!))
+                                           
+//                                        VideoPlayer(player: player)
+//                                            .frame(minWidth: 0, maxWidth: .infinity, minHeight: 300, maxHeight: 300, alignment: .topLeading)
+
+                        
+                                            .onAppear() {
+                                                player.play()
+                                            }
+                                    }
+                                }
+                                    
+                                }
                                 }
                                 else if(data.tbl_action == "Impluse Like"){
                                     let msg = data.u_name! + " has like Impulse"
@@ -98,6 +194,38 @@ struct ActivitiesView: View {
                                 else if(data.tbl_action == "Event-comment"){
                                     let msg = data.u_name! + " has comment on Event"
                                     Text(msg).multilineTextAlignment(.leading)
+                                        let url1: String = activitiesModel.post_image + (data.files ?? "http://162.214.165.52/~pirituc5/assets/upload/default.jpg")
+//
+//
+                                    let imageExtensions = ["png", "jpg", "gif"]
+//
+                                    let url: URL? = NSURL(fileURLWithPath: url1) as URL
+//
+                                    let pathExtention = url?.pathExtension
+//
+                                    if imageExtensions.contains(pathExtention!){
+
+                                        AsyncImage(url: URL(string: activitiesModel.post_image + (data.files ?? "http://162.214.165.52/~pirituc5/assets/upload/profile/default.jpg"))!,
+                                                      placeholder: { Text("") },
+                                                      image: { Image(uiImage: $0).resizable() })
+                                            .frame(minWidth: 0, maxWidth: .infinity, minHeight: 80, maxHeight: 80)
+
+                                    }
+                                    else{
+                                        ZStack{
+                                            let player = AVPlayer(url: URL(string: "http://162.214.165.52/~pirituc5/assets/upload/spine-post/" + data.files!))
+                                           
+//                                        VideoPlayer(player: player)
+//                                            .frame(minWidth: 0, maxWidth: .infinity, minHeight: 300, maxHeight: 300, alignment: .topLeading)
+
+                        
+                                            .onAppear() {
+                                                player.play()
+                                            }
+                                    }
+                                }
+                                    
+                                }
                                 }
                                 else if(data.tbl_action == "Event-save"){
                                     let msg = data.u_name! + " has save Event"
