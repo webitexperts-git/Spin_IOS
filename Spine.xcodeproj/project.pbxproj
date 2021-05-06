@@ -47,6 +47,7 @@
 		18578D0D25B5BD1700D70D98 /* FollowersHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18578D0C25B5BD1700D70D98 /* FollowersHandler.swift */; };
 		18578D1025B5BD2900D70D98 /* FollowersViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18578D0F25B5BD2900D70D98 /* FollowersViewModel.swift */; };
 		18578D1325B5BE2000D70D98 /* FollowersModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18578D1225B5BE2000D70D98 /* FollowersModel.swift */; };
+		185EE8F12643FC6B00D9DFAA /* PagingViewNew.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185EE8F02643FC6A00D9DFAA /* PagingViewNew.swift */; };
 		18675F1125543EDF00758F81 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18675F1025543EDF00758F81 /* AppDelegate.swift */; };
 		18675F1325543EDF00758F81 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18675F1225543EDF00758F81 /* SceneDelegate.swift */; };
 		18675F1525543EDF00758F81 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18675F1425543EDF00758F81 /* ContentView.swift */; };
@@ -72,6 +73,10 @@
 		18767E6E25A71AB600AF8943 /* ForgetViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18767E6D25A71AB600AF8943 /* ForgetViewModel.swift */; };
 		18767E8225A7469700AF8943 /* RegisterHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18767E8125A7469700AF8943 /* RegisterHandler.swift */; };
 		18767E8525A746B100AF8943 /* RegisterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18767E8425A746B100AF8943 /* RegisterViewModel.swift */; };
+		18767EEE2644380800D16E71 /* SubViewPost.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18767EED2644380800D16E71 /* SubViewPost.swift */; };
+		18767EF12644382900D16E71 /* SubViewEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18767EF02644382900D16E71 /* SubViewEvent.swift */; };
+		18767EF32644384300D16E71 /* SubViewPodCast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18767EF22644384300D16E71 /* SubViewPodCast.swift */; };
+		18767EF62644385E00D16E71 /* SubViewBookmark.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18767EF52644385E00D16E71 /* SubViewBookmark.swift */; };
 		187B70D4256849960055E5D0 /* AppConstantes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187B70D1256849960055E5D0 /* AppConstantes.swift */; };
 		187B70D5256849960055E5D0 /* singleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187B70D2256849960055E5D0 /* singleton.swift */; };
 		18830D6725B1BEED00842278 /* HomeViewImpulseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18830D6625B1BEED00842278 /* HomeViewImpulseModel.swift */; };
@@ -257,6 +262,7 @@
 		18578D0C25B5BD1700D70D98 /* FollowersHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowersHandler.swift; sourceTree = "<group>"; };
 		18578D0F25B5BD2900D70D98 /* FollowersViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowersViewModel.swift; sourceTree = "<group>"; };
 		18578D1225B5BE2000D70D98 /* FollowersModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowersModel.swift; sourceTree = "<group>"; };
+		185EE8F02643FC6A00D9DFAA /* PagingViewNew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PagingViewNew.swift; sourceTree = "<group>"; };
 		18675F0D25543EDF00758F81 /* Spine.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Spine.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		18675F1025543EDF00758F81 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		18675F1225543EDF00758F81 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -299,6 +305,10 @@
 		18767E6D25A71AB600AF8943 /* ForgetViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgetViewModel.swift; sourceTree = "<group>"; };
 		18767E8125A7469700AF8943 /* RegisterHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterHandler.swift; sourceTree = "<group>"; };
 		18767E8425A746B100AF8943 /* RegisterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewModel.swift; sourceTree = "<group>"; };
+		18767EED2644380800D16E71 /* SubViewPost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubViewPost.swift; sourceTree = "<group>"; };
+		18767EF02644382900D16E71 /* SubViewEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubViewEvent.swift; sourceTree = "<group>"; };
+		18767EF22644384300D16E71 /* SubViewPodCast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubViewPodCast.swift; sourceTree = "<group>"; };
+		18767EF52644385E00D16E71 /* SubViewBookmark.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubViewBookmark.swift; sourceTree = "<group>"; };
 		187B70D1256849960055E5D0 /* AppConstantes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppConstantes.swift; sourceTree = "<group>"; };
 		187B70D2256849960055E5D0 /* singleton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = singleton.swift; sourceTree = "<group>"; };
 		18830D6625B1BEED00842278 /* HomeViewImpulseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewImpulseModel.swift; sourceTree = "<group>"; };
@@ -672,6 +682,7 @@
 				F117998125E4E52400900179 /* PostHashTagView.swift */,
 				F17A8B3C25E633D3009E81A7 /* PostPreviewView.swift */,
 				F113BF2025F8D597006A6396 /* PagingView.swift */,
+				185EE8F02643FC6A00D9DFAA /* PagingViewNew.swift */,
 				F1786350261643FF00C81084 /* ButtonsView.swift */,
 				F114975225ED0D1D002889A0 /* EventDetailView.swift */,
 				18251305257A099A00C315C2 /* EventView.swift */,
@@ -686,6 +697,10 @@
 				F18D165726207CB6006179A9 /* MessageEventView.swift */,
 				F11C453025E3D7A0004E2EBA /* EventPostView.swift */,
 				F11E3CC725FA065200ADB978 /* Exp.swift */,
+				18767EED2644380800D16E71 /* SubViewPost.swift */,
+				18767EF02644382900D16E71 /* SubViewEvent.swift */,
+				18767EF22644384300D16E71 /* SubViewPodCast.swift */,
+				18767EF52644385E00D16E71 /* SubViewBookmark.swift */,
 				18675F1625543EE300758F81 /* Assets.xcassets */,
 				18675F1B25543EE300758F81 /* LaunchScreen.storyboard */,
 				EF6AEC45BE58E3D2AB7AE26B /* Pods */,
@@ -980,9 +995,11 @@
 				F15DA04D26280C210003DD0F /* EventLanguageModel.swift in Sources */,
 				1805B5EA25A59D4600CE4C01 /* LoadingView.swift in Sources */,
 				18675F482554671400758F81 /* IQToolbar.m in Sources */,
+				185EE8F12643FC6B00D9DFAA /* PagingViewNew.swift in Sources */,
 				18767E6B25A7192800AF8943 /* ForgetModel.swift in Sources */,
 				F113BF2725F8F9C2006A6396 /* NearByViewModel.swift in Sources */,
 				18767E8225A7469700AF8943 /* RegisterHandler.swift in Sources */,
+				18767EF62644385E00D16E71 /* SubViewBookmark.swift in Sources */,
 				F18D165126207BC5006179A9 /* BookEventView.swift in Sources */,
 				1895303B257A602300B5C7B2 /* SpineImpulseDetail.swift in Sources */,
 				18675F4A2554671400758F81 /* IQBarButtonItem.m in Sources */,
@@ -1032,6 +1049,7 @@
 				1809E0AD256CD8BA0007E9B2 /* PhoneOTPVerification.swift in Sources */,
 				18675F4F2554671400758F81 /* IQUITextFieldView+Additions.m in Sources */,
 				F18452172614A927008D5C50 /* ImpulseLikeViewModel.swift in Sources */,
+				18767EEE2644380800D16E71 /* SubViewPost.swift in Sources */,
 				F1DD59EF25FB416F00DD1A29 /* ImagePicker.swift in Sources */,
 				F117998525E4E54100900179 /* PostHashTagModel.swift in Sources */,
 				183C9FBF25B70C2400465D8D /* FavouritPostHandler.swift in Sources */,
@@ -1046,6 +1064,7 @@
 				F187CB14261EDF7500DD0C4C /* EventGetCommentModel.swift in Sources */,
 				F114974D25ECB653002889A0 /* AllEventViewModel.swift in Sources */,
 				183C9FB325B6FCB200465D8D /* PostModel.swift in Sources */,
+				18767EF32644384300D16E71 /* SubViewPodCast.swift in Sources */,
 				18767E8525A746B100AF8943 /* RegisterViewModel.swift in Sources */,
 				18578D0125B5BCA200D70D98 /* StoriesModel.swift in Sources */,
 				18578CFE25B5BC8C00D70D98 /* StoriesViewModel.swift in Sources */,
@@ -1123,6 +1142,7 @@
 				18675F1325543EDF00758F81 /* SceneDelegate.swift in Sources */,
 				F18B70C225D107F8009B141A /* UserPostModel.swift in Sources */,
 				F171703E25DFE39600FD60A1 /* RecFollowersModel.swift in Sources */,
+				18767EF12644382900D16E71 /* SubViewEvent.swift in Sources */,
 				F18CC6832613165200E56767 /* WrappableTextField.swift in Sources */,
 				F16757B425F2593F003DEEB9 /* FollowingListHandler.swift in Sources */,
 				F1782A56261C3AC700C5D327 /* GoingEventHandler.swift in Sources */,

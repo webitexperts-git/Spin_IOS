@@ -20,6 +20,7 @@ struct ActivitiesView: View {
                 }
            
             }.pickerStyle(SegmentedPickerStyle())
+            Spacer()
             if (selectedSport == 0){
                 ScrollView(.vertical){
                    
@@ -61,7 +62,7 @@ struct ActivitiesView: View {
                                     }
                                     else{
                                         ZStack{
-                                            let player = AVPlayer(url: URL(string: "http://162.214.165.52/~pirituc5/assets/upload/spine-post/" + data.files!)!)
+//                                            let player = AVPlayer(url: URL(string: "http://162.214.165.52/~pirituc5/assets/upload/spine-post/" + data.files!)!)
                                            
 //                                        VideoPlayer(player: player)
 //                                            .frame(minWidth: 0, maxWidth: .infinity, minHeight: 300, maxHeight: 300, alignment: .topLeading)
@@ -100,7 +101,7 @@ struct ActivitiesView: View {
                                     }
                                     else{
                                         ZStack{
-                                            let player = AVPlayer(url: URL(string: "http://162.214.165.52/~pirituc5/assets/upload/spine-post/" + data.files!)!)
+//                                            let player = AVPlayer(url: URL(string: "http://162.214.165.52/~pirituc5/assets/upload/spine-post/" + data.files!)!)
                                            
 //                                        VideoPlayer(player: player)
 //                                            .frame(minWidth: 0, maxWidth: .infinity, minHeight: 300, maxHeight: 300, alignment: .topLeading)
@@ -136,7 +137,7 @@ struct ActivitiesView: View {
                                     }
                                     else{
                                         ZStack{
-                                            let player = AVPlayer(url: URL(string: "http://162.214.165.52/~pirituc5/assets/upload/spine-post/" + data.files!)!)
+//                                            let player = AVPlayer(url: URL(string: "http://162.214.165.52/~pirituc5/assets/upload/spine-post/" + data.files!)!)
                                            
 //                                        VideoPlayer(player: player)
 //                                            .frame(minWidth: 0, maxWidth: .infinity, minHeight: 300, maxHeight: 300, alignment: .topLeading)
@@ -171,7 +172,7 @@ struct ActivitiesView: View {
                                     }
                                     else{
                                         ZStack{
-                                            let player = AVPlayer(url: URL(string: "http://162.214.165.52/~pirituc5/assets/upload/spine-post/" + data.files!)!)
+//                                            let player = AVPlayer(url: URL(string: "http://162.214.165.52/~pirituc5/assets/upload/spine-post/" + data.files!)!)
                                            
 //                                        VideoPlayer(player: player)
 //                                            .frame(minWidth: 0, maxWidth: .infinity, minHeight: 300, maxHeight: 300, alignment: .topLeading)
@@ -214,7 +215,7 @@ struct ActivitiesView: View {
                                     }
                                     else{
                                         ZStack{
-                                            let player = AVPlayer(url: URL(string: "http://162.214.165.52/~pirituc5/assets/upload/spine-post/" + data.files!)!)
+//                                            let player = AVPlayer(url: URL(string: "http://162.214.165.52/~pirituc5/assets/upload/spine-post/" + data.files!)!)
                                            
 //                                        VideoPlayer(player: player)
 //                                            .frame(minWidth: 0, maxWidth: .infinity, minHeight: 300, maxHeight: 300, alignment: .topLeading)
@@ -320,8 +321,9 @@ struct ActivitiesView: View {
     }
     Spacer()
             
-}.navigationBarTitle("Activities")
-
+}
+        .navigationBarTitle("Activities")
+        .navigationBarTitleDisplayMode(.inline)
      
 }
     
