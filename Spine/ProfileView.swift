@@ -11,6 +11,16 @@ struct ProfileView: View{
     
     var views = ["POST", "EVENT","PODCAST", ""]
     @State var index = 0
+    @State var view = ""
+    @State var view1:Bool = true
+    @State var view2 = false
+    @State var view3 = false
+    @State var view4 = false
+    
+    var gridItemLayout = [GridItem(.adaptive(minimum: 100)), GridItem(.adaptive(minimum:100))]
+    
+    @ObservedObject var userPostModel = UserPostViewModel()
+    
     var body: some View{
         NavigationView(){
         ZStack{
@@ -54,50 +64,147 @@ struct ProfileView: View{
                         Divider()
                     }
 
-                    HStack(spacing: 2){
+                    HStack(spacing: 5){
                         Button(action: {
                              print("sign up bin tapped")
+                          
+                                ScrollView {
+                                    VStack(){
+                                    if($userPostModel.woofUrl.wrappedValue != false){
+                                    LazyVGrid(columns: gridItemLayout, spacing: 5) {
+                                        ForEach(userPostModel.data, id: \.self) { data in
+                                           
+                                            let color = data.post_backround_color_id ?? "#B89A8A"
+                                        
+                                            
+                                            let url1: String = "http://162.214.165.52/~pirituc5/assets/upload/spine-post/" + (data.files ?? "http://162.214.165.52/~pirituc5/assets/upload/default.jpg")!
+                                            
+                                            
+                                            let imageExtensions = ["png", "jpg", "gif"]
+
+                                            let url: URL? = NSURL(fileURLWithPath: url1) as URL
+
+                                            let pathExtention = url?.pathExtension
+                                              
+                                            if imageExtensions.contains(pathExtention!){
+                                                if data.type! == "1"{
+                                                AsyncImage(url: URL(string: "http://162.214.165.52/~pirituc5/assets/upload/spine-post/" + (data.files ?? "http://162.214.165.52/~pirituc5/assets/upload/profile/default.jpg"))!,
+                                                              placeholder: { Text("") },
+                                                              image: { Image(uiImage: $0).resizable() })
+                                                    .frame(maxHeight: 200)
+                                                    .background(Color(UIColor(hex: color)))
+                                                }else{
+                                                   
+                                                VStack(){
+                                                    HStack(alignment:.top){
+                                                    Text(data.title!).foregroundColor(.white).font(.title2).multilineTextAlignment(.center).padding(.bottom)
+                                                Text(data.hashtag_ids!).foregroundColor(.white).font(.title2).multilineTextAlignment(.center)
+                                                }
+                                                
+                                                }.frame(maxHeight: 200)
+                                                
+                                                .background(Color(UIColor(hex: color)))
+                                                }
+
+                                            }
+                                            else{
+                        //
+                                            }
+                                        }
+                                    }
+                                    }
+                                    }.navigationTitle("STORIES")
+                                    .navigationBarTitleDisplayMode(.inline)
+                                    .onAppear(perform: getUserPostData)
+                                
+                            }
                          }) {
                              Text("POST")
-                                .overlay(
-                            Rectangle().frame(height: 10)
-                                .padding(.vertical, 24).foregroundColor(.gray)
-                            )
                                  
-                         }
+                        }
                         Button(action: {
                              print("sign up bin tapped")
                          }) {
                              Text("EVENTS")
 
-                         }
+                        }
 
                         Button(action: {
                              print("sign up bin tapped")
                          }) {
                              Text("PODCASTS")
 
-                         }
+                        }
 
                         Button(action: {
                              print("sign up bin tapped")
                          }) {
                             Image("bookmark").resizable().frame(width: 25, height: 25)
 
-                         }
+                        }
 
                     }
-                    Divider()
                     
+                    Divider()
+//                    SubViewPost()
                     PagingViewNew(index: $index.animation(), maxIndex: views.count - 1) {
                         ForEach(views, id: \.self) { imageName in
                             if imageName == "POST"{
-                                Login()
+                                ScrollView {
+                                    VStack(){
+                                    if($userPostModel.woofUrl.wrappedValue != false){
+                                    LazyVGrid(columns: gridItemLayout, spacing: 5) {
+                                        ForEach(userPostModel.data, id: \.self) { data in
+                                           
+                                            let color = data.post_backround_color_id ?? "#B89A8A"
+                                        
+                                            
+                                            let url1: String = "http://162.214.165.52/~pirituc5/assets/upload/spine-post/" + (data.files ?? "http://162.214.165.52/~pirituc5/assets/upload/default.jpg")!
+                                            
+                                            
+                                            let imageExtensions = ["png", "jpg", "gif"]
+
+                                            let url: URL? = NSURL(fileURLWithPath: url1) as URL
+
+                                            let pathExtention = url?.pathExtension
+                                              
+                                            if imageExtensions.contains(pathExtention!){
+                                                if data.type! == "1"{
+                                                AsyncImage(url: URL(string: "http://162.214.165.52/~pirituc5/assets/upload/spine-post/" + (data.files ?? "http://162.214.165.52/~pirituc5/assets/upload/profile/default.jpg"))!,
+                                                              placeholder: { Text("") },
+                                                              image: { Image(uiImage: $0).resizable() })
+                                                    .frame(maxHeight: 200)
+                                                    .background(Color(UIColor(hex: color)))
+                                                }else{
+                                                   
+                                                VStack(){
+                                                   
+                                                    Text(data.title!).foregroundColor(.white).font(.title2).multilineTextAlignment(.center).padding(.bottom)
+                                                Text(data.hashtag_ids!).foregroundColor(.white).font(.title2).multilineTextAlignment(.center)
+                                                
+                                                
+                                                }.frame(maxHeight: 200)
+                                                
+                                                .background(Color(UIColor(hex: color)))
+                                                }
+
+                                            }
+                                            else{
+                        //
+                                            }
+                                        }
+                                    }
+                                    }
+                                    }.navigationTitle("STORIES")
+                                    .navigationBarTitleDisplayMode(.inline)
+                                    .onAppear(perform: getUserPostData)
+                                }
                             }else{
-                                Registration()
+                                SubViewPost()
                             }
                         }
                     }
+                  
                     Spacer()
                
                 }
@@ -108,6 +215,15 @@ struct ProfileView: View{
         }
    
     }
+    func subviews(){
+        if view1 == true{
+            SubViewPost()
+        }
+
+    }
+    func getUserPostData(){
+        userPostModel.userPostData()
+       }
 }
 
 enum LinePosition {
