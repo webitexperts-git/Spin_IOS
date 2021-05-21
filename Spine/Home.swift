@@ -42,7 +42,8 @@ struct TrailRow: View {
                     
                 }
                
-                let color = trail.post_backround_color_id ?? "#B89A8A"
+                var color = trail.post_backround_color_id ?? "#B89A8A"
+               
                
                let _ = print("MyColor", color)
               
@@ -50,7 +51,7 @@ struct TrailRow: View {
                 let url1: String = "http://162.214.165.52/~pirituc5/assets/upload/spine-post/" + (trail.files ?? "http://162.214.165.52/~pirituc5/assets/upload/default.jpg")!
                 
                 
-                let imageExtensions = ["png", "jpg", "gif"]
+                let imageExtensions = ["png", "jpg", "gif", "jpeg"]
 
                 let url: URL? = NSURL(fileURLWithPath: url1) as URL
 
@@ -68,11 +69,18 @@ struct TrailRow: View {
                     Text(trail.hashtag_ids!).foregroundColor(.white).font(.title2).multilineTextAlignment(.center)
                     }  .frame(minWidth: 0, maxWidth: .infinity, minHeight: 300, maxHeight: 300)
                     
+                       
+                    
                     .background(Color(UIColor(hex: color)))
                     }
 
                 }
                 else{
+                    let videoExtensions = ["mkv", "flv", "avi", "mov", "wmv", "mp4", "m4p", "mpg", "mpeg", "3gp", "svi"]
+                    let url: URL? = NSURL(fileURLWithPath: url1) as URL
+                    let pathExtention = url?.pathExtension
+                    if videoExtensions.contains(pathExtention!){
+                    
                     ZStack{
                         let player = AVPlayer(url: URL(string: "http://162.214.165.52/~pirituc5/assets/upload/spine-post/" + trail.files!)!)
                        
@@ -81,12 +89,22 @@ struct TrailRow: View {
                    
                         .background(Color(UIColor(hex: color)))
                        
-//                        .overlay(Text(trail.title!))
                         .onAppear() {
                             player.play()
                         }
-                }
-            }
+                    }
+                    }else{
+                        VStack(){
+                            Text(trail.title!).foregroundColor(.white).font(.title2).multilineTextAlignment(.center).padding(.bottom)
+                        Text(trail.hashtag_ids!).foregroundColor(.white).font(.title2).multilineTextAlignment(.center)
+                        }  .frame(minWidth: 0, maxWidth: .infinity, minHeight: 300, maxHeight: 300)
+                        
+                       
+                        
+                        .background(Color(UIColor(hex: color)))
+                        }
+                    }
+//            }
                 
                 
                 HStack{
@@ -99,7 +117,6 @@ struct TrailRow: View {
                     
                     if($favouriteModel.woofUrl.wrappedValue != false){
                        
-//                           let _ = changeFav()
                        
                     }
                   
@@ -150,10 +167,10 @@ struct TrailRow: View {
                                         })
                             .frame(width:30, height:30)
                             .padding()
-                        }
+                            }
                            
+                        }
                     }
-                }
                 }
             }
         }
@@ -163,30 +180,14 @@ struct TrailRow: View {
     private func setFavourit(){
         favouriteModel.getFavouriteData(id:trail.id!)
     }
+//    private func colorChange(){
+//        if (color != "#2196F3" || color != "#C86845" || color != "#B89A8A"){
+//            color = "#B89A8A"
+//        }
+//    }
     
 }
 
-
-//struct SpineRect: View{
-//
-//    let player = AVPlayer(url: URL(string: "http://homeofbulldogs.com/dev/geev/assets/upload/images/160544651620201115.mov")!)
-//
-//
-//    var body: some View{
-//
-//        ZStack(){
-//
-//        Rectangle()
-//            .frame(width: 200, height: 150)
-//            VideoPlayer(player: player)
-//                .onAppear() {
-//                    player.play()
-//            }
-//        }
-//    }
-//}
-    
-    
 
 struct SpineCircle: View{
     
@@ -439,7 +440,8 @@ struct SpineView:View{
                 VStack(alignment: .leading, spacing: 1){
                     VStack(alignment: .leading){
                         Text("Hello,").padding(.leading,20).foregroundColor(.white)
-                        Text("Gaurav").padding(.leading,20).foregroundColor(.white)
+                        let userName = UserDefaults.standard.string(forKey: "user_name")!
+                        Text(userName).padding(.leading,20).foregroundColor(.white)
                         Text("WELCOME").padding(.leading,20).padding(.bottom, 10).foregroundColor(.white)
                     }
                     

@@ -984,7 +984,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "87"
             endingLineNumber = "87"
-            landmarkName = "getHomeWelcomeData()"
+            landmarkName = "init()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1062,8 +1062,8 @@
             filePath = "Spine/Home.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "270"
-            endingLineNumber = "270"
+            startingLineNumber = "271"
+            endingLineNumber = "271"
             landmarkName = "body"
             landmarkType = "24">
          </BreakpointContent>
@@ -1078,8 +1078,8 @@
             filePath = "Spine/Home.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "340"
-            endingLineNumber = "340"
+            startingLineNumber = "341"
+            endingLineNumber = "341"
             landmarkName = "Home"
             landmarkType = "14">
          </BreakpointContent>
@@ -1094,8 +1094,8 @@
             filePath = "Spine/Home.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "61"
-            endingLineNumber = "61"
+            startingLineNumber = "62"
+            endingLineNumber = "62"
             landmarkName = "body"
             landmarkType = "24">
          </BreakpointContent>
@@ -1110,8 +1110,8 @@
             filePath = "Spine/Home.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "343"
-            endingLineNumber = "343"
+            startingLineNumber = "344"
+            endingLineNumber = "344"
             landmarkName = "SpineView"
             landmarkType = "14">
             <Locations>
@@ -1208,7 +1208,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "50"
             endingLineNumber = "50"
-            landmarkName = "isDataPublisher"
+            landmarkName = "isImageUrl"
             landmarkType = "24">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1238,8 +1238,8 @@
             filePath = "Spine/Home.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "437"
-            endingLineNumber = "437"
+            startingLineNumber = "438"
+            endingLineNumber = "438"
             landmarkName = "body"
             landmarkType = "24">
             <Locations>
@@ -1286,8 +1286,8 @@
             filePath = "Spine/Home.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "496"
-            endingLineNumber = "496"
+            startingLineNumber = "498"
+            endingLineNumber = "498"
             landmarkName = "body"
             landmarkType = "24">
          </BreakpointContent>
@@ -1368,8 +1368,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "220"
             endingLineNumber = "220"
-            landmarkName = "unknown"
-            landmarkType = "0">
+            landmarkName = "subviews()"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

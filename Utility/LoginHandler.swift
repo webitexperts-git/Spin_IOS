@@ -14,7 +14,7 @@ class LoginHandler: APIHandler {
     @Published var woofResponse: LoginModel?
     @Published var isLoading = false
     @Published var userId = ""
-    
+    @Published var userName = ""
     
                 
     func getLogin(email:String, password1:String) {
@@ -42,9 +42,11 @@ class LoginHandler: APIHandler {
             weakSelf.woofResponse = response
             if(weakSelf.woofResponse?.status != false){
                 self?.userId = (response.data?.users_id)!
+                self?.userName = (response.data?.display_name)!
                 
                 print("userId", self?.userId as Any)
                 UserDefaults.standard.setValue(self?.userId, forKeyPath: "user_id")
+                UserDefaults.standard.setValue(self?.userName, forKeyPath: "user_name")
             }else{
                 
                 weakSelf.alertAction(message:response.message!)
