@@ -80,7 +80,7 @@ public class UserPostViewModel: ObservableObject, Identifiable {
             .receive(on: RunLoop.main)
             .assign(to: \.data, on: self)
             .store(in: &disposables)
-            print("HomeViewImpulseModelData",data)
+            print("UserPostData",data)
     }
     
     func userPostData() {

@@ -1,10 +1,10 @@
+ 
 //
 //  Home.swift
 //  Spine
 //
 //  Created by apple on 20/11/20.
 //
-
 import SwiftUI
 import AVKit
 import Combine
@@ -33,76 +33,76 @@ struct TrailRow: View {
                         .frame(width:80, height:80)
                         .cornerRadius(80/2)
                         .padding(.leading,5)
-
-                    
-                Text(trail.post_user_name!).font(.subheadline).foregroundColor(.black)
-                    Spacer()
-
-                    Text(trail.created_on!).font(.subheadline).foregroundColor(.gray)
-                    
-                }
+//
+//
+//                Text(trail.post_user_name!).font(.subheadline).foregroundColor(.black)
+//                    Spacer()
+//
+//                    Text(trail.created_on!).font(.subheadline).foregroundColor(.gray)
+//
+//                }
                
-                var color = trail.post_backround_color_id ?? "#B89A8A"
-               
-               
-               let _ = print("MyColor", color)
-              
-                
-                let url1: String = "http://162.214.165.52/~pirituc5/assets/upload/spine-post/" + (trail.files ?? "http://162.214.165.52/~pirituc5/assets/upload/default.jpg")!
-                
-                
-                let imageExtensions = ["png", "jpg", "gif", "jpeg"]
+//                var color = trail.post_backround_color_id ?? "#B89A8A"
+//
+//
+//               let _ = print("MyColor", color)
+//
+//
+//                let url1: String = "http://162.214.165.52/~pirituc5/assets/upload/spine-post/" + (trail.files ?? "http://162.214.165.52/~pirituc5/assets/upload/default.jpg")!
+//
+//
+//                let imageExtensions = ["png", "jpg", "gif", "jpeg"]
+//
+//                let url: URL? = NSURL(fileURLWithPath: url1) as URL
+//
+//                let pathExtention = url?.pathExtension
+//
+//                if imageExtensions.contains(pathExtention!){
+//                    if trail.type! == "1"{
+//                    AsyncImage(url: URL(string: "http://162.214.165.52/~pirituc5/assets/upload/spine-post/" + (trail.files ?? "http://162.214.165.52/~pirituc5/assets/upload/profile/default.jpg"))!,
+//                                  placeholder: { Text("") },
+//                                  image: { Image(uiImage: $0).resizable() })
+//                        .frame(minWidth: 0, maxWidth: .infinity, minHeight: 300, maxHeight: 300)
+//                    }else{
+//                    VStack(){
+//                        Text(trail.title!).foregroundColor(.white).font(.title2).multilineTextAlignment(.center).padding(.bottom)
+//                    Text(trail.hashtag_ids!).foregroundColor(.white).font(.title2).multilineTextAlignment(.center)
+//                    }  .frame(minWidth: 0, maxWidth: .infinity, minHeight: 300, maxHeight: 300)
+//
+//                    .background(Color(UIColor(hex: color)))
+//                    }
 
-                let url: URL? = NSURL(fileURLWithPath: url1) as URL
-
-                let pathExtention = url?.pathExtension
-                  
-                if imageExtensions.contains(pathExtention!){
-                    if trail.type! == "1"{
-                    AsyncImage(url: URL(string: "http://162.214.165.52/~pirituc5/assets/upload/spine-post/" + (trail.files ?? "http://162.214.165.52/~pirituc5/assets/upload/profile/default.jpg"))!,
-                                  placeholder: { Text("") },
-                                  image: { Image(uiImage: $0).resizable() })
-                        .frame(minWidth: 0, maxWidth: .infinity, minHeight: 300, maxHeight: 300)
-                    }else{
-                    VStack(){
-                        Text(trail.title!).foregroundColor(.white).font(.title2).multilineTextAlignment(.center).padding(.bottom)
-                    Text(trail.hashtag_ids!).foregroundColor(.white).font(.title2).multilineTextAlignment(.center)
-                    }  .frame(minWidth: 0, maxWidth: .infinity, minHeight: 300, maxHeight: 300)
+//                }
+                
+//                else{
+//                    let videoExtensions = ["mkv", "flv", "avi", "mov", "wmv", "mp4", "m4p", "mpg", "mpeg", "3gp", "svi"]
+//                    let url: URL? = NSURL(fileURLWithPath: url1) as URL
+//                    let pathExtention = url?.pathExtension
+//                    if videoExtensions.contains(pathExtention!){
                     
-                       
-                    
-                    .background(Color(UIColor(hex: color)))
-                    }
-
-                }
-                else{
-                    let videoExtensions = ["mkv", "flv", "avi", "mov", "wmv", "mp4", "m4p", "mpg", "mpeg", "3gp", "svi"]
-                    let url: URL? = NSURL(fileURLWithPath: url1) as URL
-                    let pathExtention = url?.pathExtension
-                    if videoExtensions.contains(pathExtention!){
-                    
-                    ZStack{
-                        let player = AVPlayer(url: URL(string: "http://162.214.165.52/~pirituc5/assets/upload/spine-post/" + trail.files!)!)
-                       
-                    VideoPlayer(player: player)
-                        .frame(minWidth: 0, maxWidth: .infinity, minHeight: 300, maxHeight: 300, alignment: .topLeading)
-                   
-                        .background(Color(UIColor(hex: color)))
-                       
-                        .onAppear() {
-                            player.play()
-                        }
-                    }
-                    }else{
-                        VStack(){
-                            Text(trail.title!).foregroundColor(.white).font(.title2).multilineTextAlignment(.center).padding(.bottom)
-                        Text(trail.hashtag_ids!).foregroundColor(.white).font(.title2).multilineTextAlignment(.center)
-                        }  .frame(minWidth: 0, maxWidth: .infinity, minHeight: 300, maxHeight: 300)
-                        
-                       
-                        
-                        .background(Color(UIColor(hex: color)))
-                        }
+//                    ZStack{
+//                        let player = AVPlayer(url: URL(string: "http://162.214.165.52/~pirituc5/assets/upload/spine-post/" + trail.files!)!)
+//
+//                    VideoPlayer(player: player)
+//                        .frame(minWidth: 0, maxWidth: .infinity, minHeight: 300, maxHeight: 300, alignment: .topLeading)
+//
+//                        .background(Color(UIColor(hex: color)))
+//
+//                        .onAppear() {
+//                            player.play()
+//                        }
+//                    }
+//                    }
+//                    else{
+//                        VStack(){
+//                            Text(trail.title!).foregroundColor(.white).font(.title2).multilineTextAlignment(.center).padding(.bottom)
+//                        Text(trail.hashtag_ids!).foregroundColor(.white).font(.title2).multilineTextAlignment(.center)
+//                        }  .frame(minWidth: 0, maxWidth: .infinity, minHeight: 300, maxHeight: 300)
+//
+//
+//
+//                        .background(Color(UIColor(hex: color)))
+//                        }
                     }
 //            }
                 
@@ -120,7 +120,7 @@ struct TrailRow: View {
                        
                     }
                   
-                    Text(trail.total_like!).foregroundColor(.gray).font(.system(size: 12))
+//                          Text(trail.total_like!).foregroundColor(.gray).font(.system(size: 12))
                     Image("message").resizable().frame(width:20, height: 20)
                         .gesture(TapGesture().onEnded() {
                                         print("message")
@@ -307,7 +307,6 @@ struct Home: View {
                     Text("Spine")
                 }
             
-           
 //            EventView()
             NavigationView{
             ButtonsView()
@@ -375,6 +374,7 @@ struct SpineView:View{
     @Environment(\.presentationMode) var presentationMode
     @State private var title = ""
     @State var likeImage : Bool = false
+    
     var body: some View{
      
 //        print("xx",xx)
@@ -473,30 +473,18 @@ struct SpineView:View{
                                 }
                         }
 //                        }
-
 //
 ////                                       .padding()
 ////                                       .background(data)
-//                               }
-                       
-                    
-                    
-                 
-                    
-                    
-//                        ForEach(0..<2){ _ in
+//                     }
+//                   ForEach(0..<2){ _ in
 //
-//
-//
-//                            let player = AVPlayer(url: URL(string: "http://homeofbulldogs.com/dev/geev/assets/upload/images/160544651620201115.mov")!)
+//                   let player = AVPlayer(url: URL(string: "http://homeofbulldogs.com/dev/geev/assets/upload/images/160544651620201115.mov")!)
 //
 //
 //
 //
-                           
-
                         }
-                      
                            
                         }
                 } .onAppear(perform: fetch)
@@ -517,7 +505,6 @@ struct SpineView:View{
                         }
                     }
 //                }
-
                 ScrollView(.horizontal) {
                     HStack(spacing: 10) {
                         if($impulseModel.woofUrl.wrappedValue != false){
@@ -656,7 +643,6 @@ struct SpineView:View{
                                                     .foregroundColor(.white)
                                                         
 //                                            }
-
 
                                             }
                                         }
@@ -798,7 +784,6 @@ struct SpineView:View{
 //                                                    .foregroundColor(.white)
 //                                            }
 
-
                                             }
                                         }
                                 
@@ -892,7 +877,6 @@ struct SpineView:View{
                                     }
                                                
 //                              }
-
                                         
                             }
                                     

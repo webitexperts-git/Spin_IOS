@@ -36,11 +36,13 @@ func getUserPostData() {
         
         guard let response = weakSelf.handleResponse(response) as? UserPostModel else {
             weakSelf.isLoading = false
+            print("userPostData1", response)
             return
         }
                         
         weakSelf.isLoading = false
         weakSelf.userPostDataResponse = response
+        print("userPostData1", response)
         }
     }
 }

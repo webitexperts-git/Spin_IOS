@@ -43,6 +43,7 @@ func getPostData() {
                         
         weakSelf.isLoading = false
         weakSelf.postDataResponse = response
+        print("gagan",response)
         }
     }
 }
