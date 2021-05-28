@@ -40,6 +40,10 @@ struct UserPostModel : Codable {
     struct Data : Codable, Hashable {
         let id : String?
         let user_id : String?
+        let title : String?
+        let hashtag_ids : String?
+        let files : String?
+        let post_backround_color_id : String?
         let duration : String?
         let duration_type : String?
         let duration_length : String?
@@ -72,10 +76,10 @@ struct UserPostModel : Codable {
         let post_user_display_name : String?
         let profile_pic : String?
         let account_mode : String?
-        let total_comment : String?
-        let total_like : String?
-        let total_save : String?
-        let total_share : String?
+        let total_comment : Int?
+        let total_like : Int?
+        let total_save : Int?
+        let total_share : Int?
         let user_like_status : Int?
         let user_save_status : Int?
         let follow_status : Int?
@@ -84,6 +88,10 @@ struct UserPostModel : Codable {
 
             case id = "id"
             case user_id = "user_id"
+            case title = "title"
+            case hashtag_ids = "hashtag_ids"
+            case files = "files"
+            case post_backround_color_id = "post_backround_color_id"
             case duration = "duration"
             case duration_type = "duration_type"
             case duration_length = "duration_length"
@@ -123,12 +131,17 @@ struct UserPostModel : Codable {
             case user_like_status = "user_like_status"
             case user_save_status = "user_save_status"
             case follow_status = "follow_status"
+            
         }
 
         init(from decoder: Decoder) throws {
             let values = try decoder.container(keyedBy: CodingKeys.self)
             id = try values.decodeIfPresent(String.self, forKey: .id)
             user_id = try values.decodeIfPresent(String.self, forKey: .user_id)
+            title = try values.decodeIfPresent(String.self, forKey: .title)
+            hashtag_ids = try values.decodeIfPresent(String.self, forKey: .hashtag_ids)
+            files = try values.decodeIfPresent(String.self, forKey: .files)
+            post_backround_color_id = try values.decodeIfPresent(String.self, forKey: .post_backround_color_id)
             duration = try values.decodeIfPresent(String.self, forKey: .duration)
             duration_type = try values.decodeIfPresent(String.self, forKey: .duration_type)
             duration_length = try values.decodeIfPresent(String.self, forKey: .duration_length)
@@ -161,10 +174,10 @@ struct UserPostModel : Codable {
             post_user_display_name = try values.decodeIfPresent(String.self, forKey: .post_user_display_name)
             profile_pic = try values.decodeIfPresent(String.self, forKey: .profile_pic)
             account_mode = try values.decodeIfPresent(String.self, forKey: .account_mode)
-            total_comment = try values.decodeIfPresent(String.self, forKey: .total_comment)
-            total_like = try values.decodeIfPresent(String.self, forKey: .total_like)
-            total_save = try values.decodeIfPresent(String.self, forKey: .total_save)
-            total_share = try values.decodeIfPresent(String.self, forKey: .total_share)
+            total_comment = try values.decodeIfPresent(Int.self, forKey: .total_comment)
+            total_like = try values.decodeIfPresent(Int.self, forKey: .total_like)
+            total_save = try values.decodeIfPresent(Int.self, forKey: .total_save)
+            total_share = try values.decodeIfPresent(Int.self, forKey: .total_share)
             user_like_status = try values.decodeIfPresent(Int.self, forKey: .user_like_status)
             user_save_status = try values.decodeIfPresent(Int.self, forKey: .user_save_status)
             follow_status = try values.decodeIfPresent(Int.self, forKey: .follow_status)

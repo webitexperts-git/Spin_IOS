@@ -39,7 +39,7 @@ func getStoriesData() {
             weakSelf.isLoading = false
             return
         }
-                        
+        print("storiesHandler", response)
         weakSelf.isLoading = false
         weakSelf.storiesDataResponse = response
     

@@ -26,12 +26,14 @@ struct PlusButtonView: View {
 
                         }
                         HStack(){
+                            NavigationLink(destination: EventPostView()){
                             Text("+")
                                 .font(.system(size: 50))
                                 .foregroundColor(Color("backColor"))
                                
                                 .padding(.bottom, 5)
-                            Text("Post a picture or video")
+                            Text("Post Event")
+                            }
                         }
                         HStack(){
                             Text("+")

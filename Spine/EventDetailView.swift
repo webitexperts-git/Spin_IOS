@@ -361,7 +361,7 @@ struct EventDetailView: View {
                     .padding()
                     .frame(width: 100, height: 100)
                     .background(Rectangle().fill(Color("backColor")).shadow(radius: 3))
-                    .position(x: 60.0, y: UIScreen.main.bounds.height/6)
+                    .position(x: 60.0, y: UIScreen.main.bounds.height/4)
                     .font(.title).foregroundColor(.white)
                 
         }

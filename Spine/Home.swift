@@ -8,6 +8,14 @@
 import SwiftUI
 import AVKit
 import Combine
+ 
+ 
+ 
+ struct VideoView: View {
+    var body: some View{
+        Text("video")
+    }
+ }
 
 
 struct TrailRow: View {
@@ -33,80 +41,108 @@ struct TrailRow: View {
                         .frame(width:80, height:80)
                         .cornerRadius(80/2)
                         .padding(.leading,5)
-//
-//
-//                Text(trail.post_user_name!).font(.subheadline).foregroundColor(.black)
-//                    Spacer()
-//
-//                    Text(trail.created_on!).font(.subheadline).foregroundColor(.gray)
-//
-//                }
-               
-//                var color = trail.post_backround_color_id ?? "#B89A8A"
-//
-//
-//               let _ = print("MyColor", color)
-//
-//
-//                let url1: String = "http://162.214.165.52/~pirituc5/assets/upload/spine-post/" + (trail.files ?? "http://162.214.165.52/~pirituc5/assets/upload/default.jpg")!
-//
-//
-//                let imageExtensions = ["png", "jpg", "gif", "jpeg"]
-//
-//                let url: URL? = NSURL(fileURLWithPath: url1) as URL
-//
-//                let pathExtention = url?.pathExtension
-//
-//                if imageExtensions.contains(pathExtention!){
-//                    if trail.type! == "1"{
-//                    AsyncImage(url: URL(string: "http://162.214.165.52/~pirituc5/assets/upload/spine-post/" + (trail.files ?? "http://162.214.165.52/~pirituc5/assets/upload/profile/default.jpg"))!,
-//                                  placeholder: { Text("") },
-//                                  image: { Image(uiImage: $0).resizable() })
-//                        .frame(minWidth: 0, maxWidth: .infinity, minHeight: 300, maxHeight: 300)
-//                    }else{
-//                    VStack(){
-//                        Text(trail.title!).foregroundColor(.white).font(.title2).multilineTextAlignment(.center).padding(.bottom)
-//                    Text(trail.hashtag_ids!).foregroundColor(.white).font(.title2).multilineTextAlignment(.center)
-//                    }  .frame(minWidth: 0, maxWidth: .infinity, minHeight: 300, maxHeight: 300)
-//
-//                    .background(Color(UIColor(hex: color)))
-//                    }
 
-//                }
+                    VStack(alignment: .center){
+                        if trail.type == "2"{
+                            Text("Promoted by").foregroundColor(.black)
+                                .padding(.leading)
+                        }
+                    Text((trail.post_user_display_name ?? trail.post_user_name) ?? "").font(.subheadline).foregroundColor(.black)
+                    }
+                  
+                    Spacer()
+                    let daysMin = daysFromDate(findDate: trail.created_on!)
+//
+                    Text(daysMin!).font(.subheadline).foregroundColor(.gray)
+
+                }
+               
+                let color = trail.post_backround_color_id ?? "#B89A8A"
+              
+
+               let _ = print("MyColor", color)
+
+
+                let url1: String = "http://162.214.165.52/~pirituc5/assets/upload/spine-post/" + (trail.files ?? "http://162.214.165.52/~pirituc5/assets/upload/default.jpg")!
+
+
+                let imageExtensions = ["png", "jpg", "gif", "jpeg", "JPG", "PNG","GIF", "JPEG"]
+
+                let url: URL? = NSURL(fileURLWithPath: url1) as URL
+
+                let pathExtention = url?.pathExtension
+
+                if imageExtensions.contains(pathExtention!){
+                    if trail.type! == "0" {
+                    VStack(){
+                        Text(trail.title ?? "").foregroundColor(.white).font(.title2).multilineTextAlignment(.center).padding(.bottom)
+                    Text(trail.hashtag_ids ?? "").foregroundColor(.white).font(.title2).multilineTextAlignment(.center)
+                    }  .frame(minWidth: 0, maxWidth: .infinity, minHeight: 270, maxHeight: 270)
+
+                    .background(Color(UIColor(hex: color)))
+                    }else if trail.type! == "1"{
+                    AsyncImage(url: URL(string: "http://162.214.165.52/~pirituc5/assets/upload/spine-post/" + (trail.files ?? "http://162.214.165.52/~pirituc5/assets/upload/profile/default.jpg"))!,
+                                  placeholder: { Text("") },
+                                  image: { Image(uiImage: $0).resizable() })
+                        .frame(minWidth: 0, maxWidth: .infinity, minHeight: 270, maxHeight: 270)
+                    }else if trail.type! == "2" {
+                    VStack(){
+                        Text(trail.title ?? "").foregroundColor(.white).font(.title2).multilineTextAlignment(.center).padding(.bottom)
+                    Text(trail.hashtag_ids ?? "").foregroundColor(.white).font(.title2).multilineTextAlignment(.center)
+                        
+                    }  .frame(minWidth: 0, maxWidth: .infinity, minHeight: 270, maxHeight: 270)
+                      
+                    .background(Color(UIColor(hex: color)))
+                    }else{
+                        
+                        VStack(){
+                            Text(trail.title ?? "").foregroundColor(.white).font(.title2).multilineTextAlignment(.center).padding(.bottom)
+                        Text(trail.hashtag_ids ?? "").foregroundColor(.white).font(.title2).multilineTextAlignment(.center)
+                        }  .frame(minWidth: 0, maxWidth: .infinity, minHeight: 270, maxHeight: 270)
+
+                        .background(Color(UIColor(hex: color)))
+                    }
+
+                }
                 
-//                else{
-//                    let videoExtensions = ["mkv", "flv", "avi", "mov", "wmv", "mp4", "m4p", "mpg", "mpeg", "3gp", "svi"]
-//                    let url: URL? = NSURL(fileURLWithPath: url1) as URL
-//                    let pathExtention = url?.pathExtension
-//                    if videoExtensions.contains(pathExtention!){
+                else{
+                   
+                    let videoExtensions = ["mkv", "flv", "avi", "mov", "wmv", "mp4", "m4p", "mpg", "mpeg", "3gp", "svi"]
+                    let url: URL? = NSURL(fileURLWithPath: url1) as URL
+                    let pathExtention = url?.pathExtension
+                    if videoExtensions.contains(pathExtention!){
                     
-//                    ZStack{
-//                        let player = AVPlayer(url: URL(string: "http://162.214.165.52/~pirituc5/assets/upload/spine-post/" + trail.files!)!)
-//
-//                    VideoPlayer(player: player)
-//                        .frame(minWidth: 0, maxWidth: .infinity, minHeight: 300, maxHeight: 300, alignment: .topLeading)
-//
-//                        .background(Color(UIColor(hex: color)))
-//
-//                        .onAppear() {
-//                            player.play()
-//                        }
-//                    }
-//                    }
-//                    else{
-//                        VStack(){
-//                            Text(trail.title!).foregroundColor(.white).font(.title2).multilineTextAlignment(.center).padding(.bottom)
-//                        Text(trail.hashtag_ids!).foregroundColor(.white).font(.title2).multilineTextAlignment(.center)
-//                        }  .frame(minWidth: 0, maxWidth: .infinity, minHeight: 300, maxHeight: 300)
-//
-//
-//
-//                        .background(Color(UIColor(hex: color)))
-//                        }
+                    ZStack{
+                        let player = AVPlayer(url: URL(string: "http://162.214.165.52/~pirituc5/assets/upload/spine-post/" + trail.files!)!)
+
+                    VideoPlayer(player: player)
+                        .frame(minWidth: 0, maxWidth: .infinity, minHeight: 300, maxHeight: 300, alignment: .topLeading)
+
+                        .background(Color(UIColor(hex: color)))
+
+                        .onAppear() {
+                            player.play()
+                        }
+                    }
+                    }
+                    else{
+                        VStack(){
+                            Text(trail.title!).foregroundColor(.white).font(.title2).multilineTextAlignment(.center).padding(.bottom)
+                        Text(trail.hashtag_ids!).foregroundColor(.white).font(.title2).multilineTextAlignment(.center)
+                        }  .frame(minWidth: 0, maxWidth: .infinity, minHeight: 300, maxHeight: 300)
+
+
+
+                        .background(Color(UIColor(hex: color)))
+                        }
                     }
 //            }
                 
-                
+                VStack(alignment: .leading){
+                    if trail.type == "2"{
+                        Text(trail.promote_your_ad ?? "")
+                            .padding(.leading)
+                    }
                 HStack{
                     Image("heart").resizable().frame(width: 20, height: 20)
                         .gesture(TapGesture().onEnded() {
@@ -142,6 +178,7 @@ struct TrailRow: View {
                                         print("menu")
                                     })
 //                    Text("18")
+                }
                 }
                 if isShowingRed {
                 VStack(){
@@ -185,6 +222,53 @@ struct TrailRow: View {
 //            color = "#B89A8A"
 //        }
 //    }
+    func formattedDateFromString(dateString: String, withFormat format: String) -> String? {
+
+        let inputFormatter = DateFormatter()
+        inputFormatter.dateFormat = "yyyy-MM-dd"
+
+        if let date = inputFormatter.date(from: dateString) {
+
+          let outputFormatter = DateFormatter()
+          outputFormatter.dateFormat = format
+
+            return outputFormatter.string(from: date)
+        }
+
+        return nil
+    }
+    
+    func daysFromDate(findDate:String)-> String?{
+        
+        let isoDate = findDate
+
+        let dateFormatter = DateFormatter()
+        dateFormatter.locale = Locale(identifier: "en_US_POSIX") // set locale to reliable US_POSIX
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        let date = dateFormatter.date(from:isoDate)!
+       
+        
+        let now = Date()
+        let formatter = DateComponentsFormatter()
+        formatter.unitsStyle = .full
+        formatter.allowedUnits = [.month, .day, .hour, .minute, .second]
+        formatter.maximumUnitCount = 2
+        
+        let string = formatter.string(from: date, to: now)
+//        print("string",string)
+        let array = string?.components(separatedBy: ", ")
+        
+        if (array?[0])! >= "0"{
+            return array?[0]
+        }else if (array?[0])! <= "0"{
+            return array?[1]
+        }else if ((array?[0])! <= "0" && (array?[1])! <= "0"){
+           return array?[2]
+        }else{
+            return array?[3]
+        }
+    }
+
     
 }
 
