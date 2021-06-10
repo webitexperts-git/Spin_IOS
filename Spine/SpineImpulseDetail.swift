@@ -15,7 +15,7 @@ struct SpineRect2: View{
 //            .frame(width: 200, height: 150)
             .frame(minWidth:0, maxWidth: .infinity, minHeight: 300, maxHeight: .infinity)
             VStack{
-            Text("SPINE").foregroundColor(.white).font(.title2)
+            Text("SPINE").foregroundColor(.white).font(.system(size: 25))
             Text("the Spiritual Network").foregroundColor(.white).font(.subheadline)
             }
         }.overlay(
@@ -66,7 +66,7 @@ struct ImpulseRow: View {
         
                         .frame(minWidth:0, maxWidth: .infinity, minHeight: 300, maxHeight: .infinity)
                         VStack{
-                            Text(impulse.description!).foregroundColor(.white).font(.title2)
+                            Text(impulse.description!).foregroundColor(.white).font(.system(size: 25))
                                 .multilineTextAlignment(.leading)
                                 .padding(.bottom, 30)
                            
@@ -109,52 +109,56 @@ struct SpineImpulseDetail: View {
 //    let hikingTrails = [UserPostModel.Data]()
     var body: some View {
 
-        VStack(alignment:.leading){
-            Text("Inspirational thoughts and wishdom to encourage...").multilineTextAlignment(.center).foregroundColor(.gray).padding()
-            if($impulseModel.woofUrl.wrappedValue != false){
-            List(impulseModel.data, id: \.self){ data in
-                ImpulseRow(impulse: data)
-            } .frame(minWidth:0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
-            
-            }
-            
-        }.navigationBarHidden(false)
-        .onAppear(perform: getImpulse)
-        .onAppear(perform: userDetail)
-        .onAppear(perform: {
-//            if ($userDetailModel.woofUrl.wrappedValue != false) {
+        if #available(iOS 14.0, *) {
+            VStack(alignment:.leading){
+                Text("Inspirational thoughts and wishdom to encourage...").multilineTextAlignment(.center).foregroundColor(.gray).padding()
+                if($impulseModel.woofUrl.wrappedValue != false){
+                    List(impulseModel.data, id: \.self){ data in
+                        ImpulseRow(impulse: data)
+                    } .frame(minWidth:0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
+                    
+                }
+                
+            }.navigationBarHidden(false)
+            .onAppear(perform: getImpulse)
+            .onAppear(perform: userDetail)
+            .onAppear(perform: {
+                //            if ($userDetailModel.woofUrl.wrappedValue != false) {
                 print("someText", userDetailModel.userDetailFollow)
-            if userDetailModel.userDetailFollow == "0"{
+                if userDetailModel.userDetailFollow == "0"{
                     self.someText = "Follow"
                 }else{
                     self.someText = "Following"
                 }
-              
-//            }
-           
-        })
-        
-        .navigationTitle("SPINE IMPULSES").foregroundColor(.black)
-        .navigationBarTitleDisplayMode(.inline)
-        .toolbar {
-            Button(action: {
-                  
-                if ($impulseFollowModel.woofUrl.wrappedValue != false) {
-                    if self.someText == "Following"{
-                        self.someText = "Follow"
-                    }else{
-                        self.someText = "Following"
+                
+                //            }
+                
+            })
+            
+            .navigationTitle("SPINE IMPULSES").foregroundColor(.black)
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                Button(action: {
+                    
+                    if ($impulseFollowModel.woofUrl.wrappedValue != false) {
+                        if self.someText == "Following"{
+                            self.someText = "Follow"
+                        }else{
+                            self.someText = "Following"
+                        }
+                        
                     }
                     
-                }
-               
-                follow()
-                
-                        }) {
+                    follow()
+                    
+                }) {
                     Text(self.someText).font(.largeTitle)
-
-                        }
+                    
                 }
+            }
+        } else {
+            // Fallback on earlier versions
+        }
 //        Spacer()
 
         }

@@ -72,14 +72,19 @@ struct PageView: View {
     var body: some View {
         ZStack(){
             
-            Color("PostColor1").ignoresSafeArea(.all)
+            if #available(iOS 14.0, *) {
+                Color("PostColor1").ignoresSafeArea(.all)
+            } else {
+                // Fallback on earlier versions
+            }
         VStack(alignment: .leading){
-            TabView {
-              
-                       ForEach(colors2, id: \.self) { color in
-                       
+            if #available(iOS 14.0, *) {
+                TabView {
+                    
+                    ForEach(colors2, id: \.self) { color in
+                        
                         ZStack(alignment: .leading) {
-                           
+                            
                             let gold = UIColor(hex: color)
                             Color(gold)
                             VStack(alignment: .leading){
@@ -87,51 +92,58 @@ struct PageView: View {
                                     btnBack
                                         .padding()
                                     Spacer()
-//                                    Text("Next")
+                                    //                                    Text("Next")
                                     NavigationLink(destination: PostHashTagView(post : text)) {
                                         Text("Next")
                                             .foregroundColor(.white)
                                             .bold()
-                                        }
-                                        .padding()
+                                    }
+                                    .padding()
                                 }
                                 Spacer()
-
+                                
                                 if text.isEmpty {
                                     
                                     VStack() {
-                                       Text(placeholder)
-                                        .font(.custom("Helvetica", size: 34))
-                                        .foregroundColor(.white)
-                                        .padding(.all)
-                                       Spacer()
+                                        Text(placeholder)
+                                            .font(.custom("Helvetica", size: 34))
+                                            .foregroundColor(.white)
+                                            .padding(.all)
+                                        Spacer()
                                     }
-
+                                    
                                 }
                             }
                             
-                            TextEditor(text: $text)
-                                .font(.custom("Helvetica", size: 34))
-                                .foregroundColor(.white)
-                                .padding(.all)
-                                .padding(.top, 50)
-                           
+                            if #available(iOS 14.0, *) {
+                                TextEditor(text: $text)
+                                    .font(.custom("Helvetica", size: 34))
+                                    .foregroundColor(.white)
+                                    .padding(.all)
+                                    .padding(.top, 50)
+                            } else {
+                                // Fallback on earlier versions
+                            }
+                            
                         }.onAppear{
-//                            UserDefaults.standard.set(UIColor(Int(rgb:color)), forKey: "postColor")
-//                            let color2 = UIColor(rgb: color)
+                            //                            UserDefaults.standard.set(UIColor(Int(rgb:color)), forKey: "postColor")
+                            //                            let color2 = UIColor(rgb: color)
                             UserDefaults.standard.set(color, forKey: "color")
                         }
-                      
-//                        .background(Color(red: 123, green: 234, blue: 123)).edgesIgnoringSafeArea(.all)
-                       
-//                           .clipShape(RoundedRectangle(cornerRadius: 10.0, style: .continuous))
-                       
-                       }
-//                       .padding(.all, 10)
-//                       .edgesIgnoringSafeArea(.all)
-                   }
-//                   .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
-            .tabViewStyle(PageTabViewStyle())
+                        
+                        //                        .background(Color(red: 123, green: 234, blue: 123)).edgesIgnoringSafeArea(.all)
+                        
+                        //                           .clipShape(RoundedRectangle(cornerRadius: 10.0, style: .continuous))
+                        
+                    }
+                    //                       .padding(.all, 10)
+                    //                       .edgesIgnoringSafeArea(.all)
+                }
+                //                   .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
+                .tabViewStyle(PageTabViewStyle())
+            } else {
+                // Fallback on earlier versions
+            }
         }.navigationBarHidden(true)
         .accentColor( .white)
 //        .navigationBarColor(UIColor(color1))

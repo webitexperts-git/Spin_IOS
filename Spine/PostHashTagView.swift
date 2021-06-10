@@ -15,34 +15,38 @@ struct PostHashTagView: View {
     @State var post = ""
     @State var hashTag = ""
     var body: some View {
-        ZStack{
-//        Text("ADD HASHTAGS")
-            if hashTag.isEmpty {
-                
-                VStack() {
-                   Text(placeholder)
-                    .font(.custom("Helvetica", size: 34))
-                    .foregroundColor(.gray)
-                    .padding(.all)
-                   Spacer()
+        if #available(iOS 14.0, *) {
+            ZStack{
+                //        Text("ADD HASHTAGS")
+                if hashTag.isEmpty {
+                    
+                    VStack() {
+                        Text(placeholder)
+                            .font(.custom("Helvetica", size: 34))
+                            .foregroundColor(.gray)
+                            .padding(.all)
+                        Spacer()
+                    }
+                    
                 }
-
+                
+                TextEditor(text: $hashTag)
+                    .font(.custom("Helvetica", size: 34))
+                    .foregroundColor(.black)
+                    .padding(.all)
+                
+                
+            }.navigationTitle("ADD HASHTAGS")
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                NavigationLink(destination: PostPreviewView(postPreview: post, hashTag: hashTag), tag: 1, selection: $tag) {
+                    Button("Next") {
+                        self.tag = 1
+                    }
+                }
             }
-            
-            TextEditor(text: $hashTag)
-                .font(.custom("Helvetica", size: 34))
-                .foregroundColor(.black)
-                .padding(.all)
-               
-            
-        }.navigationTitle("ADD HASHTAGS")
-        .navigationBarTitleDisplayMode(.inline)
-        .toolbar {
-            NavigationLink(destination: PostPreviewView(postPreview: post, hashTag: hashTag), tag: 1, selection: $tag) {
-                  Button("Next") {
-                      self.tag = 1
-                  }
-                        }
+        } else {
+            // Fallback on earlier versions
         }
         }
     }

@@ -62,29 +62,33 @@ struct RecFollowersView: View {
     @ObservedObject var followersDetailModel = FollowersDetailViewModel()
   
     var body: some View {
-        VStack(alignment:.center){
-            Text("Discover people on Spine you might want to follow").foregroundColor(.gray).multilineTextAlignment(.center)
-            if($followersDetailModel.woofUrl.wrappedValue != false){
-            List(followersDetailModel.data, id: \.self){ data in
-                DesignView(followersDetail: data)
-            } .frame(minWidth:300, maxWidth: .infinity, minHeight: 300, maxHeight: .infinity)
+        if #available(iOS 14.0, *) {
+            VStack(alignment:.center){
+                Text("Discover people on Spine you might want to follow").foregroundColor(.gray).multilineTextAlignment(.center)
+                if($followersDetailModel.woofUrl.wrappedValue != false){
+                    List(followersDetailModel.data, id: \.self){ data in
+                        DesignView(followersDetail: data)
+                    } .frame(minWidth:300, maxWidth: .infinity, minHeight: 300, maxHeight: .infinity)
+                    
+                }
+                
+            }.navigationBarHidden(false)
+            .onAppear(perform: getFollowersDetail)
             
-            }
-            
-        }.navigationBarHidden(false)
-        .onAppear(perform: getFollowersDetail)
-
-        .navigationTitle("Members").foregroundColor(.black)
-        .toolbar {
-            Button(action: {
-                     print("button pressed")
-
-                   }) {
-                       Image("search")
+            .navigationTitle("Members").foregroundColor(.black)
+            .toolbar {
+                Button(action: {
+                    print("button pressed")
+                    
+                }) {
+                    Image("search")
                         .resizable()
                         .frame(width: 20, height:20)
-                   }
-                }.navigationBarTitleDisplayMode(.inline)
+                }
+            }.navigationBarTitleDisplayMode(.inline)
+        } else {
+            // Fallback on earlier versions
+        }
 //        Spacer()
 
         }

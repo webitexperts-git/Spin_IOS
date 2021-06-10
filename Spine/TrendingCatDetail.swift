@@ -82,35 +82,39 @@ struct TrendingCatDetail: View {
         @ObservedObject var trendingModel = TrendingCatViewModel()
     
     var body: some View {
-        VStack(spacing: 5){
-        ScrollView(.vertical){
-
-            HStack(){
-                HeaderButton1()
-                HeaderButton2()
-        }
-            
-            HStack(){
-            
+        if #available(iOS 14.0, *) {
+            VStack(spacing: 5){
                 ScrollView(.vertical){
-                   
-                if($trendingModel.woofUrl.wrappedValue != false){
-                    ForEach(trendingModel.data, id: \.self){data in
-                        VStack(spacing: 1){
-                            SpineButtonView1(label: data.hash_title!)
-
-                        }
-                        
+                    
+                    HStack(){
+                        HeaderButton1()
+                        HeaderButton2()
                     }
+                    
+                    HStack(){
+                        
+                        ScrollView(.vertical){
+                            
+                            if($trendingModel.woofUrl.wrappedValue != false){
+                                ForEach(trendingModel.data, id: \.self){data in
+                                    VStack(spacing: 1){
+                                        SpineButtonView1(label: data.hash_title!)
+                                        
+                                    }
+                                    
+                                }
+                            }
+                            
+                        }
+                    }
+                    
                 }
                 
-            }
+            }.navigationTitle("CATEGORIES")
+            .onAppear(perform: getTrending)
+        } else {
+            // Fallback on earlier versions
         }
-            
-    }
-            
-}.navigationTitle("CATEGORIES")
-.onAppear(perform: getTrending)
     Spacer()
 }
     

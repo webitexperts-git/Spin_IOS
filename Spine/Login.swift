@@ -138,11 +138,13 @@ fileprivate func isValidInputs() -> Bool {
         self.alertMsg = "Email can't be blank."
         self.showAlert.toggle()
         return false
-    } else if !model.email.isValidEmail {
+    }
+    else if !model.email.isValidEmail {
         self.alertMsg = "Email is not valid."
         self.showAlert.toggle()
         return false
-    }else if model.password == "" {
+    }
+    else if model.password == "" {
         self.alertMsg = "Password can't be blank."
         self.showAlert.toggle()
         return false

@@ -20,7 +20,7 @@ struct Registration: View {
         Alert(title: Text(""), message: Text(alertMsg), dismissButton: .default(Text("OK")))
     }
     var body: some View {
-        NavigationView {
+//        NavigationView {
             LoadingView(isShowing: .constant(model.isLoading)) {
                 ZStack(alignment: .top){
             
@@ -33,7 +33,7 @@ struct Registration: View {
                     Text("S P I N E").font(.largeTitle).foregroundColor(Color.white)
                     Text("Register").font(.subheadline).foregroundColor(Color.white).padding(.bottom, 10)
                    
-
+                      
                     ZStack(alignment: .leading) {
                         if model.name.isEmpty{
                         Text("Username").foregroundColor(.white)
@@ -48,7 +48,6 @@ struct Registration: View {
                 .overlay(RoundedRectangle(cornerRadius: 18).stroke(Color.white, lineWidth: 2))
                 .padding(.bottom,5)
                     }
-                   
                     
             ZStack(alignment: .leading) {
                 if model.email.isEmpty{
@@ -96,7 +95,7 @@ struct Registration: View {
                     NavigationLink(destination: EmailVerification(verificationPin: model.verificationPin, userId: model.userId), isActive: .constant($model.woofUrl.wrappedValue != false)) {
                     VStack {
                         HStack {
-                            Text("CONTINUE") .frame(minWidth: 0, maxWidth: 250, minHeight: 0, maxHeight: 40)
+                            Text("CONTINUE") .frame(minWidth: 0, maxWidth: 250, minHeight: 40, maxHeight: 40)
                                 .foregroundColor(Color(red: 237 / 255, green: 215 / 255, blue: 183 / 255))
                                 .background(Color.white)
                                 .cornerRadius(18)
@@ -144,11 +143,11 @@ struct Registration: View {
          
             }  .accentColor( .black)
                
-               
+           
         }.alert(isPresented: $showAlert, content: { self.alert })
            
            
-        }
+//        }
 //        .navigationBarTitle("gdgfd")
 //        .navigationBarHidden(true)
 //        .navigationBarBackButtonHidden(false)

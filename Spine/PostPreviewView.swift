@@ -67,7 +67,11 @@ struct PageView1: View {
         ZStack(){
             let color = UserDefaults.standard.color(forKey: "postColor")
             let _ = print("color",color)
-            Color(color!).ignoresSafeArea(.all)
+            if #available(iOS 14.0, *) {
+                Color(color!).ignoresSafeArea(.all)
+            } else {
+                // Fallback on earlier versions
+            }
 //            ZStack(alignment: .leading) {
                 
                 VStack(alignment: .leading){
@@ -100,9 +104,13 @@ struct PageView1: View {
 //                            .multilineTextAlignment(.leading)
                         Spacer()
                         
-                        Toggle("Do you wish to advertise your post?", isOn: $advertising).foregroundColor(.white)
-                            .padding(.trailing, 20)
-                            .toggleStyle(SwitchToggleStyle(tint: .white))
+                        if #available(iOS 14.0, *) {
+                            Toggle("Do you wish to advertise your post?", isOn: $advertising).foregroundColor(.white)
+                                .padding(.trailing, 20)
+                                .toggleStyle(SwitchToggleStyle(tint: .white))
+                        } else {
+                            // Fallback on earlier versions
+                        }
 
                                    if advertising {
                                       

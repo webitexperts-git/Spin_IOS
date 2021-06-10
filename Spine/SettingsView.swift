@@ -22,15 +22,19 @@ struct SettingsView: View {
 //        ScrollView(.vertical){
        
         VStack(){
-            List(self.modelData) { weather in
-                   NavigationLink(destination: Text(weather.city).font(.largeTitle)) {
-                           VStack {
+            if #available(iOS 14.0, *) {
+                List(self.modelData) { weather in
+                    NavigationLink(destination: Text(weather.city).font(.largeTitle)) {
+                        VStack {
                             Text(weather.city).font(.system(size: 14))
                             
-                           }
                         }
-              
-                    }.navigationTitle("Settings")
+                    }
+                    
+                }.navigationTitle("Settings")
+            } else {
+                // Fallback on earlier versions
+            }
             
             Button(action: {}, label: {
                 Text("INVITE FRIENDS")

@@ -87,29 +87,33 @@ struct EmailVerification: View {
                 }.padding()
                 
                 
-                Button(action: {
-                    print(emailVerificationViewModel.email)
-                    print(verificationPin)
-                    if verificationPin == emailVerificationViewModel.email{
-                        print("userid",userId)
-                        if(userId != ""){
-                        UserDefaults.standard.setValue(userId, forKey: "user_id")
-                        self.isPresented.toggle()
-                        print("code matched!!!")
-//                        callApi()
+                if #available(iOS 14.0, *) {
+                    Button(action: {
+                        print(emailVerificationViewModel.email)
+                        print(verificationPin)
+                        if verificationPin == emailVerificationViewModel.email{
+                            print("userid",userId)
+                            if(userId != ""){
+                                UserDefaults.standard.setValue(userId, forKey: "user_id")
+                                self.isPresented.toggle()
+                                print("code matched!!!")
+                                //                        callApi()
+                            }
+                        }else{
+                            alertAction(message: "OTP is wrong!")
                         }
-                    }else{
-                        alertAction(message: "OTP is wrong!")
-                    }
-                    
-                }) {
-                    Text("VERIFY")
-                        .frame(minWidth: 0, maxWidth: 250, minHeight: 0, maxHeight: 40)
-                        .foregroundColor(Color(red: 237 / 255, green: 215 / 255, blue: 183 / 255))
-                        .background(Color.white)
-                        .cornerRadius(18)
-                        .padding(.bottom, 5)
-                } .fullScreenCover(isPresented: $isPresented, content: Home.init)
+                        
+                    }) {
+                        Text("VERIFY")
+                            .frame(minWidth: 0, maxWidth: 250, minHeight: 0, maxHeight: 40)
+                            .foregroundColor(Color(red: 237 / 255, green: 215 / 255, blue: 183 / 255))
+                            .background(Color.white)
+                            .cornerRadius(18)
+                            .padding(.bottom, 5)
+                    } .fullScreenCover(isPresented: $isPresented, content: Home.init)
+                } else {
+                    // Fallback on earlier versions
+                }
                 
                 Spacer()
                 
