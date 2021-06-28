@@ -233,9 +233,10 @@ struct EventRow: View {
                                     
                                     let type = data.type!
                                     if(type == "0"){
-                                        Text("Local").font(.title3).bold().foregroundColor(Color(red: 183 / 255, green: 152 / 255, blue: 136 / 255))
+                                        Text("Local1").font(.system(size: 20))
+.bold().foregroundColor(Color(red: 183 / 255, green: 152 / 255, blue: 136 / 255))
                                     }else if type == "1"{
-                                        Text("Online").font(.title3).bold().foregroundColor(Color(red: 183 / 255, green: 152 / 255, blue: 136 / 255))
+                                        Text("Online1").font(.system(size: 20)).bold().foregroundColor(Color(red: 183 / 255, green: 152 / 255, blue: 136 / 255))
                                     }
                                     
                                     Text(data.title!).font(.subheadline).foregroundColor(.black)  .lineLimit(2)

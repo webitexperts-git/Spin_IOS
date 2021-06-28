@@ -32,7 +32,7 @@ struct EventCommentDetailView: View {
         }
     }.onAppear(perform: getEventComment)
         .navigationBarHidden(false)
-        .navigationBarTitleDisplayMode(.inline)
+//        .navigationBarTitleDisplayMode(.inline)
         .padding()
    
     }

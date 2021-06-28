@@ -240,7 +240,7 @@ struct EventDetailView: View {
                     }
                   
                     Text("About the event")
-                        .font(.title3).padding()
+                        .font(.system(size: 20)).padding()
                     Text(eventDetailModel.description).padding()
                     
                     Text("COMMENTS").padding(.leading)

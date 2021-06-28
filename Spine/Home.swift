@@ -75,8 +75,8 @@ struct TrailRow: View {
                 if imageExtensions.contains(pathExtention!){
                     if trail.type! == "0" {
                     VStack(){
-                        Text(trail.title ?? "").foregroundColor(.white).font(.title2).multilineTextAlignment(.center).padding(.bottom)
-                    Text(trail.hashtag_ids ?? "").foregroundColor(.white).font(.title2).multilineTextAlignment(.center)
+                        Text(trail.title ?? "").foregroundColor(.white).font(.system(size: 25)).multilineTextAlignment(.center).padding(.bottom)
+                    Text(trail.hashtag_ids ?? "").foregroundColor(.white).font(.system(size: 25)).multilineTextAlignment(.center)
                     }  .frame(minWidth: 0, maxWidth: .infinity, minHeight: 270, maxHeight: 270)
 
                     .background(Color(UIColor(hex: color)))
@@ -87,8 +87,8 @@ struct TrailRow: View {
                         .frame(minWidth: 0, maxWidth: .infinity, minHeight: 270, maxHeight: 270)
                     }else if trail.type! == "2" {
                     VStack(){
-                        Text(trail.title ?? "").foregroundColor(.white).font(.title2).multilineTextAlignment(.center).padding(.bottom)
-                    Text(trail.hashtag_ids ?? "").foregroundColor(.white).font(.title2).multilineTextAlignment(.center)
+                        Text(trail.title ?? "").foregroundColor(.white).font(.system(size: 25)).multilineTextAlignment(.center).padding(.bottom)
+                    Text(trail.hashtag_ids ?? "").foregroundColor(.white).font(.system(size: 25)).multilineTextAlignment(.center)
                         
                     }  .frame(minWidth: 0, maxWidth: .infinity, minHeight: 270, maxHeight: 270)
                       
@@ -96,8 +96,8 @@ struct TrailRow: View {
                     }else{
                         
                         VStack(){
-                            Text(trail.title ?? "").foregroundColor(.white).font(.title2).multilineTextAlignment(.center).padding(.bottom)
-                        Text(trail.hashtag_ids ?? "").foregroundColor(.white).font(.title2).multilineTextAlignment(.center)
+                            Text(trail.title ?? "").foregroundColor(.white).font(.system(size: 25)).multilineTextAlignment(.center).padding(.bottom)
+                        Text(trail.hashtag_ids ?? "").foregroundColor(.white).font(.system(size: 25)).multilineTextAlignment(.center)
                         }  .frame(minWidth: 0, maxWidth: .infinity, minHeight: 270, maxHeight: 270)
 
                         .background(Color(UIColor(hex: color)))
@@ -127,8 +127,8 @@ struct TrailRow: View {
                     }
                     else{
                         VStack(){
-                            Text(trail.title!).foregroundColor(.white).font(.title2).multilineTextAlignment(.center).padding(.bottom)
-                        Text(trail.hashtag_ids!).foregroundColor(.white).font(.title2).multilineTextAlignment(.center)
+                            Text(trail.title!).foregroundColor(.white).font(.system(size: 25)).multilineTextAlignment(.center).padding(.bottom)
+                        Text(trail.hashtag_ids!).foregroundColor(.white).font(.system(size: 25)).multilineTextAlignment(.center)
                         }  .frame(minWidth: 0, maxWidth: .infinity, minHeight: 300, maxHeight: 300)
 
 
@@ -319,7 +319,7 @@ struct SpineImpulse: View{
                 Circle().strokeBorder(Color.white,lineWidth: 4)
                 .frame(width: 80, height: 80)
                     .padding()
-            Text("").foregroundColor(.white).font(.title2)
+                Text("").foregroundColor(.white).font(.system(size: 25))
                 .multilineTextAlignment(.center)
                 .lineLimit(5)
                 .frame(width: 180)

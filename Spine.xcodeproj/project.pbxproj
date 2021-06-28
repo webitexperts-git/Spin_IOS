@@ -1320,7 +1320,7 @@
 				DEVELOPMENT_TEAM = 9XG99HAQ57;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = Spine/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1346,7 +1346,7 @@
 				DEVELOPMENT_TEAM = 9XG99HAQ57;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = Spine/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

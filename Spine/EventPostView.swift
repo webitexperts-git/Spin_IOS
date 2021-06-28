@@ -171,18 +171,28 @@ struct EventPostView: View {
 
                        
                     }.navigationBarTitle("NEW EVENT")
-                    .navigationBarTitleDisplayMode(.inline)
-                    .toolbar {
-                        ToolbarItem(placement: .navigationBarTrailing) {
-                            Button("Post") {
-                                print("Help tapped!")
-                                
-                                geteventPost(eventTitle: eventTitle, eventType: eventType, startDate: formattedDateTimeFromString(dateString: selectedDateStart, withFormat: "yy-MM-dd")!, startTime: formattedTimeFromString(dateString: selectedTimeStart, withFormat: "HH:mm:ss")!, endDate: formattedDateTimeFromString(dateString: selectedDateEnd, withFormat: "yy-MM-dd")!, endTime: formattedTimeFromString(dateString: selectedTimeEnd, withFormat: "HH:mm:ss")!, timeZone: TimeZone.current.identifier, location: self.locationManager.placemark!, addLink: eventLink, aboutEvent: aboutEvent, eventCategory: "eye", fee: eventFee, symbol: currency, attendee: eventAttendee, language: language, acceptParticipaient: "2", allowComment: comment, image: imgData!)
-                                print("image", imgData!)
-                            }
-                        }
-                    }
-                    .padding()
+//                    .navigationBarTitleDisplayMode(.inline)
+//                    .toolbar {
+//                        ToolbarItem(placement: .navigationBarTrailing) {
+//                            Button("Post") {
+//                                print("Help tapped!")
+//
+//                                geteventPost(eventTitle: eventTitle, eventType: eventType, startDate: formattedDateTimeFromString(dateString: selectedDateStart, withFormat: "yy-MM-dd")!, startTime: formattedTimeFromString(dateString: selectedTimeStart, withFormat: "HH:mm:ss")!, endDate: formattedDateTimeFromString(dateString: selectedDateEnd, withFormat: "yy-MM-dd")!, endTime: formattedTimeFromString(dateString: selectedTimeEnd, withFormat: "HH:mm:ss")!, timeZone: TimeZone.current.identifier, location: self.locationManager.placemark!, addLink: eventLink, aboutEvent: aboutEvent, eventCategory: "eye", fee: eventFee, symbol: currency, attendee: eventAttendee, language: language, acceptParticipaient: "2", allowComment: comment, image: imgData!)
+//                                print("image", imgData!)
+//                            }
+//                        }
+//                    }
+//                    .padding()
+                    
+                    .navigationBarItems(trailing:
+                                   Button(action: {
+                                       print("Edit button pressed...")
+                                    geteventPost(eventTitle: eventTitle, eventType: eventType, startDate: formattedDateTimeFromString(dateString: selectedDateStart, withFormat: "yy-MM-dd")!, startTime: formattedTimeFromString(dateString: selectedTimeStart, withFormat: "HH:mm:ss")!, endDate: formattedDateTimeFromString(dateString: selectedDateEnd, withFormat: "yy-MM-dd")!, endTime: formattedTimeFromString(dateString: selectedTimeEnd, withFormat: "HH:mm:ss")!, timeZone: TimeZone.current.identifier, location: self.locationManager.placemark!, addLink: eventLink, aboutEvent: aboutEvent, eventCategory: "eye", fee: eventFee, symbol: currency, attendee: eventAttendee, language: language, acceptParticipaient: "2", allowComment: comment, image: imgData!)
+    //                                print("image", imgData!)
+                                    
+                                   }) {
+                                       Text("Post")
+                                   })
                     
                 }
         VStack(alignment:.leading){
@@ -541,8 +551,8 @@ struct EventPostView: View {
             }.padding(10)
 
                 Toggle("Want to accept participants?", isOn: $participaients)
-                    .toggleStyle(SwitchToggleStyle(tint: .orange))
-
+//                    .toggleStyle(SwitchToggleStyle(tint: .orange))
+                   
                            if participaients {
 //                               Text("Hello World!")
                            
@@ -550,7 +560,7 @@ struct EventPostView: View {
                            }
                 
                 Toggle("Allow comments", isOn: $comment)
-                    .toggleStyle(SwitchToggleStyle(tint: .orange))
+//                    .toggleStyle(SwitchToggleStyle(tint: .orange))
                            if comment {
 //                               Text("Hello World!")
                            

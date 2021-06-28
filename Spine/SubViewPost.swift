@@ -41,11 +41,11 @@ struct SubViewPost: View {
                             .background(Color(UIColor(hex: color)))
                         }else{
                            
-                        VStack(){
-                            HStack(alignment:.top){
-                            Text(data.title!).foregroundColor(.white).font(.title2).multilineTextAlignment(.center).padding(.bottom)
-                        Text(data.hashtag_ids!).foregroundColor(.white).font(.title2).multilineTextAlignment(.center)
-                        }
+//                        VStack(){
+//                            HStack(alignment:.top){
+//                            Text(data.title!).foregroundColor(.white).font(.title2).multilineTextAlignment(.center).padding(.bottom)
+//                        Text(data.hashtag_ids!).foregroundColor(.white).font(.title2).multilineTextAlignment(.center)
+//                        }
                         
                         }.frame(maxHeight: 300)
                         

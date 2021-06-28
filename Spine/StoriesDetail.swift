@@ -46,8 +46,8 @@ struct StoriesDetail: View {
                 }
             }
             }
-            }.navigationTitle("STORIES")
-            .navigationBarTitleDisplayMode(.inline)
+            }.navigationBarTitle("Stories")
+//            .navigationBarTitleDisplayMode(.inline)
             .onAppear(perform: getStoriesDetail)
         }
        
