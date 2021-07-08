@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+@available(iOS 14.0, *)
 struct ProfileView: View{
     
     var views = ["POST", "EVENT","PODCAST", ""]
@@ -254,6 +255,10 @@ extension UIView {
 
 struct ProfileView_Previews: PreviewProvider {
     static var previews: some View {
-        ProfileView()
+        if #available(iOS 14.0, *) {
+            ProfileView()
+        } else {
+            // Fallback on earlier versions
+        }
     }
 }

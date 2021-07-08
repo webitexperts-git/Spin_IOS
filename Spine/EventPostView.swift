@@ -343,16 +343,16 @@ struct EventPostView: View {
                     
                    
                
-                TextEditor(text: $aboutEvent)
-               .overlay(RoundedRectangle(cornerRadius: 10).stroke(Color(#colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)), lineWidth: 2))
-                    
-                    if aboutEvent.isEmpty {
-                           Text(placeholder)
-                            .foregroundColor(.gray)
-                            .padding(.all, 30)
-                            
-                    }
-                Text(aboutEvent).opacity(0).padding(.all, 8)
+//                TextEditor(text: $aboutEvent)
+//               .overlay(RoundedRectangle(cornerRadius: 10).stroke(Color(#colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)), lineWidth: 2))
+//                    
+//                    if aboutEvent.isEmpty {
+//                           Text(placeholder)
+//                            .foregroundColor(.gray)
+//                            .padding(.all, 30)
+//                            
+//                    }
+//                Text(aboutEvent).opacity(0).padding(.all, 8)
                 
                   
                 }.padding(10)

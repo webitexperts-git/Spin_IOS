@@ -115,13 +115,17 @@ struct TrailRow: View {
                     ZStack{
                         let player = AVPlayer(url: URL(string: "http://162.214.165.52/~pirituc5/assets/upload/spine-post/" + trail.files!)!)
 
-                    VideoPlayer(player: player)
-                        .frame(minWidth: 0, maxWidth: .infinity, minHeight: 300, maxHeight: 300, alignment: .topLeading)
-
-                        .background(Color(UIColor(hex: color)))
-
-                        .onAppear() {
-                            player.play()
+                        if #available(iOS 14.0, *) {
+                            VideoPlayer(player: player)
+                                .frame(minWidth: 0, maxWidth: .infinity, minHeight: 300, maxHeight: 300, alignment: .topLeading)
+                                
+                                .background(Color(UIColor(hex: color)))
+                                
+                                .onAppear() {
+                                    player.play()
+                                }
+                        } else {
+                            // Fallback on earlier versions
                         }
                     }
                     }
@@ -412,11 +416,15 @@ struct Home: View {
                     Image(systemName: "bell.fill")
                     Text("Activities")
                 }
-            ProfileView()
-                .tabItem {
-                    Image(systemName: "person.fill")
-                    Text("Profile")
-                }
+            if #available(iOS 14.0, *) {
+                ProfileView()
+                    .tabItem {
+                        Image(systemName: "person.fill")
+                        Text("Profile")
+                    }
+            } else {
+                // Fallback on earlier versions
+            }
         }.accentColor(Color(red: 183 / 255, green: 152 / 255, blue: 136 / 255))
         .navigationBarHidden(true)
 //        }.navigationBarHidden(false)
@@ -524,7 +532,7 @@ struct SpineView:View{
                 VStack(alignment: .leading, spacing: 1){
                     VStack(alignment: .leading){
                         Text("Hello,").padding(.leading,20).foregroundColor(.white)
-                        let userName = UserDefaults.standard.string(forKey: "user_name")!
+                        let userName = UserDefaults.standard.string(forKey: "user_name") ?? ""
                         Text(userName).padding(.leading,20).foregroundColor(.white)
                         Text("WELCOME").padding(.leading,20).padding(.bottom, 10).foregroundColor(.white)
                     }
@@ -551,9 +559,13 @@ struct SpineView:View{
                             ZStack{
                             Rectangle()
                                 .frame(width: 200, height: 150)
-                            VideoPlayer(player: player)
-                                .onAppear() {
-                                    player.play()
+                                if #available(iOS 14.0, *) {
+                                    VideoPlayer(player: player)
+                                        .onAppear() {
+                                            player.play()
+                                        }
+                                } else {
+                                    // Fallback on earlier versions
                                 }
                         }
 //                        }
@@ -584,7 +596,7 @@ struct SpineView:View{
                        Spacer()
 //                        NavigationView{
                         NavigationLink(destination: SpineImpulseDetail()){
-                            Text("See All").foregroundColor(Color(red: 237 / 255, green: 215 / 255, blue: 183 / 255)).font(.title3)
+                            Text("See All").foregroundColor(Color(red: 237 / 255, green: 215 / 255, blue: 183 / 255)).font(.system(size: 20))
                                 .padding()
                         }
                     }
@@ -617,7 +629,7 @@ struct SpineView:View{
                                         Circle().strokeBorder(Color.white,lineWidth: 4)
                                         .frame(width: 80, height: 80)
                                             .padding()
-                                        Text(data.description!).foregroundColor(.white).font(.title2)
+                                        Text(data.description!).foregroundColor(.white).font(.system(size:25))
                                         .multilineTextAlignment(.center)
                                         .lineLimit(5)
                                         .frame(width: 180)
@@ -666,11 +678,15 @@ struct SpineView:View{
 //                        NavigationView{
                         Text("STORIES").foregroundColor(.white).font(.system(size: 16)).padding(.leading)
                         Spacer()
-                        NavigationLink(destination: StoriesDetail()){
-                            Text("See All").foregroundColor(Color(red: 237 / 255, green: 215 / 255, blue: 183 / 255)).font(.title3)
-                                .padding()
+                        if #available(iOS 14.0, *) {
+                            NavigationLink(destination: StoriesDetail()){
+                                Text("See All").foregroundColor(Color(red: 237 / 255, green: 215 / 255, blue: 183 / 255)).font(.title3)
+                                    .padding()
                                 
                                 
+                            }
+                        } else {
+                            // Fallback on earlier versions
                         }
                     }.accentColor(.black)
 
@@ -710,11 +726,15 @@ struct SpineView:View{
                                                     .padding()
                                                     .frame(width: 80, height: 80)
 //                                                    .clipShape(Circle())
-                                                VideoPlayer(player: player)
-                                                    .frame(width: 80, height: 80)
-                                                    .clipShape(Circle())
-                                                    .onAppear() {
-                                                        player.play()
+                                                    if #available(iOS 14.0, *) {
+                                                        VideoPlayer(player: player)
+                                                            .frame(width: 80, height: 80)
+                                                            .clipShape(Circle())
+                                                            .onAppear() {
+                                                                player.play()
+                                                            }
+                                                    } else {
+                                                        // Fallback on earlier versions
                                                     }
                                             }
                                         }
@@ -745,7 +765,7 @@ struct SpineView:View{
                     Text("TRENDING CATEGORIES").foregroundColor(.white).font(.system(size: 16)).padding()
                         Spacer()
                         NavigationLink(destination: TrendingCatDetail()){
-                            Text("See All").foregroundColor(Color(red: 237 / 255, green: 215 / 255, blue: 183 / 255)).font(.title3)
+                            Text("See All").foregroundColor(Color(red: 237 / 255, green: 215 / 255, blue: 183 / 255)).font(.system(size:20))
                                 .padding()
                         }
                     }
@@ -771,7 +791,7 @@ struct SpineView:View{
                     Text("RECOMMENDED FOLLOWERS").foregroundColor(.white).font(.system(size: 16)).padding()
                         Spacer()
                         NavigationLink(destination: RecFollowersView()){
-                            Text("See All").foregroundColor(Color(red: 237 / 255, green: 215 / 255, blue: 183 / 255)).font(.title3)
+                            Text("See All").foregroundColor(Color(red: 237 / 255, green: 215 / 255, blue: 183 / 255)).font(.system(size:20))
                                 .padding()
                         }
                     }
@@ -854,11 +874,15 @@ struct SpineView:View{
                                                     .padding()
                                                     .frame(width: 80, height: 80)
 //                                                    .clipShape(Circle())
-                                                VideoPlayer(player: player)
-                                                    .frame(width: 80, height: 80)
-                                                    .clipShape(Circle())
-                                                    .onAppear() {
-                                                        player.play()
+                                                    if #available(iOS 14.0, *) {
+                                                        VideoPlayer(player: player)
+                                                            .frame(width: 80, height: 80)
+                                                            .clipShape(Circle())
+                                                            .onAppear() {
+                                                                player.play()
+                                                            }
+                                                    } else {
+                                                        // Fallback on earlier versions
                                                     }
                                             }
                                         }
@@ -910,7 +934,7 @@ struct SpineView:View{
                                     .frame(minWidth:0, maxWidth: .infinity, minHeight: 300, maxHeight: .infinity)
 //                                    .background(Color(UIColor(hex: data.post_backround_color_id!)))
                                     VStack{
-                                        Text(data.title ?? "").foregroundColor(.white).font(.title2)
+                                        Text(data.title ?? "").foregroundColor(.white).font(.system(size:20))
                                             .multilineTextAlignment(.leading)
                                             .padding(.bottom, 30)
                                        
@@ -951,11 +975,15 @@ struct SpineView:View{
 //                                                .padding()
 //                                                .frame(width: 80, height: 80)
 //                                                    .clipShape(Circle())
-                                            VideoPlayer(player: player)
-                                                .frame(minWidth:0, maxWidth: .infinity, minHeight: 300, maxHeight: 300)
-//                                                .clipShape(Circle())
-                                                .onAppear() {
-                                                    player.play()
+                                                if #available(iOS 14.0, *) {
+                                                    VideoPlayer(player: player)
+                                                        .frame(minWidth:0, maxWidth: .infinity, minHeight: 300, maxHeight: 300)
+                                                        //                                                .clipShape(Circle())
+                                                        .onAppear() {
+                                                            player.play()
+                                                        }
+                                                } else {
+                                                    // Fallback on earlier versions
                                                 }
                                         }
                                     }

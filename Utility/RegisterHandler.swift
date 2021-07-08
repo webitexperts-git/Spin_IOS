@@ -16,6 +16,8 @@ class RegisterHandler: APIHandler {
     @Published var woofResponse1: RegisterModel?
     @Published var isLoading = false
     
+    @Published var userId = ""
+    @Published var userName = ""
     
     func getRagistration(email:String, password:String, name:String, town:String, user_ip:String, user_latitude:String, user_longitude:String) {
         isLoading = true
@@ -40,6 +42,18 @@ class RegisterHandler: APIHandler {
                             
             weakSelf.isLoading = false
             weakSelf.woofResponse1 = response
+            
+            if(weakSelf.woofResponse1?.status != false){
+                self?.userId = (response.data?.users_id)!
+                self?.userName = (response.data?.display_name)!
+                
+                print("userId", self?.userId as Any)
+                UserDefaults.standard.setValue(self?.userId, forKeyPath: "user_id")
+                UserDefaults.standard.setValue(self?.userName, forKeyPath: "user_name")
+            }else{
+                
+                weakSelf.alertAction(message:response.message!)
+            }
             
             if(weakSelf.woofResponse1?.status != true){
                 weakSelf.alertAction(message:response.message!)

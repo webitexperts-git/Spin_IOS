@@ -10,6 +10,7 @@ import Combine
 
 
 
+@available(iOS 14.0, *)
 struct StoriesDetail: View {
     
      
@@ -177,6 +178,10 @@ struct StoriesDetail: View {
 
 struct StoriesDetail_Previews: PreviewProvider {
     static var previews: some View {
-        StoriesDetail().environment(\.colorScheme, .light)
+        if #available(iOS 14.0, *) {
+            StoriesDetail().environment(\.colorScheme, .light)
+        } else {
+            // Fallback on earlier versions
+        }
     }
 }

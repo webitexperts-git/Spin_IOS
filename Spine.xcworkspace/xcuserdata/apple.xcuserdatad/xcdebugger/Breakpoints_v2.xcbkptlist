@@ -164,14 +164,14 @@
             landmarkType = "14">
             <Locations>
                <Location
-                  uuid = "E72345E9-ED51-404C-B74C-6E89FBEFBAE0 - 82ef81759de8ba9"
+                  uuid = "E72345E9-ED51-404C-B74C-6E89FBEFBAE0 - 458c35f68bd8e199"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
                   symbolName = "Spine.LoginModel.CodingKeys.init(rawValue: Swift.String) -&gt; Swift.Optional&lt;Spine.LoginModel.CodingKeys&gt;"
                   moduleName = "Spine"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/apple/Desktop/Spin_IOS-main/Model/LoginModel.swift"
+                  urlString = "file:///Users/apple/Desktop/BackUp/Spin_IOS-main/Model/LoginModel.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "19"
@@ -179,14 +179,14 @@
                   offsetFromSymbolStart = "86">
                </Location>
                <Location
-                  uuid = "E72345E9-ED51-404C-B74C-6E89FBEFBAE0 - 4df94a1598983326"
+                  uuid = "E72345E9-ED51-404C-B74C-6E89FBEFBAE0 - 5b87f44a9e5916"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
                   symbolName = "Spine.LoginModel.CodingKeys.rawValue.getter : Swift.String"
                   moduleName = "Spine"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/apple/Desktop/Spin_IOS-main/Model/LoginModel.swift"
+                  urlString = "file:///Users/apple/Desktop/BackUp/Spin_IOS-main/Model/LoginModel.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "19"
@@ -368,14 +368,14 @@
             landmarkType = "14">
             <Locations>
                <Location
-                  uuid = "8598EC58-6157-41C2-A761-F7CE60265EE7 - f43a468a9fc806ad"
+                  uuid = "8598EC58-6157-41C2-A761-F7CE60265EE7 - b9988b6b4dce78bd"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
                   symbolName = "Spine.LoginModel.Data.CodingKeys.init(rawValue: Swift.String) -&gt; Swift.Optional&lt;Spine.LoginModel.Data.CodingKeys&gt;"
                   moduleName = "Spine"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/apple/Desktop/Spin_IOS-main/Model/LoginModel.swift"
+                  urlString = "file:///Users/apple/Desktop/BackUp/Spin_IOS-main/Model/LoginModel.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "69"
@@ -383,14 +383,14 @@
                   offsetFromSymbolStart = "89">
                </Location>
                <Location
-                  uuid = "8598EC58-6157-41C2-A761-F7CE60265EE7 - 4ec77962c67cc52f"
+                  uuid = "8598EC58-6157-41C2-A761-F7CE60265EE7 - 365b483147abb3f"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
                   symbolName = "Spine.LoginModel.Data.CodingKeys.rawValue.getter : Swift.String"
                   moduleName = "Spine"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/apple/Desktop/Spin_IOS-main/Model/LoginModel.swift"
+                  urlString = "file:///Users/apple/Desktop/BackUp/Spin_IOS-main/Model/LoginModel.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "69"
@@ -592,14 +592,14 @@
             landmarkType = "14">
             <Locations>
                <Location
-                  uuid = "47527FC6-A4C9-48C7-B1ED-F00FBEDCA755 - 7a8fe8a389ff3095"
+                  uuid = "47527FC6-A4C9-48C7-B1ED-F00FBEDCA755 - ff4b41d380f885af"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
                   symbolName = "Spine.ForgetModel.CodingKeys.init(rawValue: Swift.String) -&gt; Swift.Optional&lt;Spine.ForgetModel.CodingKeys&gt;"
                   moduleName = "Spine"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/apple/Desktop/Spin_IOS-main/Model/ForgetModel.swift"
+                  urlString = "file:///Users/apple/Desktop/BackUp/Spin_IOS-main/Model/ForgetModel.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "18"
@@ -607,14 +607,14 @@
                   offsetFromSymbolStart = "86">
                </Location>
                <Location
-                  uuid = "47527FC6-A4C9-48C7-B1ED-F00FBEDCA755 - 3b9e75745d9ab9ef"
+                  uuid = "47527FC6-A4C9-48C7-B1ED-F00FBEDCA755 - be5adc04549d0cd5"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
                   symbolName = "Spine.ForgetModel.CodingKeys.rawValue.getter : Swift.String"
                   moduleName = "Spine"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/apple/Desktop/Spin_IOS-main/Model/ForgetModel.swift"
+                  urlString = "file:///Users/apple/Desktop/BackUp/Spin_IOS-main/Model/ForgetModel.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "18"
@@ -746,8 +746,8 @@
             filePath = "Utility/RegisterHandler.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "22"
-            endingLineNumber = "22"
+            startingLineNumber = "24"
+            endingLineNumber = "24"
             landmarkName = "getRagistration(email:password:name:town:user_ip:user_latitude:user_longitude:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1190,8 +1190,8 @@
             filePath = "Spine/ProfileView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "151"
-            endingLineNumber = "151"
+            startingLineNumber = "152"
+            endingLineNumber = "152"
             landmarkName = "body"
             landmarkType = "24">
          </BreakpointContent>
@@ -1206,8 +1206,8 @@
             filePath = "Spine/ProfileView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "150"
-            endingLineNumber = "150"
+            startingLineNumber = "151"
+            endingLineNumber = "151"
             landmarkName = "body"
             landmarkType = "24">
          </BreakpointContent>
@@ -1222,8 +1222,8 @@
             filePath = "Spine/ProfileView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "218"
-            endingLineNumber = "218"
+            startingLineNumber = "219"
+            endingLineNumber = "219"
             landmarkName = "subviews()"
             landmarkType = "7">
          </BreakpointContent>

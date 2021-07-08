@@ -620,11 +620,15 @@ struct ReserveSpotPopUp:View{
                       
                         ZStack(){
                         
-                        TextEditor(text: $textViewEdt)
-                            .frame(minWidth: 0, maxWidth: .infinity, minHeight: 100, maxHeight: 100)
-                       .overlay(RoundedRectangle(cornerRadius: 10).stroke(Color(#colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)), lineWidth: 1))
-                            .padding(.top, 20)
-                            .padding()
+                            if #available(iOS 14.0, *) {
+                                TextEditor(text: $textViewEdt)
+                                    .frame(minWidth: 0, maxWidth: .infinity, minHeight: 100, maxHeight: 100)
+                                    .overlay(RoundedRectangle(cornerRadius: 10).stroke(Color(#colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)), lineWidth: 1))
+                                    .padding(.top, 20)
+                                    .padding()
+                            } else {
+                                // Fallback on earlier versions
+                            }
                             
 //                        Text(textViewEdt).opacity(0.5).padding(.all, 8)
                             if textViewEdt.isEmpty {
@@ -729,11 +733,15 @@ struct MessagePopUp:View{
                         Text(userName).padding(.top, 30)
                         ZStack(){
                         
-                        TextEditor(text: $textViewEdt)
-                            .frame(minWidth: 0, maxWidth: .infinity, minHeight: 100, maxHeight: 100)
-                       .overlay(RoundedRectangle(cornerRadius: 10).stroke(Color(#colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)), lineWidth: 1))
-                            .padding(.top, 20)
-                            .padding()
+                            if #available(iOS 14.0, *) {
+                                TextEditor(text: $textViewEdt)
+                                    .frame(minWidth: 0, maxWidth: .infinity, minHeight: 100, maxHeight: 100)
+                                    .overlay(RoundedRectangle(cornerRadius: 10).stroke(Color(#colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)), lineWidth: 1))
+                                    .padding(.top, 20)
+                                    .padding()
+                            } else {
+                                // Fallback on earlier versions
+                            }
                             
 //                        Text(textViewEdt).opacity(0.5).padding(.all, 8)
                             if textViewEdt.isEmpty {
